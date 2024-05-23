@@ -5,12 +5,14 @@ public class Merchant {
     private String name;
     private String phone;
     private String address;
+    private String email;
 
-    public Merchant(int m_id, String name, String phone, String address) {
+    public Merchant(int m_id, String name, String phone, String address,String email) {
         this.m_id = m_id;
         this.name = name;
         this.phone = phone;
         this.address = address;
+        this.email =email;
     }
 
     public Merchant() {
@@ -23,6 +25,7 @@ public class Merchant {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 
@@ -56,5 +59,13 @@ public class Merchant {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

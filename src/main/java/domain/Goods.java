@@ -9,8 +9,9 @@ public class Goods {
     private Double price;
     private String describe;
     private int status;
+    private int count;
 
-    public Goods(int g_id, int c_id, int m_id, String name, String photo, Double price, String describe, int status) {
+    public Goods(int g_id, int c_id, int m_id, String name, String photo, Double price, String describe, int status,int count) {
         this.g_id = g_id;
         this.c_id = c_id;
         this.m_id = m_id;
@@ -19,6 +20,7 @@ public class Goods {
         this.price = price;
         this.describe = describe;
         this.status = status;
+        this.count = count;
     }
 
     public Goods() {
@@ -35,6 +37,7 @@ public class Goods {
                 ", price=" + price +
                 ", describe='" + describe + '\'' +
                 ", status=" + status +
+                ", count=" + count +
                 '}';
     }
 
@@ -100,5 +103,13 @@ public class Goods {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
