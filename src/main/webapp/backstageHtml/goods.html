@@ -83,76 +83,8 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">消息</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt=""
-                                        style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">查看所有消息</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">通知</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">查看所有通知</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
@@ -171,9 +103,27 @@
 
             <!-- Goods Table Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Recent Salse</h6>
-                    <a href="">Show All</a>
+                <div class="row">
+                    <div class="d-flex align-items-center justify-content-start col">
+                        <input class="form-control border-0" type="search" placeholder="Search">
+                        <button type="button" class="btn btn-primary ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start col">
+
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="d-flex align-items-center justify-content-end mb-4 col">
+                        <button type="button" class="btn btn-danger m-2">批量下架</button>
+                        <button type="button" class="btn btn-success m-2">商品上架</button>
+                    </div>
                 </div>
                 <table class="table text-nowrap">
                     <thead class="bg-light">
@@ -187,7 +137,8 @@
                             </th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">状态</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase"></strong></th>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">操作</strong>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="border-0">
@@ -211,10 +162,10 @@
                                 <p class="mb-0 small">正在售卖</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
+                                <a class="btn btn-sm btn-danger" href="#">下架</a>
+                                <a class="btn btn-sm btn-success" href="#">添加库存</a>
+                                <a class="btn btn-sm btn-warning" href="#">修改</a>
+                                <a class="btn btn-sm btn-secondary" href="goods-detail.html" target="_blank">详细信息</a>
                             </td>
                         </tr>
                         <tr>
