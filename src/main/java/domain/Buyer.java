@@ -6,13 +6,15 @@ public class Buyer {
     private String email;
     private String address;
     private String phone;
+    private String photo;
 
-    public Buyer(int b_id, String name, String email, String address, String phone) {
+    public Buyer(int b_id, String name, String email, String address, String phone,String photo) {
         this.b_id = b_id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        this.photo = photo;
     }
 
     public Buyer() {
@@ -26,6 +28,7 @@ public class Buyer {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 
@@ -67,5 +70,13 @@ public class Buyer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

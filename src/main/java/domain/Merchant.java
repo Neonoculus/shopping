@@ -6,13 +6,17 @@ public class Merchant {
     private String phone;
     private String address;
     private String email;
+    private String photo;
+    private String note;
 
-    public Merchant(int m_id, String name, String phone, String address,String email) {
+    public Merchant(int m_id, String name, String phone, String address,String email,String photo,String note) {
         this.m_id = m_id;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.email =email;
+        this.photo = photo;
+        this.note = note;
     }
 
     public Merchant() {
@@ -26,8 +30,12 @@ public class Merchant {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
+                ", photo='" + photo + '\'' +
+                ", note='" + note + '\'' +
                 '}';
     }
+
+
 
     public int getM_id() {
         return m_id;
@@ -67,5 +75,20 @@ public class Merchant {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }
