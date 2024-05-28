@@ -5,12 +5,14 @@ public class Login {
     private String username;
     private String password;
     private int type;
+    private int id;
 
-    public Login(int l_id, String username, String password, int type) {
+    public Login(int l_id, String username, String password, int type,int id) {
         this.l_id = l_id;
         this.username = username;
         this.password = password;
         this.type = type;
+        this.id = id;
     }
 
     public Login() {
@@ -23,6 +25,7 @@ public class Login {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", type=" + type +
+                ", id=" + id +
                 '}';
     }
 
@@ -56,5 +59,13 @@ public class Login {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
