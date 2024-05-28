@@ -63,10 +63,10 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
-                    <a href="info.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
+                    <a href="info.html" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>商家信息</a>
                     <a href="goods.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
                     <a href="order.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
-                    <a href="setting.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>设置</a>
+                    <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
         </div>
@@ -103,22 +103,36 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row d-flex justify-content-center">
                     <div class="bg-light rounded h-100 p-4 col col-xl-6">
-                        <h6 class="mb-4">账号安全</h6>
+                        <h6 class="mb-4">账号信息修改</h6>
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">电子邮箱</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <label for="exampleInputPhoto" class="form-label">头像</label>
+                                <input class="form-control" type="file" id="exampleInputPhoto">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputName" class="form-label">商家名称</label>
+                                <input type="text" class="form-control" id="exampleInputName"
                                     aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">我们绝不会与其他人分享您的电子邮件地址
-                                </div>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">密码</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <label for="exampleInputPhone" class="form-label">联系电话</label>
+                                <input type="number" class="form-control" id="exampleInputPhone"
+                                    aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword2" class="form-label">确认密码</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2">
+                                <label for="exampleInputEmail" class="form-label">电子邮箱</label>
+                                <input type="email" class="form-control" id="exampleInputEmail"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputAddress" class="form-label">地址</label>
+                                <input type="text" class="form-control" id="exampleInputAddress"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputNote" class="form-label">商家简介</label>
+                                <textarea class="form-control" placeholder="请在此处输入简介！！！" id="exampleInputNote"
+                                    style="height: 150px;"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">确认修改</button>
                         </form>

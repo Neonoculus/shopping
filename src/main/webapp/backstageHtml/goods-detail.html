@@ -30,6 +30,20 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- gLightbox gallery-->
+    <link rel="stylesheet" href="vendor/glightbox/css/glightbox.min.css">
+    <!-- Range slider-->
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    <!-- Choices CSS-->
+    <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.min.css">
+    <!-- Swiper slider-->
+    <link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
+    <!-- Google fonts-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
+    <!-- theme stylesheet-->
 </head>
 
 <body>
@@ -92,15 +106,271 @@
                             <span class="d-none d-lg-inline-flex">随乡饺子馆</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">商家信息</a>
-                            <a href="#" class="dropdown-item">设置</a>
-                            <a href="#" class="dropdown-item">注销</a>
+                            <a href="info.html" class="dropdown-item">商家信息</a>
+                            <a href="setting.html" class="dropdown-item">设置</a>
+                            <a href="#" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>
             </nav>
             <!-- Navbar End -->
 
+            <div class="container-fluid pt-4 px-4">
+                <form action="">
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <!-- PRODUCT SLIDER-->
+                            <div class="row m-sm-0">
+                                <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
+                                    <div
+                                        class="swiper product-slider-thumbs swiper-initialized swiper-vertical swiper-pointer-events swiper-thumbs">
+                                        <div class="swiper-wrapper" id="swiper-wrapper-6d944e741cdfca44"
+                                            aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                                            <div>
+                                                <button type="button" class="btn btn-sm btn-secondary"
+                                                    style="padding: 0; background-color: white; color: black; border: 0;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                        </path>
+                                                        <path
+                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                                <div class="swiper-slide h-auto swiper-thumb-item swiper-slide-visible swiper-slide-active swiper-slide-thumb-active"
+                                                    role="group" aria-label="1 / 4" style="height: 371px;"><img
+                                                        class="w-100" src="img/product-detail-2.jpg" alt="..."></div>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-sm btn-secondary"
+                                                    style="padding: 0; background-color: white; color: black; border: 0;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                        </path>
+                                                        <path
+                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                                <div class="swiper-slide h-auto swiper-thumb-item swiper-slide-visible swiper-slide-next"
+                                                    role="group" aria-label="2 / 4" style="height: 371px;">
+                                                    <img class="w-100" src="img/product-detail-2.jpg" alt="...">
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <button type="button" class="btn btn-sm btn-secondary"
+                                                    style="padding: 0; background-color: white; color: black; border: 0;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                        </path>
+                                                        <path
+                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                                <div class="swiper-slide h-auto swiper-thumb-item swiper-slide-visible"
+                                                    role="group" aria-label="3 / 4" style="height: 371px;">
+                                                    <img class="w-100" src="img/product-detail-3.jpg" alt="...">
+                                                </div>
+
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-sm btn-secondary"
+                                                    style="padding: 0; background-color: white; color: black; border: 0;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z">
+                                                        </path>
+                                                        <path
+                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                                <div class="swiper-slide h-auto swiper-thumb-item  swiper-slide-visible"
+                                                    role="group" aria-label="4 / 4" style="height: 371px;">
+                                                    <img class="w-100" src="img/product-detail-3.jpg" alt="...">
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide h-auto swiper-thumb-item mt-3 swiper-slide-visible"
+                                                style="height: 371px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    class="bi bi-plus-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span class="swiper-notification" aria-live="assertive"
+                                            aria-atomic="true"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 order-1 order-sm-2">
+                                    <div
+                                        class="swiper product-slider swiper-initialized swiper-horizontal swiper-pointer-events">
+                                        <div class="swiper-wrapper" id="swiper-wrapper-5b7c5e2f834832e9"
+                                            aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                                            <div class="swiper-slide h-auto swiper-slide-active" role="group"
+                                                aria-label="1 / 4" style="width: 428px;"><a
+                                                    class="glightbox product-view" href="img/product-detail-2.jpg"
+                                                    data-gallery="gallery2" data-glightbox="Product item 1"><img
+                                                        class="img-fluid" src="img/product-detail-2.jpg" alt="..."></a>
+                                            </div>
+                                            <div class="swiper-slide h-auto swiper-slide-next" role="group"
+                                                aria-label="2 / 4" style="width: 428px;"><a
+                                                    class="glightbox product-view" href="img/product-detail-2.jpg"
+                                                    data-gallery="gallery2" data-glightbox="Product item 2"><img
+                                                        class="img-fluid" src="img/product-detail-2.jpg" alt="..."></a>
+                                            </div>
+                                            <div class="swiper-slide h-auto" role="group" aria-label="3 / 4"
+                                                style="width: 428px;"><a class="glightbox product-view"
+                                                    href="img/product-detail-3.jpg" data-gallery="gallery2"
+                                                    data-glightbox="Product item 3"><img class="img-fluid"
+                                                        src="img/product-detail-3.jpg" alt="..."></a></div>
+                                            <div class="swiper-slide h-auto" role="group" aria-label="4 / 4"
+                                                style="width: 428px;"><a class="glightbox product-view"
+                                                    href="img/product-detail-3.jpg" data-gallery="gallery2"
+                                                    data-glightbox="Product item 4"><img class="img-fluid"
+                                                        src="img/product-detail-3.jpg" alt="..."></a></div>
+                                        </div>
+                                        <span class="swiper-notification" aria-live="assertive"
+                                            aria-atomic="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PRODUCT DETAILS-->
+                        <div class="col-lg-6">
+                            <div class="row mb-3">
+                                <label for="goods-name" class="col-sm-2 col-form-label"
+                                    style="padding-right: 0;">商品名称：</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <input type="text" class="form-control" id="goods-name" value="红色数字智能手表">
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-center mb-3">
+                                <label for="goods-type" class="col-sm-2 col-form-label"
+                                    style="padding-right: 0;">商品类别：</label>
+                                <div class="col-sm-3 " style="padding-left: 0;">
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                        id="goods-type">
+                                        <option value="1">手机</option>
+                                        <option value="2">电脑</option>
+                                        <option value="3">平板</option>
+                                        <option selected="selected">--请选择商品类别--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-center mb-3">
+                                <label class="col-sm-2 col-form-label" style="padding-right: 0;">标签：</label>
+                                <div class="row col-sm-7" style="padding-left: 0;">
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="小米" id="小米">
+                                        <label class="form-check-label" for="小米"> 小米</label>
+
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="华为" id="华为">
+                                        <label class="form-check-label" for="华为"> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                    <div class="col col-2">
+                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
+                                        <label class="form-check-label" for=""> 华为</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="price" class="col-sm-2 col-form-label" style="padding-right: 0;">单价：</label>
+                                <div class="col-1" style="padding-left: 0;padding-right: 0;">
+                                    <input type="text" class="form-control" id="price" value="250">
+                                </div>
+                                <div class="col-1" style="padding-left: 0;line-height: 40px;">&nbsp;元</div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="count" class="col-form-label col-sm-2"
+                                    style="padding-right: 0;line-height: 15px;">库存：</label>
+                                <div class="quantity col-sm-2">
+                                    <div class="row align-middle">
+                                        <button type="button" class="dec-btn p-0 col col-3"><i
+                                                class="fas fa-caret-left"></i></button>
+                                        <input class="form-control border-0 shadow-0 p-0 col" id="count" type="text"
+                                            value="1" style="text-align: center;">
+                                        <button type="button" class="inc-btn p-0 col col-3 "><i
+                                                class="fas fa-caret-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="description" class="col-sm-2 col-form-label"
+                                    style="padding-right: 0;">商品简介：</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <textarea class="form-control" placeholder="这是一个牛逼的智能手表。" id="description"
+                                        style="height: 150px;"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row d-flex align-items-center mb-3">
+                                <label class="col-sm-2 col-form-label">状态：</label>
+                                <div class="form-check form-switch col-sm-4">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="status"
+                                        checked="checked">
+                                    <label class="form-check-label" for="status">出售</label>
+                                </div>
+                            </div>
+                            <div class="row mb-3" style="padding-left:10px;">
+                                <button type="submit" class="btn btn-primary col-sm-2">确认修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
 
 
         </div>
@@ -123,6 +393,12 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Template Javascript -->
 
+
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/nouislider/nouislider.min.js"></script>
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="js/front.js"></script>
 
     <script src="js/main.js"></script>
 
