@@ -11,6 +11,7 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +21,10 @@
   ================================================== -->
   <script src="js/modernizr.js"></script>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <title>Search</title>
     <path fill="currentColor" d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 16 16">
@@ -39,6 +41,30 @@
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" id="cart-outline" viewBox="0 0 16 16">
     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="quality" viewBox="0 0 16 16">
+    <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="price-tag" viewBox="0 0 16 16">
+    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z" />
+    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="shield-plus" viewBox="0 0 16 16">
+    <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
+    <path d="M8 4.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V9a.5.5 0 0 1-1 0V7.5H6a.5.5 0 0 1 0-1h1.5V5a.5.5 0 0 1 .5-.5z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="star-half" viewBox="0 0 16 16">
+    <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 24 24">
+    <path fill="currentColor" d="m15 17l2-4h-4V6h7v7l-2 4h-3Zm-9 0l2-4H4V6h7v7l-2 4H6Z" />
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
     <path fill="currentColor" d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z" />
@@ -63,6 +89,9 @@
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
     <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" id="video-player" viewBox="0 0 16 16">
+    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
   </symbol>
 </svg>
 
@@ -93,7 +122,7 @@
         <a href="#" title="Monitors">显示器</a>
       </li>
       <li class="cat-list-item">
-        <a href="#" title="Speakers">音响</a>
+        <a href="#" title="Speakers">发言人</a>
       </li>
       <li class="cat-list-item">
         <a href="#" title="Memory Cards">存储卡</a>
@@ -133,7 +162,7 @@
               <a class="nav-link me-4" href="#mobile-products">产品</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="#smart-watches">手表</a>
+              <a class="nav-link me-4" href="#smart-watches">观看</a>
             </li>
             <li class="nav-item">
               <a class="nav-link me-4" href="#yearly-sale">销售</a>
@@ -151,13 +180,13 @@
                   <a href="blog.html" class="dropdown-item">博客</a>
                 </li>
                 <li>
-                  <a href="shop.html" class="dropdown-item">购物</a>
+                  <a href="shop.html" class="dropdown-item">商店</a>
                 </li>
                 <li>
                   <a href="cart.html" class="dropdown-item">购物车</a>
                 </li>
                 <li>
-                  <a href="checkout.html" class="dropdown-item">支付</a>
+                  <a href="checkout.html" class="dropdown-item">付款</a>
                 </li>
                 <li>
                   <a href="single-post.html" class="dropdown-item">单一的职位</a>
@@ -208,369 +237,187 @@
     <div class="container">
       <div class="row">
         <div class="text-center padding-large no-padding-bottom">
-          <h1 class="display-2 text-uppercase text-dark">购物</h1>
+          <h1 class="display-2 text-uppercase text-dark">关于我们</h1>
           <div class="breadcrumbs">
                 <span class="item">
                   <a href="index.html">首页 ></a>
                 </span>
-            <span class="item">购物</span>
+            <span class="item">关于我们</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<div class="shopify-grid padding-large">
+<section id="company-services" class="padding-large">
   <div class="container">
     <div class="row">
-      <main class="col-md-9">
-        <div class="filter-shop d-flex justify-content-between">
-          <div class="showing-product">
-            <p>Showing 1–9 of 55 results</p>
+      <div class="col-lg-3 col-md-6 pb-3">
+        <div class="icon-box d-flex">
+          <div class="icon-box-icon pe-3 pb-3">
+            <svg class="cart-outline">
+              <use xlink:href="#cart-outline" />
+            </svg>
           </div>
-          <div class="sort-by">
-            <select id="input-sort" class="form-control" data-filter-sort="" data-filter-order="">
-              <option value="">默认排序</option>
-              <option value="">姓名 (A - Z)</option>
-              <option value="">姓名 (Z - A)</option>
-              <option value="">价格 (低-高)</option>
-              <option value="">价格 (高-低)</option>
-              <option value="">级别 (最高级)</option>
-              <option value="">级别 (最低级)</option>
-              <option value="">模型 (A - Z)</option>
-              <option value="">模型 (Z - A)</option>
-            </select>
+          <div class="icon-box-content">
+            <h3 class="card-title text-uppercase text-dark">包邮</h3>
+            <p>Consectetur adipi elit lorem ipsum dolor sit amet.</p>
           </div>
         </div>
-        <div class="product-content product-store d-flex justify-content-between flex-wrap">
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3 pb-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 10</a>
-                </h3>
-                <span class="item-price text-primary">$980</span>
-              </div>
-            </div>
+      </div>
+      <div class="col-lg-3 col-md-6 pb-3">
+        <div class="icon-box d-flex">
+          <div class="icon-box-icon pe-3 pb-3">
+            <svg class="quality">
+              <use xlink:href="#quality" />
+            </svg>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 11</a>
-                </h3>
-                <span class="item-price text-primary">$110</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item3.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 8</a>
-                </h3>
-                <span class="item-price text-primary">$780</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item4.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 13</a>
-                </h3>
-                <span class="item-price text-primary">$1500</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item6.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Pink watch</a>
-                </h3>
-                <span class="item-price text-primary">$870</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item7.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Heavy watch</a>
-                </h3>
-                <span class="item-price text-primary">$680</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item8.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">spotted watch</a>
-                </h3>
-                <span class="item-price text-primary">$750</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item10.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Black Watch</a>
-                </h3>
-                <span class="item-price text-primary">$750</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="product-card position-relative pe-3 pb-3">
-              <div class="image-holder">
-                <img src="images/product-item5.jpg" alt="product-item" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <div class="btn-left">
-                    <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                    <svg class="cart-outline position-absolute">
-                      <use xlink:href="#cart-outline"></use>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="card-detail d-flex justify-content-between pt-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">Iphone 12</a>
-                </h3>
-                <span class="item-price text-primary">$1300</span>
-              </div>
-            </div>
+          <div class="icon-box-content">
+            <h3 class="card-title text-uppercase text-dark">质量保证</h3>
+            <p>Dolor sit amet orem ipsu mcons ectetur adipi elit.</p>
           </div>
         </div>
-        <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
-          <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
-            <a href="#">
-              <svg class="chevron-left pe-3">
-                <use xlink:href="#chevron-left"></use>
-              </svg>
-            </a>
-            <span aria-current="page" class="page-numbers current pe-3">1</span>
-            <a class="page-numbers pe-3" href="#">2</a>
-            <a class="page-numbers pe-3" href="#">3</a>
-            <a class="page-numbers pe-3" href="#">4</a>
-            <a class="page-numbers" href="#">5</a>
-            <a href="#">
-              <svg class="chevron-right ps-3">
-                <use xlink:href="#chevron-right"></use>
-              </svg>
-            </a>
+      </div>
+      <div class="col-lg-3 col-md-6 pb-3">
+        <div class="icon-box d-flex">
+          <div class="icon-box-icon pe-3 pb-3">
+            <svg class="price-tag">
+              <use xlink:href="#price-tag" />
+            </svg>
           </div>
-        </nav>
-      </main>
-      <aside class="col-md-3">
-        <div class="sidebar">
-          <div class="widget-menu">
-            <div class="widget-search-bar">
-              <form role="search" method="get" class="d-flex">
-                <input class="search-field" placeholder="Search" type="search">
-                <div class="search-icon bg-dark">
-                  <a href="#">
-                    <svg class="search text-light">
-                      <use xlink:href="#search"></use>
-                    </svg>
-                  </a>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="widget-product-categories pt-5">
-            <h5 class="widget-title text-decoration-underline text-uppercase">类别</h5>
-            <ul class="product-categories sidebar-list list-unstyled">
-              <li class="cat-item">
-                <a href="/collections/categories">所有</a>
-              </li>
-              <li class="cat-item">
-                <a href="">手机</a>
-              </li>
-              <li class="cat-item">
-                <a href="">饰品</a>
-              </li>
-              <li class="cat-item">
-                <a href="">平板电脑</a>
-              </li>
-              <li class="cat-item">
-                <a href="">手表</a>
-              </li>
-            </ul>
-          </div>
-          <div class="widget-product-tags pt-3">
-            <h5 class="widget-title text-decoration-underline text-uppercase">标签</h5>
-            <ul class="product-tags sidebar-list list-unstyled">
-              <li class="tags-item">
-                <a href="">白色</a>
-              </li>
-              <li class="tags-item">
-                <a href="">便宜</a>
-              </li>
-              <li class="tags-item">
-                <a href="">模型</a>
-              </li>
-              <li class="tags-item">
-                <a href="">现代</a>
-              </li>
-            </ul>
-          </div>
-          <div class="widget-product-brands pt-3">
-            <h5 class="widget-title text-decoration-underline text-uppercase">品牌</h5>
-            <ul class="product-tags sidebar-list list-unstyled">
-              <li class="tags-item">
-                <a href="">苹果</a>
-              </li>
-              <li class="tags-item">
-                <a href="">三星</a>
-              </li>
-              <li class="tags-item">
-                <a href="">华为</a>
-              </li>
-            </ul>
-          </div>
-          <div class="widget-price-filter pt-3">
-            <h5 class="widget-titlewidget-title text-decoration-underline text-uppercase">按价格筛选</h5>
-            <ul class="product-tags sidebar-list list-unstyled">
-              <li class="tags-item">
-                <a href="">少于 $10</a>
-              </li>
-              <li class="tags-item">
-                <a href="">$10- $20</a>
-              </li>
-              <li class="tags-item">
-                <a href="">$20- $30</a>
-              </li>
-              <li class="tags-item">
-                <a href="">$30- $40</a>
-              </li>
-              <li class="tags-item">
-                <a href="">$40- $50</a>
-              </li>
-            </ul>
+          <div class="icon-box-content">
+            <h3 class="card-title text-uppercase text-dark">日常提议</h3>
+            <p>Amet consectetur adipi elit loreme ipsum dolor sit.</p>
           </div>
         </div>
-      </aside>
+      </div>
+      <div class="col-lg-3 col-md-6 pb-3">
+        <div class="icon-box d-flex">
+          <div class="icon-box-icon pe-3 pb-3">
+            <svg class="shield-plus">
+              <use xlink:href="#shield-plus" />
+            </svg>
+          </div>
+          <div class="icon-box-content">
+            <h3 class="card-title text-uppercase text-dark">100% 安全付款</h3>
+            <p>Rem Lopsum dolor sit amet, consectetur adipi elit.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<section id="about-us" class="padding-large no-padding-top">
+  <div class="container">
+    <div class="row d-flex flex-wrap align-items-center justify-content-between">
+      <div class="col-lg-6 col-md-12">
+        <div class="image-holder mb-4">
+          <div>
+            <img src="images/single-image3.jpg" alt="single" class="single-image">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="detail ps-5">
+          <div class="display-header">
+            <h2 class="display-7 text-uppercase text-dark">迷你商店是怎么创建的?</h2>
+            <p class="pb-3">Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Quam libero etiam et in ac at quis. </br>
+              Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis. Risus augue curabitur diam senectus congue velit et. </p>
+            <a href="#" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">我们的商店</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testimonials" class="position-relative">
+  <div class="container">
+    <div class="row">
+      <div class="review-content position-relative">
+        <div class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center">
+          <svg class="chevron-left">
+            <use xlink:href="#chevron-left" />
+          </svg>
+        </div>
+        <div class="swiper testimonial-swiper">
+          <div class="quotation text-center">
+            <svg class="quote">
+              <use xlink:href="#quote" />
+            </svg>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide text-center d-flex justify-content-center">
+              <div class="review-item col-md-10">
+                <i class="icon icon-review"></i>
+                <blockquote>“Tempus oncu enim pellen tesque este pretium in neque, elit morbi sagittis lorem habi mattis Pellen tesque pretium feugiat vel morbi suspen dise sagittis lorem habi tasse morbi.”</blockquote>
+                <div class="rating">
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-half">
+                    <use xlink:href="#star-half"></use>
+                  </svg>
+                  <svg class="star star-empty">
+                    <use xlink:href="#star-empty"></use>
+                  </svg>
+                </div>
+                <div class="author-detail">
+                  <div class="name text-dark text-uppercase pt-2">Emma Chamberlin</div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide text-center d-flex justify-content-center">
+              <div class="review-item col-md-10">
+                <i class="icon icon-review"></i>
+                <blockquote>“A blog is a digital publication that can complement a website or exist independently. A blog may include articles, short posts, listicles, infographics, videos, and other digital content.”</blockquote>
+                <div class="rating">
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                  <svg class="star star-fill">
+                    <use xlink:href="#star-fill"></use>
+                  </svg>
+                </div>
+                <div class="author-detail">
+                  <div class="name text-dark text-uppercase pt-2">Jennie Rose</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-icon swiper-arrow swiper-arrow-next position-absolute d-flex align-items-center">
+          <svg class="chevron-right">
+            <use xlink:href="#chevron-right" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</section>
 <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
   <div class="container">
     <div class="row">
       <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
         <div class="col-md-6 col-sm-12">
-          <div class="display-header pe-3">
+          <div class="display-header content-light pe-3">
             <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
-            <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
+            <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱.</p>
           </div>
         </div>
         <div class="col-md-5 col-sm-12">
@@ -589,7 +436,7 @@
   <div class="container">
     <div class="row">
       <div class="display-header text-uppercase text-dark text-center pb-3">
-        <h2 class="display-7">购买我们的 Insta</h2>
+        <h2 class="display-7">购买我们INSTA</h2>
       </div>
       <div class="d-flex flex-wrap">
         <figure class="instagram-item pe-2">
@@ -698,7 +545,7 @@
           </div>
           <div class="col-lg-2 col-sm-6 pb-3">
             <div class="footer-menu text-uppercase">
-              <h5 class="widget-title pb-2">快速连接</h5>
+              <h5 class="widget-title pb-2">Quick Links</h5>
               <ul class="menu-list list-unstyled text-uppercase">
                 <li class="menu-item pb-2">
                   <a href="#">Home</a>
@@ -779,7 +626,7 @@
       </div>
       <div class="col-md-4 col-sm-6">
         <div class="copyright">
-<%--          <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>--%>
+          <!--              <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>-->
           </p>
         </div>
       </div>

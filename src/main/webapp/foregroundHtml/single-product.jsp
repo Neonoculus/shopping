@@ -20,7 +20,7 @@
     ================================================== -->
     <script src="js/modernizr.js"></script>
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+  <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path fill="currentColor" d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
@@ -31,14 +31,8 @@
       <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 16 16">
         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
       </symbol>
-      <svg xmlns="http://www.w3.org/2000/svg" id="chevron-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-      </svg>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="chevron-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="cart-outline" viewBox="0 0 16 16">
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
       </symbol>
       <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
         <path fill="currentColor" d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z" />
@@ -65,6 +59,7 @@
         <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
       </symbol>
     </svg>
+
     <div class="search-popup">
         <div class="search-popup-container">
 
@@ -132,7 +127,7 @@
                   <a class="nav-link me-4" href="#mobile-products">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#smart-watches">观看</a>
+                  <a class="nav-link me-4" href="#smart-watches">手表</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="#yearly-sale">销售</a>
@@ -159,7 +154,7 @@
                       <a href="checkout.html" class="dropdown-item">支付</a>
                     </li>
                     <li>
-                      <a href="single-post.html" class="dropdown-item">单一职位</a>
+                      <a href="single-post.html" class="dropdown-item">单一的职位</a>
                     </li>
                     <li>
                       <a href="single-product.html" class="dropdown-item">单品</a>
@@ -202,135 +197,364 @@
         </div>
       </nav>
     </header>
-    <section class="hero-section position-relative bg-light-blue padding-medium">
-      <div class="hero-content">
-        <div class="container">
-          <div class="row">
-            <div class="text-center padding-large no-padding-bottom">
-              <h1 class="display-2 text-uppercase text-dark">支付</h1>
-              <div class="breadcrumbs">
-                <span class="item">
-                  <a href="index.html">首页 ></a>
-                </span>
-                <span class="item">支付</span>
+
+    <section id="selling-product" class="single-product padding-xlarge">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-lg-6">
+            <div class="product-preview mb-3">
+              <img src="images/singel-product-item.jpg" alt="single-product" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="product-info">
+              <div class="element-header">
+                <h3 itemprop="name" class="display-7 text-uppercase">粉色手表</h3>
+                <div class="rating-container d-flex align-items-center">
+                  <div class="rating" data-rating="1" onclick=rate(1)>
+                    <svg class="star star-fill">
+                      <use xlink:href="#star-fill"></use>
+                    </svg>
+                    <span class="rating-count ps-2">5.2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="product-price pt-3 pb-3">
+                <strong class="text-primary display-6 fw-bold">$870.00</strong>
+              </div>
+              <p>Justo, cum feugiat imperdiet nulla molestie ac vulputate scelerisque amet. Bibendum adipiscing platea blandit sit sed quam semper rhoncus. Diam ultrices maecenas consequat eu tortor orci, cras lectus mauris, cras egestas quam venenatis neque.</p>
+              <div class="cart-wrap padding-small">
+                <div class="color-options product-select">
+                  <div class="color-toggle" data-option-index="0">
+                    <h4 class="item-title text-uppercase text-dark text-decoration-underline">颜色:</h4>
+                    <ul class="select-list list-unstyled d-flex">
+                      <li class="select-item pe-3" data-val="Green" title="Green">
+                        <a href="#">绿色</a>
+                      </li>
+                      <li class="select-item pe-3" data-val="Orange" title="Orange">
+                        <a href="#">橘色</a>
+                      </li>
+                      <li class="select-item pe-3" data-val="Red" title="Red">
+                        <a href="#">红色</a>
+                      </li>
+                      <li class="select-item" data-val="Black" title="Black">
+                        <a href="#">黑色</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="swatch product-select" data-option-index="1">
+                  <h4 class="item-title text-uppercase text-dark text-decoration-underline">大小:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item pe-3">
+                      <a href="#">XL</a>
+                    </li>
+                    <li data-value="M" class="select-item pe-3">
+                      <a href="#">L</a>
+                    </li>
+                    <li data-value="L" class="select-item pe-3">
+                      <a href="#">M</a>
+                    </li>
+                    <li data-value="L" class="select-item">
+                      <a href="#">S</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="product-quantity">
+                  <div class="stock-number text-dark">2 存货</div>
+                  <div class="stock-button-wrap pt-3">
+
+                    <div class="input-group product-qty">
+                        <span class="input-group-btn">
+                            <button type="button" class="quantity-left-minus btn btn-number"  data-type="minus" data-field="">
+                              -
+                            </button>
+                        </span>
+                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                        <span class="input-group-btn">
+                            <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
+                                +
+                            </button>
+                        </span>
+                    </div>
+                    <div class="qty-button d-flex flex-wrap pt-3">
+                      <button type="submit" class="btn btn-primary btn-medium text-uppercase me-3 mt-3">立即购买</button>
+                      <button type="submit" name="add-to-cart" value="1269" class="btn btn-black btn-medium text-uppercase mt-3">加入购物车</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="meta-product py-2">
+                <div class="meta-item d-flex align-items-baseline">
+                  <h4 class="item-title no-margin pe-2">SKU:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">1223</li>
+                  </ul>
+                </div>
+                <div class="meta-item d-flex align-items-baseline">
+                  <h4 class="item-title no-margin pe-2">类别:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">
+                      <a href="#">手表</a>,
+                    </li>
+                    <li data-value="S" class="select-item">
+                      <a href="#"> 触摸屏</a>,
+                    </li>
+                  </ul>
+                </div>
+                <div class="meta-item d-flex align-items-baseline">
+                  <h4 class="item-title no-margin pe-2">标签:</h4>
+                  <ul class="select-list list-unstyled d-flex">
+                    <li data-value="S" class="select-item">
+                      <a href="#">经典的</a>,
+                    </li>
+                    <li data-value="S" class="select-item">
+                      <a href="#"> 现代的</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="shopify-cart checkout-wrap padding-large">
+    <section class="product-info-tabs">
       <div class="container">
-        <form class="form-group">
-          <div class="row d-flex flex-wrap">
-            <div class="col-lg-6">
-              <h2 class="display-7 text-uppercase text-dark pb-4">账单明细</h2>
-              <div class="billing-details">
-                <label for="fname">名字</label>
-                <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3">
-                <label for="lname">姓氏</label>
-                <input type="text" id="lname" name="lastname" class="form-control mt-2 mb-4 ps-3">
-                <label for="cname">公司名称</label>
-                <input type="text" id="cname" name="companyname" class="form-control mt-2 mb-4">
-                <label for="cname">国家/地区</label>
-                <select class="form-select form-control mt-2 mb-4" aria-label="Default select example">
-                  <option selected="" hidden="">中国</option>
-                  <option value="1">英国</option>
-                  <option value="2">澳大利亚</option>
-                  <option value="3">加拿大</option>
-                </select>
-                <label for="address">街道地址</label>
-                <input type="text" id="address" name="address" placeholder="House number and street name" class="form-control mt-3 ps-3 mb-3">
-                <input type="text" id="addr" name="address" placeholder="Appartments, suite, etc." class="form-control ps-3 mb-4">
-                <label for="city">小镇/城市</label>
-                <input type="text" id="city" name="city" class="form-control mt-3 ps-3 mb-4">
-                <label for="state">省</label>
-                <select class="form-select form-control mt-2 mb-4" id="state" aria-label="Default select example">
-                  <option selected="" hidden="">四川</option>
-                  <option value="1">云南</option>
-                  <option value="2">重庆</option>
-                  <option value="3">贵州</option>
-                  <option value="3">广西</option>
-                  <option value="3">广东</option>
-                </select>
-                <label for="zip">邮政编码</label>
-                <input type="text" id="zip" name="zip" class="form-control mt-2 mb-4 ps-3">
-                <label for="email">电话</label>
-                <input type="text" id="phone" name="phone" class="form-control mt-2 mb-4 ps-3">
-                <label for="email">邮箱</label>
-                <input type="text" id="email" name="email" class="form-control mt-2 mb-4 ps-3">
+        <div class="row">
+          <div class="tabs-listing">
+            <nav>
+              <div class="nav nav-tabs d-flex flex-wrap justify-content-center" id="nav-tab" role="tablist">
+                <button class="nav-link active text-uppercase pe-5" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
+                <button class="nav-link text-uppercase pe-5" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab" aria-controls="nav-information" aria-selected="false">Additional information</button>
+                <button class="nav-link text-uppercase pe-5" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews</button>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <h2 class="display-7 text-uppercase text-dark pb-4">附加信息</h2>
-              <div class="billing-details">
-                <label for="fname">订阅说明</label>
-                <textarea class="form-control pt-3 pb-3 ps-3 mt-2" placeholder="Notes about your order. Like special notes for delivery."></textarea>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active border-top border-bottom padding-small" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <p>产品描述</p>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus.</p>
+                <ul style="list-style-type:disc;" class="list-unstyled ps-4">
+                  <li>Donec nec justo eget felis facilisis fermentum.</li>
+                  <li>Suspendisse urna viverra non, semper suscipit pede.</li>
+                  <li>Aliquam porttitor mauris sit amet orci.</li>
+                </ul> 
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
               </div>
-              <div class="your-order mt-5">
-                <h2 class="display-7 text-uppercase text-dark pb-4">购物车总计</h2>
-                <div class="total-price">
-                  <table cellspacing="0" class="table">
-                    <tbody>
-                      <tr class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">
-                        <th>Subtotal</th>
-                        <td data-title="Subtotal">
-                          <span class="price-amount amount text-primary ps-5">
-                            <bdi>
-                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
-                          </span>
-                        </td>
-                      </tr>
-                      <tr class="order-total border-bottom pt-2 pb-2 text-uppercase">
-                        <th>总计</th>
-                        <td data-title="Total">
-                          <span class="price-amount amount text-primary ps-5">
-                            <bdi>
-                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="list-group mt-5 mb-3">
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked>
-                      <span>
-                        <strong class="text-uppercase">银行转账</strong>
-                        <small class="d-block text-body-secondary">Make your payment directly into our bank account. Please use your Order ID. Your order will shipped after funds have cleared in our account.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
-                      <span>
-                        <strong class="text-uppercase">支票支付</strong>
-                        <small class="d-block text-body-secondary">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                      <span>
-                        <strong class="text-uppercase">货到付款</strong>
-                        <small class="d-block text-body-secondary">Pay with cash upon delivery.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                      <span>
-                        <strong class="text-uppercase">贝宝</strong>
-                        <small class="d-block text-body-secondary">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</small>
-                      </span>
-                    </label>
+              <div class="tab-pane fade border-top border-bottom padding-small" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
+                <p>It is Comfortable and Best</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+              <div class="tab-pane fade border-top border-bottom padding-small" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
+                <div class="review-box d-flex flex-wrap">
+                  <div class="col-lg-6 d-flex flex-wrap">
+                    <div class="col-md-2">
+                      <div class="image-holder">
+                        <img src="images/review-item1.jpg" alt="review" class="img-fluid">
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="review-content">
+                        <div class="rating-container d-flex align-items-center">
+                          <div class="rating" data-rating="1" onclick="rate(1)">
+                            <i class="icon icon-star"></i>
+                          </div>
+                          <div class="rating" data-rating="2" onclick="rate(1)">
+                            <i class="icon icon-star"></i>
+                          </div>
+                          <div class="rating" data-rating="3" onclick="rate(1)">
+                            <i class="icon icon-star"></i>
+                          </div>
+                          <div class="rating" data-rating="4" onclick="rate(1)">
+                            <i class="icon icon-star-half"></i>
+                          </div>
+                          <div class="rating" data-rating="5" onclick="rate(1)">
+                            <i class="icon icon-star-empty"></i>
+                          </div>
+                          <span class="rating-count">(3.5)</span>
+                        </div>
+                        <div class="review-header">
+                          <span class="author-name">Tina Johnson</span>
+                          <span class="review-date">– 03/07/2023</span>
+                        </div>
+                        <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis</p>
+                      </div>
+                    </div>
                   </div>
-                  <button type="submit" name="submit" class="btn btn-dark btn-medium text-uppercase btn-rounded-none">订购</button>
+                  <div class="col-lg-6 d-flex flex-wrap">
+                    <div class="col-md-2">
+                      <div class="image-holder">
+                        <img src="images/review-item2.jpg" alt="review" class="img-fluid">
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="review-content">
+                        <div class="rating-container d-flex align-items-center">
+                          <div class="rating" data-rating="1" onclick="rate(1)">
+                            <i class="icon icon-star"></i>
+                          </div>
+                          <div class="rating" data-rating="2" onclick="rate(1)">
+                            <i class="icon icon-star"></i>
+                          </div>
+                          <div class="rating" data-rating="3" onclick="rate(1)">
+                            <i class="icon icon-star"></i>
+                          </div>
+                          <div class="rating" data-rating="4" onclick="rate(1)">
+                            <i class="icon icon-star-half"></i>
+                          </div>
+                          <div class="rating" data-rating="5" onclick="rate(1)">
+                            <i class="icon icon-star-empty"></i>
+                          </div>
+                          <span class="rating-count">(3.5)</span>
+                        </div>
+                        <div class="review-header">
+                          <span class="author-name">Jenny Willis</span>
+                          <span class="review-date">– 03/06/2022</span>
+                        </div>
+                        <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </section>
-    <section id="subscribe" class="container-grid position-relative overflow-hidden">
+    <section id="related-products" class="product-store position-relative padding-large">
+      <div class="container">
+        <div class="row">
+          <div class="display-header d-flex justify-content-between pb-3">
+            <h2 class="display-7 text-dark text-uppercase">相关产品</h2>
+            <div class="btn-right">
+              <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">去购物</a>
+            </div>
+          </div>
+          <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 10</a>
+                    </h3>
+                    <span class="item-price text-primary">$980</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 11</a>
+                    </h3>
+                    <span class="item-price text-primary">$1100</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item3.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 8</a>
+                    </h3>
+                    <span class="item-price text-primary">$780</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item4.jpg" alt="product-item" class="product-image">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 13</a>
+                    </h3>
+                    <span class="item-price text-primary">$1500</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item5.jpg" alt="product-item" class="product-image">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 12</a>
+                    </h3>
+                    <span class="item-price text-primary">$1300</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination position-absolute text-center"></div>
+    </section>
+    <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
@@ -352,11 +576,11 @@
         </div>
       </div>
     </section>
-    <section id="instagram" class="padding-large overflow-hidden">
+    <section id="instagram" class="padding-large overflow-hidden no-padding-top">
       <div class="container">
         <div class="row">
           <div class="display-header text-uppercase text-dark text-center pb-3">
-            <h2 class="display-7">购买我们 Insta</h2>
+            <h2 class="display-7">Shop Our Insta</h2>
           </div>
           <div class="d-flex flex-wrap">
             <figure class="instagram-item pe-2">
@@ -468,19 +692,19 @@
                   <h5 class="widget-title pb-2">快速连接</h5>
                   <ul class="menu-list list-unstyled text-uppercase">
                     <li class="menu-item pb-2">
-                      <a href="#">首页</a>
+                      <a href="#">Home</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">关于</a>
+                      <a href="#">About</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">购物</a>
+                      <a href="#">Shop</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">博客</a>
+                      <a href="#">Blogs</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">联系</a>
+                      <a href="#">Contact</a>
                     </li>
                   </ul>
                 </div>
