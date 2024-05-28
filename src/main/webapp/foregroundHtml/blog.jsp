@@ -65,6 +65,7 @@
         <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
       </symbol>
     </svg>
+
     <div class="search-popup">
         <div class="search-popup-container">
 
@@ -92,7 +93,7 @@
               <a href="#" title="Monitors">显示器</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Speakers">音响</a>
+              <a href="#" title="Speakers">发言人</a>
             </li>
             <li class="cat-list-item">
               <a href="#" title="Memory Cards">存储卡</a>
@@ -207,127 +208,321 @@
         <div class="container">
           <div class="row">
             <div class="text-center padding-large no-padding-bottom">
-              <h1 class="display-2 text-uppercase text-dark">支付</h1>
+              <h1 class="display-2 text-uppercase text-dark">博客</h1>
               <div class="breadcrumbs">
                 <span class="item">
                   <a href="index.html">首页 ></a>
                 </span>
-                <span class="item">支付</span>
+                <span class="item">博客</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="shopify-cart checkout-wrap padding-large">
+    <section class="post-grid padding-large">
       <div class="container">
-        <form class="form-group">
-          <div class="row d-flex flex-wrap">
-            <div class="col-lg-6">
-              <h2 class="display-7 text-uppercase text-dark pb-4">账单明细</h2>
-              <div class="billing-details">
-                <label for="fname">名字</label>
-                <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3">
-                <label for="lname">姓氏</label>
-                <input type="text" id="lname" name="lastname" class="form-control mt-2 mb-4 ps-3">
-                <label for="cname">公司名称</label>
-                <input type="text" id="cname" name="companyname" class="form-control mt-2 mb-4">
-                <label for="cname">国家/地区</label>
-                <select class="form-select form-control mt-2 mb-4" aria-label="Default select example">
-                  <option selected="" hidden="">中国</option>
-                  <option value="1">英国</option>
-                  <option value="2">澳大利亚</option>
-                  <option value="3">加拿大</option>
-                </select>
-                <label for="address">街道地址</label>
-                <input type="text" id="address" name="address" placeholder="House number and street name" class="form-control mt-3 ps-3 mb-3">
-                <input type="text" id="addr" name="address" placeholder="Appartments, suite, etc." class="form-control ps-3 mb-4">
-                <label for="city">小镇/城市</label>
-                <input type="text" id="city" name="city" class="form-control mt-3 ps-3 mb-4">
-                <label for="state">省</label>
-                <select class="form-select form-control mt-2 mb-4" id="state" aria-label="Default select example">
-                  <option selected="" hidden="">四川</option>
-                  <option value="1">云南</option>
-                  <option value="2">重庆</option>
-                  <option value="3">贵州</option>
-                  <option value="3">广西</option>
-                  <option value="3">广东</option>
-                </select>
-                <label for="zip">邮政编码</label>
-                <input type="text" id="zip" name="zip" class="form-control mt-2 mb-4 ps-3">
-                <label for="email">电话</label>
-                <input type="text" id="phone" name="phone" class="form-control mt-2 mb-4 ps-3">
-                <label for="email">邮箱</label>
-                <input type="text" id="email" name="email" class="form-control mt-2 mb-4 ps-3">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <h2 class="display-7 text-uppercase text-dark pb-4">附加信息</h2>
-              <div class="billing-details">
-                <label for="fname">订阅说明</label>
-                <textarea class="form-control pt-3 pb-3 ps-3 mt-2" placeholder="Notes about your order. Like special notes for delivery."></textarea>
-              </div>
-              <div class="your-order mt-5">
-                <h2 class="display-7 text-uppercase text-dark pb-4">购物车总计</h2>
-                <div class="total-price">
-                  <table cellspacing="0" class="table">
-                    <tbody>
-                      <tr class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">
-                        <th>Subtotal</th>
-                        <td data-title="Subtotal">
-                          <span class="price-amount amount text-primary ps-5">
-                            <bdi>
-                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
-                          </span>
-                        </td>
-                      </tr>
-                      <tr class="order-total border-bottom pt-2 pb-2 text-uppercase">
-                        <th>总计</th>
-                        <td data-title="Total">
-                          <span class="price-amount amount text-primary ps-5">
-                            <bdi>
-                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
-                          </span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="list-group mt-5 mb-3">
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked>
-                      <span>
-                        <strong class="text-uppercase">银行转账</strong>
-                        <small class="d-block text-body-secondary">Make your payment directly into our bank account. Please use your Order ID. Your order will shipped after funds have cleared in our account.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
-                      <span>
-                        <strong class="text-uppercase">支票支付</strong>
-                        <small class="d-block text-body-secondary">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                      <span>
-                        <strong class="text-uppercase">货到付款</strong>
-                        <small class="d-block text-body-secondary">Pay with cash upon delivery.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                      <span>
-                        <strong class="text-uppercase">贝宝</strong>
-                        <small class="d-block text-body-secondary">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</small>
-                      </span>
-                    </label>
+        <div class="row d-flex flex-wrap">
+          <aside class="col-md-3">
+            <div class="sidebar">
+              <div class="widget-search-bar">
+                <form role="search" method="get" class="d-flex">
+                  <input class="search-field" placeholder="Search" type="search">
+                  <div class="search-icon bg-dark">
+                    <a href="#">
+                      <svg class="search content-light">
+                        <use xlink:href="#search"></use>
+                      </svg>
+                    </a>
                   </div>
-                  <button type="submit" name="submit" class="btn btn-dark btn-medium text-uppercase btn-rounded-none">订购</button>
+                </form>
+              </div>
+              <div class="sidebar-filter pt-5">
+                <div class="widget sidebar-product-categories mb-5">
+                  <h5 class="widget-title text-uppercase">类别</h5>
+                  <ul class="product-categories sidebar-list list-unstyled">
+                    <li class="cat-item">
+                      <a href="/collections/categories">所有</a>
+                    </li>
+                    <li class="cat-item">
+                      <a href="">手机</a>
+                    </li>
+                    <li class="cat-item">
+                      <a href="">饰品</a>
+                    </li>
+                    <li class="cat-item">
+                      <a href="">平板电脑</a>
+                    </li>
+                    <li class="cat-item">
+                      <a href="">手表</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="widget sidebar-product-tags mb-5">
+                  <h5 class="widget-title text-uppercase">标签</h5>
+                  <ul class="product-tags sidebar-list list-unstyled">
+                    <li class="tags-item">
+                      <a href="">白色</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">便宜</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">可移动</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">现代</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="widget sidebar-recent-post mb-5">
+                  <h5 class="widget-title text-uppercase">最新帖子</h5>
+                  <div class="sidebar-post-item">
+                    <div class="d-flex flex-wrap align-items-center mb-3">
+                      <div class="col-lg-6">
+                        <div class="card-image pe-3 pb-2">
+                          <a href="#">
+                            <img src="images/post-small-image1.jpg" alt="blog" class="img-fluid">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="card-content">
+                          <h4 class="card-title">
+                            <a href="#">世界十大小型相机</a>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sidebar-post-item">
+                    <div class="d-flex flex-wrap align-items-center mb-3">
+                      <div class="col-lg-6">
+                        <div class="card-image pe-3 pb-2">
+                          <a href="#">
+                            <img src="images/post-small-image2.jpg" alt="blog" class="img-fluid">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="card-content">
+                          <h4 class="card-title">
+                            <a href="#">你不会得到的技术黑客</a>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sidebar-post-item">
+                    <div class="d-flex flex-wrap align-items-center mb-3">
+                      <div class="col-lg-6">
+                        <div class="card-image pe-3 pb-2">
+                          <a href="#">
+                            <img src="images/post-small-image3.jpg" alt="blog" class="img-fluid">
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="card-content">
+                          <h4 class="card-title">
+                            <a href="#">在2024年获得一些很酷的小玩意</a>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget sidebar-social-links mb-5">
+                  <h5 class="widget-title text-uppercase">社交链接</h5>
+                  <ul class="sidebar-list list-unstyled">
+                    <li class="tags-item">
+                      <a href="">QQ</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">微信</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">小红书</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">抖音</a>
+                    </li>
+                    <li class="tags-item">
+                      <a href="">快手</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+          </aside>
+          <main class="col-md-9">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item1.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年2月22日</span>
+                    <span class="meta-category">- 小工具</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">在2024年获得一些很酷的小玩意</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item3.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年2月22日</span>
+                    <span class="meta-category">- 摄影机</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">世界十大小型相机</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item2.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年2月25日</span>
+                    <span class="meta-category">- 科技</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">你不会得到的技术黑客</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item4.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年2月27日</span>
+                    <span class="meta-category">- 科技</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">在2024年获得一些很酷的小玩意</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item5.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年3月9日</span>
+                    <span class="meta-category">- 科技</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">你不会得到的技术黑客</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item6.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年3月9日</span>
+                    <span class="meta-category">- 小工具</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">世界十大小玩意儿</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item7.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年3月14日</span>
+                    <span class="meta-category">- 小工具</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">在2023年得到一些很酷的小玩意</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item8.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年3月18日</span>
+                    <span class="meta-category">- 小器具</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">你不会得到的技术黑客</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card border-none">
+                  <div class="card-image">
+                    <img src="images/post-item9.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="card-body text-uppercase">
+                  <div class="card-meta text-muted">
+                    <span class="meta-date">2023年3月22日</span>
+                    <span class="meta-category">- 小器具</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="#">你不会得到的技术黑客</a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+              <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+                <a href="#">
+                  <svg class="chevron-left pe-3">
+                    <use xlink:href="#chevron-left"></use>
+                  </svg>
+                </a>
+                <span aria-current="page" class="page-numbers current pe-3">1</span>
+                <a class="page-numbers pe-3" href="#">2</a>
+                <a class="page-numbers pe-3" href="#">3</a>
+                <a class="page-numbers pe-3" href="#">4</a>
+                <a class="page-numbers" href="#">5</a>
+                <a href="#">
+                  <svg class="chevron-right ps-3">
+                    <use xlink:href="#chevron-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </nav>
+          </main>
+        </div>
       </div>
     </section>
     <section id="subscribe" class="container-grid position-relative overflow-hidden">
@@ -335,7 +530,7 @@
         <div class="row">
           <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
             <div class="col-md-6 col-sm-12">
-              <div class="display-header pe-3">
+              <div class="display-header content-light pe-3">
                 <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
                 <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
               </div>
@@ -546,7 +741,7 @@
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="copyright">
-<%--              <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>--%>
+              <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>
               </p>
             </div>
           </div>
