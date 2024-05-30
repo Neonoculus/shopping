@@ -9,6 +9,9 @@ public class Like {
         this.b_id = b_id;
     }
 
+    public Like() {
+    }
+
     @Override
     public String toString() {
         return "Like{" +

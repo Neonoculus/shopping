@@ -2,11 +2,13 @@ package dao;
 
 import domain.Order;
 
+import java.util.List;
+
 public interface OrderDao {
-    void add(Order order);
-    void delete(int id);
-    void update(Order order,int id);
-    Order oIdSelect(long id);
-    Order[] bIdSelect(int id);
-    Order[] Select();
+    int add(Order order);
+    int delete(int id);
+    int update(Order order);
+    Order getOrderByOId(long id);
+    List<Order> getOrderByBId(int id);
+    List<Order> getAllOrder();
 }

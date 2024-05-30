@@ -2,13 +2,15 @@ package dao;
 
 import domain.Merchant;
 
+import java.util.List;
+
 public interface MerchantDao {
-    void add(Merchant merchant);
-    void delete(int id);
-    void update(Merchant merchant,int id);
-    Merchant mIdSelect(int id);
-    Merchant[] nameSelect(String name);
-    Merchant phoneSelect(String phone);
-    Merchant emailSelect(String email);
-    Merchant[] Select();
+    int add(Merchant merchant);
+    int delete(int id);
+    int update(Merchant merchant);
+    Merchant getMerchantByMId(int id);
+    List<Merchant> getMerchantByName(String name);
+    Merchant getMerchantByPhone(String phone);
+    Merchant getMerchantByEmail(String email);
+    List<Merchant> getAllMerchant();
 }

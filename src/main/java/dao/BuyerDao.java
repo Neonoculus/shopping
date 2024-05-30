@@ -2,13 +2,15 @@ package dao;
 
 import domain.Buyer;
 
+import java.util.List;
+
 public interface BuyerDao {
-    void add(Buyer buyer);
-    void delete(int id);
-    void update(Buyer buyer, int id);
-    Buyer bIdSelect(int id);
-    Buyer[] nameSelect(String name);
-    Buyer emailSelect(String email);
-    Buyer phoneSelect(String phone);
-    Buyer[] Select();
+    int add(Buyer buyer);
+    int delete(int id);
+    int update(Buyer buyer);
+    Buyer getBuyerByBId(int id);
+    List<Buyer> getBuyerByName(String name);
+    Buyer getBuyerByEmail(String email);
+    Buyer getBuyerByPhone(String phone);
+    List<Buyer> getAllBuyer();
 }

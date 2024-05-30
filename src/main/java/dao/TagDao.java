@@ -2,11 +2,13 @@ package dao;
 
 import domain.Tag;
 
+import java.util.List;
+
 public interface TagDao {
-    void add(Tag tag);
-    void delete(int id);
-    void update(Tag tag,int id);
-    Tag tIdSelect(int id);
-    Tag[] nameSelect(String name);
-    Tag[] Select();
+    int add(Tag tag);
+    int delete(int id);
+    int update(Tag tag);
+    Tag getTagByTId(int id);
+    List<Tag> getTagByName(String name);
+    List<Tag> getAllTag();
 }

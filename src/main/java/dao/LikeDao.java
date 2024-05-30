@@ -2,10 +2,11 @@ package dao;
 
 import domain.Like;
 
+import java.util.List;
+
 public interface LikeDao {
-    void add(Like like);
-    void delete(int id);
-    void update(Like like,int id);
-    Like[] bIdSelect(int id);
-    Like[] Select();
+    int add(Like like);
+    int delete(int id);
+    List<Like> getLikeByBId(int id);
+    List<Like> getAllLike();
 }

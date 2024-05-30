@@ -2,16 +2,18 @@ package dao;
 
 import domain.Goods;
 
+import java.util.List;
+
 public interface GoodsDao {
-    void add(Goods goods);
-    void delete(int id);
-    void update(Goods goods,int id);
-    Goods GIdSelect(int id);
-    Goods[] cIdSelect(int id);
-    Goods[] mIdSelect(int id);
-    Goods[] nameSelect(String name);
-    Goods[] priceSelect(Double minPrice,Double maxPrice);
-    Goods[] statusSelect(int status);
-    Goods[] Select();
+    int add(Goods goods);
+    int delete(int id);
+    int update(Goods goods);
+    Goods getGoodsByGId(int id);
+    List<Goods> getGoodsByCId(int id);
+    List<Goods> getGoodsByMId(int id);
+    List<Goods> getGoodsByName(String name);
+    List<Goods> getGoodsByPrice(Double minPrice, Double maxPrice);
+    List<Goods> getGoodsByStatus(int status);
+    List<Goods> getAllGoods();
 
 }

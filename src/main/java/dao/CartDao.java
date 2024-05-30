@@ -2,10 +2,12 @@ package dao;
 
 import domain.Cart;
 
+import java.util.List;
+
 public interface CartDao {
-    void add(Cart cart);
-    void delete(int id);
-    void update(Cart cart, int id);
-    Cart[] bIdSelect(int id);
-    Cart[] Select();
+    int add(Cart cart);
+    int delete(Cart cart);
+    int update(Cart cart);
+    List<Cart> getCartByBId(int id);
+    List<Cart> getAllCart();
 }

@@ -2,13 +2,15 @@ package dao;
 
 import domain.Login;
 
+import java.util.List;
+
 public interface LoginDao {
-    void add(Login login);
-    void delete(int id);
-    void update(Login login,int id);
-    Login idSelect(int id);
+    int add(Login login);
+    int delete(int id);
+    int update(Login login);
+    Login getLoginById(int id);
     Boolean Login(String username,String password);
-    Login[] Select();
+    List<Login> getAllLogin();
 
 }
 

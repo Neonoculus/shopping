@@ -2,10 +2,12 @@ package dao;
 
 import domain.Category;
 
+import java.util.List;
+
 public interface CategoryDao {
-    void add(Category category);
-    void delete(int id);
-    void update(Category category,int id);
-    void cIdSelect(int id);
-    void Select();
+    int add(Category category);
+    int delete(int id);
+    int update(Category category);
+    Category getCategoryByCId(int id);
+    List<Category> getAllCategory();
 }

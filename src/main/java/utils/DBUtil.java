@@ -2,9 +2,6 @@ package utils;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;

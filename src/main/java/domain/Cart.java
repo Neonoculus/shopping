@@ -28,7 +28,6 @@ public class Cart {
                 ", status=" + status +
                 '}';
     }
-
     public int getG_id() {
         return g_id;
     }

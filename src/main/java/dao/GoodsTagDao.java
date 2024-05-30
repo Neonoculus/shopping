@@ -1,13 +1,13 @@
 package dao;
 
-import domain.Goods;
 import domain.GoodsTag;
 
+import java.util.List;
+
 public interface GoodsTagDao {
-    void add(GoodsTag goodsTag);
-    void delete(int id);
-    void update(GoodsTag goodsTag,int id);
-    GoodsTag[] gIdSelect(int id);
-    Goods[] tIdSelect(int id);
-    GoodsTag[] Select();
+    int add(GoodsTag goodsTag);
+    int delete(int g_id,int t_id);
+    List<GoodsTag> getGoodsTagByGId(int id);
+    List<GoodsTag> getGoodsTagByTId(int id);
+    List<GoodsTag> getAllGoodsTag();
 }
