@@ -16,7 +16,7 @@ public class OrderDaoImpl implements OrderDao {
     public int add(Order order) {
         int result;
         try {
-            result = runner.update("insert into `order`(o_id,b_id,name,phone,address,money,start_Time,end_Time,status) values(?,?,?,?,?)",
+            result = runner.update("insert into `order`(o_id,b_id,name,phone,address,money,start_Time,end_Time,status) values(?,?,?,?,?,?,?,?,?)",
                     order.getO_id(),order.getB_id(),order.getName(),order.getPhone(),order.getAddress(),order.getMoney(),order.getStartTime(),order.getEndTime(),order.getStatus());
             return result;
         } catch (SQLException e) {

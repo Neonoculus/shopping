@@ -20,7 +20,7 @@ public class OrderDaoImplTest {
     }
     @Test
     public void deleteTest(){
-        int id=1000003;
+        int id=1000001;
         int res = orderDao.delete(id);
         if(res==1) System.out.println("删除成功");
         else System.out.println("删除失败");
