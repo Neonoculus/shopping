@@ -8,14 +8,21 @@ public class Order {
     private Date startTime;
     private Date endTime;
     private int b_id;
+    private String name;
+    private String phone;
+    private String address;
+    private int status;
 
-
-    public Order(long o_id,int b_id, Double money, Date startTime, Date endTime) {
+    public Order(long o_id,int b_id,String name,String phone,String address, Double money, Date startTime, Date endTime,int status) {
         this.o_id = o_id;
         this.b_id = b_id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
         this.money = money;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.status = status;
     }
 
     public Order() {
@@ -25,10 +32,14 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "o_id=" + o_id +
-                "b_id=" + b_id +
                 ", money=" + money +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
+                ", b_id=" + b_id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", status=" + status +
                 '}';
     }
 
@@ -46,6 +57,38 @@ public class Order {
 
     public void setB_id(int b_id) {
         this.b_id = b_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Double getMoney() {

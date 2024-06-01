@@ -16,8 +16,8 @@ public class OrderDaoImpl implements OrderDao {
     public int add(Order order) {
         int result;
         try {
-            result = runner.update("insert into `order`(o_id,b_id,money,start_Time,end_Time) values(?,?,?,?,?)",
-                    order.getO_id(),order.getB_id(),order.getMoney(),order.getStartTime(),order.getEndTime());
+            result = runner.update("insert into `order`(o_id,b_id,name,phone,address,money,start_Time,end_Time,status) values(?,?,?,?,?)",
+                    order.getO_id(),order.getB_id(),order.getName(),order.getPhone(),order.getAddress(),order.getMoney(),order.getStartTime(),order.getEndTime(),order.getStatus());
             return result;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -39,8 +39,8 @@ public class OrderDaoImpl implements OrderDao {
     public int update(Order order) {
         int result;
         try {
-            result = runner.update("update `order` set  b_id=?,money=?,start_Time=?,end_Time=? where o_id=?",
-                    order.getB_id(),order.getMoney(),order.getStartTime(),order.getEndTime(),order.getO_id());
+            result = runner.update("update `order` set  b_id=?,name=?,phone=?,address=?,money=?,start_Time=?,end_Time=?,status=? where o_id=?",
+                    order.getB_id(),order.getName(),order.getPhone(),order.getAddress(),order.getMoney(),order.getStartTime(),order.getEndTime(),order.getStatus(),order.getO_id());
             return result;
         } catch (SQLException e) {
             throw new RuntimeException(e);
