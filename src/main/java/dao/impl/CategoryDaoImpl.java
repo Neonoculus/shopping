@@ -59,6 +59,16 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
+    public List<Category> getCategoryByName(String name) {
+        try {
+            List<Category> categories = runner.query("select * from category where name like ?", new BeanListHandler<Category>(Category.class),name);
+            return categories;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public List<Category> getAllCategory() {
         try {
             List<Category> categories = runner.query("select * from category", new BeanListHandler<Category>(Category.class));
