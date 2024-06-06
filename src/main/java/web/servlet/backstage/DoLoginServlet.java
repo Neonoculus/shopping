@@ -41,22 +41,22 @@ public class DoLoginServlet extends HttpServlet {
             request.setAttribute("warning","账号或者密码错误");
             request.getRequestDispatcher("/backstage/login.jsp").forward(request,response);
         }
-        else if (login.getId() == 0)
+        else if (login.getType() == 0)
         {
             request.setAttribute("warning","账号已被封禁，如果有需要请联系管理员");
             request.getRequestDispatcher("/backstage/login.jsp").forward(request,response);
         }
-        else if (login.getId() == 1)
+        else if (login.getType() == 1)
         {
             request.setAttribute("buyer",buyerService.getBuyerByBid(login.getId()));
             request.getRequestDispatcher("/foreground/index.jsp").forward(request,response);
         }
-        else if (login.getId() == 2)
+        else if (login.getType() == 2)
         {
             request.setAttribute("merchant",merchantService.getMerchantByMId(login.getId()));
             request.getRequestDispatcher("/backstage/index.jsp").forward(request,response);
         }
-        else if (login.getId() == 3)
+        else if (login.getType() == 3)
         {
             request.getRequestDispatcher("/admin/merchant.jsp").forward(request,response);
         }
