@@ -37,6 +37,15 @@ public class CategoryDaoImplTest {
         System.out.println(categories);
     }
     @Test
+    public void getCategoryByNameTest() {
+        String name="手机";
+        List<Category> categories = categoryDao.getCategoryByName(name);
+        for (Category category : categories)
+        {
+            System.out.println(category);
+        }
+    }
+    @Test
     public void getAllCategoryTest(){
         List<Category> categories = categoryDao.getAllCategory();
         for (Category category : categories)
