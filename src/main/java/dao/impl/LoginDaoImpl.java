@@ -59,13 +59,13 @@ public class LoginDaoImpl implements LoginDao {
     }
 
     @Override
-    public Boolean Login(String username, String password) {
+    public Login Login(String username, String password) {
         try {
             Login login = runner.query("select * from login where username = ? and password = ?",new BeanHandler<Login>(Login.class),username,password);
             if (login!= null){
-                return true;
+                return login;
             }else {
-                return false;
+                return null;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

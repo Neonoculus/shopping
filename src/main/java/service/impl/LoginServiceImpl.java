@@ -30,7 +30,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public Boolean Login(String username, String password) {
+    public Login Login(String username, String password) {
         return loginDao.Login(username,password);
     }
 

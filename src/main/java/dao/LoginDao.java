@@ -9,7 +9,7 @@ public interface LoginDao {
     int delete(int id);
     int update(Login login);
     Login getLoginById(int id);
-    Boolean Login(String username,String password);
+    Login Login(String username,String password);
     List<Login> getAllLogin();
 
 }
