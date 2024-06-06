@@ -31,9 +31,12 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     public List<OrderDetails> getAllOrderDetails() {
         return orderDetailsService.getAllOrderDetails();
     }
+<<<<<<< HEAD
 
     @Override
     public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, int o_id) {
         return orderDetailsService.getOrderDetailsByMIdAndOId(m_id,o_id);
     }
+=======
+>>>>>>> origin/master
 }
