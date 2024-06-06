@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="now" class="java.util.Date" scope="page"/>goods.html
 <head>
     <meta charset="utf-8">
-    <title>首页</title>
+    <title>订单管理</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -64,14 +67,13 @@
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
                     <a href="info.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="goods.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="order.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
+                    <a href="goods.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="order.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>订单管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
         </div>
         <!-- Sidebar End -->
-
 
         <!-- Content Start -->
         <div class="content">
@@ -103,6 +105,7 @@
 
             <!-- Goods Table Start -->
             <div class="container-fluid pt-4 px-4">
+
                 <div class="row">
                     <div class="d-flex align-items-center justify-content-start col">
                         <input class="form-control border-0" type="search" placeholder="Search">
@@ -121,19 +124,19 @@
                     <div class="col"></div>
                     <div class="col"></div>
                     <div class="d-flex align-items-center justify-content-end mb-4 col">
-                        <button type="button" class="btn btn-danger m-2">批量下架</button>
-                        <button type="button" class="btn btn-success m-2">商品上架</button>
+                        <button type="button" class="btn btn-danger m-2">批量取消</button>
+                        <button type="button" class="btn btn-success m-2">批量发货</button>
                     </div>
                 </div>
                 <table class="table text-nowrap">
                     <thead class="bg-light">
                         <tr>
                             <th class="border-0 p-3" scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">产品</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">订单编号</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">价格</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">买家编号</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">库存</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">总金额</strong>
                             </th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">状态</strong>
                             </th>
@@ -145,133 +148,64 @@
                         <tr>
                             <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
                             </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong></div>
-                                </div>
+                            <td class="p-3 align-middle border-light">
+                                <p class="mb-0 small">100202405251544001</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
+                                <p class="mb-0 small">1000001</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
+                                <p class="mb-0 small">258.00元</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
+                                <p class="mb-0 small">未发货</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-danger" href="#">下架</a>
-                                <a class="btn btn-sm btn-secondary" href="goods-detail.html" target="_blank">详细信息</a>
+                                <a class="btn btn-sm btn-danger" href="#">取消</a>
+                                <a class="btn btn-sm btn-success" href="#">发货</a>
+                                <a class="btn btn-sm btn-secondary" href="order-detail.html" target="_blank">详细信息</a>
                             </td>
                         </tr>
                         <tr>
                             <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
                             </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
+                            <td class="p-3 align-middle border-light">
+                                <p class="mb-0 small">100202405251544001</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
+                                <p class="mb-0 small">1000001</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
+                                <p class="mb-0 small">258.00元</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
+                                <p class="mb-0 small">未发货</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
+                                <a class="btn btn-sm btn-danger" href="#">取消</a>
+                                <a class="btn btn-sm btn-success" href="#">发货</a>
+                                <a class="btn btn-sm btn-secondary" href="#">详细信息</a>
                             </td>
                         </tr>
                         <tr>
                             <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
                             </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
+                            <td class="p-3 align-middle border-light">
+                                <p class="mb-0 small">100202405251544001</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
+                                <p class="mb-0 small">1000001</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
+                                <p class="mb-0 small">258.00元</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
+                                <p class="mb-0 small">未发货</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
+                                <a class="btn btn-sm btn-danger" href="#">取消</a>
+                                <a class="btn btn-sm btn-success" href="#">发货</a>
+                                <a class="btn btn-sm btn-secondary" href="#">详细信息</a>
                             </td>
                         </tr>
                     </tbody>
@@ -289,6 +223,7 @@
 
         </div>
         <!-- Content End -->
+
 
 
         <!-- Back to Top -->

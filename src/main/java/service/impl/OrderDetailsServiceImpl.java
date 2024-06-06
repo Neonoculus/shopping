@@ -23,13 +23,18 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public List<OrderDetails> getOrderDetailsByOId(int id) {
+    public List<OrderDetails> getOrderDetailsByOId(long id) {
         return orderDetailsService.getOrderDetailsByOId(id);
     }
 
     @Override
     public List<OrderDetails> getAllOrderDetails() {
         return orderDetailsService.getAllOrderDetails();
+    }
+
+    @Override
+    public List<OrderDetails> findByPage(int start, int rows) {
+        return orderDetailsService.findByPage(start,rows);
     }
 
 

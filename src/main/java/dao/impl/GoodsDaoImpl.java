@@ -104,11 +104,6 @@ public class GoodsDaoImpl implements GoodsDao {
 
     /**
      * 通过类别、标签和价格区间查询商品
-     * @param cid
-     * @param tid
-     * @param minPrice
-     * @param maxPrice
-     * @return
      */
     @Override
     public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice) {
@@ -173,8 +168,6 @@ public class GoodsDaoImpl implements GoodsDao {
 
     /**
      *多条件查询商品
-     * @param word
-     * @return
      */
     @Override
     public List<Goods> getGoodByAllQuery(String word) {

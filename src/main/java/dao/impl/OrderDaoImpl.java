@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.OrderDao;
+import domain.Goods;
 import domain.Order;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -88,6 +89,16 @@ public class OrderDaoImpl implements OrderDao {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public List<Order> findByPage(int start, int rows) {
+        try {
+            List<Order> orders = runner.query("select * from order limit ? , ?", new BeanListHandler<Order>(Order.class),start,rows);
+            return orders;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

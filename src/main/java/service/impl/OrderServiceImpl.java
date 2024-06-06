@@ -40,6 +40,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> findByPage(int start, int rows) {
+        return orderDao.findByPage(start,rows);
+    }
+
+    @Override
     public List<Order> getAllOrder() {
         return orderDao.getAllOrder();
     }
