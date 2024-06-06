@@ -10,5 +10,6 @@ public interface OrderDao {
     int update(Order order);
     Order getOrderByOId(long id);
     List<Order> getOrderByBId(int id);
+    List<Order> getOrderByMId(int id);
     List<Order> getAllOrder();
 }

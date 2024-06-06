@@ -46,4 +46,13 @@ public class OrderDetailsDaoImplTest {
         }
     }
 
+    @Test
+    public  void getOrderDetailsByMIdAndOIdTest(){
+        int m_id =10001;
+        int o_id = 1;
+        List<OrderDetails> orderDetails = orderDetailsDao.getOrderDetailsByMIdAndOId(m_id,o_id);
+        for(OrderDetails orderDetails1 : orderDetails){
+            System.out.println(orderDetails1);
+        }
+    }
 }

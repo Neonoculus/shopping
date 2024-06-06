@@ -29,6 +29,13 @@
       <artifactId>mysql-connector-j</artifactId>
       <version>8.4.0</version>
     </dependency>
+<!--&lt;!&ndash;lombok注解&ndash;&gt;-->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.projectlombok/lombok &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.projectlombok</groupId>-->
+<!--      <artifactId>lombok</artifactId>-->
+<!--      <version>1.18.30</version>-->
+<!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
     <dependency>

@@ -10,4 +10,5 @@ public interface OrderDetailsDao {
     int update(OrderDetails orderDetails);
     List<OrderDetails> getOrderDetailsByOId(int id);
     List<OrderDetails> getAllOrderDetails();
+    List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id,int o_id);
 }

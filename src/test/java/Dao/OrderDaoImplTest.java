@@ -52,4 +52,12 @@ public class OrderDaoImplTest {
             System.out.println(order);
         }
     }
+    @Test
+    public void getOrderByMIdTest(){
+        int id = 10001;
+        List<Order> orders = orderDao.getOrderByMId(id);
+        for(Order order : orders){
+            System.out.println(order);
+        }
+    }
 }

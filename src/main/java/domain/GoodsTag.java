@@ -1,5 +1,6 @@
 package domain;
 
+
 public class GoodsTag {
     private int t_id;
     private int g_id;

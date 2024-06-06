@@ -1,14 +1,18 @@
 package service.impl;
 
+import dao.CategoryDao;
 import dao.GoodsDao;
+import dao.impl.CategoryDaoImpl;
 import dao.impl.GoodsDaoImpl;
+import domain.Category;
 import domain.Goods;
 import service.GoodsService;
 
 import java.util.List;
 
 public class GoodsServiceImpl implements GoodsService {
-    GoodsDao goodsDao = new GoodsDaoImpl();
+    private GoodsDao goodsDao = new GoodsDaoImpl();
+    private CategoryDao categoryDao = new CategoryDaoImpl();
     @Override
     public int add(Goods goods) {
         return goodsDao.add(goods);
@@ -45,6 +49,16 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public List<Goods> getGoodsByCIdAndTids(int cid, List<Integer> tid) {
+        return goodsDao.getGoodsByCIdAndTids(cid,tid);
+    }
+
+    @Override
+    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice) {
+        return goodsDao.getGoodsByCIdAndTidsAndPrice(cid,tid,minPrice,maxPrice);
+    }
+
+    @Override
     public List<Goods> getGoodsByPrice(Double minPrice, Double maxPrice) {
         return goodsDao.getGoodsByPrice(minPrice,maxPrice);
     }
@@ -52,6 +66,17 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> getGoodsByStatus(int status) {
         return goodsDao.getGoodsByStatus(status);
+    }
+
+    //  商品分页
+    @Override
+    public List<Goods> findByPage(int start, int rows) {
+        return goodsDao.findByPage(start,rows);
+    }
+
+    @Override
+    public List<Goods> getGoodByAllQuery(String word) {
+        return goodsDao.getGoodByAllQuery(word);
     }
 
     @Override

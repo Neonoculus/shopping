@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.CartDao;
 import domain.Cart;
+import domain.dto.CartDto;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import utils.DBUtil;
@@ -61,6 +62,16 @@ public class CartDaoImpl implements CartDao {
         try {
             List<Cart> carts = runner.query("select * from cart", new BeanListHandler<Cart>(Cart.class));
             return carts;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<CartDto> getCartDtoById(int id) {
+        try {
+            List<CartDto> cartDtos = runner.query("select cart.g_id,cart.b_id,goods.name,goods.photo,cart.count,cart.money,goods.status from cart,goods where b_id = ? and cart.g_id=goods.g_id", new BeanListHandler<CartDto>(CartDto.class),id);
+            return cartDtos;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

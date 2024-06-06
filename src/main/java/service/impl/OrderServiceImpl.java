@@ -35,6 +35,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getOrderByMId(int id) {
+        return orderDao.getOrderByMId(id);
+    }
+
+    @Override
     public List<Order> getAllOrder() {
         return orderDao.getAllOrder();
     }

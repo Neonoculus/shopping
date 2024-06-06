@@ -65,4 +65,18 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, int o_id) {
+        try {
+            List<OrderDetails> orderDetails = runner.query("SELECT order_details.g_id,order_details.o_id,order_details.count,order_details.money\n" +
+                    "FROM order_details\n" +
+                    "JOIN `order` ON `order`.o_id = order_details.o_id\n" +
+                    "JOIN goods on goods.g_id = order_details.g_id\n" +
+                    "where goods.m_id = ? and order.o_id = ? ",new BeanListHandler<OrderDetails>(OrderDetails.class),m_id,o_id);
+            return orderDetails;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

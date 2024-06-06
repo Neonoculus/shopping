@@ -3,6 +3,7 @@ package Dao;
 import dao.CartDao;
 import dao.impl.CartDaoImpl;
 import domain.Cart;
+import domain.dto.CartDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -45,6 +46,13 @@ public class CartDaoImplTest {
         for (Cart cart : carts)
         {
             System.out.println(cart);
+        }
+    }
+    @Test
+    public void getCartDtoByIdTest(){
+        List<CartDto> cartDtos = cartDao.getCartDtoById(10001);
+        for(CartDto cartDto : cartDtos){
+            System.out.println(cartDto.toString());
         }
     }
 }

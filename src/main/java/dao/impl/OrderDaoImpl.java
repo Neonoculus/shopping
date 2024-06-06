@@ -68,6 +68,28 @@ public class OrderDaoImpl implements OrderDao {
         }
     }
 
+    /**
+     * 通过商家id获取订单
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Order> getOrderByMId(int id) {
+
+        try {
+            List<Order> orders = runner.query("SELECT `order`.o_id,`order`.b_id,`order`.money,`order`.start_time,`order`.end_time,`order`.name,\n" +
+                    "`order`.address,`order`.`status`\n" +
+                    "FROM `order`\n" +
+                    "JOIN order_details on order_details.o_id = `order`.o_id\n" +
+                    "JOIN goods on goods.g_id = order_details.g_id\n" +
+                    "WHERE goods.m_id = ?",new BeanListHandler<Order>(Order.class),id);
+            return orders;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     @Override
     public List<Order> getAllOrder() {
         try {

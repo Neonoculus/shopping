@@ -3,6 +3,7 @@ package service.impl;
 import dao.CartDao;
 import dao.impl.CartDaoImpl;
 import domain.Cart;
+import domain.dto.CartDto;
 import service.CartService;
 
 import java.util.List;
@@ -32,5 +33,10 @@ public class CartServiceImpl implements CartService {
     @Override
     public List<Cart> getAllCart() {
         return cartDao.getAllCart();
+    }
+
+    @Override
+    public List<CartDto> getCartDtoById(int id) {
+        return cartDao.getCartDtoById(id);
     }
 }
