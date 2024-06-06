@@ -2,6 +2,8 @@ package utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Date {
     static public java.util.Date StringGoDate(String dateString){
@@ -15,4 +17,17 @@ public class Date {
         }
         return null;
     }
+    static public long getLongDate(){
+        // 获取当前系统时间
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        // 设置要显示的时间格式
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
+        String formattedTime = currentTime.format(formatter);
+        long time= Long.parseLong(formattedTime);
+
+        // 返回long格式的时间
+        return time;
+    }
+
 }
