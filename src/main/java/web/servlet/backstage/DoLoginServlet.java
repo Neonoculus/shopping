@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/DoLoginServlet")
+@WebServlet("/doLoginServlet")
 public class DoLoginServlet extends HttpServlet {
 
     @Override
@@ -44,7 +44,7 @@ public class DoLoginServlet extends HttpServlet {
         else if (login.getType() == 0)
         {
             request.setAttribute("warning","账号已被封禁，如果有需要请联系管理员");
-            request.getRequestDispatcher("/backstage/login.jsp").forward(request,response);
+            request.getRequestDispatcher("/toMerchantInfoServlet").forward(request,response);
         }
         else if (login.getType() == 1)
         {

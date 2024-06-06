@@ -4,7 +4,6 @@
 
 <html>
 <body>
-<a href="foregroundHtml/index.html">前台系统</a>
-<a href="backstageHtml/index.html">后台系统</a>
+<a href="backstage/signin.jsp">进入系统</a>
 </body>
 </html>
