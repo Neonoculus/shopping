@@ -33,8 +33,6 @@ public class DoLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginService loginService = new LoginServiceImpl();
-        MerchantService merchantService = new MerchantServiceImpl();
-        BuyerService buyerService = new BuyerServiceImpl();
 
         Login login = loginService.Login(request.getParameter("username"),request.getParameter("password"));
         if(login==null){
@@ -44,17 +42,19 @@ public class DoLoginServlet extends HttpServlet {
         else if (login.getType() == 0)
         {
             request.setAttribute("warning","账号已被封禁，如果有需要请联系管理员");
-            request.getRequestDispatcher("toMerchantInfoServlet").forward(request,response);
+            request.getRequestDispatcher("backstage/signin.jsp").forward(request,response);
         }
         else if (login.getType() == 1)
         {
-            request.setAttribute("buyer",buyerService.getBuyerByBid(login.getId()));
+            String id = String.valueOf(login.getId());
+            request.setAttribute("b_id",id);
             request.getRequestDispatcher("foreground/index.jsp").forward(request,response);
         }
         else if (login.getType() == 2)
         {
-            request.setAttribute("merchant",merchantService.getMerchantByMId(login.getId()));
-            request.getRequestDispatcher("backstage/index.jsp").forward(request,response);
+            String id = String.valueOf(login.getId());
+            request.setAttribute("merchant", id);
+            request.getRequestDispatcher("toIndexServlet").forward(request,response);
         }
         else if (login.getType() == 3)
         {

@@ -39,8 +39,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> getGoodsByMId(int id) {
-        return goodsDao.getGoodsByMId(id);
+    public List<Goods> getGoodsByMId(int id,int start, int rows) {
+        return goodsDao.getGoodsByMId(id,start,rows);
     }
 
     @Override
@@ -66,6 +66,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> getGoodsByStatus(int status) {
         return goodsDao.getGoodsByStatus(status);
+    }
+
+    @Override
+    public int goodsPageSum(List<Goods> goods) {
+        return goodsDao.getAllGoods().size();
     }
 
     //  商品分页

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:useBean id="now" class="java.util.Date" scope="page"/>goods.html
+<jsp:useBean id="now" class="java.util.Date" scope="page"/>
 <head>
     <meta charset="utf-8">
     <title>首页</title>
@@ -12,7 +12,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="${pageContext.request.contextPath}/backstage/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,14 +24,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/backstage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/backstage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/backstage/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/backstage/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -54,20 +54,20 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt="" style="width: 40px; height: 40px;">
                         <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                                class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">随乡饺子馆</h6>
+                        <h6 class="mb-0">${merchant.name}</h6>
                         <span>商家</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
-                    <a href="info.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="goods.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
+                    <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
+                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
                     <a href="order.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
@@ -90,9 +90,9 @@
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
+                            <img class="rounded-circle me-lg-2" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt=""
                                 style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">随乡饺子馆</span>
+                            <span class="d-none d-lg-inline-flex">${merchant.name}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="info.html" class="dropdown-item">商家信息</a>
@@ -145,147 +145,43 @@
                         </tr>
                     </thead>
                     <tbody class="border-0">
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong></div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-danger" href="#">下架</a>
+                    <c:forEach var="goods" items="${goodsList}">
+                    <tr>
+                        <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
+                        </th>
+                        <td class="ps-0 py-3 border-light" scope="row">
+                            <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
+                                                                      href="#"><img src="${pageContext.request.contextPath}/img/picture/${goods.photo}" alt="..." width="70" /></a>
+                                <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
+                                                                        href="#">${goods.name}</a></strong></div>
+                            </div>
+                        </td>
+                        <td class="p-3 align-middle border-light">
+                            <p class="mb-0 small">${goods.price}元</p>
+                        </td>
+                        <td class="p-3 align-middle border-light">
+                            <p class="mb-0 small">${goods.count}个</p>
+                        </td>
+                        <td class="p-3 align-middle border-light">
+                            <p class="mb-0 small"><c:if test="${goods.status}==1">正在售卖</c:if><c:if test="${goods.status}==0">暂停售卖</c:if></p>
+                        </td>
+                        <td class="p-3 align-middle border-light">
+
+                        <a class="btn btn-sm btn-danger" href="#">下架</a>
                                 <a class="btn btn-sm btn-secondary" href="goods-detail.html" target="_blank">详细信息</a>
                             </td>
                         </tr>
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="ps-0 py-3 border-light" scope="row">
-                                <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                        href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
-                                    <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                href="#">红色数字智能手表</a></strong>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2.00元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">2个</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">正在售卖</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-primary" href="#">下架</a>
-                                <a class="btn btn-sm btn-primary" href="#">添加库存</a>
-                                <a class="btn btn-sm btn-primary" href="#">修改</a>
-                                <a class="btn btn-sm btn-primary" href="#">详细信息</a>
-                            </td>
-                        </tr>
+                    </c:forEach>
                     </tbody>
 
                 </table>
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+                    <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page-1}">上一页</a></li>
+                    <c:forEach begin="1" end="${pageSumNumber}" step="1" var="i">
+                        <c:if test="${i==page}"><li class="page-item active"><a class="page-link" href="toGoodsServlet?start=${i}">${i}</a></li></c:if>
+                        <c:if test="${i!=page}"><li class="page-item"><a class="page-link" href="toGoodsServlet?start=${i}">${i}</a></li></c:if>
+                    </c:forEach>
+                    <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page+1}">下一页</a></li>
                 </ul>
             </div>
             <!-- Goods Table End -->
@@ -301,16 +197,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/chart/chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/easing/easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/waypoints/waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
 </body>
 
 </html>

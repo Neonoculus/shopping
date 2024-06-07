@@ -1,19 +1,22 @@
 package domain;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Order {
     private long o_id;
     private Double money;
-    private Date startTime;
-    private Date endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private int b_id;
     private String name;
     private String phone;
     private String address;
     private int status;
 
-    public Order(long o_id,int b_id,String name,String phone,String address, Double money, Date startTime, Date endTime,int status) {
+    public Order(long o_id,int b_id,String name,String phone,String address, Double money, LocalDateTime startTime, LocalDateTime endTime,int status) {
         this.o_id = o_id;
         this.b_id = b_id;
         this.name = name;
@@ -99,19 +102,19 @@ public class Order {
         this.money = money;
     }
 
-    public Date getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 }

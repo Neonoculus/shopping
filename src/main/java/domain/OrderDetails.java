@@ -2,7 +2,7 @@ package domain;
 
 public class OrderDetails {
     private int g_id;
-    private long o_id;
+    private Long o_id;
     private int count;
     private Double money;
 
@@ -34,11 +34,11 @@ public class OrderDetails {
         this.g_id = g_id;
     }
 
-    public long getO_id() {
+    public Long getO_id() {
         return o_id;
     }
 
-    public void setO_id(int o_id) {
+    public void setO_id(Long o_id) {
         this.o_id = o_id;
     }
 

@@ -12,7 +12,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="${pageContext.request.contextPath}/backstage/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,23 +24,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/backstage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/backstage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/backstage/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/backstage/css/style.css" rel="stylesheet">
 
     <!-- gLightbox gallery-->
-    <link rel="stylesheet" href="vendor/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/backstage/vendor/glightbox/css/glightbox.min.css">
     <!-- Range slider-->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/backstage/vendor/nouislider/nouislider.min.css">
     <!-- Choices CSS-->
-    <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/backstage/vendor/choices.js/public/assets/styles/choices.min.css">
     <!-- Swiper slider-->
-    <link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/backstage/vendor/swiper/swiper-bundle.min.css">
     <!-- Google fonts-->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
@@ -392,23 +392,23 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/chart/chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/easing/easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/waypoints/waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Template Javascript -->
 
 
-    <script src="vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="vendor/nouislider/nouislider.min.js"></script>
-    <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="js/front.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/vendor/nouislider/nouislider.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/js/front.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
 
 </body>
 

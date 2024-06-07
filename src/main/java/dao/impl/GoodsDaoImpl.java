@@ -137,9 +137,9 @@ public class GoodsDaoImpl implements GoodsDao {
     }
 
     @Override
-    public List<Goods> getGoodsByMId(int id) {
+    public List<Goods> getGoodsByMId(int id,int start, int rows) {
         try {
-            List<Goods> goods = runner.query("select * from goods where m_id = ?", new BeanListHandler<Goods>(Goods.class), id);
+            List<Goods> goods = runner.query("select * from goods where m_id = ? limit ? , ?", new BeanListHandler<Goods>(Goods.class), id,start,rows);
             return goods;
         } catch (SQLException e) {
             throw new RuntimeException(e);

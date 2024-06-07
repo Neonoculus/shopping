@@ -16,12 +16,18 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/taglibs/standard -->
-    <dependency>
-      <groupId>taglibs</groupId>
-      <artifactId>standard</artifactId>
-      <version>1.1.2</version>
-    </dependency>
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/taglibs/standard &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>taglibs</groupId>-->
+<!--      <artifactId>standard</artifactId>-->
+<!--      <version>1.1.2</version>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>javax.servlet</groupId>-->
+<!--      <artifactId>jstl</artifactId>-->
+<!--      <version>1.2</version>-->
+<!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
     <dependency>
@@ -44,13 +50,18 @@
       <version>2.6.12</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
-    <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>3.0.0</version>
-    </dependency>
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>jakarta.servlet.jsp.jstl</groupId>-->
+<!--      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>-->
+<!--      <version>3.0.0</version>-->
+<!--    </dependency>-->
 
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>1.2.6</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>

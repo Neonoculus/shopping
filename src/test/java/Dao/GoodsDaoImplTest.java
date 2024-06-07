@@ -47,7 +47,7 @@ public class GoodsDaoImplTest {
     @Test
     public void getGoodsByMIdTest(){
         int id=10001;
-        List<Goods> goods=goodsDao.getGoodsByMId(id);
+        List<Goods> goods=goodsDao.getGoodsByMId(id,0,10);
         for (Goods goods1 : goods)
             System.out.println(goods1);
     }

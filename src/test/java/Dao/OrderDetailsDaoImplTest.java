@@ -48,8 +48,8 @@ public class OrderDetailsDaoImplTest {
 
     @Test
     public  void getOrderDetailsByMIdAndOIdTest(){
-        int m_id =10001;
-        long o_id = 1;
+        int m_id =100000001;
+        long o_id = 20240607184612123L;
         List<OrderDetails> orderDetails = orderDetailsDao.getOrderDetailsByMIdAndOId(m_id,o_id);
         for(OrderDetails orderDetails1 : orderDetails){
             System.out.println(orderDetails1);

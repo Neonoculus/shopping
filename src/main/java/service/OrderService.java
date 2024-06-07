@@ -12,6 +12,8 @@ public interface OrderService {
     List<Order> getOrderByBId(int id);
     List<Order> getOrderByMId(int id);
     List<Order>  findByPage(int start, int rows);
+    int[] OrderAmountNumber(List<Order> orders);
+    Double[] OrderMoneyNumber(List<Order> orders);
     List<Order> getAllOrder();
 
 }
