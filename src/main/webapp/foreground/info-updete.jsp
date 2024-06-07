@@ -1,8 +1,10 @@
-order_detail.html<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 
 <head>
-  <title>Ministore</title>
+  <title>迷你商店</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +13,8 @@ order_detail.html<!DOCTYPE html>
   <meta name="author" content="">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/style.css">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +25,8 @@ order_detail.html<!DOCTYPE html>
   <script src="js/modernizr.js"></script>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
+  tabindex="0">
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
       <path fill="currentColor"
@@ -111,7 +114,7 @@ order_detail.html<!DOCTYPE html>
           <a href="#" title="Monitors">显示器</a>
         </li>
         <li class="cat-list-item">
-          <a href="#" title="Speakers">发言人</a>
+          <a href="#" title="Speakers">音响</a>
         </li>
         <li class="cat-list-item">
           <a href="#" title="Memory Cards">存储卡</a>
@@ -143,7 +146,8 @@ order_detail.html<!DOCTYPE html>
           </div>
           <div class="offcanvas-body">
             <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-              <a class="nav-link me-4 active" href="#billboard">首页</a>
+              <li class="nav-item">
+                <a class="nav-link me-4 active" href="#billboard">首页</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-4" href="#company-services">服务</a>
@@ -223,134 +227,55 @@ order_detail.html<!DOCTYPE html>
       </div>
     </nav>
   </header>
-  <section class="hero-section position-relative bg-light-blue padding-medium">
-    <div class="hero-content">
-      <div class="container d-flex align-items-center justify-content-center">
-        <div class="row">
-          <div style="height: 50px; "></div>
-          <div class="row d-flex align-items-center">
-            <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
-            <h2 class="display-7 text-uppercase text-dark col">这页面写的真牛逼</h2>
-          </div>
 
-          <div class="page-content d-flex flex-wrap">
-            <div class="col-sm-12">
-              <div class="content-box text-dark pe-4 mb-5">
-                <div class="contact-address pt-3">
-                  <p>地址：花果山福地</p>
-                </div>
-                <div class="contact-number">
-                  <p>联系电话：666666</p>
-                </div>
-                <div class="email-address">
-                  <p>
-                    电子邮箱：<a href="#">666666@66.com</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  </section>
-  <section class="shopify-cart padding-large">
+  <section class="shopify-cart checkout-wrap padding-large">
     <div class="container">
-      <div class="row">
-        <div class="cart-table">
-          <div class="cart-header">
-            <div class="row d-flex text-uppercase">
-              <h3 class="cart-title col-lg-3 pb-3">商品编号</h3>
-              <h3 class="cart-title col-lg-3 pb-3">商品</h3>
-              <h3 class="cart-title col-lg-3 pb-3">数量</h3>
-              <h3 class="cart-title col-lg-3 pb-3">金额</h3>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
+      <form class="form-group">
+        <div class="row d-flex flex-wrap">
+          <div class="d-flex justify-content-center ">
+
+            <div class="justify-content-center row">
+              <h2 class="display-7 text-uppercase text-dark pb-4">账号</h2>
+              <div>
+                <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
+                <div style="height: 70px; width: 70px;">
+                  <input type="file" id="exampleInputPhoto"
+                         style=" position: absolute; opacity: 0; height: 70px; width: 70px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                       class="bi bi-plus-square" viewBox="0 0 16 16">
+                    <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                  </svg>
+                </div>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
+              <div class="col col-sm-5">
+                <div class="row d-flex align-items-center">
+                  <label for="fname" class="label fs-5 col col-sm-4">名字：</label>
+                  <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-2 mr ps-3 col">
+                </div>
+                <div class="row d-flex align-items-center">
+                  <label for="email" class="label fs-5 col col-sm-4">电话：</label>
+                  <input type="text" id="phone" name="phone" class="form-control mt-2 mb-2 ps-3 col">
+                </div>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
+              <div class="col col-sm-1"></div>
+              <div class="col col-sm-5">
+                <div class="row d-flex align-items-center">
+                  <label for="email" class="label fs-5 col col-sm-4">邮箱：</label>
+                  <input type="text" id="email" name="email" class="form-control mt-2 mb-2 ps-3 col">
+                </div>
+                <div class="row d-flex align-items-center">
+                  <label for="address" class="label fs-5 col col-sm-4">地址：</label>
+                  <input type="text" id="address" name="address" class="form-control mt-2 mb-2 ps-3 col">
+                </div>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-6 col-md-3"></div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  总计
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  3000元
-                </h3>
-              </div>
+              <button type="submit" class="btn btn-dark mt-4">修改</button>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </section>
   <section id="subscribe" class="container-grid position-relative overflow-hidden">
@@ -361,7 +286,7 @@ order_detail.html<!DOCTYPE html>
           <div class="col-md-6 col-sm-12">
             <div class="display-header pe-3">
               <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
-              <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱.</p>
+              <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
             </div>
           </div>
           <div class="col-md-5 col-sm-12">
@@ -573,24 +498,19 @@ order_detail.html<!DOCTYPE html>
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="copyright">
-            <!-- <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a> -->
-            </p>
+            <%-- <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/"
+                title="网页模板">网页模板</a>--%>
+              </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/js/jquery-1.11.0.min.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="js/plugins.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
-  <script src="vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="vendor/nouislider/nouislider.min.js"></script>
-  <script src="vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-  <script src="js/front.js"></script>
-
+  <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
 </body>
 
 </html>

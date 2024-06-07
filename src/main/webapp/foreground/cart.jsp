@@ -1,4 +1,6 @@
-order_detail.html<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 
 <head>
@@ -11,8 +13,8 @@ order_detail.html<!DOCTYPE html>
   <meta name="author" content="">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/style.css">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -225,34 +227,18 @@ order_detail.html<!DOCTYPE html>
   </header>
   <section class="hero-section position-relative bg-light-blue padding-medium">
     <div class="hero-content">
-      <div class="container d-flex align-items-center justify-content-center">
+      <div class="container">
         <div class="row">
-          <div style="height: 50px; "></div>
-          <div class="row d-flex align-items-center">
-            <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
-            <h2 class="display-7 text-uppercase text-dark col">这页面写的真牛逼</h2>
-          </div>
-
-          <div class="page-content d-flex flex-wrap">
-            <div class="col-sm-12">
-              <div class="content-box text-dark pe-4 mb-5">
-                <div class="contact-address pt-3">
-                  <p>地址：花果山福地</p>
-                </div>
-                <div class="contact-number">
-                  <p>联系电话：666666</p>
-                </div>
-                <div class="email-address">
-                  <p>
-                    电子邮箱：<a href="#">666666@66.com</a>
-                  </p>
-                </div>
-              </div>
+          <div class="text-center padding-large no-padding-bottom">
+            <h1 class="display-2 text-uppercase text-dark">购物车</h1>
+            <div class="breadcrumbs">
+              <span class="item">
+                <a href="index.html">首页 ></a>
+              </span>
+              <span class="item">购物车</span>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
@@ -262,92 +248,153 @@ order_detail.html<!DOCTYPE html>
         <div class="cart-table">
           <div class="cart-header">
             <div class="row d-flex text-uppercase">
-              <h3 class="cart-title col-lg-3 pb-3">商品编号</h3>
-              <h3 class="cart-title col-lg-3 pb-3">商品</h3>
-              <h3 class="cart-title col-lg-3 pb-3">数量</h3>
-              <h3 class="cart-title col-lg-3 pb-3">金额</h3>
+              <h3 class="cart-title col-lg-4 pb-3">产品</h3>
+              <h3 class="cart-title col-lg-3 pb-3">品质</h3>
+              <h3 class="cart-title col-lg-4 pb-3">小计</h3>
             </div>
           </div>
           <div class="cart-item border-top border-bottom padding-small">
             <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
+              <div class="col-lg-4 col-md-3">
+                <div class="cart-info d-flex flex-wrap align-items-center mb-4">
+                  <div class="col-lg-5">
+                    <div class="card-image">
+                      <img src="images/cart-item2.jpg" alt="cloth" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card-detail">
+                      <h3 class="card-title text-uppercase">
+                        <a href="#">Pink watch</a>
+                      </h3>
+                      <div class="card-price">
+                        <span class="money text-primary" data-currency-usd="$1200.00">$1500.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
+              <div class="col-lg-6 col-md-7">
+                <div class="row d-flex">
+                  <div class="col-lg-6">
+                    <div class="qty-field">
+                      <div class="qty-number d-flex">
+                        <div class="row align-middle">
+                          <button type="button" class="dec-btn p-0 col col-3">-</button>
+                          <input class="form-control border-0 shadow-0 p-0 col" id="count" type="text" value="1"
+                            style="text-align: center;">
+                          <button type="button" class="inc-btn p-0 col col-3 ">+</button>
+                        </div>
+                      </div>
+                      <div class="regular-price"></div>
+                      <div class="quantity-output text-center bg-primary"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="total-price">
+                      <span class="money text-primary">$1500.00</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
+              <div class="col-lg-1 col-md-2">
+                <div class="cart-remove">
+                  <a href="#">
+                    <svg class="close" width="38px">
+                      <use xlink:href="#close"></use>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
           <div class="cart-item border-top border-bottom padding-small">
             <div class="row align-items-center">
-              <div class="col-lg-6 col-md-3"></div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  总计
-                </h3>
+              <div class="col-lg-4 col-md-3">
+                <div class="cart-info d-flex flex-wrap align-items-center mb-4">
+                  <div class="col-lg-5">
+                    <div class="card-image">
+                      <img src="images/cart-item2.jpg" alt="cloth" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card-detail">
+                      <h3 class="card-title text-uppercase">
+                        <a href="#">Pink watch</a>
+                      </h3>
+                      <div class="card-price">
+                        <span class="money text-primary" data-currency-usd="$1200.00">$870.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  3000元
-                </h3>
+              <div class="col-lg-6 col-md-7">
+                <div class="row d-flex">
+                  <div class="col-lg-6">
+                    <div class="qty-field">
+                      <div class="qty-number d-flex">
+                        <div class="row align-middle">
+                          <button type="button" class="dec-btn p-0 col col-3">-</button>
+                          <input class="form-control border-0 shadow-0 p-0 col" id="count" type="text" value="1"
+                            style="text-align: center;">
+                          <button type="button" class="inc-btn p-0 col col-3 ">+</button>
+                        </div>
+                      </div>
+                      <div class="regular-price"></div>
+                      <div class="quantity-output text-center bg-primary"></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="total-price">
+                      <span class="money text-primary">$870.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-2">
+                <div class="cart-remove">
+                  <a href="#">
+                    <svg class="close" width="38px">
+                      <use xlink:href="#close"></use>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="cart-totals bg-grey padding-medium">
+          <h2 class="display-7 text-uppercase text-dark pb-4">购物车总计</h2>
+          <div class="total-price pb-5">
+            <table cellspacing="0" class="table text-uppercase">
+              <tbody>
+                <tr class="subtotal pt-2 pb-2 border-top border-bottom">
+                  <th>小计</th>
+                  <td data-title="Subtotal">
+                    <span class="price-amount amount text-primary ps-5">
+                      <bdi>
+                        <span class="price-currency-symbol">$</span>2,370.00
+                      </bdi>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="order-total pt-2 pb-2 border-bottom">
+                  <th>总计</th>
+                  <td data-title="Total">
+                    <span class="price-amount amount text-primary ps-5">
+                      <bdi>
+                        <span class="price-currency-symbol">$</span>2,370.00</bdi>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="button-wrap">
+            <button class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none">更新购物车</button>
+            <button class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none">继续购物</button>
+            <button class="btn btn-black btn-medium text-uppercase mb-3 btn-rounded-none">去支付</button>
           </div>
         </div>
       </div>
@@ -580,16 +627,16 @@ order_detail.html<!DOCTYPE html>
       </div>
     </div>
   </div>
-  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/js/jquery-1.11.0.min.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="js/plugins.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
-  <script src="vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="vendor/nouislider/nouislider.min.js"></script>
-  <script src="vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-  <script src="js/front.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/vendor/nouislider/nouislider.min.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/js/front.js"></script>
 
 </body>
 

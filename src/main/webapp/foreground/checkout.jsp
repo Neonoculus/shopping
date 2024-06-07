@@ -13,7 +13,6 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/style.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,10 +22,9 @@
     ================================================== -->
     <script src="js/modernizr.js"></script>
   </head>
-  <body>
+  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-        <title>Search</title>
         <path fill="currentColor" d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
       </symbol>
       <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 16 16">
@@ -43,30 +41,6 @@
       </symbol>
       <symbol xmlns="http://www.w3.org/2000/svg" id="cart-outline" viewBox="0 0 16 16">
         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="quality" viewBox="0 0 16 16">
-        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
-        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="price-tag" viewBox="0 0 16 16">
-        <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z" />
-        <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="shield-plus" viewBox="0 0 16 16">
-        <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
-        <path d="M8 4.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V9a.5.5 0 0 1-1 0V7.5H6a.5.5 0 0 1 0-1h1.5V5a.5.5 0 0 1 .5-.5z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
-        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="star-half" viewBox="0 0 16 16">
-        <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 24 24">
-        <path fill="currentColor" d="m15 17l2-4h-4V6h7v7l-2 4h-3Zm-9 0l2-4H4V6h7v7l-2 4H6Z" />
       </symbol>
       <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
         <path fill="currentColor" d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z" />
@@ -92,11 +66,7 @@
       <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
         <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
       </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="video-player" viewBox="0 0 16 16">
-        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-      </symbol>
     </svg>
-    
     <div class="search-popup">
         <div class="search-popup-container">
 
@@ -239,170 +209,144 @@
         <div class="container">
           <div class="row">
             <div class="text-center padding-large no-padding-bottom">
-              <h1 class="display-2 text-uppercase text-dark">联系</h1>
+              <h1 class="display-2 text-uppercase text-dark">支付</h1>
               <div class="breadcrumbs">
                 <span class="item">
                   <a href="index.html">首页 ></a>
                 </span>
-                <span class="item">联系</span>
+                <span class="item">支付</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="contact-us padding-large">
+    <section class="shopify-cart checkout-wrap padding-large">
       <div class="container">
-        <div class="row">
-          <div class="contact-info col-lg-6 pb-3">
-            <h2 class="display-7 text-uppercase text-dark">联系信息</h2>
-            <p>Tortor dignissim convallis aenean et tortor at risus viverra adipiscing.</p>
-            <div class="page-content d-flex flex-wrap">
-              <div class="col-lg-6 col-sm-12">
-                <div class="content-box text-dark pe-4 mb-5">
-                  <h3 class="card-title text-uppercase text-decoration-underline">办事处</h3>
-                  <div class="contact-address pt-3">
-                    <p>730 Glenstone Ave 65802, Springfield, US</p>
-                  </div>
-                  <div class="contact-number">
-                    <p>
-                      <a href="#">+123 987 321</a>
-                    </p>
-                    <p>
-                      <a href="#">+123 123 654</a>
-                    </p>
-                  </div>
-                  <div class="email-address">
-                    <p>
-                      <a href="#">ministore@yourinfo.com</a>
-                    </p>
-                  </div>
-                </div>
+        <form class="form-group">
+          <div class="row d-flex flex-wrap">
+            <div class="col-lg-6">
+              <h2 class="display-7 text-uppercase text-dark pb-4">账单明细</h2>
+              <div class="billing-details">
+                <label for="fname">名字</label>
+                <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3">
+                <label for="lname">姓氏</label>
+                <input type="text" id="lname" name="lastname" class="form-control mt-2 mb-4 ps-3">
+                <label for="cname">公司名称</label>
+                <input type="text" id="cname" name="companyname" class="form-control mt-2 mb-4">
+                <label for="cname">国家/地区</label>
+                <select class="form-select form-control mt-2 mb-4" aria-label="Default select example">
+                  <option selected="" hidden="">中国</option>
+                  <option value="1">英国</option>
+                  <option value="2">澳大利亚</option>
+                  <option value="3">加拿大</option>
+                </select>
+                <label for="address">街道地址</label>
+                <input type="text" id="address" name="address" placeholder="House number and street name" class="form-control mt-3 ps-3 mb-3">
+                <input type="text" id="addr" name="address" placeholder="Appartments, suite, etc." class="form-control ps-3 mb-4">
+                <label for="city">小镇/城市</label>
+                <input type="text" id="city" name="city" class="form-control mt-3 ps-3 mb-4">
+                <label for="state">省</label>
+                <select class="form-select form-control mt-2 mb-4" id="state" aria-label="Default select example">
+                  <option selected="" hidden="">四川</option>
+                  <option value="1">云南</option>
+                  <option value="2">重庆</option>
+                  <option value="3">贵州</option>
+                  <option value="3">广西</option>
+                  <option value="3">广东</option>
+                </select>
+                <label for="zip">邮政编码</label>
+                <input type="text" id="zip" name="zip" class="form-control mt-2 mb-4 ps-3">
+                <label for="email">电话</label>
+                <input type="text" id="phone" name="phone" class="form-control mt-2 mb-4 ps-3">
+                <label for="email">邮箱</label>
+                <input type="text" id="email" name="email" class="form-control mt-2 mb-4 ps-3">
               </div>
-              <div class="col-lg-6 col-sm-12">
-                <div class="content-box">
-                  <h3 class="card-title text-uppercase text-decoration-underline">管理</h3>
-                  <div class="contact-address pt-3">
-                    <p>730 Glenstone Ave 65802, Springfield, US</p>
+            </div>
+            <div class="col-lg-6">
+              <h2 class="display-7 text-uppercase text-dark pb-4">附加信息</h2>
+              <div class="billing-details">
+                <label for="fname">订阅说明</label>
+                <textarea class="form-control pt-3 pb-3 ps-3 mt-2" placeholder="Notes about your order. Like special notes for delivery."></textarea>
+              </div>
+              <div class="your-order mt-5">
+                <h2 class="display-7 text-uppercase text-dark pb-4">购物车总计</h2>
+                <div class="total-price">
+                  <table cellspacing="0" class="table">
+                    <tbody>
+                      <tr class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">
+                        <th>Subtotal</th>
+                        <td data-title="Subtotal">
+                          <span class="price-amount amount text-primary ps-5">
+                            <bdi>
+                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="order-total border-bottom pt-2 pb-2 text-uppercase">
+                        <th>总计</th>
+                        <td data-title="Total">
+                          <span class="price-amount amount text-primary ps-5">
+                            <bdi>
+                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="list-group mt-5 mb-3">
+                    <label class="list-group-item d-flex gap-2 border-0">
+                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked>
+                      <span>
+                        <strong class="text-uppercase">银行转账</strong>
+                        <small class="d-block text-body-secondary">Make your payment directly into our bank account. Please use your Order ID. Your order will shipped after funds have cleared in our account.</small>
+                      </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2 border-0">
+                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
+                      <span>
+                        <strong class="text-uppercase">支票支付</strong>
+                        <small class="d-block text-body-secondary">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</small>
+                      </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2 border-0">
+                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
+                      <span>
+                        <strong class="text-uppercase">货到付款</strong>
+                        <small class="d-block text-body-secondary">Pay with cash upon delivery.</small>
+                      </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2 border-0">
+                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
+                      <span>
+                        <strong class="text-uppercase">贝宝</strong>
+                        <small class="d-block text-body-secondary">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</small>
+                      </span>
+                    </label>
                   </div>
-                  <div class="contact-number">
-                    <p>
-                      <a href="#">+123 987 321</a>
-                    </p>
-                    <p>
-                      <a href="#">+123 123 654</a>
-                    </p>
-                  </div>
-                  <div class="email-address">
-                    <p>
-                      <a href="#">ministore@yourinfo.com</a>
-                    </p>
-                  </div>
+                  <button type="submit" name="submit" class="btn btn-dark btn-medium text-uppercase btn-rounded-none">订购</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="inquiry-item col-lg-6">
-            <h2 class="display-7 text-uppercase text-dark">任何疑问?</h2>
-            <p>Use the form below to get in touch with us.</p>
-            <form id="form" class="form-group flex-wrap">
-              <div class="form-input col-lg-12 d-flex mb-3">
-                <input type="text" name="email" placeholder="Write Your Name Here" class="form-control ps-3 me-3 mb-3">
-                <input type="text" name="email" placeholder="Write Your Email Here" class="form-control ps-3 mb-3">
-              </div>
-              <div class="col-lg-12 mb-3">
-                <input type="text" name="email" placeholder="Phone Number" class="form-control ps-3">
-              </div>
-              <div class="col-lg-12 mb-3">
-                <input type="text" name="email" placeholder="Write Your Subject Here" class="form-control ps-3">
-              </div>
-              <div class="col-lg-12 mb-3">
-                <textarea placeholder="Write Your Message Here" class="form-control ps-3" style="height:150px;"></textarea>
-              </div>
-            </form>
-              <button class="btn btn-dark btn-medium text-uppercase btn-rounded-none">提交</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <section id="our-store" class="padding-large no-padding-top">
-      <div class="container">
-        <div class="row d-flex flex-wrap align-items-center">
-          <div class="col-lg-6">
-            <div class="image-holder mb-5">
-              <img src="images/single-image2.jpg" alt="our-store" class="img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="locations-wrap">
-              <div class="display-header">
-                <h2 class="display-7 text-uppercase text-dark">我们的商店</h2>
-                <p>You can also directly buy products from our stores.</p>
-              </div>
-              <div class="location-content d-flex flex-wrap">
-                <div class="col-lg-6 col-sm-12">
-                  <div class="content-box text-dark pe-4 mb-5">
-                    <h3 class="card-title text-uppercase text-decoration-underline">办事处</h3>
-                    <div class="contact-address pt-3">
-                      <p>730 Glenstone Ave 65802, Springfield, US</p>
-                    </div>
-                    <div class="contact-number">
-                      <p>
-                        <a href="#">+123 987 321</a>
-                      </p>
-                      <p>
-                        <a href="#">+123 123 654</a>
-                      </p>
-                    </div>
-                    <div class="email-address">
-                      <p>
-                        <a href="#">ministore@yourinfo.com</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-sm-12">
-                  <div class="content-box">
-                    <h3 class="card-title text-uppercase text-decoration-underline">中国</h3>
-                    <div class="contact-address pt-3">
-                      <p>730 Glenstone Ave 65802, Springfield, US</p>
-                    </div>
-                    <div class="contact-number">
-                      <p>
-                        <a href="#">+123 987 321</a>
-                      </p>
-                      <p>
-                        <a href="#">+123 123 654</a>
-                      </p>
-                    </div>
-                    <div class="email-address">
-                      <p>
-                        <a href="#">ministore@yourinfo.com</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </section>
-    <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
+    <section id="subscribe" class="container-grid position-relative overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
             <div class="col-md-6 col-sm-12">
               <div class="display-header pe-3">
                 <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
-                <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱</p>
+                <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
               </div>
             </div>
             <div class="col-md-5 col-sm-12">
               <form class="subscription-form validate">
                 <div class="input-group flex-wrap">
                   <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="Your email address here" required="">
-                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">Subscribe</button>
+                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">订阅</button>
                 </div>
               </form>
             </div>
@@ -410,11 +354,11 @@
         </div>
       </div>
     </section>
-    <section id="instagram" class="padding-large overflow-hidden no-padding-top">
+    <section id="instagram" class="padding-large overflow-hidden">
       <div class="container">
         <div class="row">
           <div class="display-header text-uppercase text-dark text-center pb-3">
-            <h2 class="display-7">购买我们的 Insta</h2>
+            <h2 class="display-7">购买我们 Insta</h2>
           </div>
           <div class="d-flex flex-wrap">
             <figure class="instagram-item pe-2">
@@ -523,22 +467,22 @@
               </div>
               <div class="col-lg-2 col-sm-6 pb-3">
                 <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Quick Links</h5>
+                  <h5 class="widget-title pb-2">快速连接</h5>
                   <ul class="menu-list list-unstyled text-uppercase">
                     <li class="menu-item pb-2">
-                      <a href="#">Home</a>
+                      <a href="#">首页</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">About</a>
+                      <a href="#">关于</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Shop</a>
+                      <a href="#">购物</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Blogs</a>
+                      <a href="#">博客</a>
                     </li>
                     <li class="menu-item pb-2">
-                      <a href="#">Contact</a>
+                      <a href="#">联系</a>
                     </li>
                   </ul>
                 </div>
@@ -604,7 +548,7 @@
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="copyright">
-              <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>
+<%--              <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>--%>
               </p>
             </div>
           </div>
