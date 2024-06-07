@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
   <head>
     <title>迷你商店</title>
@@ -10,15 +13,15 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/foreground/style.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/js/modernizr.js"></script>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -131,8 +134,8 @@
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/main-logo.png" class="logo">
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+            <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
           </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="navbar-icon">
@@ -142,7 +145,7 @@
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
               <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
@@ -152,48 +155,13 @@
                   <a class="nav-link me-4 active" href="#billboard">首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">服务</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#mobile-products">产品</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#smart-watches">手表</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#yearly-sale">销售</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#latest-blog">博客</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">网页</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="about.html" class="dropdown-item">关于</a>
-                    </li>
-                    <li>
-                      <a href="blog.html" class="dropdown-item">博客</a>
-                    </li>
-                    <li>
-                      <a href="shop.html" class="dropdown-item">购物</a>
-                    </li>
-                    <li>
-                      <a href="cart.html" class="dropdown-item">购物车</a>
-                    </li>
-                    <li>
-                      <a href="checkout.html" class="dropdown-item">支付</a>
-                    </li>
-                    <li>
-                      <a href="single-post.html" class="dropdown-item">单一的职位</a>
-                    </li>
-                    <li>
-                      <a href="single-product.html" class="dropdown-item">单品</a>
-                    </li>
-                    <li>
-                      <a href="contact.html" class="dropdown-item">联系</a>
-                    </li>
-                  </ul>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
                 </li>
                 <li class="nav-item">
                   <div class="user-items ps-5">
@@ -206,14 +174,14 @@
                         </a>
                       </li>
                       <li class="pe-3">
-                        <a href="#">
+                        <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
                           <svg class="user">
                             <use xlink:href="#user"></use>
                           </svg>
                         </a>
                       </li>
                       <li>
-                        <a href="cart.html">
+                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
                           <svg class="cart">
                             <use xlink:href="#cart"></use>
                           </svg>
@@ -242,7 +210,7 @@
                 </div>
                 <div class="col-md-5">
                   <div class="image-holder">
-                    <img src="images/banner-image.png" alt="banner">
+                    <img src="${pageContext.request.contextPath}/foreground/images/banner-image.png" alt="banner">
                   </div>
                 </div>
               </div>
@@ -259,7 +227,7 @@
                 </div>
                 <div class="col-md-5">
                   <div class="image-holder">
-                    <img src="images/banner-image.png" alt="banner">
+                    <img src="${pageContext.request.contextPath}/foreground/images/banner-image.png" alt="banner">
                   </div>
                 </div>
               </div>
@@ -350,7 +318,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item1.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -368,7 +336,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item2.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -386,7 +354,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item3.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item3.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -404,7 +372,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item4.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item4.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -422,7 +390,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item5.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item5.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -457,7 +425,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item6.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item6.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -475,7 +443,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item7.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item7.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -493,7 +461,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item8.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item8.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -511,7 +479,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item9.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item9.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -529,7 +497,7 @@
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img src="images/product-item10.jpg" alt="product-item" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/foreground/images/product-item10.jpg" alt="product-item" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
@@ -577,7 +545,7 @@
             <div class="col-lg-4 col-sm-12">
               <div class="card border-none me-3">
                 <div class="card-image">
-                  <img src="images/post-item1.jpg" alt="" class="img-fluid">
+                  <img src="${pageContext.request.contextPath}/foreground/images/post-item1.jpg" alt="" class="img-fluid">
                 </div>
               </div>
               <div class="card-body text-uppercase">
@@ -593,7 +561,7 @@
             <div class="col-lg-4 col-sm-12">
               <div class="card border-none me-3">
                 <div class="card-image">
-                  <img src="images/post-item2.jpg" alt="" class="img-fluid">
+                  <img src="${pageContext.request.contextPath}/foreground/images/post-item2.jpg" alt="" class="img-fluid">
                 </div>
               </div>
               <div class="card-body text-uppercase">
@@ -609,7 +577,7 @@
             <div class="col-lg-4 col-sm-12">
               <div class="card border-none me-3">
                 <div class="card-image">
-                  <img src="images/post-item3.jpg" alt="" class="img-fluid">
+                  <img src="${pageContext.request.contextPath}/foreground/images/post-item3.jpg" alt="" class="img-fluid">
                 </div>
               </div>
               <div class="card-body text-uppercase">
@@ -737,7 +705,7 @@
           <div class="d-flex flex-wrap">
             <figure class="instagram-item pe-2">
               <a href="#" class="image-link position-relative">
-                <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
+                <img src="${pageContext.request.contextPath}/foreground/images/insta-item1.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
                   <svg class="instagram">
                     <use xlink:href="#instagram"></use>
@@ -747,7 +715,7 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a href="#" class="image-link position-relative">
-                <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
+                <img src="${pageContext.request.contextPath}/foreground/images/insta-item2.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
                   <svg class="instagram">
                     <use xlink:href="#instagram"></use>
@@ -757,7 +725,7 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a href="#" class="image-link position-relative">
-                <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
+                <img src="${pageContext.request.contextPath}/foreground/images/insta-item3.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
                   <svg class="instagram">
                     <use xlink:href="#instagram"></use>
@@ -767,7 +735,7 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a href="#" class="image-link position-relative">
-                <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
+                <img src="${pageContext.request.contextPath}/foreground/images/insta-item4.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
                   <svg class="instagram">
                     <use xlink:href="#instagram"></use>
@@ -777,7 +745,7 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a href="#" class="image-link position-relative">
-                <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
+                <img src="${pageContext.request.contextPath}/foreground/images/insta-item5.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
                   <svg class="instagram">
                     <use xlink:href="#instagram"></use>
@@ -796,7 +764,7 @@
             <div class="row d-flex flex-wrap justify-content-between">
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
-                  <img src="images/main-logo.png" alt="logo">
+                  <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
                   <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
                   <div class="social-links">
                     <ul class="d-flex list-unstyled">
@@ -905,8 +873,8 @@
             <div class="Shipping d-flex">
               <p>We ship with:</p>
               <div class="card-wrap ps-2">
-                <img src="images/dhl.png" alt="visa">
-                <img src="images/shippingcard.png" alt="mastercard">
+                <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+                <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
               </div>
             </div>
           </div>
@@ -914,9 +882,9 @@
             <div class="payment-method d-flex">
               <p>Payment options:</p>
               <div class="card-wrap ps-2">
-                <img src="images/visa.jpg" alt="visa">
-                <img src="images/mastercard.jpg" alt="mastercard">
-                <img src="images/paypal.jpg" alt="paypal">
+                <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+                <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+                <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
               </div>
             </div>
           </div>
@@ -929,10 +897,10 @@
         </div>
       </div>
     </div>
-    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
   </body>
 </html>
