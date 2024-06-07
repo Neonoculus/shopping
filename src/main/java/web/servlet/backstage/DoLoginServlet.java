@@ -39,26 +39,26 @@ public class DoLoginServlet extends HttpServlet {
         Login login = loginService.Login(request.getParameter("username"),request.getParameter("password"));
         if(login==null){
             request.setAttribute("warning","账号或者密码错误");
-            request.getRequestDispatcher("/backstage/login.jsp").forward(request,response);
+            request.getRequestDispatcher("backstage/signin.jsp").forward(request,response);
         }
         else if (login.getType() == 0)
         {
             request.setAttribute("warning","账号已被封禁，如果有需要请联系管理员");
-            request.getRequestDispatcher("/toMerchantInfoServlet").forward(request,response);
+            request.getRequestDispatcher("toMerchantInfoServlet").forward(request,response);
         }
         else if (login.getType() == 1)
         {
             request.setAttribute("buyer",buyerService.getBuyerByBid(login.getId()));
-            request.getRequestDispatcher("/foreground/index.jsp").forward(request,response);
+            request.getRequestDispatcher("foreground/index.jsp").forward(request,response);
         }
         else if (login.getType() == 2)
         {
             request.setAttribute("merchant",merchantService.getMerchantByMId(login.getId()));
-            request.getRequestDispatcher("/backstage/index.jsp").forward(request,response);
+            request.getRequestDispatcher("backstage/index.jsp").forward(request,response);
         }
         else if (login.getType() == 3)
         {
-            request.getRequestDispatcher("/admin/merchant.jsp").forward(request,response);
+            request.getRequestDispatcher("admin/merchant.jsp").forward(request,response);
         }
     }
 }

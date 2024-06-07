@@ -68,7 +68,7 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
 
 
     @Override
-    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, int o_id) {
+    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, long o_id) {
         try {
             String sql = "SELECT order_details.g_id, order_details.o_id, order_details.count, order_details.money " +
                     "FROM order_details " +

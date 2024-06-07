@@ -10,6 +10,6 @@ public interface OrderDetailsDao {
     int update(OrderDetails orderDetails);
     List<OrderDetails> getOrderDetailsByOId(long id);
     List<OrderDetails> findByPage(int start, int rows);
-    List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id,int o_id);
+    List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id,long o_id);
     List<OrderDetails> getAllOrderDetails();
 }
