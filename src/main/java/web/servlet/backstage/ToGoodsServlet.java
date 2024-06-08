@@ -41,11 +41,11 @@ public class ToGoodsServlet extends HttpServlet {
         int m_id = Integer.parseInt(m_idParam);
         Merchant merchant = merchantService.getMerchantByMId(m_id);
 
-        List<Goods> goods = goodsService.getGoodsByMId(m_id,start,10);
-        int pageSumNumber = goodsService.goodsPageSum(goodsService.getAllGoods())/10+1;
+        List<Goods> goodsList = goodsService.findByPageByMId(m_id,start,10);
+        int pageSumNumber = goodsService.goodsPageSum(goodsService.getGoodsByMId(m_id))/10+1;
         start = start/10;
 
-        request.setAttribute("goodsList",goods);
+        request.setAttribute("goodsList",goodsList);
         request.setAttribute("merchant", merchant);
         request.setAttribute("page",start);
         request.setAttribute("pageSumNumber",pageSumNumber);

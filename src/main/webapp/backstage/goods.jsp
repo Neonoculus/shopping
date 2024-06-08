@@ -169,7 +169,7 @@
                             <c:if test="${goods.status==1}"><a class="btn btn-sm btn-danger" href="doSoldOutServlet?g_id=${goods.g_id}&status=1">下架</a></c:if>
                             <c:if test="${goods.status==0}"><a class="btn btn-sm btn-success" href="doSoldUpServlet?g_id=${goods.g_id}&status=0">上架</a></c:if>
 
-                            <a class="btn btn-sm btn-secondary" href="goods-detail.html" target="_blank">详细信息</a>
+                            <a class="btn btn-sm btn-secondary" href="toGoodsDetailServlet?g_id=${goods.g_id}" target="_blank">详细信息</a>
                         </td>
                         </tr>
                     </c:forEach>

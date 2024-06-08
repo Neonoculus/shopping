@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/ToGoodsDetailServlet")
+@WebServlet("/toGoodsDetailServlet")
 public class ToGoodsDetailServlet extends HttpServlet {
 
     @Override
@@ -43,7 +43,7 @@ public class ToGoodsDetailServlet extends HttpServlet {
             }
         }
         request.setAttribute("goods",goods);
-        request.getRequestDispatcher("backstage/goods-detail.jsp");
+        request.getRequestDispatcher("backstage/goods-detail.jsp").forward(request,response);
 
     }
 }

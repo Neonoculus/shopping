@@ -10,7 +10,7 @@ public interface GoodsService {
     int update(Goods goods);
     Goods getGoodsByGId(int id);
     List<Goods> getGoodsByCId(int id);
-    List<Goods> getGoodsByMId(int id,int start, int rows);
+    List<Goods> getGoodsByMId(int id);
     List<Goods> getGoodsByName(String name);
     List<Goods> getGoodsByCIdAndTids(int cid, List<Integer> tid);
     List<Goods> getGoodsByCIdAndTidsAndPrice(int cid,List<Integer> tid,Double minPrice,Double maxPrice);
@@ -18,6 +18,7 @@ public interface GoodsService {
     List<Goods> getGoodsByStatus(int status);
     int goodsPageSum(List<Goods> goods);
     List<Goods> findByPage(int start,int rows);
+    List<Goods>  findByPageByMId(int id,int start, int rows);
     List<Goods> getGoodByAllQuery(String word);
     List<Goods> getAllGoods();
 }
