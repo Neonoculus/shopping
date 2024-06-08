@@ -23,6 +23,7 @@ public class OrderDaoImpl implements OrderDao {
                 order.setB_id(rs.getInt("b_id"));
                 order.setMoney(rs.getDouble("money"));
                 order.setName(rs.getString("name"));
+                order.setPhone(rs.getString("phone"));
                 order.setAddress(rs.getString("address"));
                 order.setStatus(rs.getInt("status"));
 

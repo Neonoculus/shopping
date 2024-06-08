@@ -218,20 +218,30 @@
                         <h3 class="cart-title col-lg-3 pb-3">操作</h3>
                     </div>
                 </div>
-                <div class="cart-item border-top border-bottom padding-small">
+                <c:forEach var="order" items="${orders}" varStatus="i">
+                  <div class="cart-item border-top border-bottom padding-small">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-3">
                             <h3 class="card-title text-uppercase">
-                                <a href="#">1808865</a>
+                                <a href="#">${order.o_id}</a>
                             </h3>
                         </div>
                         <div class="col-lg-3 col-md-3">
-                            <p>海绵宝宝 海绵宝宝</p>
-                            <p>海绵宝宝 海绵宝宝</p>
+                            <c:forEach var="goodsName" items="${goodsNameMap[i.index]}" varStatus="j" step="1">
+                                <c:if test="${j.index % 2 == 0}">
+                                    <c:set var="nextIndex" value="${j.index + 1}" />
+<%--                                    <p>${goodsName}</p>--%>
+                                    <c:set var="nextGoodsName" value="${goodsNameMap[i.index][nextIndex]}" />
+
+                                    <!-- 显示当前元素和下一个元素 -->
+                                    <p>${goodsName} &nbsp;&nbsp;&nbsp;${nextGoodsName}</p>
+                                </c:if>
+
+                            </c:forEach>
                         </div>
                         <div class="col-lg-3 col-md-3">
                             <h3 class="card-title text-uppercase">
-                                1000元
+                                ${order.money}元
                             </h3>
                         </div>
                         <div class="col-lg-3 col-md-3">
@@ -241,6 +251,7 @@
                         </div>
                     </div>
                 </div>
+                </c:forEach>
             </div>
         </div>
     </div>

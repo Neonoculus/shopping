@@ -1,46 +1,48 @@
 package service.impl;
 
+import dao.OrderDetailsDao;
+import dao.impl.OrderDetailsDaoImpl;
 import domain.OrderDetails;
 import service.OrderDetailsService;
 
 import java.util.List;
 
 public class OrderDetailsServiceImpl implements OrderDetailsService {
-    OrderDetailsService orderDetailsService = new OrderDetailsServiceImpl();
+    OrderDetailsDao orderDetailsDao = new OrderDetailsDaoImpl();
     @Override
     public int add(OrderDetails orderDetails) {
-        return orderDetailsService.add(orderDetails);
+        return orderDetailsDao.add(orderDetails);
     }
 
     @Override
-    public int delete(int g_id, int o_id) {
-        return orderDetailsService.delete(g_id,o_id);
+    public int delete(int g_id, long o_id) {
+        return orderDetailsDao.delete(g_id,o_id);
     }
 
     @Override
     public int update(OrderDetails orderDetails) {
-        return orderDetailsService.update(orderDetails);
+        return orderDetailsDao.update(orderDetails);
     }
 
     @Override
     public List<OrderDetails> getOrderDetailsByOId(long id) {
-        return orderDetailsService.getOrderDetailsByOId(id);
+        return orderDetailsDao.getOrderDetailsByOId(id);
     }
 
     @Override
     public List<OrderDetails> getAllOrderDetails() {
-        return orderDetailsService.getAllOrderDetails();
+        return orderDetailsDao.getAllOrderDetails();
     }
 
     @Override
     public List<OrderDetails> findByPage(int start, int rows) {
-        return orderDetailsService.findByPage(start,rows);
+        return orderDetailsDao.findByPage(start,rows);
     }
 
 
     @Override
-    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, int o_id) {
-        return orderDetailsService.getOrderDetailsByMIdAndOId(m_id,o_id);
+    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, long o_id) {
+        return orderDetailsDao.getOrderDetailsByMIdAndOId(m_id,o_id);
     }
 
 }

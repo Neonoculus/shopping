@@ -24,7 +24,7 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
     }
 
     @Override
-    public int delete(int g_id, int o_id) {
+    public int delete(int g_id, long o_id) {
         int result;
         try {
             result = runner.update("delete from order_Details where g_id = ? and o_id = ?",g_id,o_id);

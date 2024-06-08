@@ -2,7 +2,9 @@ package web.servlet.foreground;
 
 import domain.Buyer;
 import service.BuyerService;
+import service.OrderDetailsService;
 import service.impl.BuyerServiceImpl;
+import service.impl.OrderDetailsServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +27,8 @@ public class ToBuyerIndexServlet extends HttpServlet {
 
         Buyer buyer = buyerService.getBuyerByBid(b_id);
         request.setAttribute("buyer",buyer);
+
+
         request.getRequestDispatcher("foreground/index.jsp").forward(request,response);
     }
 
