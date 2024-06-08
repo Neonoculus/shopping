@@ -83,54 +83,14 @@
                 d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
     </symbol>
 </svg>
-<div class="search-popup">
-    <div class="search-popup-container">
-
-        <form role="search" method="get" class="search-form" action="">
-            <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value=""
-                   name="s" />
-            <button type="submit" class="search-submit"><svg class="search">
-                <use xlink:href="#search"></use>
-            </svg></button>
-        </form>
-
-        <h5 class="cat-list-title">浏览分类</h5>
-
-        <ul class="cat-list">
-            <li class="cat-list-item">
-                <a href="#" title="Mobile Phones">智能手机</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Smart Watches">智能手表</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Headphones">耳机</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Accessories">饰品</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Monitors">显示器</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Speakers">发言人</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Memory Cards">存储卡</a>
-            </li>
-        </ul>
-
-    </div>
-</div>
 
 <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
             </a>
-            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <svg class="navbar-icon">
                     <use xlink:href="#navbar-icon"></use>
                 </svg>
@@ -138,59 +98,23 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
                 <div class="offcanvas-header px-4 pb-0">
                     <a class="navbar-brand" href="index.html">
-                        <img src="images/main-logo.png" class="logo">
+                        <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
                     </a>
-                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"
-                            data-bs-target="#bdNavbar"></button>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                        <a class="nav-link me-4 active" href="#billboard">首页</a>
+                        <li class="nav-item">
+                            <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-4" href="#company-services">服务</a>
+                            <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-4" href="#mobile-products">产品</a>
+                            <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-4" href="#smart-watches">观看</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#yearly-sale">销售</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#latest-blog">博客</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-expanded="false">网页</a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="about.html" class="dropdown-item">关于</a>
-                                </li>
-                                <li>
-                                    <a href="blog.html" class="dropdown-item">博客</a>
-                                </li>
-                                <li>
-                                    <a href="shop.html" class="dropdown-item">购物</a>
-                                </li>
-                                <li>
-                                    <a href="cart.html" class="dropdown-item">购物车</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html" class="dropdown-item">支付</a>
-                                </li>
-                                <li>
-                                    <a href="single-post.html" class="dropdown-item">单一职位</a>
-                                </li>
-                                <li>
-                                    <a href="single-product.html" class="dropdown-item">单品</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html" class="dropdown-item">联系</a>
-                                </li>
-                            </ul>
+                            <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
                         </li>
                         <li class="nav-item">
                             <div class="user-items ps-5">
@@ -203,14 +127,14 @@
                                         </a>
                                     </li>
                                     <li class="pe-3">
-                                        <a href="#">
+                                        <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
                                             <svg class="user">
                                                 <use xlink:href="#user"></use>
                                             </svg>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="cart.html">
+                                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
                                             <svg class="cart">
                                                 <use xlink:href="#cart"></use>
                                             </svg>
@@ -298,7 +222,7 @@
         </div>
     </div>
 </section>
-<section id="subscribe" class="container-grid position-relative overflow-hidden">
+<section id="subscribe" class="container-grid position-relative overflow-hidden pb-4">
     <div class="container">
         <div class="row">
             <div
@@ -319,67 +243,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="instagram" class="padding-large overflow-hidden">
-    <div class="container">
-        <div class="row">
-            <div class="display-header text-uppercase text-dark text-center pb-3">
-                <h2 class="display-7">购买我们 Insta</h2>
-            </div>
-            <div class="d-flex flex-wrap">
-                <figure class="instagram-item pe-2">
-                    <a href="#" class="image-link position-relative">
-                        <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
-                        <div class="icon-overlay position-absolute d-flex justify-content-center">
-                            <svg class="instagram">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </div>
-                    </a>
-                </figure>
-                <figure class="instagram-item pe-2">
-                    <a href="#" class="image-link position-relative">
-                        <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
-                        <div class="icon-overlay position-absolute d-flex justify-content-center">
-                            <svg class="instagram">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </div>
-                    </a>
-                </figure>
-                <figure class="instagram-item pe-2">
-                    <a href="#" class="image-link position-relative">
-                        <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
-                        <div class="icon-overlay position-absolute d-flex justify-content-center">
-                            <svg class="instagram">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </div>
-                    </a>
-                </figure>
-                <figure class="instagram-item pe-2">
-                    <a href="#" class="image-link position-relative">
-                        <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
-                        <div class="icon-overlay position-absolute d-flex justify-content-center">
-                            <svg class="instagram">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </div>
-                    </a>
-                </figure>
-                <figure class="instagram-item pe-2">
-                    <a href="#" class="image-link position-relative">
-                        <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
-                        <div class="icon-overlay position-absolute d-flex justify-content-center">
-                            <svg class="instagram">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </div>
-                    </a>
-                </figure>
             </div>
         </div>
     </div>
