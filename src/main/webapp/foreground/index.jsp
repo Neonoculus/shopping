@@ -165,29 +165,52 @@
                 </li>
                 <li class="nav-item">
                   <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3">
-                        <a href="#" class="search-button">
-                          <svg class="search">
-                            <use xlink:href="#search"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
-                          <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
-                          <svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
+                    <c:if test="${buyer==NULL}">
+                      <ul class="d-flex justify-content-end list-unstyled">
+                        <li class="search-item pe-3">
+                          <a href="#" class="search-button">
+                            <svg class="search">
+                              <use xlink:href="#search"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3">
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                            登录/注册
+                          </a>
+                        </li>
+                        <li>
+                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                            <svg class="cart">
+                              <use xlink:href="#cart"></use>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </c:if>
+                    <c:if test="${buyer!=NULL}">
+                      <ul class="d-flex justify-content-end list-unstyled">
+                        <li class="search-item pe-3">
+                          <a href="#" class="search-button">
+                            <svg class="search">
+                              <use xlink:href="#search"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3">
+                          <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
+                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}.jpg" style="border-radius: 50%" width="24px">
+                          </a>
+                        </li>
+                        <li>
+                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                            <svg class="cart">
+                              <use xlink:href="#cart"></use>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </c:if>
                   </div>
                 </li>
               </ul>
