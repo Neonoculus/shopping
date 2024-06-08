@@ -480,7 +480,7 @@ class SwiperComponent {
                 }
                 this.swiperRef.virtual.update(true);
             });
-            return;
+
         };
     }
     set navigation(val) {

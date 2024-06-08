@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class BuyerDaoImplTest {
-    private BuyerDao buyerDao = new BuyerDaoImpl();
+    private final BuyerDao buyerDao = new BuyerDaoImpl();
     @Test
     public void addTest(){
         Buyer buyer = new Buyer(100001,"吕","qq.com","地球","123123123","img/k");

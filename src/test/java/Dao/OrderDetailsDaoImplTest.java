@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class OrderDetailsDaoImplTest {
-    private OrderDetailsDao orderDetailsDao = new OrderDetailsDaoImpl();
+    private final OrderDetailsDao orderDetailsDao = new OrderDetailsDaoImpl();
     @Test
     public void addTest(){
         OrderDetails orderDetails = new OrderDetails(1000001,1000001,2,500.0);

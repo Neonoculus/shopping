@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class GoodsTagDaoImplTest {
-    private GoodsTagDao goodsTagDao = new GoodsTagDaoImpl();
+    private final GoodsTagDao goodsTagDao = new GoodsTagDaoImpl();
     @Test
     public void addTest(){
         GoodsTag goodsTag = new GoodsTag(10,1000001);

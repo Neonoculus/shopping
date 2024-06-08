@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class LikeDaoImplTest {
-    private LikeDao likeDao = new LikeDaoImpl();
+    private final LikeDao likeDao = new LikeDaoImpl();
     @Test
     public void addTest(){
         Like like = new Like(1000001,100001);

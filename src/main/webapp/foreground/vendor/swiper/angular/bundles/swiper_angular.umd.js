@@ -311,7 +311,7 @@
         }
         return cooked;
     }
-    ;
+
     var __setModuleDefault = Object.create ? (function (o, v) {
         Object.defineProperty(o, "default", { enumerable: true, value: v });
     }) : function (o, v) {
@@ -836,7 +836,7 @@
                     }
                     _this.swiperRef.virtual.update(true);
                 });
-                return;
+
             };
         }
         Object.defineProperty(SwiperComponent.prototype, "navigation", {

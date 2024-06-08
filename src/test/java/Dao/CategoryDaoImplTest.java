@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class CategoryDaoImplTest {
-    private CategoryDao categoryDao = new CategoryDaoImpl();
+    private final CategoryDao categoryDao = new CategoryDaoImpl();
     @Test
     public void add(){
         Category category = new Category(102,"任天堂");

@@ -1318,7 +1318,7 @@ function scope(target, options, originalOptions) {
             e.calcPoint = e.points[options.ort];
             // Call the event handler with the event [ and additional data ].
             callback(e, data);
-            return;
+
         };
         var methods = [];
         // Bind a closure on the target for every event type.

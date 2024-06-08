@@ -17,7 +17,7 @@ import java.util.Random;
 public class CheckCodeUtil {
 
     public static final String VERIFY_CODES = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
 
     public static void main(String[] args) throws IOException {

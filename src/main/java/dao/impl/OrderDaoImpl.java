@@ -87,7 +87,7 @@ public class OrderDaoImpl implements OrderDao {
                     "FROM `order`\n" +
                     "JOIN order_details on order_details.o_id = `order`.o_id\n" +
                     "JOIN goods on goods.g_id = order_details.g_id\n" +
-                    "WHERE goods.m_id = ?", (ResultSetHandler<List<Order>>) rs -> {
+                    "WHERE goods.m_id = ?", rs -> {
                 List<Order> result = new ArrayList<>();
                 while (rs.next()) {
                     Order order = new Order();

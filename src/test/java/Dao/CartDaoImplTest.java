@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class CartDaoImplTest {
-    private CartDao cartDao = new CartDaoImpl();
+    private final CartDao cartDao = new CartDaoImpl();
     @Test
     public void addTest(){
         Cart cart = new Cart(1000001,100001,3,450.0,1);

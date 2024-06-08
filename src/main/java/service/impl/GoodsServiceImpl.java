@@ -11,8 +11,8 @@ import service.GoodsService;
 import java.util.List;
 
 public class GoodsServiceImpl implements GoodsService {
-    private GoodsDao goodsDao = new GoodsDaoImpl();
-    private CategoryDao categoryDao = new CategoryDaoImpl();
+    private final GoodsDao goodsDao = new GoodsDaoImpl();
+    private final CategoryDao categoryDao = new CategoryDaoImpl();
     @Override
     public int add(Goods goods) {
         return goodsDao.add(goods);

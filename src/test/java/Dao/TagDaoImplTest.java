@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class TagDaoImplTest {
-    private TagDao tagDao = new TagDaoImpl();
+    private final TagDao tagDao = new TagDaoImpl();
     @Test
     public void addTest(){
         Tag tag = new Tag(11,"303");

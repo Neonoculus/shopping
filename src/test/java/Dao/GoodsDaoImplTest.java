@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoodsDaoImplTest {
-    private GoodsDao goodsDao = new GoodsDaoImpl();
+    private final GoodsDao goodsDao = new GoodsDaoImpl();
     @Test
     public void addTest(){
         Goods goods = new Goods(1000005,101,10001,"垃圾游戏","#",3000.0,"真的是垃圾游戏不骗你",1,200000);

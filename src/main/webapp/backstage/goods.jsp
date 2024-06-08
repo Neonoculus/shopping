@@ -163,25 +163,31 @@
                             <p class="mb-0 small">${goods.count}个</p>
                         </td>
                         <td class="p-3 align-middle border-light">
-                            <p class="mb-0 small"><c:if test="${goods.status}==1">正在售卖</c:if><c:if test="${goods.status}==0">暂停售卖</c:if></p>
+                            <p class="mb-0 small"><c:if test="${goods.status==1}">正在售卖</c:if><c:if test="${goods.status==0}">暂停售卖</c:if></p>
                         </td>
                         <td class="p-3 align-middle border-light">
+                            <c:if test="${goods.status==1}"><a class="btn btn-sm btn-danger" href="doSoldOutServlet?g_id=${goods.g_id}&status=1">下架</a></c:if>
+                            <c:if test="${goods.status==0}"><a class="btn btn-sm btn-success" href="doSoldUpServlet?g_id=${goods.g_id}&status=0">上架</a></c:if>
 
-                        <a class="btn btn-sm btn-danger" href="#">下架</a>
-                                <a class="btn btn-sm btn-secondary" href="goods-detail.html" target="_blank">详细信息</a>
-                            </td>
+                            <a class="btn btn-sm btn-secondary" href="goods-detail.html" target="_blank">详细信息</a>
+                        </td>
                         </tr>
                     </c:forEach>
                     </tbody>
 
                 </table>
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page-1}">上一页</a></li>
+                    <c:if test="${page!=0}">
+                        <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page-1}&merchant=${merchant.m_id}">上一页</a></li>
+                    </c:if>
                     <c:forEach begin="1" end="${pageSumNumber}" step="1" var="i">
-                        <c:if test="${i==page}"><li class="page-item active"><a class="page-link" href="toGoodsServlet?start=${i}">${i}</a></li></c:if>
-                        <c:if test="${i!=page}"><li class="page-item"><a class="page-link" href="toGoodsServlet?start=${i}">${i}</a></li></c:if>
+                        <c:if test="${i==page+1}"><li class="page-item active"><a class="page-link" href="toGoodsServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
+                        <c:if test="${i!=page+1}"><li class="page-item"><a class="page-link" href="toGoodsServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
                     </c:forEach>
-                    <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page+1}">下一页</a></li>
+                    <c:if test="${page<pageSumNumber-1}">
+                        <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page+1}&merchant=${merchant.m_id}">下一页</a></li>
+                    </c:if>
+
                 </ul>
             </div>
             <!-- Goods Table End -->

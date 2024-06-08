@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class LoginDaoImplTest {
-    private LoginDao loginDao = new LoginDaoImpl();
+    private final LoginDao loginDao = new LoginDaoImpl();
     @Test
     public void addTest(){
         Login login = new Login(100000003,"1","1",3,10001);

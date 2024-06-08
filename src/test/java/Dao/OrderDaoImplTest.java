@@ -10,7 +10,7 @@ import java.util.List;
 import static utils.Date.StringGoDate;
 
 public class OrderDaoImplTest {
-    private OrderDao orderDao = new OrderDaoImpl();
+    private final OrderDao orderDao = new OrderDaoImpl();
 //    @Test
 //    public void addTest(){
 //        Order order = new Order(1000001,100001,"派大星","123456","比奇堡大石头",500.0,"2024-05-30 12:00:00",null,1);

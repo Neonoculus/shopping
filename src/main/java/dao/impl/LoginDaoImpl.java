@@ -62,11 +62,7 @@ public class LoginDaoImpl implements LoginDao {
     public Login Login(String username, String password) {
         try {
             Login login = runner.query("select * from login where username = ? and password = ?",new BeanHandler<Login>(Login.class),username,password);
-            if (login!= null){
-                return login;
-            }else {
-                return null;
-            }
+            return login;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
