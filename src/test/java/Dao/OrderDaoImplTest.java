@@ -42,7 +42,7 @@ public class OrderDaoImplTest {
     @Test
     public void getOrderByOIdTest(){
         int id=1000001;
-        Order order =orderDao.getOrderByOId(id);
+        List<Order> order =orderDao.getOrderByOId(id);
         System.out.println(order);
     }
     @Test

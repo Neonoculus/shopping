@@ -5,9 +5,7 @@ import dao.impl.OrderDaoImpl;
 import domain.Order;
 import service.OrderService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrderByOId(long id) {
+    public List<Order> getOrderByOId(long id) {
         return orderDao.getOrderByOId(id);
     }
 
