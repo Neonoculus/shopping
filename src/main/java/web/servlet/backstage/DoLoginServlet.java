@@ -48,7 +48,7 @@ public class DoLoginServlet extends HttpServlet {
         {
             String id = String.valueOf(login.getId());
             request.setAttribute("b_id",id);
-            request.getRequestDispatcher("foreground/index.jsp").forward(request,response);
+            request.getRequestDispatcher("toBuyerIndexServlet").forward(request,response);
         }
         else if (login.getType() == 2)
         {

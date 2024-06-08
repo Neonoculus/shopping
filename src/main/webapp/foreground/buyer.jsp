@@ -97,7 +97,7 @@
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
                 <div class="offcanvas-header px-4 pb-0">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
                         <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
                     </a>
                     <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -118,29 +118,52 @@
                         </li>
                         <li class="nav-item">
                             <div class="user-items ps-5">
-                                <ul class="d-flex justify-content-end list-unstyled">
-                                    <li class="search-item pe-3">
-                                        <a href="#" class="search-button">
-                                            <svg class="search">
-                                                <use xlink:href="#search"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li class="pe-3">
-                                        <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
-                                            <svg class="user">
-                                                <use xlink:href="#user"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
-                                            <svg class="cart">
-                                                <use xlink:href="#cart"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <c:if test="${buyer==NULL}">
+                                    <ul class="d-flex justify-content-end list-unstyled">
+                                        <li class="search-item pe-3">
+                                            <a href="#" class="search-button">
+                                                <svg class="search">
+                                                    <use xlink:href="#search"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                                                登录/注册
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                                                <svg class="cart">
+                                                    <use xlink:href="#cart"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </c:if>
+                                <c:if test="${buyer!=NULL}">
+                                    <ul class="d-flex justify-content-end list-unstyled">
+                                        <li class="search-item pe-3">
+                                            <a href="#" class="search-button">
+                                                <svg class="search">
+                                                    <use xlink:href="#search"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        <li class="pe-3">
+                                            <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                                                <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                                                <svg class="cart">
+                                                    <use xlink:href="#cart"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </c:if>
                             </div>
                         </li>
                     </ul>
@@ -155,23 +178,23 @@
             <div class="row">
                 <div style="height: 50px; "></div>
                 <div class="row d-flex align-items-center">
-                    <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
-                    <h2 class="display-7 text-uppercase text-dark col">这页面写的真牛逼</h2>
+                    <img class="" src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" alt="" style="border-radius: 50%;width: 120px; object-fit: cover;">
+                    <h2 class="display-7 text-uppercase text-dark col">${buyer.name}</h2>
                 </div>
 
                 <div class="page-content d-flex flex-wrap">
                     <div class="col-sm-12">
                         <div class="content-box text-dark pe-4 mb-5">
                             <div class="contact-address pt-3">
-                                <p>地址：花果山福地</p>
+                                <p>地址：${buyer.address}</p>
                             </div>
                             <div class="contact-number">
-                                <p>联系电话：666666
+                                <p>联系电话：${buyer.phone}
                                 </p>
                             </div>
                             <div class="email-address">
                                 <p>
-                                    电子邮箱：<a href="#">666666@66.com</a>
+                                    电子邮箱：<a href="#">${buyer.email}</a>
                                 </p>
                             </div>
                         </div>
@@ -254,7 +277,7 @@
                 <div class="row d-flex flex-wrap justify-content-between">
                     <div class="col-lg-3 col-sm-6 pb-3">
                         <div class="footer-menu">
-                            <img src="images/main-logo.png" alt="logo">
+                            <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
                             <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
                                 erat nullam fringilla.</p>
                             <div class="social-links">
@@ -364,8 +387,8 @@
                 <div class="Shipping d-flex">
                     <p>We ship with:</p>
                     <div class="card-wrap ps-2">
-                        <img src="images/dhl.png" alt="visa">
-                        <img src="images/shippingcard.png" alt="mastercard">
+                        <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+                        <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
                     </div>
                 </div>
             </div>
@@ -373,9 +396,9 @@
                 <div class="payment-method d-flex">
                     <p>Payment options:</p>
                     <div class="card-wrap ps-2">
-                        <img src="images/visa.jpg" alt="visa">
-                        <img src="images/mastercard.jpg" alt="mastercard">
-                        <img src="images/paypal.jpg" alt="paypal">
+                        <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+                        <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+                        <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
                     </div>
                 </div>
             </div>
