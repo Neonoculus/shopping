@@ -67,7 +67,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getOrderByBId(int id) {
         try {
-            List<Order> order = runner.query("select * from `order` where b_id = ?", new BeanListHandler<Order>(Order.class), id);
+            List<Order> order = runner.query("select * from `order` where b_id = ? order by `order`.o_id desc", new BeanListHandler<Order>(Order.class), id);
             return order;
         } catch (SQLException e) {
             throw new RuntimeException(e);

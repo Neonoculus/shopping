@@ -144,7 +144,7 @@
           </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
                 <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -152,7 +152,7 @@
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="#billboard">首页</a>
+                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
@@ -198,8 +198,8 @@
                           </a>
                         </li>
                         <li class="pe-3">
-                          <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
-                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}.jpg" style="border-radius: 50%" width="24px">
+                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
                           </a>
                         </li>
                         <li>

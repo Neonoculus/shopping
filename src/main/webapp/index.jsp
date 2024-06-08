@@ -5,6 +5,7 @@
 <html>
 <body>
 <a href="backstage/signin.jsp">进入系统</a>
+<br>
 <a href="foreground/index.jsp">进入用户首页</a>
 </body>
 </html>
