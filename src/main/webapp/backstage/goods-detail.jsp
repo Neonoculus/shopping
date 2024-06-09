@@ -142,7 +142,7 @@
                                                     </button>
                                                     <div class="swiper-slide h-auto swiper-thumb-item swiper-slide-visible swiper-slide-active swiper-slide-thumb-active"
                                                          role="group" aria-label="1 / 4" style="height: 371px;"><img id="upPhoto1"
-                                                            class="w-100" src="${pageContext.request.contextPath}/img/picture/${phtot1}" alt="..."></div>
+                                                            class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo1}" alt="..."></div>
                                                 </div>
                                                 <div>
                                                     <button type="button" class="btn btn-sm btn-secondary" onclick="clearImageContent(this)"
@@ -159,7 +159,7 @@
                                                     </button>
                                                     <div class="swiper-slide h-auto swiper-thumb-item swiper-slide-visible swiper-slide-next"
                                                          role="group" aria-label="2 / 4" style="height: 371px;">
-                                                        <img class="w-100" id="upPhoto2" src="${pageContext.request.contextPath}/img/picture/${phtot2}" alt="...">
+                                                        <img class="w-100" id="upPhoto2" src="${pageContext.request.contextPath}/img/picture/${photo2}" alt="...">
                                                     </div>
                                                 </div>
                                                 <div>
@@ -177,7 +177,7 @@
                                                     </button>
                                                     <div class="swiper-slide h-auto swiper-thumb-item swiper-slide-visible"
                                                          role="group" aria-label="3 / 4" style="height: 371px;">
-                                                        <img class="w-100" id="upPhoto3" src="${pageContext.request.contextPath}/img/picture/${phtot3}" alt="...">
+                                                        <img class="w-100" id="upPhoto3" src="${pageContext.request.contextPath}/img/picture/${photo3}" alt="...">
                                                     </div>
 
                                                 </div>
@@ -196,7 +196,7 @@
                                                     </button>
                                                     <div class="swiper-slide h-auto swiper-thumb-item  swiper-slide-visible"
                                                          role="group" aria-label="4 / 4" style="height: 371px;">
-                                                        <img class="w-100" id="upPhoto4" src="${pageContext.request.contextPath}/img/picture/${phtot4}" alt="...">
+                                                        <img class="w-100" id="upPhoto4" src="${pageContext.request.contextPath}/img/picture/${photo4}" alt="...">
                                                     </div>
                                                 </div>
 
@@ -205,7 +205,7 @@
                                                      style="height: 371px;">
                                                     <div>
                                                         <input type="file" id="photoInput"
-                                                               style=" position: absolute; opacity: 0; width: 100%; height: 100%;">
+                                                               style=" position: absolute; opacity: 0; width: 100%; height: 100%;" multiple>
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                              class="bi bi-plus-square" viewBox="0 0 16 16">
                                                             <path
@@ -231,30 +231,28 @@
                                             aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                                                 <div class="swiper-slide h-auto swiper-slide-active" role="group"
                                                      aria-label="1 / 4" style="width: 428px;"><a
-                                                        class="glightbox product-view" href="img/product-detail-2.jpg"
-                                                        data-gallery="gallery2" data-glightbox="Product item 1"><img
-                                                        class="img-fluid" src="img/product-detail-2.jpg" alt="..."></a>
+                                                        class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo1}"
+                                                        data-gallery="gallery2" data-glightbox="Product item 1"><img id="downPhoto1"
+                                                        class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo1}" alt="..."></a>
                                                 </div>
                                                 <div class="swiper-slide h-auto swiper-slide-next" role="group"
                                                      aria-label="2 / 4" style="width: 428px;"><a
-                                                        class="glightbox product-view" href="img/product-detail-2.jpg"
-                                                        data-gallery="gallery2" data-glightbox="Product item 2"><img
-                                                        class="img-fluid" src="img/product-detail-2.jpg" alt="..."></a>
+                                                        class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo2}"
+                                                        data-gallery="gallery2" data-glightbox="Product item 2"><img id="downPhoto2"
+                                                        class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo2}" alt="..."></a>
                                                 </div>
                                                 <div class="swiper-slide h-auto" role="group" aria-label="3 / 4"
                                                      style="width: 428px;"><a class="glightbox product-view"
-                                                                              href="img/product-detail-3.jpg" data-gallery="gallery2"
-                                                                              data-glightbox="Product item 3"><img class="img-fluid"
-                                                                                                                   src="img/product-detail-3.jpg" alt="..."></a>
+                                                                              href="${pageContext.request.contextPath}/img/picture/${photo3}" data-gallery="gallery2"
+                                                                              data-glightbox="Product item 3"><img id="downPhoto3"
+                                                        class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo3}" alt="..."></a>
                                                 </div>
-                                            <c:if test="${phtot4!=null}">
                                                 <div class="swiper-slide h-auto" role="group" aria-label="4 / 4"
                                                      style="width: 428px;"><a class="glightbox product-view"
-                                                                              href="img/product-detail-3.jpg" data-gallery="gallery2"
-                                                                              data-glightbox="Product item 4"><img class="img-fluid"
-                                                                                                                   src="img/product-detail-3.jpg" alt="..."></a>
+                                                                              href="${pageContext.request.contextPath}/img/picture/${photo4}" data-gallery="gallery2"
+                                                                              data-glightbox="Product item 4"><img id="downPhoto4"
+                                                        class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo4}" alt="..."></a>
                                                 </div>
-                                            </c:if>
 
                                         </div>
                                         <span class="swiper-notification" aria-live="assertive"
@@ -291,51 +289,6 @@
                                     <div class="col col-2">
                                         <input class="form-check-input" type="checkbox" name="tag" value="小米" id="小米">
                                         <label class="form-check-label" for="小米"> 小米</label>
-
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="华为" id="华为">
-                                        <label class="form-check-label" for="华为"> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
-                                    </div>
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="" id="">
-                                        <label class="form-check-label" for=""> 华为</label>
                                     </div>
                                 </div>
                             </div>
@@ -422,7 +375,7 @@
 
             fileInput.addEventListener('change', function(e) {
                 var files = e.target.files;
-
+                var id = "";
                 // Iterate through each selected file
                 for (var i = 0; i < files.length; i++) {
                     var file = files[i];
@@ -432,10 +385,40 @@
                         var imageUrl = event.target.result;
 
                         // Find the next empty image container
-                        var emptyImageContainer = previewContainer.querySelector('.swiper-thumb-item img:not([src])');
+                        var specificDiv = document.getElementById('swiper-wrapper-6d944e741cdfca44'); // 替换成你的 div 的 id
+                        var imageElements = specificDiv.getElementsByTagName('img');
+                        console.log(111111111111111111111111111111111111111);
 
-                        if (emptyImageContainer) {
-                            emptyImageContainer.src = imageUrl;
+                        for (var i = 0; i < imageElements.length; i++) {
+                            console.log(33333333333333333333333333333333333333);
+                            var img = imageElements[i];
+                            if (!img.complete || img.naturalWidth === 0) {
+                                console.log(222222222222222222222222222222222222222222);
+                                emptyImageContainer.src = imageUrl;
+                                id = emptyImageContainer.id;
+                            }
+                        }
+                        var lowerImgId = '';
+                        switch (id) {
+                            case 'upPhoto1':
+                                lowerImgId = 'downPhoto1';
+                                break;
+                            case 'upPhoto2':
+                                lowerImgId = 'downPhoto2';
+                                break;
+                            case 'upPhoto3':
+                                lowerImgId = 'downPhoto3';
+                                break;
+                            case 'upPhoto4':
+                                lowerImgId = 'downPhoto4';
+                                break;
+                            default:
+                                break;
+                        }
+
+                        if (lowerImgId !== '') {
+                            var lowerImg = document.getElementById(lowerImgId);
+                            lowerImg.src = imageUrl;
                         }
                     };
 
@@ -455,17 +438,17 @@
             // 根据上方图片的位置确定需要清空的下方图片
             var lowerImgId = '';
             switch (upperImgId) {
-                case '1':
-                    lowerImgId = 'a';
+                case 'upPhoto1':
+                    lowerImgId = 'downPhoto1';
                     break;
-                case '2':
-                    lowerImgId = 'b';
+                case 'upPhoto2':
+                    lowerImgId = 'downPhoto2';
                     break;
-                case '3':
-                    lowerImgId = 'c';
+                case 'upPhoto3':
+                    lowerImgId = 'downPhoto3';
                     break;
-                case '4':
-                    lowerImgId = 'd';
+                case 'upPhoto4':
+                    lowerImgId = 'downPhoto4';
                     break;
                 default:
                     break;

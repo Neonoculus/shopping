@@ -39,8 +39,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> getGoodsByMId(int id,int start, int rows) {
-        return goodsDao.getGoodsByMId(id,start,rows);
+    public List<Goods> getGoodsByMId(int id) {
+        return goodsDao.getGoodsByMId(id);
     }
 
     @Override
@@ -77,6 +77,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> findByPage(int start, int rows) {
         return goodsDao.findByPage(start,rows);
+    }
+
+    @Override
+    public List<Goods> findByPageByMId(int id, int start, int rows) {
+        return goodsDao.findByPageByMId(id,start,rows);
     }
 
     @Override
