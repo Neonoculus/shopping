@@ -22,7 +22,7 @@
     rel="stylesheet">
   <!-- script
     ================================================== -->
-  <script src="js/modernizr.js"></script>
+  <script src="${pageContext.request.contextPath}/foreground/js/modernizr.js"></script>
 </head>
 
 <body>
@@ -126,97 +126,83 @@
   <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/main-logo.png" class="logo">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+          <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
         </a>
-        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <svg class="navbar-icon">
             <use xlink:href="#navbar-icon"></use>
           </svg>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
           <div class="offcanvas-header px-4 pb-0">
-            <a class="navbar-brand" href="index.html">
-              <img src="images/main-logo.png" class="logo">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+              <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
             </a>
-            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"
-              data-bs-target="#bdNavbar"></button>
+            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
           </div>
           <div class="offcanvas-body">
             <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-              <a class="nav-link me-4 active" href="#billboard">首页</a>
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="#company-services">服务</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="#mobile-products">产品</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="#smart-watches">观看</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#yearly-sale">销售</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#latest-blog">博客</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button"
-                  aria-expanded="false">网页</a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="about.html" class="dropdown-item">关于</a>
-                  </li>
-                  <li>
-                    <a href="blog.html" class="dropdown-item">博客</a>
-                  </li>
-                  <li>
-                    <a href="shop.html" class="dropdown-item">购物</a>
-                  </li>
-                  <li>
-                    <a href="cart.html" class="dropdown-item">购物车</a>
-                  </li>
-                  <li>
-                    <a href="checkout.html" class="dropdown-item">支付</a>
-                  </li>
-                  <li>
-                    <a href="single-post.html" class="dropdown-item">单一职位</a>
-                  </li>
-                  <li>
-                    <a href="single-product.html" class="dropdown-item">单品</a>
-                  </li>
-                  <li>
-                    <a href="contact.html" class="dropdown-item">联系</a>
-                  </li>
-                </ul>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
               </li>
               <li class="nav-item">
                 <div class="user-items ps-5">
-                  <ul class="d-flex justify-content-end list-unstyled">
-                    <li class="search-item pe-3">
-                      <a href="#" class="search-button">
-                        <svg class="search">
-                          <use xlink:href="#search"></use>
-                        </svg>
-                      </a>
-                    </li>
-                    <li class="pe-3">
-                      <a href="#">
-                        <svg class="user">
-                          <use xlink:href="#user"></use>
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="cart.html">
-                        <svg class="cart">
-                          <use xlink:href="#cart"></use>
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
+                  <c:if test="${buyer==NULL}">
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3">
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          登录/注册
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </c:if>
+                  <c:if test="${buyer!=NULL}">
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3">
+                        <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                          <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </c:if>
                 </div>
               </li>
             </ul>
@@ -230,31 +216,23 @@
       <div class="container d-flex align-items-center justify-content-center">
         <div class="row">
           <div style="height: 50px; "></div>
-          <div class="row d-flex align-items-center">
-            <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
-            <h2 class="display-7 text-uppercase text-dark col">这页面写的真牛逼</h2>
-          </div>
 
           <div class="page-content d-flex flex-wrap">
             <div class="col-sm-12">
               <div class="content-box text-dark pe-4 mb-5">
                 <div class="contact-address pt-3">
-                  <p>地址：花果山福地</p>
+                  <p>姓名：${order.name}</p>
                 </div>
                 <div class="contact-number">
-                  <p>联系电话：666666</p>
+                  <p>联系电话：${order.phone}</p>
                 </div>
-                <div class="email-address">
-                  <p>
-                    电子邮箱：<a href="#">666666@66.com</a>
-                  </p>
+                <div class="contact-address">
+                  <p>地址：${order.address}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
@@ -270,72 +248,30 @@
               <h3 class="cart-title col-lg-3 pb-3">金额</h3>
             </div>
           </div>
+          <c:forEach var="orderDetail" items="${orderDetailsList}" varStatus="i">
           <div class="cart-item border-top border-bottom padding-small">
             <div class="row align-items-center">
               <div class="col-lg-3 col-md-3">
                 <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
+                  ${order.o_id}
                 </h3>
               </div>
               <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
+                <a class="btn btn-primary " href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${goodsList[i.index].g_id}">${goodsList[i.index].name}</a>
               </div>
               <div class="col-lg-3 col-md-3">
                 <h3 class="card-title text-uppercase">
-                  4个
+                  ${orderDetail.count}个
                 </h3>
               </div>
               <div class="col-lg-3 col-md-3">
                 <h3 class="card-title text-uppercase">
-                  1000元
+                  ${orderDetail.money}元
                 </h3>
               </div>
             </div>
           </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  <a href="#">1808865</a>
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <p>海绵宝宝</p>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  4个
-                </h3>
-              </div>
-              <div class="col-lg-3 col-md-3">
-                <h3 class="card-title text-uppercase">
-                  1000元
-                </h3>
-              </div>
-            </div>
-          </div>
+          </c:forEach>
           <div class="cart-item border-top border-bottom padding-small">
             <div class="row align-items-center">
               <div class="col-lg-6 col-md-3"></div>
@@ -346,7 +282,7 @@
               </div>
               <div class="col-lg-3 col-md-3">
                 <h3 class="card-title text-uppercase">
-                  3000元
+                  ${order.money}元
                 </h3>
               </div>
             </div>
@@ -389,7 +325,7 @@
         <div class="d-flex flex-wrap">
           <figure class="instagram-item pe-2">
             <a href="#" class="image-link position-relative">
-              <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
+              <img src="${pageContext.request.contextPath}/foreground/images/insta-item1.jpg" alt="instagram" class="insta-image">
               <div class="icon-overlay position-absolute d-flex justify-content-center">
                 <svg class="instagram">
                   <use xlink:href="#instagram"></use>
@@ -399,7 +335,7 @@
           </figure>
           <figure class="instagram-item pe-2">
             <a href="#" class="image-link position-relative">
-              <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
+              <img src="${pageContext.request.contextPath}/foreground/images/insta-item2.jpg" alt="instagram" class="insta-image">
               <div class="icon-overlay position-absolute d-flex justify-content-center">
                 <svg class="instagram">
                   <use xlink:href="#instagram"></use>
@@ -409,7 +345,7 @@
           </figure>
           <figure class="instagram-item pe-2">
             <a href="#" class="image-link position-relative">
-              <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
+              <img src="${pageContext.request.contextPath}/foreground/images/insta-item3.jpg" alt="instagram" class="insta-image">
               <div class="icon-overlay position-absolute d-flex justify-content-center">
                 <svg class="instagram">
                   <use xlink:href="#instagram"></use>
@@ -419,7 +355,7 @@
           </figure>
           <figure class="instagram-item pe-2">
             <a href="#" class="image-link position-relative">
-              <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
+              <img src="${pageContext.request.contextPath}/foreground/images/insta-item4.jpg" alt="instagram" class="insta-image">
               <div class="icon-overlay position-absolute d-flex justify-content-center">
                 <svg class="instagram">
                   <use xlink:href="#instagram"></use>
@@ -429,7 +365,7 @@
           </figure>
           <figure class="instagram-item pe-2">
             <a href="#" class="image-link position-relative">
-              <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
+              <img src="${pageContext.request.contextPath}/foreground/images/insta-item5.jpg" alt="instagram" class="insta-image">
               <div class="icon-overlay position-absolute d-flex justify-content-center">
                 <svg class="instagram">
                   <use xlink:href="#instagram"></use>
@@ -448,7 +384,7 @@
           <div class="row d-flex flex-wrap justify-content-between">
             <div class="col-lg-3 col-sm-6 pb-3">
               <div class="footer-menu">
-                <img src="images/main-logo.png" alt="logo">
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
                 <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
                   erat nullam fringilla.</p>
                 <div class="social-links">
@@ -558,8 +494,8 @@
           <div class="Shipping d-flex">
             <p>We ship with:</p>
             <div class="card-wrap ps-2">
-              <img src="images/dhl.png" alt="visa">
-              <img src="images/shippingcard.png" alt="mastercard">
+              <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+              <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
             </div>
           </div>
         </div>
@@ -567,9 +503,9 @@
           <div class="payment-method d-flex">
             <p>Payment options:</p>
             <div class="card-wrap ps-2">
-              <img src="images/visa.jpg" alt="visa">
-              <img src="images/mastercard.jpg" alt="mastercard">
-              <img src="images/paypal.jpg" alt="paypal">
+              <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+              <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+              <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
             </div>
           </div>
         </div>

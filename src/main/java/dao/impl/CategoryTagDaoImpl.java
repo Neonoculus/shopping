@@ -38,7 +38,7 @@ public class CategoryTagDaoImpl implements CategoryTagDao {
     @Override
     public List<CategoryTag> getCategoryTagByCid(int id) {
         try {
-            List<CategoryTag> categoryTags = runner.query("select * from category_tag where t_id = ?", new BeanListHandler<CategoryTag>(CategoryTag.class), id);
+            List<CategoryTag> categoryTags = runner.query("select * from category_tag where c_id = ?", new BeanListHandler<CategoryTag>(CategoryTag.class), id);
             return categoryTags;
         } catch (SQLException e) {
             throw new RuntimeException(e);

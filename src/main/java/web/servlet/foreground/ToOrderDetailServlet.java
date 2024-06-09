@@ -1,6 +1,9 @@
 package web.servlet.foreground;
 
-import domain.*;
+import domain.Buyer;
+import domain.Goods;
+import domain.Order;
+import domain.OrderDetails;
 import service.BuyerService;
 import service.GoodsService;
 import service.OrderDetailsService;
@@ -17,54 +20,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * JSP 页面的 Servlet
  */
-@WebServlet("/toBuyerInfoServlet")
-public class ToBuyerInfoServlet extends HttpServlet {
+@WebServlet("/toOrderDetailServlet")
+public class ToOrderDetailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         BuyerService buyerService = new BuyerServiceImpl();
         OrderService orderService = new OrderServiceImpl();
         OrderDetailsService orderDetailsService = new OrderDetailsServiceImpl();
         GoodsService goodsService = new GoodsServiceImpl();
-
-        //  toBuyerInfoServlet  需要的参数
+        //  toOrderDetailServlet  需要的参数
         String b_idTemp =  request.getParameter("b_id");
-        if(b_idTemp==null){
-            b_idTemp = (String) request.getAttribute("b_id");
-        }
         int b_id = Integer.parseInt(b_idTemp);
+
+        long o_id = Long.parseLong(request.getParameter("o_id"));
         //  用户个人信息
         Buyer buyer = buyerService.getBuyerByBid(b_id);
         request.setAttribute("buyer",buyer);
         System.out.println(buyer);
-
         //订单信息
-        List<Order> orders = orderService.getOrderByBId(b_id);
-        request.setAttribute("orders",orders);
+        Order order = orderService.getOrderByOId(o_id).get(0);
+        request.setAttribute("order",order);
+        // 订单详情信息
+        List<OrderDetails> orderDetailsList = orderDetailsService.getOrderDetailsByOId(o_id);
+        request.setAttribute("orderDetailsList",orderDetailsList);
+        // 商品信息  图片 名字
+        List<Goods> goodsList = new ArrayList<>();
+        for (OrderDetails orderDetails : orderDetailsList){
+            Goods goods = goodsService.getGoodsByGId(orderDetails.getG_id());
 
-        //  订单里的商品信息
-        Map<Integer,List<String>> goodsNameMap = new HashMap<>();
-        for (int i=0;i<orders.size();i++){
-            List<OrderDetails> orderDetailsList = orderDetailsService.getOrderDetailsByOId(orders.get(i).getO_id());
-            List<String> goodsNameList = new ArrayList<>();
-            for(OrderDetails orderDetails : orderDetailsList){
-                Goods goods = goodsService.getGoodsByGId(orderDetails.getG_id());
-                goodsNameList.add(goods.getName());
-            }
-            goodsNameMap.put(i,goodsNameList);
+            goodsList.add(goods);
         }
-        System.out.println(goodsNameMap);
-        request.setAttribute("goodsNameMap",goodsNameMap);
+        request.setAttribute("goodsList",goodsList);
 
-        request.getRequestDispatcher("foreground/buyer.jsp").forward(request,response);
+        request.getRequestDispatcher("foreground/order_detail.jsp").forward(request,response);
     }
 
     @Override

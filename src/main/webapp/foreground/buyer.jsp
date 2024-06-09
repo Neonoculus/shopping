@@ -219,38 +219,47 @@
                     </div>
                 </div>
                 <c:forEach var="order" items="${orders}" varStatus="i">
-                  <div class="cart-item border-top border-bottom padding-small">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-3">
-                            <h3 class="card-title text-uppercase">
-                                <a href="#">${order.o_id}</a>
-                            </h3>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                            <c:forEach var="goodsName" items="${goodsNameMap[i.index]}" varStatus="j" step="1">
-                                <c:if test="${j.index % 2 == 0}">
-                                    <c:set var="nextIndex" value="${j.index + 1}" />
-<%--                                    <p>${goodsName}</p>--%>
-                                    <c:set var="nextGoodsName" value="${goodsNameMap[i.index][nextIndex]}" />
+                    <c:if test="${order.status!=-1}">
+                        <div class="cart-item border-top border-bottom padding-small">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 col-md-3">
+                                    <h3 class="card-title text-uppercase">
+                                        <a href="#">${order.o_id}</a>
+                                    </h3>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <c:forEach var="goodsName" items="${goodsNameMap[i.index]}" varStatus="j" step="1">
+                                        <c:if test="${j.index % 2 == 0}">
+                                            <c:set var="nextIndex" value="${j.index + 1}" />
+                                            <%--                                    <p>${goodsName}</p>--%>
+                                            <c:set var="nextGoodsName" value="${goodsNameMap[i.index][nextIndex]}" />
 
-                                    <!-- 显示当前元素和下一个元素 -->
-                                    <p>${goodsName} &nbsp;&nbsp;&nbsp;${nextGoodsName}</p>
-                                </c:if>
+                                            <!-- 显示当前元素和下一个元素 -->
+                                            <p>${goodsName} &nbsp;&nbsp;&nbsp;${nextGoodsName}</p>
+                                        </c:if>
 
-                            </c:forEach>
+                                    </c:forEach>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <h3 class="card-title text-uppercase">
+                                            ${order.money}元
+                                    </h3>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <h3 class="card-title text-uppercase">
+                                        <c:if test="${order.endTime!=NULL || order.status==0}">
+                                            <a href="${pageContext.request.contextPath}/doBuyerInfoServlet?o_id=${order.o_id}&status=-1&b_id=${buyer.b_id}" class="btn btn-light rounded-pill m-1">删除订单</a>
+                                        </c:if>
+                                        <c:if test="${order.endTime==NULL && order.status==1}">
+                                            <a href="${pageContext.request.contextPath}/doBuyerInfoServlet?o_id=${order.o_id}&status=0&b_id=${buyer.b_id}" class="btn btn-danger rounded-pill m-1">取消订单</a>
+                                        </c:if>
+                                        <a href="${pageContext.request.contextPath}/toOrderDetailServlet?o_id=${order.o_id}&b_id=${buyer.b_id}" class="btn btn-secondary rounded-pill m-1">详细信息</a>
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-3 col-md-3">
-                            <h3 class="card-title text-uppercase">
-                                ${order.money}元
-                            </h3>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                            <h3 class="card-title text-uppercase">
-                                <a href="order_detail.html">详细信息</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+                    </c:if>
+
                 </c:forEach>
             </div>
         </div>
