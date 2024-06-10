@@ -18,9 +18,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+
+
+    <!-- gLightbox gallery-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/foreground/vendor/glightbox/css/glightbox.min.css">
+    <!-- Range slider-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/foreground/vendor/nouislider/nouislider.min.css">
+    <!-- Choices CSS-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/foreground/vendor/choices.js/public/assets/styles/choices.min.css">
+    <!-- Swiper slider-->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/foreground/vendor/swiper/swiper-bundle.min.css">
+    <!-- Google fonts-->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/js/modernizr.js"></script>
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -98,12 +114,12 @@
 
         </div>
     </div>
-    
+
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/main-logo.png" class="logo">
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+            <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
           </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="navbar-icon">
@@ -112,85 +128,73 @@
           </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
-              <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
+              <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="#billboard">首页</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">服务</a>
+                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#mobile-products">产品</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#smart-watches">手表</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#yearly-sale">销售</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#latest-blog">博客</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">网页</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="about.html" class="dropdown-item">关于</a>
-                    </li>
-                    <li>
-                      <a href="blog.html" class="dropdown-item">博客</a>
-                    </li>
-                    <li>
-                      <a href="shop.html" class="dropdown-item">购物</a>
-                    </li>
-                    <li>
-                      <a href="cart.html" class="dropdown-item">购物车</a>
-                    </li>
-                    <li>
-                      <a href="checkout.html" class="dropdown-item">支付</a>
-                    </li>
-                    <li>
-                      <a href="single-post.html" class="dropdown-item">单一的职位</a>
-                    </li>
-                    <li>
-                      <a href="single-product.html" class="dropdown-item">单品</a>
-                    </li>
-                    <li>
-                      <a href="contact.html" class="dropdown-item">联系</a>
-                    </li>
-                  </ul>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
                 </li>
                 <li class="nav-item">
                   <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3">
-                        <a href="#" class="search-button">
-                          <svg class="search">
-                            <use xlink:href="#search"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="#">
-                          <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="cart.html">
-                          <svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
+                    <c:if test="${buyer==NULL}">
+                      <ul class="d-flex justify-content-end list-unstyled">
+                        <li class="search-item pe-3">
+                          <a href="#" class="search-button">
+                            <svg class="search">
+                              <use xlink:href="#search"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3">
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                            登录/注册
+                          </a>
+                        </li>
+                        <li>
+                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                            <svg class="cart">
+                              <use xlink:href="#cart"></use>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </c:if>
+                    <c:if test="${buyer!=NULL}">
+                      <ul class="d-flex justify-content-end list-unstyled">
+                        <li class="search-item pe-3">
+                          <a href="#" class="search-button">
+                            <svg class="search">
+                              <use xlink:href="#search"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3">
+                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                          </a>
+                        </li>
+                        <li>
+                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                            <svg class="cart">
+                              <use xlink:href="#cart"></use>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </c:if>
                   </div>
                 </li>
               </ul>
@@ -204,68 +208,73 @@
       <div class="container">
         <div class="row mt-5">
           <div class="col-lg-6">
-            <div class="product-preview mb-3">
-              <img src="images/singel-product-item.jpg" alt="single-product" class="img-fluid">
+            <div class="row m-sm-0">
+              <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
+                <div class="swiper product-slider-thumbs swiper-initialized swiper-vertical swiper-pointer-events swiper-thumbs">
+                  <div class="swiper-wrapper" id="swiper-wrapper-6d944e741cdfca44" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                    <c:forEach var="photo" items="${photoList}" varStatus="i">
+                      <c:if test="${i.index==0}">
+                        <div class="swiper-slide h-auto mb-3 swiper-thumb-item swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 4" style="height: 341px;">
+                          <img class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo}" alt="...">
+                        </div>
+                      </c:if>
+                      <c:if test="${i.index==1}">
+                        <div class="swiper-slide h-auto mb-3 swiper-thumb-item swiper-slide-visible swiper-slide-next" role="group" aria-label="2 / 4" style="height: 341px;">
+                          <img class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo}" alt="...">
+                        </div>
+                      </c:if>
+                      <c:if test="${i.index==2 || i.index==3}">
+                        <div class="swiper-slide h-auto mb-3 swiper-thumb-item swiper-slide-visible" role="group" aria-label="3 / 4" style="height: 341px;">
+                          <img class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo}" alt="...">
+                        </div>
+                      </c:if>
+                    </c:forEach>
+                  </div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              </div>
+              <div class="col-sm-10 order-1 order-sm-2">
+                <div class="swiper product-slider swiper-initialized swiper-horizontal swiper-pointer-events">
+                  <div class="swiper-wrapper" id="swiper-wrapper-5b7c5e2f834832e9" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+                    <c:forEach var="photo" items="${photoList}" varStatus="i">
+                      <c:if test="${i.index==0}">
+                        <div class="swiper-slide h-auto swiper-slide-active" role="group" aria-label="1 / 4" style="width: 391px;">
+                          <a class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo}" data-gallery="gallery2" data-glightbox="Product item 1">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo}" alt="...">
+                          </a>
+                        </div>
+                      </c:if>
+                      <c:if test="${i.index==1}">
+                        <div class="swiper-slide h-auto swiper-slide-next" role="group" aria-label="2 / 4" style="width: 391px;">
+                          <a class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo}" data-gallery="gallery2" data-glightbox="Product item 2">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo}" alt="..."></a>
+                        </div>
+                      </c:if>
+                      <c:if test="${i.index==2 || i.index==3}">
+                        <div class="swiper-slide h-auto" role="group" aria-label="3 / 4" style="width: 391px;">
+                          <a class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo}" data-gallery="gallery2" data-glightbox="Product item 3">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo}" alt="..."></a></div>
+                      </c:if>
+                    </c:forEach>
+                  </div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              </div>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="product-info">
               <div class="element-header">
-                <h3 itemprop="name" class="display-7 text-uppercase">粉色手表</h3>
-                <div class="rating-container d-flex align-items-center">
-                  <div class="rating" data-rating="1" onclick=rate(1)>
-                    <svg class="star star-fill">
-                      <use xlink:href="#star-fill"></use>
-                    </svg>
-                    <span class="rating-count ps-2">5.2</span>
-                  </div>
-                </div>
+                <h3 itemprop="name" class="display-7 text-uppercase">${goods.name}</h3>
               </div>
               <div class="product-price pt-3 pb-3">
-                <strong class="text-primary display-6 fw-bold">$870.00</strong>
+                <strong class="text-primary display-6 fw-bold">价格${goods.price}0元</strong>
               </div>
-              <p>Justo, cum feugiat imperdiet nulla molestie ac vulputate scelerisque amet. Bibendum adipiscing platea blandit sit sed quam semper rhoncus. Diam ultrices maecenas consequat eu tortor orci, cras lectus mauris, cras egestas quam venenatis neque.</p>
+              <p>描述：${goods.describe}</p>
               <div class="cart-wrap padding-small">
-                <div class="color-options product-select">
-                  <div class="color-toggle" data-option-index="0">
-                    <h4 class="item-title text-uppercase text-dark text-decoration-underline">颜色:</h4>
-                    <ul class="select-list list-unstyled d-flex">
-                      <li class="select-item pe-3" data-val="Green" title="Green">
-                        <a href="#">绿色</a>
-                      </li>
-                      <li class="select-item pe-3" data-val="Orange" title="Orange">
-                        <a href="#">橘色</a>
-                      </li>
-                      <li class="select-item pe-3" data-val="Red" title="Red">
-                        <a href="#">红色</a>
-                      </li>
-                      <li class="select-item" data-val="Black" title="Black">
-                        <a href="#">黑色</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="swatch product-select" data-option-index="1">
-                  <h4 class="item-title text-uppercase text-dark text-decoration-underline">大小:</h4>
-                  <ul class="select-list list-unstyled d-flex">
-                    <li data-value="S" class="select-item pe-3">
-                      <a href="#">XL</a>
-                    </li>
-                    <li data-value="M" class="select-item pe-3">
-                      <a href="#">L</a>
-                    </li>
-                    <li data-value="L" class="select-item pe-3">
-                      <a href="#">M</a>
-                    </li>
-                    <li data-value="L" class="select-item">
-                      <a href="#">S</a>
-                    </li>
-                  </ul>
-                </div>
                 <div class="product-quantity">
-                  <div class="stock-number text-dark">2 存货</div>
+                  <div class="stock-number text-dark">${goods.count}存货</div>
                   <div class="stock-button-wrap pt-3">
-
                     <div class="input-group product-qty">
                         <span class="input-group-btn">
                             <button type="button" class="quantity-left-minus btn btn-number"  data-type="minus" data-field="">
@@ -288,30 +297,21 @@
               </div>
               <div class="meta-product py-2">
                 <div class="meta-item d-flex align-items-baseline">
-                  <h4 class="item-title no-margin pe-2">SKU:</h4>
-                  <ul class="select-list list-unstyled d-flex">
-                    <li data-value="S" class="select-item">1223</li>
-                  </ul>
-                </div>
-                <div class="meta-item d-flex align-items-baseline">
                   <h4 class="item-title no-margin pe-2">类别:</h4>
                   <ul class="select-list list-unstyled d-flex">
                     <li data-value="S" class="select-item">
-                      <a href="#">手表</a>,
-                    </li>
-                    <li data-value="S" class="select-item">
-                      <a href="#"> 触摸屏</a>,
+                      <a href="#">${category.name}</a>
                     </li>
                   </ul>
                 </div>
                 <div class="meta-item d-flex align-items-baseline">
                   <h4 class="item-title no-margin pe-2">标签:</h4>
                   <ul class="select-list list-unstyled d-flex">
-                    <li data-value="S" class="select-item">
-                      <a href="#">经典的</a>,
-                    </li>
-                    <li data-value="S" class="select-item">
-                      <a href="#"> 现代的</a>
+                    <c:forEach var="tag" items="${tagList}">
+                      <li data-value="S" class="select-item">
+                        <a href="#">${tag.name}</a>,
+                      </li>
+                    </c:forEach>
                     </li>
                   </ul>
                 </div>
@@ -320,241 +320,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="product-info-tabs">
-      <div class="container">
-        <div class="row">
-          <div class="tabs-listing">
-            <nav>
-              <div class="nav nav-tabs d-flex flex-wrap justify-content-center" id="nav-tab" role="tablist">
-                <button class="nav-link active text-uppercase pe-5" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
-                <button class="nav-link text-uppercase pe-5" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab" aria-controls="nav-information" aria-selected="false">Additional information</button>
-                <button class="nav-link text-uppercase pe-5" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews</button>
-              </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-              <div class="tab-pane fade show active border-top border-bottom padding-small" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p>产品描述</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus.</p>
-                <ul style="list-style-type:disc;" class="list-unstyled ps-4">
-                  <li>Donec nec justo eget felis facilisis fermentum.</li>
-                  <li>Suspendisse urna viverra non, semper suscipit pede.</li>
-                  <li>Aliquam porttitor mauris sit amet orci.</li>
-                </ul> 
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
-              </div>
-              <div class="tab-pane fade border-top border-bottom padding-small" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
-                <p>It is Comfortable and Best</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-              <div class="tab-pane fade border-top border-bottom padding-small" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
-                <div class="review-box d-flex flex-wrap">
-                  <div class="col-lg-6 d-flex flex-wrap">
-                    <div class="col-md-2">
-                      <div class="image-holder">
-                        <img src="images/review-item1.jpg" alt="review" class="img-fluid">
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="review-content">
-                        <div class="rating-container d-flex align-items-center">
-                          <div class="rating" data-rating="1" onclick="rate(1)">
-                            <i class="icon icon-star"></i>
-                          </div>
-                          <div class="rating" data-rating="2" onclick="rate(1)">
-                            <i class="icon icon-star"></i>
-                          </div>
-                          <div class="rating" data-rating="3" onclick="rate(1)">
-                            <i class="icon icon-star"></i>
-                          </div>
-                          <div class="rating" data-rating="4" onclick="rate(1)">
-                            <i class="icon icon-star-half"></i>
-                          </div>
-                          <div class="rating" data-rating="5" onclick="rate(1)">
-                            <i class="icon icon-star-empty"></i>
-                          </div>
-                          <span class="rating-count">(3.5)</span>
-                        </div>
-                        <div class="review-header">
-                          <span class="author-name">Tina Johnson</span>
-                          <span class="review-date">– 03/07/2023</span>
-                        </div>
-                        <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 d-flex flex-wrap">
-                    <div class="col-md-2">
-                      <div class="image-holder">
-                        <img src="images/review-item2.jpg" alt="review" class="img-fluid">
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="review-content">
-                        <div class="rating-container d-flex align-items-center">
-                          <div class="rating" data-rating="1" onclick="rate(1)">
-                            <i class="icon icon-star"></i>
-                          </div>
-                          <div class="rating" data-rating="2" onclick="rate(1)">
-                            <i class="icon icon-star"></i>
-                          </div>
-                          <div class="rating" data-rating="3" onclick="rate(1)">
-                            <i class="icon icon-star"></i>
-                          </div>
-                          <div class="rating" data-rating="4" onclick="rate(1)">
-                            <i class="icon icon-star-half"></i>
-                          </div>
-                          <div class="rating" data-rating="5" onclick="rate(1)">
-                            <i class="icon icon-star-empty"></i>
-                          </div>
-                          <span class="rating-count">(3.5)</span>
-                        </div>
-                        <div class="review-header">
-                          <span class="author-name">Jenny Willis</span>
-                          <span class="review-date">– 03/06/2022</span>
-                        </div>
-                        <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus urna duis convallis convallis</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="related-products" class="product-store position-relative padding-large">
-      <div class="container">
-        <div class="row">
-          <div class="display-header d-flex justify-content-between pb-3">
-            <h2 class="display-7 text-dark text-uppercase">相关产品</h2>
-            <div class="btn-right">
-              <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">去购物</a>
-            </div>
-          </div>
-          <div class="swiper product-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <div class="btn-left">
-                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                        <svg class="cart-outline position-absolute">
-                          <use xlink:href="#cart-outline"></use>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 10</a>
-                    </h3>
-                    <span class="item-price text-primary">$980</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <div class="btn-left">
-                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                        <svg class="cart-outline position-absolute">
-                          <use xlink:href="#cart-outline"></use>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 11</a>
-                    </h3>
-                    <span class="item-price text-primary">$1100</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item3.jpg" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <div class="btn-left">
-                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                        <svg class="cart-outline position-absolute">
-                          <use xlink:href="#cart-outline"></use>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 8</a>
-                    </h3>
-                    <span class="item-price text-primary">$780</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item4.jpg" alt="product-item" class="product-image">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <div class="btn-left">
-                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                        <svg class="cart-outline position-absolute">
-                          <use xlink:href="#cart-outline"></use>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 13</a>
-                    </h3>
-                    <span class="item-price text-primary">$1500</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="images/product-item5.jpg" alt="product-item" class="product-image">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <div class="btn-left">
-                        <a href="#" class="btn btn-medium btn-black">加入购物车</a>
-                        <svg class="cart-outline position-absolute">
-                          <use xlink:href="#cart-outline"></use>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 12</a>
-                    </h3>
-                    <span class="item-price text-primary">$1300</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination position-absolute text-center"></div>
     </section>
     <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
       <div class="container">
@@ -578,67 +343,6 @@
         </div>
       </div>
     </section>
-    <section id="instagram" class="padding-large overflow-hidden no-padding-top">
-      <div class="container">
-        <div class="row">
-          <div class="display-header text-uppercase text-dark text-center pb-3">
-            <h2 class="display-7">Shop Our Insta</h2>
-          </div>
-          <div class="d-flex flex-wrap">
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
     <footer id="footer" class="overflow-hidden">
       <div class="container">
         <div class="row">
@@ -646,7 +350,7 @@
             <div class="row d-flex flex-wrap justify-content-between">
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
-                  <img src="images/main-logo.png" alt="logo">
+                  <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
                   <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
                   <div class="social-links">
                     <ul class="d-flex list-unstyled">
@@ -755,8 +459,8 @@
             <div class="Shipping d-flex">
               <p>We ship with:</p>
               <div class="card-wrap ps-2">
-                <img src="images/dhl.png" alt="visa">
-                <img src="images/shippingcard.png" alt="mastercard">
+                <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+                <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
               </div>
             </div>
           </div>
@@ -764,9 +468,9 @@
             <div class="payment-method d-flex">
               <p>Payment options:</p>
               <div class="card-wrap ps-2">
-                <img src="images/visa.jpg" alt="visa">
-                <img src="images/mastercard.jpg" alt="mastercard">
-                <img src="images/paypal.jpg" alt="paypal">
+                <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+                <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+                <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
               </div>
             </div>
           </div>
@@ -784,5 +488,14 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
+
+
+    <script src="${pageContext.request.contextPath}/foreground/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/vendor/nouislider/nouislider.min.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="${pageContext.request.contextPath}/foreground/js/front.js"></script>
+
+    <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
   </body>
 </html>

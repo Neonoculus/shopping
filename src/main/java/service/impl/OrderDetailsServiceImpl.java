@@ -3,7 +3,6 @@ package service.impl;
 import dao.OrderDetailsDao;
 import dao.impl.OrderDetailsDaoImpl;
 import domain.OrderDetails;
-import Dao.*;
 import service.OrderDetailsService;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public int delete(int g_id, int o_id) {
+    public int delete(int g_id, long o_id) {
         return orderDetailsDao.delete(g_id,o_id);
     }
 
@@ -42,7 +41,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
 
     @Override
-    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, int o_id) {
+    public List<OrderDetails> getOrderDetailsByMIdAndOId(int m_id, long o_id) {
         return orderDetailsDao.getOrderDetailsByMIdAndOId(m_id,o_id);
     }
 

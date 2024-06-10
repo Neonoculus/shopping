@@ -33,7 +33,7 @@ public class OrderDetailsDaoImplTest {
     }
     @Test
     public void getOrderDetailsByOIdTest(){
-        int id=1000001;
+        long id=20240418112758123L;
         List<OrderDetails> orderDetails=orderDetailsDao.getOrderDetailsByOId(id);
         for (OrderDetails orderDetails1 : orderDetails)
             System.out.println(orderDetails1);
