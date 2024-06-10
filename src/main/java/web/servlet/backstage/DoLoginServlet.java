@@ -7,6 +7,7 @@ import dao.impl.BuyerDaoImpl;
 import dao.impl.LoginDaoImpl;
 import dao.impl.MerchantDaoImpl;
 import domain.Login;
+
 import service.BuyerService;
 import service.LoginService;
 import service.MerchantService;
@@ -14,7 +15,7 @@ import service.impl.BuyerServiceImpl;
 import service.impl.LoginServiceImpl;
 import service.impl.MerchantServiceImpl;
 
-import java.io.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,7 @@ public class DoLoginServlet extends HttpServlet {
             request.setAttribute("warning","账号或者密码错误");
             request.getRequestDispatcher("backstage/signin.jsp").forward(request,response);
         }
-        else if (login.getType() == 0)
+        else if (login.getType() == 0 )
         {
             request.setAttribute("warning","账号已被封禁，如果有需要请联系管理员");
             request.getRequestDispatcher("backstage/signin.jsp").forward(request,response);

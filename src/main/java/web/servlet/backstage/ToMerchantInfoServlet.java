@@ -1,10 +1,10 @@
 package web.servlet.backstage;
 
+
 import domain.Merchant;
 import service.MerchantService;
 import service.impl.MerchantServiceImpl;
 
-import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

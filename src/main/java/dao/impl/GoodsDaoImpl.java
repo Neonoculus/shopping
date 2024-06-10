@@ -106,7 +106,7 @@ public class GoodsDaoImpl implements GoodsDao {
      * 通过类别、标签和价格区间查询商品
      */
     @Override
-    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice) {
+    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice,int start,int rows) {
         try {
             StringBuilder sql = new StringBuilder("select goods.g_id,goods.c_id,goods.m_id, goods.`name`,goods.photo,goods.price,goods.count,goods.`describe`,goods.`status`\n" +
                     "from goods\n" +
@@ -120,15 +120,17 @@ public class GoodsDaoImpl implements GoodsDao {
                     sql.append(" and goods.g_id in (select goods_tag.g_id from goods_tag join tag on goods_tag.t_id = tag.t_id where tag.t_id = ?)");
                 }
             }
-            sql.append(" and price >= ? AND price <= ? group by goods.g_id;");
+            sql.append(" and price >= ? AND price <= ? group by goods.g_id limit ?,?;");
             int size=tid.size();
-            Object[] params = tid.toArray(new Object[size + 3]);
+            Object[] params = tid.toArray(new Object[size + 5]);
             params[0]=cid;
             for (int i = 0; i < size; i++) {
                 params[i+1] = tid.get(i);
             }
             params[size+1]=minPrice;
             params[size+2]=maxPrice;
+            params[size+3]=start;
+            params[size+4]=rows;
             List<Goods> goods = runner.query(sql.toString(), new BeanListHandler<>(Goods.class), params);
             return goods;
         } catch (SQLException e) {
@@ -225,6 +227,30 @@ public class GoodsDaoImpl implements GoodsDao {
     public List<Goods> getAllGoods() {
         try {
             List<Goods> goods = runner.query("select * from goods", new BeanListHandler<Goods>(Goods.class));
+            return goods;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+//    rows代表每次取出多少条
+    @Override
+    public List<Goods> getGoodsByCIdAndPage(int cid, int start, int rows) {
+        try {
+            List<Goods> goods = runner.query("select * from goods where c_id = ? limit ? , ? ",new BeanListHandler<>(Goods.class),cid,start,rows);
+            return goods;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Goods> getGoodsPriceByCId(int cid,int v1,int v2) {
+        try {
+            List<Goods> goods = runner.query("SELECT *  \n" +
+                    "FROM goods  \n" +
+                    "JOIN category ON category.c_id = goods.c_id  \n" +
+                    "WHERE goods.c_id = ? AND goods.price BETWEEN ? AND ?;",new BeanListHandler<>(Goods.class),cid,v1,v2);
             return goods;
         } catch (SQLException e) {
             throw new RuntimeException(e);

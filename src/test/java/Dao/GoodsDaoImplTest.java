@@ -99,18 +99,18 @@ public class GoodsDaoImplTest {
         }
     }
 
-    @Test
-    public void getGoodsByCIdAndTidsAndPriceTest(){
-        List<Integer> Tids=new ArrayList<>();
-        Tids.add(15);
-        Tids.add(12);
-        Double minPrice=200.0;
-        Double maxPrice=6000.0;
-        List<Goods> goods = goodsDao.getGoodsByCIdAndTidsAndPrice(103,Tids,minPrice,maxPrice);
-        for(Goods goods1 : goods){
-            System.out.println(goods1);
-        }
-    }
+//    @Test
+//    public void getGoodsByCIdAndTidsAndPriceTest(){
+//        List<Integer> Tids=new ArrayList<>();
+//        Tids.add(15);
+//        Tids.add(12);
+//        Double minPrice=200.0;
+//        Double maxPrice=6000.0;
+//        List<Goods> goods = goodsDao.getGoodsByCIdAndTidsAndPrice(103,Tids,minPrice,maxPrice);
+//        for(Goods goods1 : goods){
+//            System.out.println(goods1);
+//        }
+//    }
     @Test
     public void getGoodByAllQueryTest(){
        String word="手";

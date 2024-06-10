@@ -54,8 +54,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice) {
-        return goodsDao.getGoodsByCIdAndTidsAndPrice(cid,tid,minPrice,maxPrice);
+    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice,int start,int rows) {
+        return goodsDao.getGoodsByCIdAndTidsAndPrice(cid,tid,minPrice,maxPrice,start, rows);
     }
 
     @Override
@@ -92,5 +92,15 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> getAllGoods() {
         return goodsDao.getAllGoods();
+    }
+
+    @Override
+    public List<Goods> getGoodsByCIdAndPage(int cid, int start, int rows) {
+        return goodsDao.getGoodsByCIdAndPage(cid,start,rows);
+    }
+
+    @Override
+    public List<Goods> getGoodsPriceByCId(int cid,int v1,int v2) {
+        return goodsDao.getGoodsPriceByCId(cid,v1,v2) ;
     }
 }

@@ -77,4 +77,18 @@ public class TagDaoImpl implements TagDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<Tag> getTagByCId(int cid) {
+        try {
+          List<Tag> tags = runner.query("SELECT tag.t_id,tag.`name`\n" +
+                  "FROM category_tag\n" +
+                  "JOIN tag on category_tag.t_id = tag.t_id\n" +
+                  "WHERE c_id = ? \n",new BeanListHandler<>(Tag.class),cid);
+            return tags;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
