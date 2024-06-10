@@ -139,10 +139,10 @@
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
@@ -164,7 +164,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>
@@ -187,7 +187,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                          <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>
@@ -275,23 +275,26 @@
                 <div class="product-quantity">
                   <div class="stock-number text-dark">${goods.count}存货</div>
                   <div class="stock-button-wrap pt-3">
+                    <form action="${pageContext.request.contextPath}/doSingleProductServlet?b_id=${buyer.b_id}&g_id=${goods.g_id}" method="post">
                     <div class="input-group product-qty">
                         <span class="input-group-btn">
-                            <button type="button" class="quantity-left-minus btn btn-number"  data-type="minus" data-field="">
+                            <button type="button" class="btn btn-number"  data-type="minus" data-field="" id="minus">
                               -
                             </button>
                         </span>
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                        <input type="text" id="quantity" name="quantity" class="form-control input-number"  pattern="\b([1-9]|[1-9][0-9]|100)\b" title="请输入1到100的数字" value="1" min="1" max="100" onblur="validateInput()">
                         <span class="input-group-btn">
-                            <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
+                            <button type="button" class="btn btn-number" data-type="plus" data-field="" id="plus">
                                 +
                             </button>
                         </span>
                     </div>
+                      <div id="error-message" style="display:none; color:red;">请输入1到100的数字</div>
                     <div class="qty-button d-flex flex-wrap pt-3">
-                      <button type="submit" class="btn btn-primary btn-medium text-uppercase me-3 mt-3">立即购买</button>
-                      <button type="submit" name="add-to-cart" value="1269" class="btn btn-black btn-medium text-uppercase mt-3">加入购物车</button>
+                      <button type="submit" name="add-to-order" class="btn btn-primary btn-medium text-uppercase me-3 mt-3" value="order">立即购买</button>
+                      <button type="submit" name="add-to-cart"  class="btn btn-black btn-medium text-uppercase mt-3" value="cart">加入购物车</button>
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -497,5 +500,47 @@
     <script src="${pageContext.request.contextPath}/foreground/js/front.js"></script>
 
     <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
+
+
+    <script>
+      //  商品按钮'-'和'+'
+      document.addEventListener('DOMContentLoaded', function() {
+        let input = document.getElementById('quantity');
+        let minValue = parseInt(input.getAttribute('min'));
+        let maxValue = parseInt(input.getAttribute('max'));
+
+        let minusButton = document.getElementById('minus');
+        let plusButton = document.getElementById('plus');
+
+        minusButton.addEventListener('click', function() {
+          let currentValue = parseInt(input.value);
+          if (currentValue > minValue) {
+            input.value = currentValue - 1;
+          }
+        });
+
+        plusButton.addEventListener('click', function() {
+          let currentValue = parseInt(input.value);
+          if (currentValue < maxValue) {
+            input.value = currentValue + 1;
+          }
+        });
+      });
+      //  输入框限制
+      function validateInput() {
+        let input = document.getElementById('quantity');
+        let value = input.value.trim();
+        let pattern = /\b([1-9]|[1-9][0-9]|100)\b/;
+        let errorMessage = document.getElementById('error-message');
+
+        if (!pattern.test(value)) {
+          errorMessage.style.display = 'block';
+          input.focus();
+        } else {
+          errorMessage.style.display = 'none';
+        }
+      }
+    </script>
+
   </body>
 </html>

@@ -153,7 +153,7 @@
                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
@@ -175,7 +175,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
                           <svg class="cart">
                             <use xlink:href="#cart"></use>
                           </svg>
@@ -198,7 +198,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                        <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
                           <svg class="cart">
                             <use xlink:href="#cart"></use>
                           </svg>

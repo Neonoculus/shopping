@@ -51,9 +51,6 @@ public class ToSingleProductServlet extends HttpServlet {
             tagList.add(tagService.getTagByTId(goodsTag.getT_id()));
         }
         request.setAttribute("tagList",tagList);
-        System.out.println("1111111111111111");
-        System.out.println(tagList);
-        System.out.println("1111111111111111");
 
         request.getRequestDispatcher("foreground/single-product.jsp").forward(request,response);
     }

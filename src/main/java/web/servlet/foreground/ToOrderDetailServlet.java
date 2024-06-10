@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * JSP 页面的 Servlet
  */
-@WebServlet("/toOrderDetailServlet")
+@WebServlet("/toBuyerOrderDetailServlet")
 public class ToOrderDetailServlet extends HttpServlet {
 
     @Override

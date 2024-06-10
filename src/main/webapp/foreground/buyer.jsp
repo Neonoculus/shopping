@@ -111,7 +111,7 @@
                             <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
+                            <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
@@ -133,7 +133,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                                            <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
                                                 <svg class="cart">
                                                     <use xlink:href="#cart"></use>
                                                 </svg>
@@ -156,7 +156,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                                            <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
                                                 <svg class="cart">
                                                     <use xlink:href="#cart"></use>
                                                 </svg>
@@ -253,7 +253,7 @@
                                         <c:if test="${order.endTime==NULL && order.status==1}">
                                             <a href="${pageContext.request.contextPath}/doBuyerInfoServlet?o_id=${order.o_id}&status=0&b_id=${buyer.b_id}" class="btn btn-danger rounded-pill m-1">取消订单</a>
                                         </c:if>
-                                        <a href="${pageContext.request.contextPath}/toOrderDetailServlet?o_id=${order.o_id}&b_id=${buyer.b_id}" class="btn btn-secondary rounded-pill m-1">详细信息</a>
+                                        <a href="${pageContext.request.contextPath}/toBuyerOrderDetailServlet?o_id=${order.o_id}&b_id=${buyer.b_id}" class="btn btn-secondary rounded-pill m-1">详细信息</a>
                                     </h3>
                                 </div>
                             </div>

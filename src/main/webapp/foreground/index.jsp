@@ -130,7 +130,7 @@
 
         </div>
     </div>
-    
+
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
@@ -152,13 +152,13 @@
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="/toShopServlet">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
@@ -180,7 +180,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>
@@ -203,7 +203,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
+                          <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>

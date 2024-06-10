@@ -126,97 +126,83 @@
   <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/main-logo.png" class="logo">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+          <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
         </a>
-        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <svg class="navbar-icon">
             <use xlink:href="#navbar-icon"></use>
           </svg>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
           <div class="offcanvas-header px-4 pb-0">
-            <a class="navbar-brand" href="index.html">
-              <img src="images/main-logo.png" class="logo">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+              <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
             </a>
-            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"
-              data-bs-target="#bdNavbar"></button>
+            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
           </div>
           <div class="offcanvas-body">
             <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-              <a class="nav-link me-4 active" href="#billboard">首页</a>
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="#company-services">服务</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="#mobile-products">产品</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="#smart-watches">观看</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#yearly-sale">销售</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#latest-blog">博客</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button"
-                  aria-expanded="false">网页</a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="about.html" class="dropdown-item">关于</a>
-                  </li>
-                  <li>
-                    <a href="blog.html" class="dropdown-item">博客</a>
-                  </li>
-                  <li>
-                    <a href="shop.html" class="dropdown-item">购物</a>
-                  </li>
-                  <li>
-                    <a href="cart.html" class="dropdown-item">购物车</a>
-                  </li>
-                  <li>
-                    <a href="checkout.html" class="dropdown-item">支付</a>
-                  </li>
-                  <li>
-                    <a href="single-post.html" class="dropdown-item">单一职位</a>
-                  </li>
-                  <li>
-                    <a href="single-product.html" class="dropdown-item">单品</a>
-                  </li>
-                  <li>
-                    <a href="contact.html" class="dropdown-item">联系</a>
-                  </li>
-                </ul>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
               </li>
               <li class="nav-item">
                 <div class="user-items ps-5">
-                  <ul class="d-flex justify-content-end list-unstyled">
-                    <li class="search-item pe-3">
-                      <a href="#" class="search-button">
-                        <svg class="search">
-                          <use xlink:href="#search"></use>
-                        </svg>
-                      </a>
-                    </li>
-                    <li class="pe-3">
-                      <a href="#">
-                        <svg class="user">
-                          <use xlink:href="#user"></use>
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="cart.html">
-                        <svg class="cart">
-                          <use xlink:href="#cart"></use>
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
+                  <c:if test="${buyer==NULL}">
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3">
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          登录/注册
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </c:if>
+                  <c:if test="${buyer!=NULL}">
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3">
+                        <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                          <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </c:if>
                 </div>
               </li>
             </ul>
@@ -231,12 +217,6 @@
         <div class="row">
           <div class="text-center padding-large no-padding-bottom">
             <h1 class="display-2 text-uppercase text-dark">购物车</h1>
-            <div class="breadcrumbs">
-              <span class="item">
-                <a href="index.html">首页 ></a>
-              </span>
-              <span class="item">购物车</span>
-            </div>
           </div>
         </div>
       </div>
@@ -249,26 +229,29 @@
           <div class="cart-header">
             <div class="row d-flex text-uppercase">
               <h3 class="cart-title col-lg-4 pb-3">产品</h3>
-              <h3 class="cart-title col-lg-3 pb-3">品质</h3>
+              <h3 class="cart-title col-lg-3 pb-3">数量</h3>
               <h3 class="cart-title col-lg-4 pb-3">小计</h3>
             </div>
           </div>
           <div class="cart-item border-top border-bottom padding-small">
+            <c:forEach var="cartDto" items="${cartDtoList}" varStatus="i">
             <div class="row align-items-center">
               <div class="col-lg-4 col-md-3">
                 <div class="cart-info d-flex flex-wrap align-items-center mb-4">
                   <div class="col-lg-5">
                     <div class="card-image">
-                      <img src="images/cart-item2.jpg" alt="cloth" class="img-fluid">
+                      <a href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${cartDto.g_id}&b_id=${buyer.b_id}">
+                      <img src="${pageContext.request.contextPath}/img/picture/${cartDto.photo}" style="border-radius: 10%" alt="cloth" class="img-fluid"></a>
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="card-detail">
                       <h3 class="card-title text-uppercase">
-                        <a href="#">Pink watch</a>
+                        <a href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${cartDto.g_id}&b_id=${buyer.b_id}">${cartDto.name}</a>
                       </h3>
                       <div class="card-price">
-                        <span class="money text-primary" data-currency-usd="$1200.00">$1500.00</span>
+                        <span class="money text-primary" data-currency-usd="$1200.00">${cartDto.money}0元</span>
+                        <input type="hidden" id="price${i.index}" value="${cartDto.money}">
                       </div>
                     </div>
                   </div>
@@ -280,26 +263,29 @@
                     <div class="qty-field">
                       <div class="qty-number d-flex">
                         <div class="row align-middle">
-                          <button type="button" class="dec-btn p-0 col col-3">-</button>
-                          <input class="form-control border-0 shadow-0 p-0 col" id="count" type="text" value="1"
-                            style="text-align: center;">
-                          <button type="button" class="inc-btn p-0 col col-3 ">+</button>
+                          <button type="button" class="p-0 col col-1" onclick="minus(${i.index})">-</button>
+                          <input class="form-control border-0 shadow-0 p-0 col" name="quantity" type="text" value="${cartDto.count}"style="text-align: center;" disabled style="background-color: rgba(1,1,1,0)" id="input${i.index}">
+                          <button type="button" class="p-0 col col-1" onclick="plus(${i.index})">+</button>
+                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
+                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
+                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
+                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
+                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
+                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
                         </div>
                       </div>
-                      <div class="regular-price"></div>
-                      <div class="quantity-output text-center bg-primary"></div>
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="total-price">
-                      <span class="money text-primary">$1500.00</span>
+                      <span class="money text-primary" id="money${i.index}">${cartDto.money*cartDto.count}0元</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-1 col-md-2">
                 <div class="cart-remove">
-                  <a href="#">
+                  <a href="${pageContext.request.contextPath}/doCartServlet?a=1&b_id=${buyer.b_id}&g_id=${cartDto.g_id}">
                     <svg class="close" width="38px">
                       <use xlink:href="#close"></use>
                     </svg>
@@ -307,84 +293,20 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <div class="row align-items-center">
-              <div class="col-lg-4 col-md-3">
-                <div class="cart-info d-flex flex-wrap align-items-center mb-4">
-                  <div class="col-lg-5">
-                    <div class="card-image">
-                      <img src="images/cart-item2.jpg" alt="cloth" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="card-detail">
-                      <h3 class="card-title text-uppercase">
-                        <a href="#">Pink watch</a>
-                      </h3>
-                      <div class="card-price">
-                        <span class="money text-primary" data-currency-usd="$1200.00">$870.00</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-7">
-                <div class="row d-flex">
-                  <div class="col-lg-6">
-                    <div class="qty-field">
-                      <div class="qty-number d-flex">
-                        <div class="row align-middle">
-                          <button type="button" class="dec-btn p-0 col col-3">-</button>
-                          <input class="form-control border-0 shadow-0 p-0 col" id="count" type="text" value="1"
-                            style="text-align: center;">
-                          <button type="button" class="inc-btn p-0 col col-3 ">+</button>
-                        </div>
-                      </div>
-                      <div class="regular-price"></div>
-                      <div class="quantity-output text-center bg-primary"></div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="total-price">
-                      <span class="money text-primary">$870.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-1 col-md-2">
-                <div class="cart-remove">
-                  <a href="#">
-                    <svg class="close" width="38px">
-                      <use xlink:href="#close"></use>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+            </c:forEach>
           </div>
         </div>
         <div class="cart-totals bg-grey padding-medium">
-          <h2 class="display-7 text-uppercase text-dark pb-4">购物车总计</h2>
-          <div class="total-price pb-5">
+          <div class="total-price pb-5" >
             <table cellspacing="0" class="table text-uppercase">
               <tbody>
-                <tr class="subtotal pt-2 pb-2 border-top border-bottom">
-                  <th>小计</th>
-                  <td data-title="Subtotal">
-                    <span class="price-amount amount text-primary ps-5">
-                      <bdi>
-                        <span class="price-currency-symbol">$</span>2,370.00
-                      </bdi>
-                    </span>
-                  </td>
-                </tr>
                 <tr class="order-total pt-2 pb-2 border-bottom">
-                  <th>总计</th>
+                  <th style="font-size: 50px">总计</th>
                   <td data-title="Total">
-                    <span class="price-amount amount text-primary ps-5">
-                      <bdi>
-                        <span class="price-currency-symbol">$</span>2,370.00</bdi>
+                    <span class="text-primary ps-5" style="font-size: 50px">
+                      <bdi  id="total">
+                        ${total}</bdi>
+                      <bdi id="hou">0元</bdi>
                     </span>
                   </td>
                 </tr>
@@ -638,6 +560,42 @@
   <script src="${pageContext.request.contextPath}/foreground/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
   <script src="${pageContext.request.contextPath}/foreground/js/front.js"></script>
 
+
+
+<script>
+  function minus(i){
+    let input = document.getElementById('input'+i);
+    let currentValue = parseInt(input.value);
+
+    if (currentValue > 1) {
+      input.value = currentValue - 1;
+      let money = document.getElementById('money'+i);
+      let price = document.getElementById('price'+i);
+      money.textContent = parseFloat(price.value)*parseFloat(input.value)+".00元";
+
+      let totalElement = document.getElementById('total');
+      let totalValue = parseFloat(totalElement.textContent)-parseFloat(price.value);
+      totalElement.textContent= totalValue;
+      let hou = document.getElementById('hou');
+      hou.textContent = ".00元"
+    }
+  }
+  function plus(i){
+    let input = document.getElementById('input'+i);
+    let currentValue = parseInt(input.value);
+    if (currentValue < 100) {
+      input.value = currentValue + 1;
+      let money = document.getElementById('money'+i);
+      let price = document.getElementById('price'+i);
+      money.textContent = parseFloat(price.value)*parseFloat(input.value)+".00元";
+      let totalElement = document.getElementById('total');
+      let totalValue = parseFloat(totalElement.textContent)+parseFloat(price.value);
+      totalElement.textContent= totalValue;
+      let hou = document.getElementById('hou');
+      hou.textContent = ".00元"
+    }
+  }
+</script>
 </body>
 
 </html>
