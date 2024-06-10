@@ -42,8 +42,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findByPage(int start, int rows) {
-        return orderDao.findByPage(start,rows);
+    public List<Order> findByPageAndMId(int id,int start, int rows) {
+        return orderDao.findByPageAndMId(id,start,rows);
     }
 
     @Override

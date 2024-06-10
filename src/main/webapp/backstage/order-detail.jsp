@@ -36,93 +36,95 @@
 
 <body>
     <div class="container-fluid position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
+            <!-- Spinner Start -->
+            <div id="spinner"
+                 class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+                <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </div>
-        </div>
-        <!-- Spinner End -->
+            <!-- Spinner End -->
 
 
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary">某购物平台</h3>
-                </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+            <!-- Sidebar Start -->
+            <div class="sidebar pe-4 pb-3">
+                <nav class="navbar bg-light navbar-light">
+                    <a href="index.html" class="navbar-brand mx-4 mb-3">
+                        <h3 class="text-primary">某购物平台</h3>
+                    </a>
+                    <div class="d-flex align-items-center ms-4 mb-4">
+                        <div class="position-relative">
+                            <img class="rounded-circle" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt="" style="width: 40px; height: 40px;">
+                            <div
+                                    class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                            </div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0">${merchant.name}</h6>
+                            <span>商家</span>
                         </div>
                     </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">随乡饺子馆</h6>
-                        <span>商家</span>
+                    <div class="navbar-nav w-100">
+                        <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
+                        <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
+                        <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                        <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
+                        <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                     </div>
-                </div>
-                <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
-                    <a href="info.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="goods.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="order.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>订单管理</a>
-                    <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
-                </div>
-            </nav>
-        </div>
-        <!-- Sidebar End -->
+                </nav>
+            </div>
+            <!-- Sidebar End -->
 
-        <!-- Content Start -->
-        <div class="content">
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
 
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">随乡饺子馆</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="info.html" class="dropdown-item">商家信息</a>
-                            <a href="setting.html" class="dropdown-item">设置</a>
-                            <a href="#" class="dropdown-item">退出登录</a>
+            <!-- Content Start -->
+            <div class="content">
+                <!-- Navbar Start -->
+                <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                        <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                    </a>
+                    <a href="#" class="sidebar-toggler flex-shrink-0">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="navbar-nav align-items-center ms-auto">
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <img class="rounded-circle me-lg-2" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt=""
+                                     style="width: 40px; height: 40px;">
+                                <span class="d-none d-lg-inline-flex">${merchant.name}</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                                <a href="info.html" class="dropdown-item">商家信息</a>
+                                <a href="setting.html" class="dropdown-item">设置</a>
+                                <a href="#" class="dropdown-item">退出登录</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </nav>
-            <!-- Navbar End -->
+                </nav>
+                <!-- Navbar End -->
+
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4 mb-4">
                     <div class="col col-6">
                         <div class="bg-light rounded h-100 p-4">
                             <div class="testimonial-item text-center">
-                                <img class="img-fluid rounded-circle mx-auto mb-4" src="img/testimonial-2.jpg"
+                                <img class="img-fluid rounded-circle mx-auto mb-4" src="${pageContext.request.contextPath}/img/picture/${buyer.photo}"
                                     style="width: 100px; height: 100px;">
-                                <p>买家姓名：天线宝宝</p>
-                                <p>联系电话：1008611</p>
-                                <p>电子邮箱：lv水立方@qq.com</p>
-                                <p>地址：银河系地球</p>
+                                <p>买家姓名：${order.name}</p>
+                                <p>联系电话：${order.phone}</p>
+                                <p>电子邮箱：${buyer.email}</p>
+                                <p>地址：${order.address}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col col-6">
                         <div class="bg-light rounded h-100 p-4 d-flex align-items-center justify-content-center">
                             <div class="testimonial-item text-center">
-                                <p>订单编号：1008611</p>
-                                <p>总金额：1000000000</p>
-                                <p>开始时间：20240525</p>
-                                <p>截止时间：20240528</p>
+                                <p>订单编号：${order.o_id}</p>
+                                <p>总金额：${order.money}</p>
+                                <p>开始时间：${order.startTime}</p>
+                                <p>截止时间：${order.endTime}</p>
                             </div>
 
                         </div>
@@ -151,29 +153,32 @@
                                 </tr>
                             </thead>
                             <tbody class="border-0">
+                            <c:forEach var="orderDetail" items="${orderDetails}" varStatus="i">
                                 <tr>
                                     <th class="p-3 align-middle border-light">
-                                        <p>1000000000001</p>
+                                        <p>${orderDetail.o_id}</p>
                                     </th>
-                                    <td class="ps-0 py-3 border-light" scope="row">
+                                    <td class="ps-0 py-3 border-light">
                                         <div class="d-flex align-items-center"><a
                                                 class="reset-anchor d-block animsition-link" href="#"><img
-                                                    src="img/product-detail-3.jpg" alt="..." width="70" /></a>
+                                                src="${pageContext.request.contextPath}/img/picture/${goodsList[i.index].photo}" alt="..." width="70" /></a>
                                             <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                        href="#">红色数字智能手表</a></strong></div>
+                                                                                    href="#">${goodsList[i.index].name}</a></strong></div>
                                         </div>
                                     </td>
                                     <td class="p-3 align-middle border-light">
-                                        <p class="mb-0 small">2个</p>
+                                        <p class="mb-0 small">${orderDetail.count}个</p>
                                     </td>
                                     <td class="p-3 align-middle border-light">
-                                        <p class="mb-0 small">500元</p>
+                                        <p class="mb-0 small">${orderDetail.money}元</p>
                                     </td>
                                     <td class="p-3 align-middle border-light">
-                                        <a class="btn btn-sm btn-secondary" href="od-detail.html"
-                                            target="_blank">详细信息</a>
+                                        <a class="btn btn-sm btn-secondary" href="toODDetailServlet?g_id=${goodsList[i.index].g_id}&m_id=${merchant.m_id}&o_id=${orderDetail.o_id}"
+                                           target="_blank">详细信息</a>
                                     </td>
                                 </tr>
+                            </c:forEach>
+
                             </tbody>
                         </table>
                     </div>

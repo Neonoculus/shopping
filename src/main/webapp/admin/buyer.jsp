@@ -12,7 +12,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="${pageContext.request.contextPath}/backstage/img/favicon.ico" rel="icon">
+    <link href="${pageContext.request.contextPath}/admin/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,14 +24,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="${pageContext.request.contextPath}/backstage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/backstage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="${pageContext.request.contextPath}/backstage/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="${pageContext.request.contextPath}/backstage/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/admin/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,26 +49,24 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="buyer.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary">某购物平台</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="img/管理员.png" alt="" style="width: 40px; height: 40px;">
                         <div
-                                class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">${merchant.name}</h6>
-                        <span>商家</span>
+                        <h6 class="mb-0">管理员</h6>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
-                    <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
+                    <a href="toAdminBuyerServlet" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
+                    <a href="toAdminMerchantServlet" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
+                    <a href="toAdminGoodsServlet.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>商品管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
@@ -86,21 +84,6 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <div class="navbar-nav align-items-center ms-auto">
-
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">${merchant.name}</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="info.html" class="dropdown-item">商家信息</a>
-                            <a href="setting.html" class="dropdown-item">设置</a>
-                            <a href="#" class="dropdown-item">退出登录</a>
-                        </div>
-                    </div>
-                </div>
             </nav>
             <!-- Navbar End -->
 
@@ -124,70 +107,65 @@
                     <div class="col"></div>
                     <div class="col"></div>
                     <div class="d-flex align-items-center justify-content-end mb-4 col">
-                        <button type="button" class="btn btn-danger m-2">批量下架</button>
-                        <button type="button" class="btn btn-success m-2">商品上架</button>
+
+                        <button type="button" class="btn btn-danger m-2">批量封禁</button><button type="button"
+                            class="btn btn-success m-2">批量解封</button>
                     </div>
                 </div>
                 <table class="table text-nowrap">
                     <thead class="bg-light">
                         <tr>
                             <th class="border-0 p-3" scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">产品</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户编号</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">价格</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户名称</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">库存</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户电子邮箱</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">状态</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户地址</strong>
                             </th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">操作</strong>
                             </th>
                         </tr>
                     </thead>
                     <tbody class="border-0">
-                    <c:forEach var="goods" items="${goodsList}">
+                    <c:forEach var="buyer" items="${buyers}" varStatus="0">
                         <tr>
                             <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
                             </th>
+                            <td class="p-3 align-middle border-light">
+                                <p class="mb-0 small">${buyer.b_id}</p>
+                            </td>
                             <td class="ps-0 py-3 border-light" scope="row">
                                 <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"
-                                                                          href="#"><img src="${pageContext.request.contextPath}/img/picture/${goods.photo}" alt="..." width="70" /></a>
+                                                                          href="#"><img src="img/product-detail-3.jpg" alt="..." width="70" /></a>
                                     <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link"
-                                                                            href="#">${goods.name}</a></strong></div>
+                                                                            href="#">${buyer.name}</a></strong></div>
                                 </div>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">${goods.price}元</p>
+                                <p class="mb-0 small">${buyer.email}</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">${goods.count}个</p>
+                                <p class="mb-0 small">${buyer.address}</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small"><c:if test="${goods.status==1}">正在售卖</c:if><c:if test="${goods.status==0}">暂停售卖</c:if></p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <c:if test="${goods.status==1}"><a class="btn btn-sm btn-danger" href="doSoldOutServlet?g_id=${goods.g_id}&status=1">下架</a></c:if>
-                                <c:if test="${goods.status==0}"><a class="btn btn-sm btn-success" href="doSoldUpServlet?g_id=${goods.g_id}&status=0">上架</a></c:if>
-
-                                <a class="btn btn-sm btn-secondary" href="toGoodsDetailServlet?g_id=${goods.g_id}&m_id=${merchant.m_id}&start=${page}" target="_blank">详细信息</a>
+                                <a class="btn btn-sm btn-danger" href="doBannedServlet?id=${buyer.b_id}&type=0">封禁</a>
+                                <a class="btn btn-sm btn-success" href="doBannedServlet?id=${buyer.b_id}&type=1">解封</a>
                             </td>
                         </tr>
                     </c:forEach>
+
+
                     </tbody>
 
                 </table>
                 <ul class="pagination">
-                    <c:if test="${page!=0}">
-                        <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page-1}&merchant=${merchant.m_id}">上一页</a></li>
-                    </c:if>
-                    <c:forEach begin="1" end="${pageSumNumber}" step="1" var="i">
-                        <c:if test="${i==page+1}"><li class="page-item active"><a class="page-link" href="toGoodsServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
-                        <c:if test="${i!=page+1}"><li class="page-item"><a class="page-link" href="toGoodsServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
-                    </c:forEach>
-                    <c:if test="${page<pageSumNumber-1}">
-                        <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page+1}&merchant=${merchant.m_id}">下一页</a></li>
-                    </c:if>
-
+                    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
                 </ul>
             </div>
             <!-- Goods Table End -->
@@ -203,16 +181,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/chart/chart.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/easing/easing.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/waypoints/waypoints.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="${pageContext.request.contextPath}/backstage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/chart/chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/easing/easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/waypoints/waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/admin/js/main.js"></script>
 </body>
 
 </html>

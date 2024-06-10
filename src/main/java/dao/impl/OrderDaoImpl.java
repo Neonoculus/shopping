@@ -106,7 +106,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getOrderByMId(int id) {
         try {
-            List<Order> orders = runner.query("SELECT `order`.o_id,`order`.b_id,`order`.money,`order`.start_time,`order`.end_time,`order`.name,\n" +
+            List<Order> orders = runner.query("SELECT `order`.o_id,`order`.b_id,`order`.money,`order`.start_time,`order`.end_time,`order`.name,`order`.phone,\n" +
                     "`order`.address,`order`.`status`\n" +
                     "FROM `order`\n" +
                     "JOIN order_details on order_details.o_id = `order`.o_id\n" +
@@ -122,7 +122,12 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> findByPageAndMId(int id,int start, int rows) {
         try {
-            List<Order> orders = runner.query("select * from order limit ? , ?", getListResultSetHandler(),start,rows);
+            List<Order> orders = runner.query("SELECT `order`.o_id,`order`.b_id,`order`.money,`order`.start_time,`order`.end_time,`order`.name,`order`.phone,\n" +
+                    "`order`.address,`order`.`status`\n" +
+                    "FROM `order`\n" +
+                    "JOIN order_details on order_details.o_id = `order`.o_id\n" +
+                    "JOIN goods on goods.g_id = order_details.g_id\n" +
+                    "WHERE goods.m_id = ? limit ? , ?", getListResultSetHandler(),id,start,rows);
             return orders;
         } catch (SQLException e) {
             throw new RuntimeException(e);

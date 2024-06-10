@@ -80,10 +80,10 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
-                    <a href="info.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="goods.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="order.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>订单管理</a>
+                    <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
+                    <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
+                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
@@ -100,13 +100,13 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-
                 <div class="navbar-nav align-items-center ms-auto">
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">随乡饺子馆</span>
+                            <img class="rounded-circle me-lg-2" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt=""
+                                 style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">${merchant.name}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="info.html" class="dropdown-item">商家信息</a>
@@ -131,19 +131,19 @@
                                             aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                                             <div class="swiper-slide h-auto mb-3 swiper-thumb-item swiper-slide-visible swiper-slide-active swiper-slide-thumb-active"
                                                 role="group" aria-label="1 / 4" style="height: 371px;"><img
-                                                    class="w-100" src="img/product-detail-2.jpg" alt="...">
+                                                    class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo1}" alt="...">
                                             </div>
                                             <div class="swiper-slide h-auto mb-3 swiper-thumb-item swiper-slide-visible swiper-slide-next"
                                                 role="group" aria-label="2 / 4" style="height: 371px;">
-                                                <img class="w-100" src="img/product-detail-2.jpg" alt="...">
+                                                <img class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo2}" alt="...">
                                             </div>
                                             <div class="swiper-slide h-auto mb-3 swiper-thumb-item swiper-slide-visible"
                                                 role="group" aria-label="3 / 4" style="height: 371px;">
-                                                <img class="w-100" src="img/product-detail-3.jpg" alt="...">
+                                                <img class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo3}" alt="...">
                                             </div>
                                             <div class="swiper-slide h-auto mb-3 swiper-thumb-item  swiper-slide-visible"
                                                 role="group" aria-label="4 / 4" style="height: 371px;">
-                                                <img class="w-100" src="img/product-detail-3.jpg" alt="...">
+                                                <img class="w-100" src="${pageContext.request.contextPath}/img/picture/${photo4}" alt="...">
                                             </div>
 
                                         </div>
@@ -157,27 +157,29 @@
                                         <div class="swiper-wrapper" id="swiper-wrapper-5b7c5e2f834832e9"
                                             aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
                                             <div class="swiper-slide h-auto swiper-slide-active" role="group"
-                                                aria-label="1 / 4" style="width: 428px;"><a
-                                                    class="glightbox product-view" href="img/product-detail-2.jpg"
-                                                    data-gallery="gallery2" data-glightbox="Product item 1"><img
-                                                        class="img-fluid" src="img/product-detail-2.jpg" alt="..."></a>
+                                                 aria-label="1 / 4" style="width: 428px;"><a
+                                                    class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo1}"
+                                                    data-gallery="gallery2" data-glightbox="Product item 1"><img id="downPhoto1"
+                                                                                                                 class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo1}" alt="..."></a>
                                             </div>
                                             <div class="swiper-slide h-auto swiper-slide-next" role="group"
-                                                aria-label="2 / 4" style="width: 428px;"><a
-                                                    class="glightbox product-view" href="img/product-detail-2.jpg"
-                                                    data-gallery="gallery2" data-glightbox="Product item 2"><img
-                                                        class="img-fluid" src="img/product-detail-2.jpg" alt="..."></a>
+                                                 aria-label="2 / 4" style="width: 428px;"><a
+                                                    class="glightbox product-view" href="${pageContext.request.contextPath}/img/picture/${photo2}"
+                                                    data-gallery="gallery2" data-glightbox="Product item 2"><img id="downPhoto2"
+                                                                                                                 class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo2}" alt="..."></a>
                                             </div>
                                             <div class="swiper-slide h-auto" role="group" aria-label="3 / 4"
-                                                style="width: 428px;"><a class="glightbox product-view"
-                                                    href="img/product-detail-3.jpg" data-gallery="gallery2"
-                                                    data-glightbox="Product item 3"><img class="img-fluid"
-                                                        src="img/product-detail-3.jpg" alt="..."></a></div>
+                                                 style="width: 428px;"><a class="glightbox product-view"
+                                                                          href="${pageContext.request.contextPath}/img/picture/${photo3}" data-gallery="gallery2"
+                                                                          data-glightbox="Product item 3"><img id="downPhoto3"
+                                                                                                               class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo3}" alt="..."></a>
+                                            </div>
                                             <div class="swiper-slide h-auto" role="group" aria-label="4 / 4"
-                                                style="width: 428px;"><a class="glightbox product-view"
-                                                    href="img/product-detail-3.jpg" data-gallery="gallery2"
-                                                    data-glightbox="Product item 4"><img class="img-fluid"
-                                                        src="img/product-detail-3.jpg" alt="..."></a></div>
+                                                 style="width: 428px;"><a class="glightbox product-view"
+                                                                          href="${pageContext.request.contextPath}/img/picture/${photo4}" data-gallery="gallery2"
+                                                                          data-glightbox="Product item 4"><img id="downPhoto4"
+                                                                                                               class="img-fluid" src="${pageContext.request.contextPath}/img/picture/${photo4}" alt="..."></a>
+                                            </div>
                                         </div>
                                         <span class="swiper-notification" aria-live="assertive"
                                             aria-atomic="true"></span>
@@ -188,16 +190,16 @@
                         <!-- PRODUCT DETAILS-->
                         <div class="col-lg-6">
                             <div class="row mb-3">
-                                <strong class="col-sm-4">商品编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10000000001</strong>
+                                <strong class="col-sm-4">商品编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${goods.g_id}</strong>
                             </div>
                             <div class="row mb-3">
-                                <strong class="col-sm-4">商品名称·：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;红色数字智能手表</strong>
+                                <strong class="col-sm-4">商品名称·：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${goods.name}</strong>
                             </div>
                             <div class="row mb-3">
-                                <strong class="col-sm-4">数量：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2个</strong>
+                                <strong class="col-sm-4">数量：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${orderDetails.count}个</strong>
                             </div>
                             <div class="row mb-3">
-                                <strong class="col-sm-4">小计：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500元</strong>
+                                <strong class="col-sm-4">小计：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${orderDetails.money}元</strong>
                             </div>
 
                         </div>

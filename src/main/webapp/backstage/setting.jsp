@@ -65,11 +65,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
-                    <a href="info.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="goods.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="order.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
-                    <a href="setting.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>设置</a>
+                    <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
+                    <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
+                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
+                    <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
         </div>
@@ -85,13 +85,13 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-
                 <div class="navbar-nav align-items-center ms-auto">
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">随乡饺子馆</span>
+                            <img class="rounded-circle me-lg-2" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt=""
+                                 style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">${merchant.name}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="info.html" class="dropdown-item">商家信息</a>
@@ -107,21 +107,21 @@
                 <div class="row d-flex justify-content-center">
                     <div class="bg-light rounded h-100 p-4 col col-xl-6">
                         <h6 class="mb-4">账号安全</h6>
-                        <form>
+                        <form action="">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">电子邮箱</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <input type="email" class="form-control" id="exampleInputEmail1" name="email"
                                     aria-describedby="emailHelp">
                                 <div id="emailHelp" class="form-text">我们绝不会与其他人分享您的电子邮件地址
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">密码</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="password1">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword2" class="form-label">确认密码</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2">
+                                <input type="password" class="form-control" id="exampleInputPassword2" name="password2">
                             </div>
                             <button type="submit" class="btn btn-primary">确认修改</button>
                         </form>

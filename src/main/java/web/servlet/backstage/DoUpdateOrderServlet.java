@@ -1,6 +1,5 @@
 package web.servlet.backstage;
 
-import domain.Goods;
 import domain.Merchant;
 import domain.Order;
 import service.MerchantService;
@@ -8,7 +7,6 @@ import service.OrderService;
 import service.impl.MerchantServiceImpl;
 import service.impl.OrderServiceImpl;
 
-import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/toOrderServlet")
-public class ToOrderServlet extends HttpServlet {
+@WebServlet("/doUpdateOrderServlet")
+public class DoUpdateOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,14 +28,21 @@ public class ToOrderServlet extends HttpServlet {
         OrderService orderService = new OrderServiceImpl();
         MerchantService merchantService = new MerchantServiceImpl();
 
+        Long order = Long.valueOf(request.getParameter("order"));
+        Order order1 = orderService.getOrderByOId(order).get(0);
+        int status = Integer.parseInt(request.getParameter("status"));
+        order1.setStatus(status);
+
+        int i = orderService.update(order1);
+
         String startString = request.getParameter("start");
         if (startString == null){
             startString = (String) request.getAttribute("start");
         }
         int start = Integer.parseInt(startString)*10;
-        String m_idParam = request.getParameter("merchant");
+        String m_idParam = request.getParameter("m_id");
         if (m_idParam == null){
-            m_idParam = (String) request.getAttribute("merchant");
+            m_idParam = (String) request.getAttribute("m_id");
         }
         int m_id = Integer.parseInt(m_idParam);
         Merchant merchant = merchantService.getMerchantByMId(m_id);
