@@ -12,6 +12,7 @@ import service.impl.BuyerServiceImpl;
 import service.impl.GoodsServiceImpl;
 import service.impl.OrderDetailsServiceImpl;
 import service.impl.OrderServiceImpl;
+import utils.PhotoUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,7 @@ public class ToOrderDetailServlet extends HttpServlet {
         OrderService orderService = new OrderServiceImpl();
         OrderDetailsService orderDetailsService = new OrderDetailsServiceImpl();
         GoodsService goodsService = new GoodsServiceImpl();
+        PhotoUtil photoUtil = new PhotoUtil();
         //  toOrderDetailServlet  需要的参数
         String b_idTemp =  request.getParameter("b_id");
         int b_id = Integer.parseInt(b_idTemp);
@@ -42,7 +44,6 @@ public class ToOrderDetailServlet extends HttpServlet {
         //  用户个人信息
         Buyer buyer = buyerService.getBuyerByBid(b_id);
         request.setAttribute("buyer",buyer);
-        System.out.println(buyer);
         //订单信息
         Order order = orderService.getOrderByOId(o_id).get(0);
         request.setAttribute("order",order);
@@ -53,7 +54,8 @@ public class ToOrderDetailServlet extends HttpServlet {
         List<Goods> goodsList = new ArrayList<>();
         for (OrderDetails orderDetails : orderDetailsList){
             Goods goods = goodsService.getGoodsByGId(orderDetails.getG_id());
-
+            String photo = photoUtil.getPhotoList(goods.getPhoto()).get(0);
+            goods.setPhoto(photo);
             goodsList.add(goods);
         }
         request.setAttribute("goodsList",goodsList);

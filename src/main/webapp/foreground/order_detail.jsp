@@ -20,6 +20,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet">
+
+
+
   <!-- script
     ================================================== -->
   <script src="${pageContext.request.contextPath}/foreground/js/modernizr.js"></script>
@@ -256,8 +259,17 @@
                   ${order.o_id}
                 </h3>
               </div>
-              <div class="col-lg-3 col-md-3">
-                <a class="btn btn-primary " href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${goodsList[i.index].g_id}">${goodsList[i.index].name}</a>
+              <div class="col-lg-3 col-md-3 d-flex align-items-center">
+                  <a class="reset-anchor d-block animsition-link" href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${goodsList[i.index].g_id}&b_id=${buyer.b_id}">
+                    <img src="${pageContext.request.contextPath}/img/picture/${goodsList[i.index].photo}" alt="..." width="70">
+                  </a>
+                  <div class="ms-3">
+                    <strong class="h6">
+                      <a class="reset-anchor animsition-link" href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${goodsList[i.index].g_id}&b_id=${buyer.b_id}">
+                          ${goodsList[i.index].name}
+                      </a>
+                    </strong>
+                  </div>
               </div>
               <div class="col-lg-3 col-md-3">
                 <h3 class="card-title text-uppercase">

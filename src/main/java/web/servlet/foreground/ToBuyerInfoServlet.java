@@ -9,6 +9,7 @@ import service.impl.BuyerServiceImpl;
 import service.impl.GoodsServiceImpl;
 import service.impl.OrderDetailsServiceImpl;
 import service.impl.OrderServiceImpl;
+import utils.PhotoUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +45,6 @@ public class ToBuyerInfoServlet extends HttpServlet {
         //  用户个人信息
         Buyer buyer = buyerService.getBuyerByBid(b_id);
         request.setAttribute("buyer",buyer);
-        System.out.println(buyer);
 
         //订单信息
         List<Order> orders = orderService.getOrderByBId(b_id);
@@ -61,7 +61,6 @@ public class ToBuyerInfoServlet extends HttpServlet {
             }
             goodsNameMap.put(i,goodsNameList);
         }
-        System.out.println(goodsNameMap);
         request.setAttribute("goodsNameMap",goodsNameMap);
 
         request.getRequestDispatcher("foreground/buyer.jsp").forward(request,response);
