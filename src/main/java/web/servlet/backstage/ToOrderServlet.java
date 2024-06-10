@@ -1,15 +1,12 @@
 package web.servlet.backstage;
 
-import dao.GoodsDao;
-import dao.MerchantDao;
-import dao.impl.GoodsDaoImpl;
-import dao.impl.MerchantDaoImpl;
 import domain.Goods;
 import domain.Merchant;
-import service.GoodsService;
+import domain.Order;
 import service.MerchantService;
-import service.impl.GoodsServiceImpl;
+import service.OrderService;
 import service.impl.MerchantServiceImpl;
+import service.impl.OrderServiceImpl;
 
 import java.io.*;
 import javax.servlet.ServletException;
@@ -20,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/toGoodsServlet")
-public class ToGoodsServlet extends HttpServlet {
+@WebServlet("/toOrderServlet")
+public class ToOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,9 +27,8 @@ public class ToGoodsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        GoodsService goodsService = new GoodsServiceImpl();
+        OrderService orderService = new OrderServiceImpl();
         MerchantService merchantService = new MerchantServiceImpl();
-
 
         String startString = request.getParameter("start");
         if (startString == null){
@@ -46,7 +42,7 @@ public class ToGoodsServlet extends HttpServlet {
         int m_id = Integer.parseInt(m_idParam);
         Merchant merchant = merchantService.getMerchantByMId(m_id);
 
-        List<Goods> goodsList = goodsService.findByPageByMId(m_id,start,10);
+        List<Order> orderList = orderService.getOrderByMId(m_id,start,10);
         int pageSumNumber = goodsService.goodsPageSum(goodsService.getGoodsByMId(m_id))/10+1;
         start = start/10;
 

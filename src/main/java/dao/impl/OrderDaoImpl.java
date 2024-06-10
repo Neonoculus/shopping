@@ -122,7 +122,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public List<Order> findByPage(int start, int rows) {
+    public List<Order> findByPageAndMId(int id,int start, int rows) {
         try {
             List<Order> orders = runner.query("select * from order limit ? , ?", new BeanListHandler<Order>(Order.class),start,rows);
             return orders;

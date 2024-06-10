@@ -80,9 +80,9 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
+                    <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
                     <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
                     <a href="order.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
@@ -117,7 +117,7 @@
             <!-- Navbar End -->
 
             <div class="container-fluid pt-4 px-4">
-                <form action="">
+                <form action="doUpdateGoodsServlet" id="myForm" method="post">
                     <div class="row mb-5">
                         <div class="col-lg-6">
                             <!-- PRODUCT SLIDER-->
@@ -199,9 +199,18 @@
                                                         <img class="w-100" id="upPhoto4" src="${pageContext.request.contextPath}/img/picture/${photo4}" alt="...">
                                                     </div>
                                                 </div>
+                                            <input type="hidden" name="g_id" id="g_id" value="${goods.g_id}">
+                                            <input type="hidden" name="c_id" id="c_id" value="${goods.c_id}">
+                                            <input type="hidden" name="m_id" id="m_id" value="${goods.m_id}">
+                                            <input type="hidden" name="start" id="start" value="${start}">
+                                            <input type="hidden" name="Photo1" id="Photo1Input" value="">
+                                            <input type="hidden" name="Photo2" id="Photo2Input" value="">
+                                            <input type="hidden" name="Photo3" id="Photo3Input" value="">
+                                            <input type="hidden" name="Photo4" id="Photo4Input" value="">
+                                            <input type="hidden" name="tags" id="tags" value="">
 
                                             <c:if test="${phtot4==null}">
-                                                <div class="swiper-slide h-auto swiper-thumb-item mt-3 swiper-slide-visible"
+                                                <div class="swiper-slide h-auto swiper-thumb-item mt-3 swiper-slide-visible" id="addPhoto"
                                                      style="height: 371px;">
                                                     <div>
                                                         <input type="file" id="photoInput"
@@ -267,7 +276,7 @@
                                 <label for="goods-name" class="col-sm-2 col-form-label"
                                     style="padding-right: 0;">商品名称：</label>
                                 <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="goods-name" value="红色数字智能手表">
+                                    <input type="text" class="form-control" id="goods-name" name="goods-name" value="${goods.name}">
                                 </div>
                             </div>
                             <div class="row d-flex align-items-center mb-3">
@@ -275,27 +284,35 @@
                                     style="padding-right: 0;">商品类别：</label>
                                 <div class="col-sm-3 " style="padding-left: 0;">
                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                                        id="goods-type">
-                                        <option value="1">手机</option>
-                                        <option value="2">电脑</option>
-                                        <option value="3">平板</option>
-                                        <option selected="selected">--请选择商品类别--</option>
+                                        id="goods-type" readonly disabled>
+                                        <option value="1">${category.name}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row d-flex align-items-center mb-3">
                                 <label class="col-sm-2 col-form-label" style="padding-right: 0;">标签：</label>
                                 <div class="row col-sm-7" style="padding-left: 0;">
-                                    <div class="col col-2">
-                                        <input class="form-check-input" type="checkbox" name="tag" value="小米" id="小米">
-                                        <label class="form-check-label" for="小米"> 小米</label>
-                                    </div>
+
+                                        <c:forEach var="tag" items="${goodsTags}">
+                                            <div class="col col-2">
+                                                <input class="form-check-input" type="checkbox" name="tag" id="${tag.t_id}" checked>
+                                                <label class="form-check-label" for="${tag.t_id}"> ${tag.name}</label>
+                                            </div>
+                                        </c:forEach>
+                                        <c:forEach var="tag" items="${tags}">
+                                            <div class="col col-2">
+                                                <input class="form-check-input" type="checkbox" name="tag" id="${tag.t_id}" >
+                                                <label class="form-check-label" for="${tag.t_id}"> ${tag.name}</label>
+                                            </div>
+                                        </c:forEach>
+
+
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="price" class="col-sm-2 col-form-label" style="padding-right: 0;">单价：</label>
                                 <div class="col-1" style="padding-left: 0;padding-right: 0;">
-                                    <input type="text" class="form-control" id="price" value="250">
+                                    <input type="text" class="form-control" id="price" name="price" value="${goods.price}">
                                 </div>
                                 <div class="col-1" style="padding-left: 0;line-height: 40px;">&nbsp;元</div>
                             </div>
@@ -306,8 +323,8 @@
                                     <div class="row align-middle">
                                         <button type="button" class="dec-btn p-0 col col-3"><i
                                                 class="fas fa-caret-left"></i></button>
-                                        <input class="form-control border-0 shadow-0 p-0 col" id="count" type="text"
-                                            value="1" style="text-align: center;">
+                                        <input class="form-control border-0 shadow-0 p-0 col" id="count" name="count" type="text"
+                                            value="${goods.count}" style="text-align: center;">
                                         <button type="button" class="inc-btn p-0 col col-3 "><i
                                                 class="fas fa-caret-right"></i></button>
                                     </div>
@@ -317,17 +334,22 @@
                                 <label for="description" class="col-sm-2 col-form-label"
                                     style="padding-right: 0;">商品简介：</label>
                                 <div class="col-sm-5" style="padding-left: 0;">
-                                    <textarea class="form-control" placeholder="这是一个牛逼的智能手表。" id="description"
-                                        style="height: 150px;"></textarea>
+                                    <textarea class="form-control" placeholder="请在此处添加简介" id="description" name="description"
+                                        style="height: 150px;">${goods.describe}</textarea>
                                 </div>
                             </div>
 
                             <div class="row d-flex align-items-center mb-3">
                                 <label class="col-sm-2 col-form-label">状态：</label>
                                 <div class="form-check form-switch col-sm-4">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="status"
-                                        checked="checked">
-                                    <label class="form-check-label" for="status">出售</label>
+                                    <c:if test="${goods.status==1}">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="statusCheckbox"  checked="checked">
+                                    </c:if>
+                                    <c:if test="${goods.status==0}">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="statusCheckbox">
+                                    </c:if>
+                                    <input type="hidden" name="status" id="statusInput" value="0">
+                                    <label class="form-check-label" for="statusCheckbox">出售</label>
                                 </div>
                             </div>
                             <div class="row mb-3" style="padding-left:10px;">
@@ -369,63 +391,88 @@
 
     <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
     <script>
+        // 当文档加载完成时执行
         document.addEventListener('DOMContentLoaded', function() {
             var fileInput = document.getElementById('photoInput');
-            var previewContainer = document.getElementById('swiper-wrapper-6d944e741cdfca44');
-
             fileInput.addEventListener('change', function(e) {
                 var files = e.target.files;
-                var id = "";
-                // Iterate through each selected file
+
                 for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    var reader = new FileReader();
+                    (function(index) { // 使用IIFE创建新的作用域
+                        var file = files[index];
+                        var filePath = files[index].name;
+                        var fileName = filePath.split("\\").pop().split("/").pop();
 
-                    reader.onload = function(event) {
-                        var imageUrl = event.target.result;
+                        var reader = new FileReader();
 
-                        // Find the next empty image container
-                        var specificDiv = document.getElementById('swiper-wrapper-6d944e741cdfca44'); // 替换成你的 div 的 id
-                        var imageElements = specificDiv.getElementsByTagName('img');
-                        console.log(111111111111111111111111111111111111111);
+                        reader.onload = function(event) {
+                            var Photo1Input = document.getElementById('Photo1Input');
+                            var Photo2Input = document.getElementById('Photo2Input');
+                            var Photo3Input = document.getElementById('Photo3Input');
+                            var Photo4Input = document.getElementById('Photo4Input');
+                            var imageUrl = event.target.result;
 
-                        for (var i = 0; i < imageElements.length; i++) {
-                            console.log(33333333333333333333333333333333333333);
-                            var img = imageElements[i];
-                            if (!img.complete || img.naturalWidth === 0) {
-                                console.log(222222222222222222222222222222222222222222);
-                                emptyImageContainer.src = imageUrl;
-                                id = emptyImageContainer.id;
+                            var specificDiv = document.getElementById('swiper-wrapper-6d944e741cdfca44');
+                            var imageElements = specificDiv.getElementsByTagName('img');
+                            var or = false;
+
+                            for (var j = 0; j < imageElements.length; j++) {
+                                var img = imageElements[j];
+
+                                if (!img.complete || img.naturalWidth === 0) {
+                                    img.src = imageUrl;
+                                    console.log(fileName); // 输出文件名
+                                    var id = img.id;
+                                    var lowerImgId = '';
+
+                                    switch (id) {
+                                        case 'upPhoto1':
+                                            or = true;
+                                            Photo1Input.value = fileName;
+                                            lowerImgId = 'downPhoto1';
+                                            break;
+                                        case 'upPhoto2':
+                                            or = true;
+                                            Photo2Input.value = fileName;
+                                            lowerImgId = 'downPhoto2';
+                                            break;
+                                        case 'upPhoto3':
+                                            or = true;
+                                            Photo3Input.value = fileName;
+                                            lowerImgId = 'downPhoto3';
+                                            break;
+                                        case 'upPhoto4':
+                                            or = true;
+                                            Photo4Input.value = fileName;
+                                            lowerImgId = 'downPhoto4';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                    if (lowerImgId !== '') {
+                                        var lowerImg = document.getElementById(lowerImgId);
+                                        lowerImg.src = imageUrl;
+                                    }
+
+                                    if (j === 3) {
+                                        var addPhotoButton = document.getElementById("addPhoto");
+                                        addPhotoButton.style.setProperty('display', 'none');
+                                    }
+                                    break;
+                                }
+                                if (or) {
+                                    break;
+                                }
                             }
-                        }
-                        var lowerImgId = '';
-                        switch (id) {
-                            case 'upPhoto1':
-                                lowerImgId = 'downPhoto1';
-                                break;
-                            case 'upPhoto2':
-                                lowerImgId = 'downPhoto2';
-                                break;
-                            case 'upPhoto3':
-                                lowerImgId = 'downPhoto3';
-                                break;
-                            case 'upPhoto4':
-                                lowerImgId = 'downPhoto4';
-                                break;
-                            default:
-                                break;
-                        }
+                        };
 
-                        if (lowerImgId !== '') {
-                            var lowerImg = document.getElementById(lowerImgId);
-                            lowerImg.src = imageUrl;
-                        }
-                    };
-
-                    reader.readAsDataURL(file);
+                        reader.readAsDataURL(file);
+                    })(i); // 传入当前循环的索引值
                 }
             });
         });
+
 
         function clearImageContent(button) {
             var imageContainer = button.parentElement;
@@ -459,7 +506,62 @@
                 var lowerImg = document.getElementById(lowerImgId);
                 lowerImg.src = '';
             }
+            var element = document.getElementById("addPhoto");
+
+            element.style.removeProperty('display');
+
+
         }
+        function extractFileNameFromDataURL(dataURL) {
+            // 使用正则表达式提取MIME类型
+            var mimeRegex = /^data:(image\/\w+);/;
+            var result = mimeRegex.exec(dataURL);
+            if (result) {
+                var mimeType = result[1];
+                // 使用正则表达式提取文件扩展名
+                var extensionRegex = /\/(.*?)$/;
+                var extensionResult = extensionRegex.exec(mimeType);
+                if (extensionResult) {
+                    var extension = extensionResult[1];
+                    // 构造文件名
+                    var fileName = "image." + extension;
+                    return fileName;
+                }
+            }
+            // 如果无法从数据URL中提取文件名，则返回默认值
+            return "image.jpg";
+        }
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var statusCheckbox = document.getElementById('statusCheckbox');
+
+            var statusInput = document.getElementById('statusInput');
+
+            var upPhoto1Img = document.getElementById('upPhoto1');
+            var upPhoto2Img = document.getElementById('upPhoto2');
+            var upPhoto3Img = document.getElementById('upPhoto3');
+            var upPhoto4Img = document.getElementById('upPhoto4');
+
+            var checkboxes = document.querySelectorAll('input[name="tag"]:checked');
+            var selectedValues = [];
+            //
+            // Photo1Input.value = extractFileNameFromDataURL(upPhoto1Img.src);
+            // Photo2Input.value = extractFileNameFromDataURL(upPhoto2Img.src);
+            // Photo3Input.value = extractFileNameFromDataURL(upPhoto3Img.src);
+            // Photo4Input.value = extractFileNameFromDataURL(upPhoto4Img.src);
+
+            if (statusCheckbox.checked) {
+                statusInput.value = "1";
+            } else {
+                statusInput.value = "0";
+            }
+            checkboxes.forEach(function(checkbox) {
+                selectedValues.push(checkbox.id);
+            });
+
+            document.getElementById("tags").value=selectedValues.join('#');
+
+        });
+
     </script>
 
 </body>
