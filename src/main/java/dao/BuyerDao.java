@@ -12,5 +12,6 @@ public interface BuyerDao {
     List<Buyer> getBuyerByName(String name);
     Buyer getBuyerByEmail(String email);
     Buyer getBuyerByPhone(String phone);
+    List<Buyer> findByPage(int start, int rows);
     List<Buyer> getAllBuyer();
 }

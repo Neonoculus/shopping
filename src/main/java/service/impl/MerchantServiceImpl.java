@@ -45,6 +45,16 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
+    public List<Merchant> findByPage(int start, int rows) {
+        return merchantDao.findByPage(start,rows);
+    }
+
+    @Override
+    public int merchantPageSum(List<Merchant> merchants) {
+        return merchants.size();
+    }
+
+    @Override
     public List<Merchant> getAllMerchant() {
         return merchantDao.getAllMerchant();
     }

@@ -3,6 +3,7 @@ package service.impl;
 import dao.BuyerDao;
 import dao.impl.BuyerDaoImpl;
 import domain.Buyer;
+import domain.Goods;
 import service.BuyerService;
 
 import java.util.List;
@@ -42,6 +43,16 @@ public class BuyerServiceImpl implements BuyerService {
     @Override
     public Buyer getBuyerByPhone(String phone) {
         return buyerDao.getBuyerByPhone(phone);
+    }
+
+    @Override
+    public int buyerPageSum(List<Buyer> buyers) {
+        return buyers.size();
+    }
+
+    @Override
+    public List<Buyer> findByPage(int start, int rows) {
+        return buyerDao.findByPage(start,rows);
     }
 
     @Override

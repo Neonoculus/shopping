@@ -91,6 +91,16 @@ public class BuyerDaoImpl implements BuyerDao {
     }
 
     @Override
+    public List<Buyer> findByPage(int start, int rows) {
+        try {
+            List<Buyer> buyers = runner.query("select * from Buyer limit ? ,?", new BeanListHandler<Buyer>(Buyer.class),start,rows);
+            return buyers;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public List<Buyer> getAllBuyer() {
         try {
             List<Buyer> buyers = runner.query("select * from Buyer", new BeanListHandler<Buyer>(Buyer.class));

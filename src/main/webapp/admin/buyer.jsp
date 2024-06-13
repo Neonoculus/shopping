@@ -64,9 +64,9 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="toAdminBuyerServlet" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
-                    <a href="toAdminMerchantServlet" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
-                    <a href="toAdminGoodsServlet.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>商品管理</a>
+                    <a href="toAdminBuyerServlet?start=0" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>用户管理</a>
+                    <a href="toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
+                    <a href="toAdminGoodsServlet?start=0" class="nav-item nav-link"><i class="fa fa-table me-2"></i>商品管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
@@ -89,38 +89,39 @@
 
             <!-- Goods Table Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row">
-                    <div class="d-flex align-items-center justify-content-start col">
-                        <input class="form-control border-0" type="search" placeholder="Search">
-                        <button type="button" class="btn btn-primary ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-start col">
+                <form action="doAdminBuyerHeadServlet" id="checkboxForm">
+                    <div class="row">
+                        <div class="d-flex align-items-center justify-content-start col">
+                            <input class="form-control border-0" type="search" placeholder="Search" name="search" >
+                            <button type="submit" class="btn btn-primary " name="select" value="select">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-start col">
 
-                    </div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="d-flex align-items-center justify-content-end mb-4 col">
+                        </div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="d-flex align-items-center justify-content-end mb-4 col">
 
-                        <button type="button" class="btn btn-danger m-2">批量封禁</button><button type="button"
-                            class="btn btn-success m-2">批量解封</button>
+                            <button type="submit" class="btn btn-danger m-2" name="SoldOut" value="SoldOut">批量封禁</button>
+                            <button type="submit" class="btn btn-success m-2" name="SoldIn" value="SoldIn">批量解封</button>
+                        </div>
                     </div>
-                </div>
-                <table class="table text-nowrap">
+                    <table class="table text-nowrap">
                     <thead class="bg-light">
                         <tr>
-                            <th class="border-0 p-3" scope="col"><input class="form-check-input" type="checkbox"></th>
+                            <th class="border-0 p-3" scope="col"><input class="form-check-input" type="checkbox" id="allCheckbox"></th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户编号</strong>
                             </th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户名称</strong>
                             </th>
-                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户电子邮箱</strong>
+                            <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户电子邮箱</strong
                             </th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">用户地址</strong>
                             </th>
@@ -129,9 +130,9 @@
                         </tr>
                     </thead>
                     <tbody class="border-0">
-                    <c:forEach var="buyer" items="${buyers}" varStatus="0">
+                    <c:forEach var="buyer" items="${buyers}" varStatus="i">
                         <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
+                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox" name="checkbox" value="${buyer.b_id}">
                             </th>
                             <td class="p-3 align-middle border-light">
                                 <p class="mb-0 small">${buyer.b_id}</p>
@@ -150,22 +151,34 @@
                                 <p class="mb-0 small">${buyer.address}</p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-danger" href="doBannedServlet?id=${buyer.b_id}&type=0">封禁</a>
-                                <a class="btn btn-sm btn-success" href="doBannedServlet?id=${buyer.b_id}&type=1">解封</a>
+                                <c:if test="${logins[i.index].type==1}">
+                                    <a class="btn btn-sm btn-danger" href="doBannedServlet?id=${buyer.b_id}&type=0">封禁</a>
+                                </c:if>
+                                <c:if test="${logins[i.index].type==0}">
+                                    <a class="btn btn-sm btn-success" href="doBannedServlet?id=${buyer.b_id}&type=1">解封</a>
+                                </c:if>
+
+
                             </td>
                         </tr>
                     </c:forEach>
-
+                    <input type="hidden" value="" name="selectedItems" id="selectedItems">
 
                     </tbody>
 
                 </table>
+                </form>
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+                    <c:if test="${page!=0}">
+                        <li class="page-item"><a class="page-link" href="toAdminBuyerServlet?start=${page-1}">上一页</a></li>
+                    </c:if>
+                    <c:forEach begin="1" end="${pageSumNumber}" step="1" var="i">
+                        <c:if test="${i==page+1}"><li class="page-item active"><a class="page-link" href="toAdminBuyerServlet?start=${i-1}">${i}</a></li></c:if>
+                        <c:if test="${i!=page+1}"><li class="page-item"><a class="page-link" href="toAdminBuyerServlet?start=${i-1}">${i}</a></li></c:if>
+                    </c:forEach>
+                    <c:if test="${page<pageSumNumber-1}">
+                        <li class="page-item"><a class="page-link" href="toAdminBuyerServlet?start=${page+1}">下一页</a></li>
+                    </c:if>
                 </ul>
             </div>
             <!-- Goods Table End -->
@@ -191,6 +204,74 @@
 
     <!-- Template Javascript -->
     <script src="${pageContext.request.contextPath}/admin/js/main.js"></script>
+    <script>
+        // 获取“allCheckbox”元素
+        var allCheckbox = document.getElementById("allCheckbox");
+
+        // 获取所有类型为“checkbox”的input元素，但不包括allCheckbox
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#allCheckbox)');
+
+        // 添加每个checkbox的点击事件监听器
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("click", function() {
+                updateAllCheckboxState();
+            });
+        });
+
+        // 添加点击事件监听器到allCheckbox
+        allCheckbox.addEventListener("click", function () {
+            // 检查当前“allCheckbox”的状态
+            var isChecked = allCheckbox.checked;
+
+            // 根据当前状态执行操作
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = isChecked;
+            });
+
+            // 更新allCheckbox的状态
+            updateAllCheckboxState();
+        });
+
+        // 更新allCheckbox的状态
+        function updateAllCheckboxState() {
+            var allChecked = true;
+            var allUnchecked = true;
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    allUnchecked = false;
+                } else {
+                    allChecked = false;
+                }
+            });
+
+            if (allChecked) {
+                allCheckbox.checked = true;
+                allCheckbox.indeterminate = false;
+            } else if (allUnchecked) {
+                allCheckbox.checked = false;
+                allCheckbox.indeterminate = false;
+            } else {
+                allCheckbox.checked = false;
+                allCheckbox.indeterminate = true;
+            }
+        }
+
+        // 初始化时更新allCheckbox的状态
+        updateAllCheckboxState();
+
+        // 提交表单之前，将选中的复选框值设置到隐藏字段中
+        function submitForm() {
+            var selectedValues = [];
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    selectedValues.push(checkbox.value);
+                }
+            });
+            document.getElementById("selectedItems").value = selectedValues.join("#");
+            document.getElementById("checkboxForm").submit();
+        }
+    </script>
 </body>
 
 </html>

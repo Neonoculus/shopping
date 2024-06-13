@@ -12,5 +12,6 @@ public interface MerchantDao {
     List<Merchant> getMerchantByName(String name);
     Merchant getMerchantByPhone(String phone);
     Merchant getMerchantByEmail(String email);
+    List<Merchant> findByPage(int start, int rows);
     List<Merchant> getAllMerchant();
 }

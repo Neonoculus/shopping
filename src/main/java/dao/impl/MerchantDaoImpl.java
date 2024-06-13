@@ -91,6 +91,16 @@ public class MerchantDaoImpl implements MerchantDao {
     }
 
     @Override
+    public List<Merchant> findByPage(int start, int rows) {
+        try {
+            List<Merchant> merchant = runner.query("select * from merchant limit ?,?", new BeanListHandler<Merchant>(Merchant.class),start,rows);
+            return merchant;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public List<Merchant> getAllMerchant() {
         try {
             List<Merchant> merchant = runner.query("select * from merchant", new BeanListHandler<Merchant>(Merchant.class));

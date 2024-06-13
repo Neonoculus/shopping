@@ -30,15 +30,29 @@ public class ToAdminBuyerServlet extends HttpServlet {
 		BuyerService buyerService = new BuyerServiceImpl();
 		LoginService loginService = new LoginServiceImpl();
 
-		List<Buyer> buyers = buyerService.getAllBuyer();
+		String start1 = request.getParameter("start");
+		int start ;
+		if (start1 == null){
+			start = (int) request.getAttribute("start");
+		}else {
+			start = Integer.parseInt(start1);
+		}
+		int pageSumNumber = buyerService.buyerPageSum(buyerService.getAllBuyer());
+
+
+		List<Buyer> buyers = buyerService.findByPage(start,10);
 		List<Login> logins = new ArrayList<>();
 		for (Buyer buyer : buyers)
 		{
 			logins.add(loginService.getLoginById(buyer.getB_id()));
 		}
 
+
+
 		request.setAttribute("buyers",buyers);
 		request.setAttribute("logins",logins);
+		request.setAttribute("pageSumNumber",pageSumNumber);
+		request.setAttribute("page",start);
 
 		request.getRequestDispatcher("admin/buyer.jsp").forward(request,response);
     }

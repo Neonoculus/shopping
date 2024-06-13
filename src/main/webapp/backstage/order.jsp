@@ -67,8 +67,8 @@
                 <div class="navbar-nav w-100">
                     <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
                     <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
+                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>订单管理</a>
                     <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
@@ -106,33 +106,24 @@
 
             <!-- Goods Table Start -->
             <div class="container-fluid pt-4 px-4">
+                <form action="doMerchantOrderHeadServlet">
+                    <div class="row">
 
-                <div class="row">
-                    <div class="d-flex align-items-center justify-content-start col">
-                        <input class="form-control border-0" type="search" placeholder="Search">
-                        <button type="button" class="btn btn-primary ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-start col">
+                        <div class="d-flex align-items-center justify-content-start col">
 
+                        </div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="d-flex align-items-center justify-content-end mb-4 col">
+                            <button type="submit" class="btn btn-danger m-2" name="SoldOut">批量取消</button>
+                            <button type="submit" class="btn btn-success m-2" name="SoldIn">批量发货</button>
+                            <input type="hidden" name="merchant" id="merchant" value="${merchant.m_id}">
+                        </div>
                     </div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="d-flex align-items-center justify-content-end mb-4 col">
-                        <button type="button" class="btn btn-danger m-2">批量取消</button>
-                        <button type="button" class="btn btn-success m-2">批量发货</button>
-                    </div>
-                </div>
-                <table class="table text-nowrap">
-                    <thead class="bg-light">
+                    <table class="table text-nowrap">
+                        <thead class="bg-light">
                         <tr>
-                            <th class="border-0 p-3" scope="col"><input class="form-check-input" type="checkbox"></th>
+                            <th class="border-0 p-3" scope="col"><input class="form-check-input" type="checkbox" id="allCheckbox"></th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">订单编号</strong>
                             </th>
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">买家编号</strong>
@@ -144,39 +135,41 @@
                             <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">操作</strong>
                             </th>
                         </tr>
-                    </thead>
-                    <tbody class="border-0">
-                    <c:forEach var="order" items="${orderList}">
-                        <tr>
-                            <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
-                            </th>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">${order.o_id}</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">${order.b_id}</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <p class="mb-0 small">${order.money}元</p>
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <c:if test="${order.status==-1}"><p class="mb-0 small">用户已删除</p></c:if>
-                                <c:if test="${order.status==0}"><p class="mb-0 small">已取消</p></c:if>
-                                <c:if test="${order.status==1}"><p class="mb-0 small">未发货</p></c:if>
-                                <c:if test="${order.status==2}"><p class="mb-0 small">已发货</p></c:if>
+                        </thead>
+                        <tbody class="border-0">
+                        <c:forEach var="order" items="${orderList}">
+                            <tr>
+                                <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox">
+                                </th>
+                                <td class="p-3 align-middle border-light">
+                                    <p class="mb-0 small">${order.o_id}</p>
+                                </td>
+                                <td class="p-3 align-middle border-light">
+                                    <p class="mb-0 small">${order.b_id}</p>
+                                </td>
+                                <td class="p-3 align-middle border-light">
+                                    <p class="mb-0 small">${order.money}元</p>
+                                </td>
+                                <td class="p-3 align-middle border-light">
+                                    <c:if test="${order.status==-1}"><p class="mb-0 small">用户已删除</p></c:if>
+                                    <c:if test="${order.status==0}"><p class="mb-0 small">已取消</p></c:if>
+                                    <c:if test="${order.status==1}"><p class="mb-0 small">未发货</p></c:if>
+                                    <c:if test="${order.status==2}"><p class="mb-0 small">已发货</p></c:if>
 
-                            </td>
-                            <td class="p-3 align-middle border-light">
-                                <a class="btn btn-sm btn-danger" href="doUpdateOrderServlet?order=${order.o_id}&status=0&m_id=${merchant.m_id}&start=${page}">取消</a>
-                                <a class="btn btn-sm btn-success" href="doUpdateOrderServlet?order=${order.o_id}&status=2&m_id=${merchant.m_id}&start=${page}">发货</a>
-                                <a class="btn btn-sm btn-secondary" href="toMerchantOrderDetailServlet?b_id=${order.b_id} &m_id=${merchant.m_id}&o_id=${order.o_id}" target=_blank">详细信息</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                                </td>
+                                <td class="p-3 align-middle border-light">
+                                    <a class="btn btn-sm btn-danger" href="doUpdateOrderServlet?order=${order.o_id}&status=0&m_id=${merchant.m_id}&start=${page}">取消</a>
+                                    <a class="btn btn-sm btn-success" href="doUpdateOrderServlet?order=${order.o_id}&status=2&m_id=${merchant.m_id}&start=${page}">发货</a>
+                                    <a class="btn btn-sm btn-secondary" href="toMerchantOrderDetailServlet?b_id=${order.b_id} &m_id=${merchant.m_id}&o_id=${order.o_id}" target=_blank">详细信息</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
+                </form>
+
                 <ul class="pagination">
                     <c:if test="${page!=0}">
                         <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page-1}&merchant=${merchant.m_id}">上一页</a></li>
@@ -214,6 +207,74 @@
 
     <!-- Template Javascript -->
     <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
+    <script>
+        // 获取“allCheckbox”元素
+        var allCheckbox = document.getElementById("allCheckbox");
+
+        // 获取所有类型为“checkbox”的input元素，但不包括allCheckbox
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:not(#allCheckbox)');
+
+        // 添加每个checkbox的点击事件监听器
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("click", function() {
+                updateAllCheckboxState();
+            });
+        });
+
+        // 添加点击事件监听器到allCheckbox
+        allCheckbox.addEventListener("click", function () {
+            // 检查当前“allCheckbox”的状态
+            var isChecked = allCheckbox.checked;
+
+            // 根据当前状态执行操作
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = isChecked;
+            });
+
+            // 更新allCheckbox的状态
+            updateAllCheckboxState();
+        });
+
+        // 更新allCheckbox的状态
+        function updateAllCheckboxState() {
+            var allChecked = true;
+            var allUnchecked = true;
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    allUnchecked = false;
+                } else {
+                    allChecked = false;
+                }
+            });
+
+            if (allChecked) {
+                allCheckbox.checked = true;
+                allCheckbox.indeterminate = false;
+            } else if (allUnchecked) {
+                allCheckbox.checked = false;
+                allCheckbox.indeterminate = false;
+            } else {
+                allCheckbox.checked = false;
+                allCheckbox.indeterminate = true;
+            }
+        }
+
+        // 初始化时更新allCheckbox的状态
+        updateAllCheckboxState();
+
+        // 提交表单之前，将选中的复选框值设置到隐藏字段中
+        function submitForm() {
+            var selectedValues = [];
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    selectedValues.push(checkbox.value);
+                }
+            });
+            document.getElementById("selectedItems").value = selectedValues.join(",");
+            document.getElementById("checkboxForm").submit();
+        }
+    </script>
 </body>
 
 </html>

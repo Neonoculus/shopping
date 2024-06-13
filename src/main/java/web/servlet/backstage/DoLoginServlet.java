@@ -59,7 +59,8 @@ public class DoLoginServlet extends HttpServlet {
         }
         else if (login.getType() == 3)
         {
-            request.getRequestDispatcher("admin/merchant.jsp").forward(request,response);
+            request.setAttribute("start",0);
+            request.getRequestDispatcher("toAdminBuyerServlet").forward(request,response);
         }
     }
 }

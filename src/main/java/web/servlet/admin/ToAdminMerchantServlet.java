@@ -33,7 +33,16 @@ public class ToAdminMerchantServlet extends HttpServlet {
         MerchantService merchantService = new MerchantServiceImpl();
         LoginService loginService = new LoginServiceImpl();
 
-        List<Merchant> merchants = merchantService.getAllMerchant();
+        String start1 = request.getParameter("start");
+        int start ;
+        if (start1 == null){
+            start = (int) request.getAttribute("start");
+        }else {
+            start = Integer.parseInt(start1);
+        }
+        List<Merchant> merchants = merchantService.findByPage(start,10);
+        int pageSumNumber = merchantService.merchantPageSum(merchantService.getAllMerchant());
+
         List<Login> logins = new ArrayList<>();
         for (Merchant merchant : merchants)
         {
@@ -42,7 +51,9 @@ public class ToAdminMerchantServlet extends HttpServlet {
 
         request.setAttribute("merchants",merchants);
         request.setAttribute("logins",logins);
+        request.setAttribute("page",start);
+        request.setAttribute("pageSumNumber",pageSumNumber);
 
-        request.getRequestDispatcher("admin/buyer.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/merchant.jsp").forward(request,response);
     }
 }

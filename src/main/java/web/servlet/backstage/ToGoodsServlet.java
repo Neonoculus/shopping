@@ -39,9 +39,9 @@ public class ToGoodsServlet extends HttpServlet {
             startString = (String) request.getAttribute("start");
         }
         int start = Integer.parseInt(startString)*10;
-        String m_idParam = request.getParameter("m_id");
+        String m_idParam = request.getParameter("merchant");
         if (m_idParam == null){
-            m_idParam = (String) request.getAttribute("m_id");
+            m_idParam = (String) request.getAttribute("merchant");
         }
         int m_id = Integer.parseInt(m_idParam);
         Merchant merchant = merchantService.getMerchantByMId(m_id);
@@ -51,7 +51,7 @@ public class ToGoodsServlet extends HttpServlet {
         start = start/10;
 
         request.setAttribute("goodsList",goodsList);
-        request.setAttribute("m_id", merchant);
+        request.setAttribute("merchant", merchant);
         request.setAttribute("page",start);
         request.setAttribute("pageSumNumber",pageSumNumber);
 
