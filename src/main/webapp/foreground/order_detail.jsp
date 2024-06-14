@@ -303,11 +303,11 @@
       </div>
     </div>
   </section>
-  <section id="subscribe" class="container-grid position-relative overflow-hidden">
+  <section id="subscribe" class="container-grid position-relative overflow-hidden pb-4">
     <div class="container">
       <div class="row">
         <div
-          class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
+                class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
           <div class="col-md-6 col-sm-12">
             <div class="display-header pe-3">
               <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
@@ -318,73 +318,12 @@
             <form class="subscription-form validate">
               <div class="input-group flex-wrap">
                 <input class="form-control btn-rounded-none" type="email" name="EMAIL"
-                  placeholder="Your email address here" required="">
+                       placeholder="Your email address here" required="">
                 <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit"
-                  name="subscribe">订阅</button>
+                        name="subscribe">订阅</button>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="instagram" class="padding-large overflow-hidden">
-    <div class="container">
-      <div class="row">
-        <div class="display-header text-uppercase text-dark text-center pb-3">
-          <h2 class="display-7">购买我们 Insta</h2>
-        </div>
-        <div class="d-flex flex-wrap">
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="${pageContext.request.contextPath}/foreground/images/insta-item1.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="${pageContext.request.contextPath}/foreground/images/insta-item2.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="${pageContext.request.contextPath}/foreground/images/insta-item3.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="${pageContext.request.contextPath}/foreground/images/insta-item4.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="${pageContext.request.contextPath}/foreground/images/insta-item5.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
         </div>
       </div>
     </div>

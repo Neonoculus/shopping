@@ -103,12 +103,12 @@
 
         </div>
     </div>
-    
+
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/main-logo.png" class="logo">
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+            <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
           </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="navbar-icon">
@@ -117,85 +117,73 @@
           </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
-              <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
+              <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="#billboard">首页</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">服务</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#mobile-products">产品</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#smart-watches">观看</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#yearly-sale">销售</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#latest-blog">博客</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">网页</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="about.html" class="dropdown-item">关于</a>
-                    </li>
-                    <li>
-                      <a href="blog.html" class="dropdown-item">博客</a>
-                    </li>
-                    <li>
-                      <a href="shop.html" class="dropdown-item">购物</a>
-                    </li>
-                    <li>
-                      <a href="cart.html" class="dropdown-item">购物车</a>
-                    </li>
-                    <li>
-                      <a href="checkout.html" class="dropdown-item">支付</a>
-                    </li>
-                    <li>
-                      <a href="single-post.html" class="dropdown-item">单一职位</a>
-                    </li>
-                    <li>
-                      <a href="single-product.html" class="dropdown-item">单品</a>
-                    </li>
-                    <li>
-                      <a href="contact.html" class="dropdown-item">联系</a>
-                    </li>
-                  </ul>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
                 </li>
                 <li class="nav-item">
                   <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3">
-                        <a href="#" class="search-button">
-                          <svg class="search">
-                            <use xlink:href="#search"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="#">
-                          <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="cart.html">
-                          <svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
+                    <c:if test="${buyer==NULL}">
+                      <ul class="d-flex justify-content-end list-unstyled">
+                        <li class="search-item pe-3">
+                          <a href="#" class="search-button">
+                            <svg class="search">
+                              <use xlink:href="#search"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3">
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                            登录/注册
+                          </a>
+                        </li>
+                        <li>
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                            <svg class="cart">
+                              <use xlink:href="#cart"></use>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </c:if>
+                    <c:if test="${buyer!=NULL}">
+                      <ul class="d-flex justify-content-end list-unstyled">
+                        <li class="search-item pe-3">
+                          <a href="#" class="search-button">
+                            <svg class="search">
+                              <use xlink:href="#search"></use>
+                            </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3">
+                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                          </a>
+                        </li>
+                        <li>
+                          <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
+                            <svg class="cart">
+                              <use xlink:href="#cart"></use>
+                            </svg>
+                          </a>
+                        </li>
+                      </ul>
+                    </c:if>
                   </div>
                 </li>
               </ul>
@@ -210,12 +198,6 @@
           <div class="row">
             <div class="text-center padding-large no-padding-bottom">
               <h1 class="display-2 text-uppercase text-dark">支付</h1>
-              <div class="breadcrumbs">
-                <span class="item">
-                  <a href="index.html">首页 ></a>
-                </span>
-                <span class="item">支付</span>
-              </div>
             </div>
           </div>
         </div>
@@ -223,194 +205,93 @@
     </section>
     <section class="shopify-cart checkout-wrap padding-large">
       <div class="container">
-        <form class="form-group">
+        <form class="form-group" action="${pageContext.request.contextPath}/doCheckoutServlet?b_id=${buyer.b_id}" method="post">
           <div class="row d-flex flex-wrap">
             <div class="col-lg-6">
               <h2 class="display-7 text-uppercase text-dark pb-4">账单明细</h2>
               <div class="billing-details">
-                <label for="fname">名字</label>
-                <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3">
-                <label for="lname">姓氏</label>
-                <input type="text" id="lname" name="lastname" class="form-control mt-2 mb-4 ps-3">
-                <label for="cname">公司名称</label>
-                <input type="text" id="cname" name="companyname" class="form-control mt-2 mb-4">
-                <label for="cname">国家/地区</label>
-                <select class="form-select form-control mt-2 mb-4" aria-label="Default select example">
-                  <option selected="" hidden="">中国</option>
-                  <option value="1">英国</option>
-                  <option value="2">澳大利亚</option>
-                  <option value="3">加拿大</option>
-                </select>
-                <label for="address">街道地址</label>
-                <input type="text" id="address" name="address" placeholder="House number and street name" class="form-control mt-3 ps-3 mb-3">
-                <input type="text" id="addr" name="address" placeholder="Appartments, suite, etc." class="form-control ps-3 mb-4">
-                <label for="city">小镇/城市</label>
-                <input type="text" id="city" name="city" class="form-control mt-3 ps-3 mb-4">
-                <label for="state">省</label>
-                <select class="form-select form-control mt-2 mb-4" id="state" aria-label="Default select example">
-                  <option selected="" hidden="">四川</option>
-                  <option value="1">云南</option>
-                  <option value="2">重庆</option>
-                  <option value="3">贵州</option>
-                  <option value="3">广西</option>
-                  <option value="3">广东</option>
-                </select>
-                <label for="zip">邮政编码</label>
-                <input type="text" id="zip" name="zip" class="form-control mt-2 mb-4 ps-3">
-                <label for="email">电话</label>
-                <input type="text" id="phone" name="phone" class="form-control mt-2 mb-4 ps-3">
-                <label for="email">邮箱</label>
-                <input type="text" id="email" name="email" class="form-control mt-2 mb-4 ps-3">
+                <label for="fname">姓名</label>
+                <input type="text" id="fname" name="name" placeholder="请输入您的姓名" class="form-control mt-2 mb-4 ps-3" value="${buyer.name}">
+                <label for="phone">电话</label>
+                <input type="text" id="phone" name="phone" placeholder="请输入您的电话" class="form-control mt-2 mb-4" value="${buyer.phone}">
+                <label for="address">地址</label>
+                <input type="text" id="address" name="address" placeholder="请输入您的地址" class="form-control mt-3 ps-3 mb-3" value="${buyer.address}">
               </div>
             </div>
             <div class="col-lg-6">
-              <h2 class="display-7 text-uppercase text-dark pb-4">附加信息</h2>
-              <div class="billing-details">
-                <label for="fname">订阅说明</label>
-                <textarea class="form-control pt-3 pb-3 ps-3 mt-2" placeholder="Notes about your order. Like special notes for delivery."></textarea>
-              </div>
               <div class="your-order mt-5">
                 <h2 class="display-7 text-uppercase text-dark pb-4">购物车总计</h2>
                 <div class="total-price">
                   <table cellspacing="0" class="table">
+                    <thead>
+                    <th class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">商品名称</th>
+                    <th class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">数量</th>
+                    <th class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">小计</th>
+                    </thead>
                     <tbody>
+                    <c:if test="${cart!=NULL}">
+                      <input type="hidden" name="cart" value="${cart}">
+                      <c:forEach var="cartDto" items="${cartDtoList}">
                       <tr class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">
-                        <th>Subtotal</th>
-                        <td data-title="Subtotal">
-                          <span class="price-amount amount text-primary ps-5">
-                            <bdi>
-                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
-                          </span>
-                        </td>
+                        <td>${cartDto.name}</td>
+                        <td>${cartDto.count}个</td>
+                        <td>${cartDto.money*cartDto.count}0元</td>
                       </tr>
+                    </c:forEach>
+                    </c:if>
+                    <c:if test="${product!=NULL}">
+                      <input type="hidden" name="product" value="${product}">
+                      <tr class="subtotal border-top border-bottom pt-2 pb-2 text-uppercase">
+                        <input type="hidden" name="g_id" value="${goods.g_id}">
+                        <input type="hidden" name="count" value="${quantity}">
+                        <input type="hidden" name="money" value="${quantity*goods.price}">
+                        <td>${goods.name}</td>
+                        <td>${quantity}个</td>
+                        <td>${quantity*goods.price}0元</td>
+                      </tr>
+                    </c:if>
                       <tr class="order-total border-bottom pt-2 pb-2 text-uppercase">
                         <th>总计</th>
                         <td data-title="Total">
                           <span class="price-amount amount text-primary ps-5">
                             <bdi>
-                              <span class="price-currency-symbol">$</span>2,370.00 </bdi>
+                              <input type="hidden" name="total" value="${total}">
+                              <span class="price-currency-symbol">${total}0元</span></bdi>
                           </span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <div class="list-group mt-5 mb-3">
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked>
-                      <span>
-                        <strong class="text-uppercase">银行转账</strong>
-                        <small class="d-block text-body-secondary">Make your payment directly into our bank account. Please use your Order ID. Your order will shipped after funds have cleared in our account.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
-                      <span>
-                        <strong class="text-uppercase">支票支付</strong>
-                        <small class="d-block text-body-secondary">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                      <span>
-                        <strong class="text-uppercase">货到付款</strong>
-                        <small class="d-block text-body-secondary">Pay with cash upon delivery.</small>
-                      </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2 border-0">
-                      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                      <span>
-                        <strong class="text-uppercase">贝宝</strong>
-                        <small class="d-block text-body-secondary">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</small>
-                      </span>
-                    </label>
-                  </div>
-                  <button type="submit" name="submit" class="btn btn-dark btn-medium text-uppercase btn-rounded-none">订购</button>
+                  <button type="submit" name="submit" value="submit" class="btn btn-dark btn-medium text-uppercase btn-rounded-none">订购</button>
                 </div>
               </div>
             </div>
           </div>
         </form>
       </div>
+
     </section>
-    <section id="subscribe" class="container-grid position-relative overflow-hidden">
+    <section id="subscribe" class="container-grid position-relative overflow-hidden pb-4">
       <div class="container">
         <div class="row">
-          <div class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
+          <div
+                  class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
             <div class="col-md-6 col-sm-12">
               <div class="display-header pe-3">
                 <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
-                <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
+                <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱.</p>
               </div>
             </div>
             <div class="col-md-5 col-sm-12">
               <form class="subscription-form validate">
                 <div class="input-group flex-wrap">
-                  <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="Your email address here" required="">
-                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="subscribe">订阅</button>
+                  <input class="form-control btn-rounded-none" type="email" name="EMAIL"
+                         placeholder="Your email address here" required="">
+                  <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit"
+                          name="subscribe">订阅</button>
                 </div>
               </form>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="instagram" class="padding-large overflow-hidden">
-      <div class="container">
-        <div class="row">
-          <div class="display-header text-uppercase text-dark text-center pb-3">
-            <h2 class="display-7">购买我们 Insta</h2>
-          </div>
-          <div class="d-flex flex-wrap">
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
-            <figure class="instagram-item pe-2">
-              <a href="#" class="image-link position-relative">
-                <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
-                <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
-                </div>
-              </a>
-            </figure>
           </div>
         </div>
       </div>
@@ -422,8 +303,9 @@
             <div class="row d-flex flex-wrap justify-content-between">
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
-                  <img src="images/main-logo.png" alt="logo">
-                  <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
+                  <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
+                  <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
+                    erat nullam fringilla.</p>
                   <div class="social-links">
                     <ul class="d-flex list-unstyled">
                       <li>
@@ -531,8 +413,8 @@
             <div class="Shipping d-flex">
               <p>We ship with:</p>
               <div class="card-wrap ps-2">
-                <img src="images/dhl.png" alt="visa">
-                <img src="images/shippingcard.png" alt="mastercard">
+                <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+                <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
               </div>
             </div>
           </div>
@@ -540,15 +422,15 @@
             <div class="payment-method d-flex">
               <p>Payment options:</p>
               <div class="card-wrap ps-2">
-                <img src="images/visa.jpg" alt="visa">
-                <img src="images/mastercard.jpg" alt="mastercard">
-                <img src="images/paypal.jpg" alt="paypal">
+                <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+                <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+                <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
               </div>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="copyright">
-<%--              <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>--%>
+              <!-- <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a> -->
               </p>
             </div>
           </div>

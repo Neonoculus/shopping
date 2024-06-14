@@ -247,11 +247,15 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3">
                                     <h3 class="card-title text-uppercase">
-                                        <c:if test="${order.endTime!=NULL || order.status==0}">
+                                        <c:if test="${order.endTime!=NULL || order.status==2}">
                                             <a href="${pageContext.request.contextPath}/doBuyerInfoServlet?o_id=${order.o_id}&status=-1&b_id=${buyer.b_id}" class="btn btn-light rounded-pill m-1">删除订单</a>
                                         </c:if>
                                         <c:if test="${order.endTime==NULL && order.status==1}">
                                             <a href="${pageContext.request.contextPath}/doBuyerInfoServlet?o_id=${order.o_id}&status=0&b_id=${buyer.b_id}" class="btn btn-danger rounded-pill m-1">取消订单</a>
+                                        </c:if>
+                                        <c:if test="${order.endTime==NULL && order.status==0}">
+                                            <a href="#" class="btn btn-secondary rounded-pill m-1">已取消</a>
+                                            <a href="${pageContext.request.contextPath}/doBuyerInfoServlet?o_id=${order.o_id}&status=-1&b_id=${buyer.b_id}" class="btn btn-light rounded-pill m-1">删除订单</a>
                                         </c:if>
                                         <a href="${pageContext.request.contextPath}/toBuyerOrderDetailServlet?o_id=${order.o_id}&b_id=${buyer.b_id}" class="btn btn-secondary rounded-pill m-1">详细信息</a>
                                     </h3>

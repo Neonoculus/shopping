@@ -152,16 +152,16 @@
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="/toShopServlet">产品</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}">产品</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
                 </li>
                 <li class="nav-item">
                   <div class="user-items ps-5">

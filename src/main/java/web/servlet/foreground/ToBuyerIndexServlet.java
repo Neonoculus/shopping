@@ -23,9 +23,11 @@ public class ToBuyerIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         BuyerService buyerService = new BuyerServiceImpl();
-        int b_id =  Integer.parseInt((String)request.getAttribute("b_id") );
-
-        Buyer buyer = buyerService.getBuyerByBid(b_id);
+        String b_id =  request.getParameter("b_id");
+        if(b_id==null){
+            b_id = (String) request.getAttribute("b_id");
+        }
+        Buyer buyer = buyerService.getBuyerByBid(Integer.parseInt(b_id));
         request.setAttribute("buyer",buyer);
 
 

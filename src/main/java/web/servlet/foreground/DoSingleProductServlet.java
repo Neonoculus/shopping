@@ -34,7 +34,11 @@ public class DoSingleProductServlet extends HttpServlet {
         String addToOrder = request.getParameter("add-to-order");
         String addToCart = request.getParameter("add-to-cart");
         //  用户信息
-        int b_id = Integer.parseInt(request.getParameter("b_id"));
+        String b_idTemp = request.getParameter("b_id");
+        if(b_idTemp==null){
+            b_idTemp = String.valueOf(request.getAttribute("b_id"));
+        }
+        int b_id = Integer.parseInt(b_idTemp);
         Buyer buyer = buyerService.getBuyerByBid(b_id);
         // 商品信息
         int g_id = Integer.parseInt(request.getParameter("g_id"));
@@ -42,7 +46,11 @@ public class DoSingleProductServlet extends HttpServlet {
         //  购买数量
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         if(addToOrder!=null){
-            System.out.println("order");
+            request.setAttribute("g_id",g_id);
+            request.setAttribute("quantity",quantity);
+            request.setAttribute("product","product");
+            request.setAttribute("b_id",b_id);
+            request.getRequestDispatcher("toCheckoutServlet").forward(request,response);
         }
         if(addToCart!=null){
             List<Cart> cartList = cartService.getCartByBId(b_id);
