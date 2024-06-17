@@ -1,9 +1,10 @@
+<%@ page import="utils.SendEmail" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:useBean id="now" class="java.util.Date" scope="page"/>goods.html
+<jsp:useBean id="now" class="java.util.Date" scope="page"/>
 <head>
     <meta charset="utf-8">
     <title>DASHMIN - Bootstrap Admin Template</title>
@@ -49,45 +50,51 @@
         <!-- Sign Up Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
+
+                    <div class="d-flex col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3 ">
+                            <form action="${pageContext.request.contextPath}/doSignUpServlet">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
                                 <h3 class="text-dark">某购物平台</h3>
-                            </a>
-                            <h3>注册</h3>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe">
-                            <label for="floatingText">账号</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">密码</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">邮箱</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-floating  ">
-                                <input type="CAPTCHA" class="form-control col" id="floatingCAPTCHA"
-                                    style="height: 40px;">
-                                <label for="floatingCAPTCHA" style="font-size: 10px;">验证码</label>
+                                <h3>注册</h3>
                             </div>
-                            <button type="submit" class="btn btn-dark ">获取验证码</button>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">记住我</label>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingText" placeholder="username" name="username">
+                                <label for="floatingText">账号</label>
                             </div>
-                            <div><label class="text-danger">6666</label></div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="password" name="password">
+                                <label for="floatingPassword">密码</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                                <label for="floatingInput">邮箱</label>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="form-floating  ">
+                                    <input type="CAPTCHA" class="form-control col" id="floatingCAPTCHA" name="inputCode"
+                                           style="height: 40px;">
+                                    <label for="floatingCAPTCHA" style="font-size: 10px;">验证码</label>
+                                </div>
+                                <button type="submit" class="btn btn-dark" name="send" value="send">获取验证码</button>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="form-check">
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="user" id="user" style="margin: 0; margin-bottom: 0;">
+                                        <option selected disabled>选择账号类型</option>
+                                        <option value="buyer">用户</option>
+                                        <option value="merchant">商家</option>
+                                    </select>
+                                </div>
+                                <div><label class="text-danger" id="warning"></label></div>
+                            </div>
+                            <button type="submit" class="btn btn-dark py-3 w-100 mb-4" name="signUp">注册</button>
+                            <p class="text-center mb-0">立即返回<a href="/backstage/signin.jsp">登录</a></p>
+                            </form>
                         </div>
-                        <button type="submit" class="btn btn-dark py-3 w-100 mb-4">注册</button>
-                        <p class="text-center mb-0">立即返回<a href="signin.html">登录</a></p>
                     </div>
-                </div>
+
+
             </div>
         </div>
         <!-- Sign Up End -->
@@ -106,6 +113,11 @@
 
     <!-- Template Javascript -->
     <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
+    <script>
+        function SendEmail(){
+
+        }
+    </script>
 </body>
 
 </html>

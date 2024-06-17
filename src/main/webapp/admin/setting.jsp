@@ -67,7 +67,7 @@
                 <a href="toAdminBuyerServlet" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
                 <a href="toAdminMerchantServlet" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
                 <a href="toAdminGoodsServlet.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>商品管理</a>
-                <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
+                <a href="${pageContext.request.contextPath}/admin/setting.jsp" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
             </div>
         </nav>
     </div>
@@ -91,17 +91,18 @@
                 <div class="row d-flex justify-content-center">
                     <div class="bg-light rounded h-100 p-4 col col-xl-6">
                         <h6 class="mb-4">账号安全</h6>
-                        <form>
+                        <form action="doUpdateAdminPasswordServlet">
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">账号：4651615</label>
+                                <label for="exampleInputPassword1" class="form-label">新密码</label>
+                                <input type="password" class="form-control" id="lostPassword" name="password">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">新密码</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="password1">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword2" class="form-label">确认密码</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2">
+                                <input type="password" class="form-control" id="exampleInputPassword2" name="password2">
                             </div>
                             <button type="submit" class="btn btn-primary">确认修改</button>
                         </form>

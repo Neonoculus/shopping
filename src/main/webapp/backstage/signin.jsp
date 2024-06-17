@@ -79,7 +79,7 @@
                                 <a href="">忘记密码</a>
                             </div>
                             <button type="submit" class="btn btn-dark py-3 w-100 mb-4">登录</button>
-                            <p class="text-center mb-0">还没有账号? 立即-><a href="signup.html">注册</a></p>
+                            <p class="text-center mb-0">还没有账号? 立即-><a href="${pageContext.request.contextPath}/backstage/signup.jsp">注册</a></p>
                         </div>
                     </form>
                 </div>

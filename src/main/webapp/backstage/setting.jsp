@@ -54,13 +54,13 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt="" style="width: 40px; height: 40px;">
                         <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                                class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">随乡饺子馆</h6>
+                        <h6 class="mb-0">${merchant.name}</h6>
                         <span>商家</span>
                     </div>
                 </div>
@@ -69,11 +69,12 @@
                     <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
                     <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
                     <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
-                    <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
+                    <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
         </div>
         <!-- Sidebar End -->
+
 
         <!-- Content Start -->
         <div class="content">
@@ -94,9 +95,9 @@
                             <span class="d-none d-lg-inline-flex">${merchant.name}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="info.html" class="dropdown-item">商家信息</a>
-                            <a href="setting.html" class="dropdown-item">设置</a>
-                            <a href="#" class="dropdown-item">退出登录</a>
+                            <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="dropdown-item">商家信息</a>
+                            <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="dropdown-item">设置</a>
+                            <a href="/backstage/signin.jsp" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>
@@ -107,16 +108,14 @@
                 <div class="row d-flex justify-content-center">
                     <div class="bg-light rounded h-100 p-4 col col-xl-6">
                         <h6 class="mb-4">账号安全</h6>
-                        <form action="">
+                        <form action="doUpdateMerchantPasswordServlet">
+                            <input type="hidden" value="${merchant.m_id}" name="merchant">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">电子邮箱</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                                    aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">我们绝不会与其他人分享您的电子邮件地址
-                                </div>
+                                <label for="exampleInputPassword1" class="form-label">旧密码</label>
+                                <input type="password" class="form-control" id="lostPassword" name="password">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">密码</label>
+                                <label for="exampleInputPassword1" class="form-label">新密码</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" name="password1">
                             </div>
                             <div class="mb-3">

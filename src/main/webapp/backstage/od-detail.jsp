@@ -69,26 +69,27 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" alt="" style="width: 40px; height: 40px;">
                         <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                                class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">随乡饺子馆</h6>
+                        <h6 class="mb-0">${merchant.name}</h6>
                         <span>商家</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="toIndexServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>首页</a>
                     <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>商家信息</a>
-                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商品管理</a>
-                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>订单管理</a>
-                    <a href="setting.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
+                    <a href="toGoodsServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>商品管理</a>
+                    <a href="toOrderServlet?start=0&merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>订单管理</a>
+                    <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
         </div>
         <!-- Sidebar End -->
+
 
         <!-- Content Start -->
         <div class="content">
@@ -109,9 +110,9 @@
                             <span class="d-none d-lg-inline-flex">${merchant.name}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="info.html" class="dropdown-item">商家信息</a>
-                            <a href="setting.html" class="dropdown-item">设置</a>
-                            <a href="#" class="dropdown-item">退出登录</a>
+                            <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="dropdown-item">商家信息</a>
+                            <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="dropdown-item">设置</a>
+                            <a href="/backstage/signin.jsp" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>

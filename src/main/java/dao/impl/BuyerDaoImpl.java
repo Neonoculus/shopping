@@ -16,8 +16,8 @@ public class BuyerDaoImpl implements BuyerDao {
     public int add(Buyer buyer) {
         int result;
         try {
-            result = runner.update("insert into buyer(b_id,name,email,address,phone,photo) values(?,?,?,?,?,?)",
-                    buyer.getB_id(),buyer.getName(),buyer.getEmail(),buyer.getAddress(),buyer.getPhone(),buyer.getPhoto());
+            result = runner.update("insert into buyer(name,email,address,phone,photo) values(?,?,?,?,?)",
+                    buyer.getName(),buyer.getEmail(),buyer.getAddress(),buyer.getPhone(),buyer.getPhoto());
             return result;
         } catch (SQLException e) {
             throw new RuntimeException(e);

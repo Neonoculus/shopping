@@ -16,8 +16,8 @@ public class MerchantDaoImpl implements MerchantDao {
     public int add(Merchant merchant) {
         int result;
         try {
-            result = runner.update("insert into merchant(m_id,name,phone,address,email,photo,note) values(?,?,?,?,?,?,?)",
-                    merchant.getM_id(),merchant.getName(),merchant.getPhone(),merchant.getAddress(),merchant.getEmail(),merchant.getPhoto(),merchant.getNote());
+            result = runner.update("insert into merchant(name,phone,address,email,photo,note) values(?,?,?,?,?,?)",
+                    merchant.getName(),merchant.getPhone(),merchant.getAddress(),merchant.getEmail(),merchant.getPhoto(),merchant.getNote());
             return result;
         } catch (SQLException e) {
             throw new RuntimeException(e);
