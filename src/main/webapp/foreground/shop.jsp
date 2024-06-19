@@ -270,7 +270,7 @@
                   </form>
             </div>
           </div>
-          <form action="${pageContext.request.contextPath}/doShopServlet" method="get">
+          <form id="asideForm" action="${pageContext.request.contextPath}/doShopServlet" method="get">
             <div class="widget-product-categories pt-5">
               <h5 class="widget-title text-decoration-underline text-uppercase">类别</h5>
               <ul class="product-categories sidebar-list list-unstyled">
@@ -299,6 +299,7 @@
                 <c:forEach var="tag" items="${tagList}">
                     <input type="checkbox" id="${tag.t_id}" name="tags" value="${tag.t_id}">
                     <label class="cat-item" for="${tag.t_id}">${tag.name}</label>
+
                 </c:forEach>
               </c:if>
               <c:if test="${tagList==NULL}">
@@ -318,10 +319,12 @@
                 <input name="v1" class="form-control mr-2" placeholder="最低价格" value="${value1}" min="0" step="0.01"/>—
                 <input name="v2" class="form-control mr-2" placeholder="最高价格" value="${value2}" min="0" step="0.01"/>
                 <button type="submit" class="btn btn-primary">查询</button>
+
               </div>
             </c:if>
             </div>
           </form>
+          <div id="message"></div>
           <div>
           </div>
         </div>

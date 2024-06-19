@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- script
     ================================================== -->
-    <script src="${pageContext.request.contextPath}/foreground/js/modernizr.js"></script>
+   <script src="${pageContext.request.contextPath}/foreground/js/modernizr.js"></script>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -166,27 +166,28 @@
                 <li class="nav-item">
                   <div class="user-items ps-5">
                     <c:if test="${buyer==NULL}">
-                      <ul class="d-flex justify-content-end list-unstyled">
-                        <li class="search-item pe-3">
-                          <a href="#" class="search-button">
-                            <svg class="search">
-                              <use xlink:href="#search"></use>
-                            </svg>
-                          </a>
-                        </li>
-                        <li class="pe-3">
-                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
-                            登录/注册
-                          </a>
-                        </li>
-                        <li>
-                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
-                            <svg class="cart">
-                              <use xlink:href="#cart"></use>
-                            </svg>
-                          </a>
-                        </li>
-                      </ul>
+
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3" style="margin-left: 15px">
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          登录/注册
+                        </a>
+                      </li>
+                    </ul>
                     </c:if>
                     <c:if test="${buyer!=NULL}">
                       <ul class="d-flex justify-content-end list-unstyled">
@@ -197,17 +198,29 @@
                             </svg>
                           </a>
                         </li>
-                        <li class="pe-3">
-                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
-                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
-                          </a>
-                        </li>
                         <li>
                           <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>
                           </a>
+                        </li>
+                        <li class="pe-3" style="margin-left: 15px">
+                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                          </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          </a>
+                          <ul style="width: 120px;min-width:120px;left: -350%;top:30px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toUpdateInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">个人信息</a></li>
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">订单信息</a></li>
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toPasswordUpdate?b_id=${buyer.b_id}" style="font-size:14px; color:black;">修改密码</a></li>
+                            <li style="width: 100%;text-align: center;"><hr class="dropdown-divider"></li>
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/doLogoutServlet" style="font-size:14px; color:black;">退出</a></li>
+                          </ul>
                         </li>
                       </ul>
                     </c:if>
@@ -921,9 +934,11 @@
       </div>
     </div>
     <script src="${pageContext.request.contextPath}/foreground/js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
-  </body>
+
+   </body>
 </html>

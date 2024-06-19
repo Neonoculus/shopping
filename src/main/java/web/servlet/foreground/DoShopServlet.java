@@ -113,11 +113,7 @@ public class DoShopServlet extends HttpServlet {
             request.setAttribute("value1",vp1);
             request.setAttribute("value2",vp2);
 
-//            List<Category> allCategory = categoryService.getAllCategory();
-//            List<Tag> tagByCId = tagService.getTagByCId(Integer.parseInt(CID));
-//            List<Tag> checkedByTid = tagService.getTagByTId();
-//
-//            request.setAttribute("",tagList);
+
 
             request.getRequestDispatcher("/foreground/shop.jsp").forward(request,response);
 

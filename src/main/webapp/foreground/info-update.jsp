@@ -230,48 +230,38 @@
 
   <section class="shopify-cart checkout-wrap padding-large">
     <div class="container">
-      <form class="form-group">
+      <form class="form-group" action="${pageContext.request.contextPath}/doUpdateInfoServlet" method="get">
+        <input name="b_id" value="${buyer.b_id}" type="hidden">
         <div class="row d-flex flex-wrap">
           <div class="d-flex justify-content-center ">
-
             <div class="justify-content-center row">
-              <h2 class="display-7 text-uppercase text-dark pb-4">账号</h2>
+              <h2 class="display-7 text-uppercase text-dark pb-4">头像</h2>
               <div>
-                <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
-                <div style="height: 70px; width: 70px;">
-                  <input type="file" id="exampleInputPhoto"
-                         style=" position: absolute; opacity: 0; height: 70px; width: 70px;">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                       class="bi bi-plus-square" viewBox="0 0 16 16">
-                    <path
-                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                    <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                  </svg>
-                </div>
+             <img id="avatarImage" src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" alt="Avatar" style="cursor: pointer; width: 150px; height: 150px;">
+             <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
               </div>
               <div class="col col-sm-5">
                 <div class="row d-flex align-items-center">
                   <label for="fname" class="label fs-5 col col-sm-4">名字：</label>
-                  <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-2 mr ps-3 col">
+                  <input type="text" id="fname" name="fname" class="form-control mt-2 mb-2 mr ps-3 col" value="${buyer.name}">
                 </div>
                 <div class="row d-flex align-items-center">
-                  <label for="email" class="label fs-5 col col-sm-4">电话：</label>
-                  <input type="text" id="phone" name="phone" class="form-control mt-2 mb-2 ps-3 col">
+                  <label for="phone" class="label fs-5 col col-sm-4">电话：</label>
+                  <input type="text" id="phone" name="phone" class="form-control mt-2 mb-2 ps-3 col" value="${buyer.phone}">
                 </div>
               </div>
               <div class="col col-sm-1"></div>
               <div class="col col-sm-5">
                 <div class="row d-flex align-items-center">
                   <label for="email" class="label fs-5 col col-sm-4">邮箱：</label>
-                  <input type="text" id="email" name="email" class="form-control mt-2 mb-2 ps-3 col">
+                  <input type="text" id="email" name="email" class="form-control mt-2 mb-2 ps-3 col" value="${buyer.email}">
                 </div>
                 <div class="row d-flex align-items-center">
                   <label for="address" class="label fs-5 col col-sm-4">地址：</label>
-                  <input type="text" id="address" name="address" class="form-control mt-2 mb-2 ps-3 col">
+                  <input type="text" id="address" name="address" class="form-control mt-2 mb-2 ps-3 col" value="${buyer.address}">
                 </div>
               </div>
-              <button type="submit" class="btn btn-dark mt-4">修改</button>
+              <button id="formButton" type="submit" class="btn btn-dark mt-4">修改</button>
             </div>
           </div>
         </div>
@@ -511,6 +501,26 @@
   <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
+
+  <script>
+    const avatarImage = document.getElementById('avatarImage');
+    const avatarInput = document.getElementById('avatarInput');
+    avatarImage.addEventListener('click', () => {
+      avatarInput.click();
+    });
+
+    avatarInput.addEventListener('change', () => {
+      const file = avatarInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          avatarImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+  </script>
 </body>
 
 </html>
