@@ -312,7 +312,7 @@
                   <ul class="select-list list-unstyled d-flex">
                     <c:forEach var="tag" items="${tagList}">
                       <li data-value="S" class="select-item">
-                        <a href="#">${tag.name}</a>,
+                        <a href="#">${tag.name}</a>&nbsp;&nbsp;
                       </li>
                     </c:forEach>
                     </li>

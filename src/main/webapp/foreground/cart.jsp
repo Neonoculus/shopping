@@ -1,6 +1,12 @@
+<%@ page import="domain.dto.CartDto" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+List<CartDto> cartDtoList = (List<CartDto>) request.getAttribute("cartDtoList");
+int listLength = cartDtoList.size();
+%>
 <html>
 
 <head>
@@ -150,7 +156,7 @@
                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
+                <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
@@ -225,6 +231,7 @@
   <section class="shopify-cart padding-large">
     <div class="container">
       <div class="row">
+        <form action="${pageContext.request.contextPath}/doCartServlet?b_id=${buyer.b_id}&button=1" method="post">
         <div class="cart-table">
           <div class="cart-header">
             <div class="row d-flex text-uppercase">
@@ -264,8 +271,10 @@
                       <div class="qty-number d-flex">
                         <div class="row align-middle">
                           <button type="button" class="p-0 col col-1" onclick="minus(${i.index})">-</button>
-                          <input class="form-control border-0 shadow-0 p-0 col" name="quantity" type="text" value="${cartDto.count}"style="text-align: center;" disabled style="background-color: rgba(1,1,1,0)" id="input${i.index}">
+                          <input class="border-0 shadow-0 p-0 col" type="text"value="${cartDto.count}" style="text-align: center;" disabled style="background-color: rgba(1,1,1,0)" id="input${i.index}">
                           <button type="button" class="p-0 col col-1" onclick="plus(${i.index})">+</button>
+                          <input type="hidden" name="quantityList${i.index}" value="${cartDto.count}" id="inputHidden${i.index}">
+                          <input type="hidden" name="goodsList${i.index}" value="${cartDto.g_id}">
                           <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
                           <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
                           <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
@@ -304,29 +313,31 @@
                   <th style="font-size: 50px">总计</th>
                   <td data-title="Total">
                     <span class="text-primary ps-5" style="font-size: 50px">
-                      <bdi  id="total">
-                        ${total}</bdi>
-                      <bdi id="hou">0元</bdi>
+                      <div  id="total" style="display: inline-block;margin-right: -8px;">
+                        ${total}</div>
+                      <div id="hou" style="display: inline-block">0元</div>
                     </span>
                   </td>
+                  <input type="hidden" name="length" value="<%=listLength%>">
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="button-wrap">
-            <button class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none">更新购物车</button>
-            <button class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none">继续购物</button>
-            <button class="btn btn-black btn-medium text-uppercase mb-3 btn-rounded-none">去支付</button>
+            <button type="submit" name="update" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" value="update">更新购物车</button>
+            <button type="submit" name="continue" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" value="continue">继续购物</button>
+            <button type="submit" name="pay" class="btn btn-black btn-medium text-uppercase mb-3 btn-rounded-none" value="pay">去支付</button>
           </div>
         </div>
+        </form>
       </div>
     </div>
   </section>
-  <section id="subscribe" class="container-grid position-relative overflow-hidden">
+  <section id="subscribe" class="container-grid position-relative overflow-hidden pb-4">
     <div class="container">
       <div class="row">
         <div
-          class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
+                class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
           <div class="col-md-6 col-sm-12">
             <div class="display-header pe-3">
               <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
@@ -337,73 +348,12 @@
             <form class="subscription-form validate">
               <div class="input-group flex-wrap">
                 <input class="form-control btn-rounded-none" type="email" name="EMAIL"
-                  placeholder="Your email address here" required="">
+                       placeholder="Your email address here" required="">
                 <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit"
-                  name="subscribe">订阅</button>
+                        name="subscribe">订阅</button>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="instagram" class="padding-large overflow-hidden">
-    <div class="container">
-      <div class="row">
-        <div class="display-header text-uppercase text-dark text-center pb-3">
-          <h2 class="display-7">购买我们 Insta</h2>
-        </div>
-        <div class="d-flex flex-wrap">
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
         </div>
       </div>
     </div>
@@ -415,7 +365,7 @@
           <div class="row d-flex flex-wrap justify-content-between">
             <div class="col-lg-3 col-sm-6 pb-3">
               <div class="footer-menu">
-                <img src="images/main-logo.png" alt="logo">
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
                 <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
                   erat nullam fringilla.</p>
                 <div class="social-links">
@@ -525,8 +475,8 @@
           <div class="Shipping d-flex">
             <p>We ship with:</p>
             <div class="card-wrap ps-2">
-              <img src="images/dhl.png" alt="visa">
-              <img src="images/shippingcard.png" alt="mastercard">
+              <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+              <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
             </div>
           </div>
         </div>
@@ -534,9 +484,9 @@
           <div class="payment-method d-flex">
             <p>Payment options:</p>
             <div class="card-wrap ps-2">
-              <img src="images/visa.jpg" alt="visa">
-              <img src="images/mastercard.jpg" alt="mastercard">
-              <img src="images/paypal.jpg" alt="paypal">
+              <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+              <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+              <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
             </div>
           </div>
         </div>
@@ -565,10 +515,12 @@
 <script>
   function minus(i){
     let input = document.getElementById('input'+i);
+    let inputHidden = document.getElementById('inputHidden'+i);
     let currentValue = parseInt(input.value);
 
     if (currentValue > 1) {
       input.value = currentValue - 1;
+      inputHidden.value = currentValue - 1;
       let money = document.getElementById('money'+i);
       let price = document.getElementById('price'+i);
       money.textContent = parseFloat(price.value)*parseFloat(input.value)+".00元";
@@ -582,9 +534,11 @@
   }
   function plus(i){
     let input = document.getElementById('input'+i);
+    let inputHidden = document.getElementById('inputHidden'+i);
     let currentValue = parseInt(input.value);
     if (currentValue < 100) {
       input.value = currentValue + 1;
+      inputHidden.value = currentValue + 1;
       let money = document.getElementById('money'+i);
       let price = document.getElementById('price'+i);
       money.textContent = parseFloat(price.value)*parseFloat(input.value)+".00元";
