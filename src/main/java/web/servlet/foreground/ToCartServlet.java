@@ -33,6 +33,7 @@ public class ToCartServlet extends HttpServlet {
             bid = (String) request.getAttribute("b_id");
         }
         int b_id = Integer.parseInt(bid);
+        System.out.println("购物车里的用户id:"+bid);
         //   用户信息
         Buyer buyer = buyerService.getBuyerByBid(b_id);
         request.setAttribute("buyer",buyer);

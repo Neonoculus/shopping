@@ -1,16 +1,10 @@
-<%@ page import="domain.dto.CartDto" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-List<CartDto> cartDtoList = (List<CartDto>) request.getAttribute("cartDtoList");
-int listLength = cartDtoList.size();
-%>
 <html>
 
 <head>
-  <title>Ministore</title>
+  <title>迷你商店</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +25,8 @@ int listLength = cartDtoList.size();
   <script src="js/modernizr.js"></script>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
+  tabindex="0">
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
       <path fill="currentColor"
@@ -119,7 +114,7 @@ int listLength = cartDtoList.size();
           <a href="#" title="Monitors">显示器</a>
         </li>
         <li class="cat-list-item">
-          <a href="#" title="Speakers">发言人</a>
+          <a href="#" title="Speakers">音响</a>
         </li>
         <li class="cat-list-item">
           <a href="#" title="Memory Cards">存储卡</a>
@@ -157,7 +152,7 @@ int listLength = cartDtoList.size();
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
@@ -171,7 +166,7 @@ int listLength = cartDtoList.size();
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?shop=first">产品</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
@@ -246,143 +241,129 @@ int listLength = cartDtoList.size();
       </div>
     </nav>
   </header>
-  <section class="hero-section position-relative bg-light-blue padding-medium">
-    <div class="hero-content">
-      <div class="container">
-        <div class="row">
-          <div class="text-center padding-large no-padding-bottom">
-            <h1 class="display-2 text-uppercase text-dark">购物车</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="shopify-cart padding-large">
+
+  <section class="shopify-cart checkout-wrap padding-large">
     <div class="container">
-      <div class="row">
-        <form action="${pageContext.request.contextPath}/doCartServlet?b_id=${buyer.b_id}&button=1" method="post">
-        <div class="cart-table">
-          <div class="cart-header">
-            <div class="row d-flex text-uppercase">
-              <h3 class="cart-title col-lg-4 pb-3">产品</h3>
-              <h3 class="cart-title col-lg-3 pb-3">数量</h3>
-              <h3 class="cart-title col-lg-4 pb-3">小计</h3>
+      <form class="form-group" action="${pageContext.request.contextPath}/doUpdateInfoServlet" method="get">
+        <input name="b_id" value="${buyer.b_id}" type="hidden">
+        <div class="row d-flex flex-wrap">
+          <div class="d-flex justify-content-center ">
+            <div class="justify-content-center row">
+              <h2 class="display-7 text-uppercase text-dark pb-4">头像</h2>
+              <div>
+             <img id="avatarImage" src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" alt="Avatar" style="cursor: pointer; width: 150px; height: 150px;">
+             <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
+              </div>
+              <div class="col col-sm-5">
+                <div class="row d-flex align-items-center">
+                  <label for="fname" class="label fs-5 col col-sm-4">名字：</label>
+                  <input type="text" id="fname" name="fname" class="form-control mt-2 mb-2 mr ps-3 col" value="${buyer.name}">
+                </div>
+                <div class="row d-flex align-items-center">
+                  <label for="phone" class="label fs-5 col col-sm-4">电话：</label>
+                  <input type="text" id="phone" name="phone" class="form-control mt-2 mb-2 ps-3 col" value="${buyer.phone}">
+                </div>
+              </div>
+              <div class="col col-sm-1"></div>
+              <div class="col col-sm-5">
+                <div class="row d-flex align-items-center">
+                  <label for="email" class="label fs-5 col col-sm-4">邮箱：</label>
+                  <input type="text" id="email" name="email" class="form-control mt-2 mb-2 ps-3 col" value="${buyer.email}">
+                </div>
+                <div class="row d-flex align-items-center">
+                  <label for="address" class="label fs-5 col col-sm-4">地址：</label>
+                  <input type="text" id="address" name="address" class="form-control mt-2 mb-2 ps-3 col" value="${buyer.address}">
+                </div>
+              </div>
+              <button id="formButton" type="submit" class="btn btn-dark mt-4">修改</button>
             </div>
           </div>
-          <div class="cart-item border-top border-bottom padding-small">
-            <c:forEach var="cartDto" items="${cartDtoList}" varStatus="i">
-            <div class="row align-items-center">
-              <div class="col-lg-4 col-md-3">
-                <div class="cart-info d-flex flex-wrap align-items-center mb-4">
-                  <div class="col-lg-5">
-                    <div class="card-image">
-                      <a href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${cartDto.g_id}&b_id=${buyer.b_id}">
-                      <img src="${pageContext.request.contextPath}/img/picture/${cartDto.photo}" style="border-radius: 10%" alt="cloth" class="img-fluid"></a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="card-detail">
-                      <h3 class="card-title text-uppercase">
-                        <a href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${cartDto.g_id}&b_id=${buyer.b_id}">${cartDto.name}</a>
-                      </h3>
-                      <div class="card-price">
-                        <span class="money text-primary" data-currency-usd="$1200.00">${cartDto.money}0元</span>
-                        <input type="hidden" id="price${i.index}" value="${cartDto.money}">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-7">
-                <div class="row d-flex">
-                  <div class="col-lg-6">
-                    <div class="qty-field">
-                      <div class="qty-number d-flex">
-                        <div class="row align-middle">
-                          <button type="button" class="p-0 col col-1" onclick="minus(${i.index})">-</button>
-                          <input class="border-0 shadow-0 p-0 col" type="text"value="${cartDto.count}" style="text-align: center;" disabled style="background-color: rgba(1,1,1,0)" id="input${i.index}">
-                          <button type="button" class="p-0 col col-1" onclick="plus(${i.index})">+</button>
-                          <input type="hidden" name="quantityList${i.index}" value="${cartDto.count}" id="inputHidden${i.index}">
-                          <input type="hidden" name="goodsList${i.index}" value="${cartDto.g_id}">
-                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
-                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
-                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
-                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
-                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
-                          <input class="border-0 shadow-0 p-0 col " type="text" readonly disabled style="background-color: rgba(1,1,1,0)">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="total-price">
-                      <span class="money text-primary" id="money${i.index}">${cartDto.money*cartDto.count}0元</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-1 col-md-2">
-                <div class="cart-remove">
-                  <a href="${pageContext.request.contextPath}/doCartServlet?a=1&b_id=${buyer.b_id}&g_id=${cartDto.g_id}">
-                    <svg class="close" width="38px">
-                      <use xlink:href="#close"></use>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            </c:forEach>
-          </div>
         </div>
-        <div class="cart-totals bg-grey padding-medium">
-          <div class="total-price pb-5" >
-            <table cellspacing="0" class="table text-uppercase">
-              <tbody>
-                <tr class="order-total pt-2 pb-2 border-bottom">
-                  <th style="font-size: 50px">总计</th>
-                  <td data-title="Total">
-                    <span class="text-primary ps-5" style="font-size: 50px">
-                      <div  id="total" style="display: inline-block;margin-right: -8px;">
-                        ${total}</div>
-                      <div id="hou" style="display: inline-block">0元</div>
-                    </span>
-                  </td>
-                  <input type="hidden" name="length" value="<%=listLength%>">
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="button-wrap">
-            <button type="submit" name="update" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" value="update">更新购物车</button>
-            <button type="submit" name="continue" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" value="continue">继续购物</button>
-            <button type="submit" name="pay" class="btn btn-black btn-medium text-uppercase mb-3 btn-rounded-none" value="pay">去支付</button>
-          </div>
-        </div>
-        </form>
-      </div>
+      </form>
     </div>
   </section>
-  <section id="subscribe" class="container-grid position-relative overflow-hidden pb-4">
+  <section id="subscribe" class="container-grid position-relative overflow-hidden">
     <div class="container">
       <div class="row">
         <div
-                class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
+          class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
           <div class="col-md-6 col-sm-12">
             <div class="display-header pe-3">
               <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
-              <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱.</p>
+              <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
             </div>
           </div>
           <div class="col-md-5 col-sm-12">
             <form class="subscription-form validate">
               <div class="input-group flex-wrap">
                 <input class="form-control btn-rounded-none" type="email" name="EMAIL"
-                       placeholder="Your email address here" required="">
+                  placeholder="Your email address here" required="">
                 <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit"
-                        name="subscribe">订阅</button>
+                  name="subscribe">订阅</button>
               </div>
             </form>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="instagram" class="padding-large overflow-hidden">
+    <div class="container">
+      <div class="row">
+        <div class="display-header text-uppercase text-dark text-center pb-3">
+          <h2 class="display-7">购买我们 Insta</h2>
+        </div>
+        <div class="d-flex flex-wrap">
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative">
+              <img src="${pageContext.request.contextPath}/foreground/images/insta-item1.jpg" alt="instagram" class="insta-image">
+              <div class="icon-overlay position-absolute d-flex justify-content-center">
+                <svg class="instagram">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </div>
+            </a>
+          </figure>
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative">
+              <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
+              <div class="icon-overlay position-absolute d-flex justify-content-center">
+                <svg class="instagram">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </div>
+            </a>
+          </figure>
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative">
+              <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
+              <div class="icon-overlay position-absolute d-flex justify-content-center">
+                <svg class="instagram">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </div>
+            </a>
+          </figure>
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative">
+              <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
+              <div class="icon-overlay position-absolute d-flex justify-content-center">
+                <svg class="instagram">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </div>
+            </a>
+          </figure>
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative">
+              <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
+              <div class="icon-overlay position-absolute d-flex justify-content-center">
+                <svg class="instagram">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </div>
+            </a>
+          </figure>
         </div>
       </div>
     </div>
@@ -394,7 +375,7 @@ int listLength = cartDtoList.size();
           <div class="row d-flex flex-wrap justify-content-between">
             <div class="col-lg-3 col-sm-6 pb-3">
               <div class="footer-menu">
-                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
+                <img src="images/main-logo.png" alt="logo">
                 <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
                   erat nullam fringilla.</p>
                 <div class="social-links">
@@ -504,8 +485,8 @@ int listLength = cartDtoList.size();
           <div class="Shipping d-flex">
             <p>We ship with:</p>
             <div class="card-wrap ps-2">
-              <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
-              <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
+              <img src="images/dhl.png" alt="visa">
+              <img src="images/shippingcard.png" alt="mastercard">
             </div>
           </div>
         </div>
@@ -513,16 +494,17 @@ int listLength = cartDtoList.size();
           <div class="payment-method d-flex">
             <p>Payment options:</p>
             <div class="card-wrap ps-2">
-              <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
-              <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
-              <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
+              <img src="images/visa.jpg" alt="visa">
+              <img src="images/mastercard.jpg" alt="mastercard">
+              <img src="images/paypal.jpg" alt="paypal">
             </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="copyright">
-            <!-- <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a> -->
-            </p>
+            <%-- <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/"
+                title="网页模板">网页模板</a>--%>
+              </p>
           </div>
         </div>
       </div>
@@ -533,52 +515,26 @@ int listLength = cartDtoList.size();
   <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/plugins.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/foreground/js/script.js"></script>
-  <script src="${pageContext.request.contextPath}/foreground/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="${pageContext.request.contextPath}/foreground/vendor/nouislider/nouislider.min.js"></script>
-  <script src="${pageContext.request.contextPath}/foreground/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/foreground/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-  <script src="${pageContext.request.contextPath}/foreground/js/front.js"></script>
 
+  <script>
+    const avatarImage = document.getElementById('avatarImage');
+    const avatarInput = document.getElementById('avatarInput');
+    avatarImage.addEventListener('click', () => {
+      avatarInput.click();
+    });
 
+    avatarInput.addEventListener('change', () => {
+      const file = avatarInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          avatarImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
-<script>
-  function minus(i){
-    let input = document.getElementById('input'+i);
-    let inputHidden = document.getElementById('inputHidden'+i);
-    let currentValue = parseInt(input.value);
-
-    if (currentValue > 1) {
-      input.value = currentValue - 1;
-      inputHidden.value = currentValue - 1;
-      let money = document.getElementById('money'+i);
-      let price = document.getElementById('price'+i);
-      money.textContent = parseFloat(price.value)*parseFloat(input.value)+".00元";
-
-      let totalElement = document.getElementById('total');
-      let totalValue = parseFloat(totalElement.textContent)-parseFloat(price.value);
-      totalElement.textContent= totalValue;
-      let hou = document.getElementById('hou');
-      hou.textContent = ".00元"
-    }
-  }
-  function plus(i){
-    let input = document.getElementById('input'+i);
-    let inputHidden = document.getElementById('inputHidden'+i);
-    let currentValue = parseInt(input.value);
-    if (currentValue < 100) {
-      input.value = currentValue + 1;
-      inputHidden.value = currentValue + 1;
-      let money = document.getElementById('money'+i);
-      let price = document.getElementById('price'+i);
-      money.textContent = parseFloat(price.value)*parseFloat(input.value)+".00元";
-      let totalElement = document.getElementById('total');
-      let totalValue = parseFloat(totalElement.textContent)+parseFloat(price.value);
-      totalElement.textContent= totalValue;
-      let hou = document.getElementById('hou');
-      hou.textContent = ".00元"
-    }
-  }
-</script>
+  </script>
 </body>
 
 </html>

@@ -127,98 +127,112 @@
   <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/main-logo.png" class="logo">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+          <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
         </a>
-        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <svg class="navbar-icon">
             <use xlink:href="#navbar-icon"></use>
           </svg>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
           <div class="offcanvas-header px-4 pb-0">
-            <a class="navbar-brand" href="index.html">
-              <img src="images/main-logo.png" class="logo">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
+              <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
             </a>
-            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"
-              data-bs-target="#bdNavbar"></button>
+            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
           </div>
           <div class="offcanvas-body">
             <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link me-4 active" href="#billboard">首页</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#company-services">服务</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#mobile-products">产品</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#smart-watches">观看</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#yearly-sale">销售</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#latest-blog">博客</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button"
-                  aria-expanded="false">网页</a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="about.html" class="dropdown-item">关于</a>
-                  </li>
-                  <li>
-                    <a href="blog.html" class="dropdown-item">博客</a>
-                  </li>
-                  <li>
-                    <a href="shop.html" class="dropdown-item">购物</a>
-                  </li>
-                  <li>
-                    <a href="cart.html" class="dropdown-item">购物车</a>
-                  </li>
-                  <li>
-                    <a href="checkout.html" class="dropdown-item">支付</a>
-                  </li>
-                  <li>
-                    <a href="single-post.html" class="dropdown-item">单一职位</a>
-                  </li>
-                  <li>
-                    <a href="single-product.html" class="dropdown-item">单品</a>
-                  </li>
-                  <li>
-                    <a href="contact.html" class="dropdown-item">联系</a>
-                  </li>
-                </ul>
-              </li>
+              <c:if test="${buyer.b_id!=NULL}">
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                </li>
+              </c:if>
+              <c:if test="${buyer.b_id==NULL}">
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?shop=first">产品</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                </li>
+              </c:if>
               <li class="nav-item">
                 <div class="user-items ps-5">
-                  <ul class="d-flex justify-content-end list-unstyled">
-                    <li class="search-item pe-3">
-                      <a href="#" class="search-button">
-                        <svg class="search">
-                          <use xlink:href="#search"></use>
-                        </svg>
-                      </a>
-                    </li>
-                    <li class="pe-3">
-                      <a href="#">
-                        <svg class="user">
-                          <use xlink:href="#user"></use>
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="cart.html">
-                        <svg class="cart">
-                          <use xlink:href="#cart"></use>
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
+                  <c:if test="${buyer==NULL}">
+
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3" style="margin-left: 15px">
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                          登录/注册
+                        </a>
+                      </li>
+                    </ul>
+                  </c:if>
+                  <c:if test="${buyer!=NULL}">
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3" style="margin-left: 15px">
+                        <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                          <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                        </a>
+                      </li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        </a>
+                        <ul style="width: 120px;min-width:120px;left: -350%;top:30px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toUpdateInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">个人信息</a></li>
+                          <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">订单信息</a></li>
+                          <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toPasswordUpdate?b_id=${buyer.b_id}" style="font-size:14px; color:black;">修改密码</a></li>
+                          <li style="width: 100%;text-align: center;"><hr class="dropdown-divider"></li>
+                          <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/buyerExitServlet" style="font-size:14px; color:black;">退出</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </c:if>
                 </div>
               </li>
             </ul>
@@ -230,49 +244,35 @@
 
   <section class="shopify-cart checkout-wrap padding-large">
     <div class="container">
-      <form class="form-group">
+      <form class="form-group" action="${pageContext.request.contextPath}/doPasswordUpdate" method="get">
         <div class="row d-flex flex-wrap">
-          <div class="d-flex justify-content-center ">
-
-            <div class="justify-content-center row">
-              <h2 class="display-7 text-uppercase text-dark pb-4">账号</h2>
-              <div>
-                <img class="" src="images/cart-item1.jpg" alt="" style="width: 60px; height: 60px; object-fit: cover;">
-                <div style="height: 70px; width: 70px;">
-                  <input type="file" id="exampleInputPhoto"
-                         style=" position: absolute; opacity: 0; height: 70px; width: 70px;">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                       class="bi bi-plus-square" viewBox="0 0 16 16">
-                    <path
-                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                    <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                  </svg>
-                </div>
-              </div>
-              <div class="col col-sm-5">
-                <div class="row d-flex align-items-center">
-                  <label for="fname" class="label fs-5 col col-sm-4">名字：</label>
-                  <input type="text" id="fname" name="firstname" class="form-control mt-2 mb-2 mr ps-3 col">
-                </div>
-                <div class="row d-flex align-items-center">
-                  <label for="email" class="label fs-5 col col-sm-4">电话：</label>
-                  <input type="text" id="phone" name="phone" class="form-control mt-2 mb-2 ps-3 col">
-                </div>
-              </div>
-              <div class="col col-sm-1"></div>
-              <div class="col col-sm-5">
-                <div class="row d-flex align-items-center">
-                  <label for="email" class="label fs-5 col col-sm-4">邮箱：</label>
-                  <input type="text" id="email" name="email" class="form-control mt-2 mb-2 ps-3 col">
-                </div>
-                <div class="row d-flex align-items-center">
-                  <label for="address" class="label fs-5 col col-sm-4">地址：</label>
-                  <input type="text" id="address" name="address" class="form-control mt-2 mb-2 ps-3 col">
-                </div>
-              </div>
-              <button type="submit" class="btn btn-dark mt-4">修改</button>
-            </div>
+          <div class="d-flex justify-content-center align-content-center">
+             <input name="b_id" value="${buyer.b_id}" type="hidden">
+             <div style="width: 50%;">
+               <div class="row mb-3">
+                 <label for="oldPassword" class="fs-5 me-2 col col-sm-2">旧密码:</label>
+                 <input type="password" id="oldPassword" name="oldPassword" class=" col col-sm-6">
+               </div>
+               <div class="row mb-3">
+                 <label for="newPassword" class="fs-5 me-2 col col-sm-2">新密码:</label>
+                 <input type="password" id="newPassword" name="newPassword" class="col col-sm-6">
+               </div>
+               <div class="row mb-3">
+                 <label for="confirmPassword" class="fs-5 me-2 col col-sm-2">确认密码:</label>
+                 <input type="password" id="confirmPassword" name="confirmPassword" class="col col-sm-6">
+               </div>
+               <div class="row mb-3">
+                 <label class="text-danger">${warning}</label>
+               </div>
+               <div class="row">
+                 <div class="col-sm-3">
+                   <button type="submit" class="btn btn-dark mt-2 w-100">确认修改</button>
+                 </div>
+                   <div class="col-sm-3">
+                      <a href="${pageContext.request.contextPath}/toShopServlet" class="btn btn-dark mt-2 w-100">退出</a>
+                   </div>
+               </div>
+             </div>
           </div>
         </div>
       </form>

@@ -1,23 +1,18 @@
 package web.servlet.foreground;
 
-import domain.Category;
-import domain.Goods;
-import domain.Tag;
-import service.CategoryService;
-import service.GoodsService;
-import service.TagService;
-import service.impl.CategoryServiceImpl;
-import service.impl.GoodsServiceImpl;
-import service.impl.TagServiceImpl;
+import domain.*;
+import service.*;
+import service.impl.*;
 
-import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/doShopServlet")
 public class DoShopServlet extends HttpServlet {
@@ -27,110 +22,153 @@ public class DoShopServlet extends HttpServlet {
         GoodsService goodsService = new GoodsServiceImpl();
         CategoryService categoryService = new CategoryServiceImpl();
         TagService tagService = new TagServiceImpl();
+        CartService cartService = new CartServiceImpl();
 
-        //        分页操作
-       String s =  request.getParameter("currentPage");
+        HttpSession session = request.getSession(false);
 
-       String c_id = request.getParameter("cid");
-        System.out.println(c_id);
-        //      查询操作
-        String word = request.getParameter("query");
-
-        String minPrice = request.getParameter("v1");
-        String maxPrice = request.getParameter("v2");
-
-        String CID = request.getParameter("curId");
-
-        System.out.println(CID);
-        if(s!=null )
-        {
-            int start = (Integer.parseInt(request.getParameter("jspCurrentPage"))-1)*9;
-            int totalPage = goodsService.getAllGoods().size()/9+1;
-            int goodsCount = goodsService.getAllGoods().size();
-            int rows = 9;
-            List<Goods> gp = goodsService.findByPage(start,rows);
-            request.setAttribute("totalPage",totalPage);
-            request.setAttribute("gp",gp);
-            request.setAttribute("currentPage",(start/9)+1);
-            request.setAttribute("goodsCount",goodsCount);
-            request.getRequestDispatcher("/foreground/shop.jsp").forward(request,response);
+        //  用户
+        String b_id = request.getParameter("b_id");
+        if(b_id==null){
+            b_id = (String) request.getAttribute("b_id");
         }
-        if (word!=null){
-            List<Goods> w =  goodsService.getGoodByAllQuery(word);
-            int totalPage = w.size()/9+1;
-
-            request.setAttribute("goodsList",w);
-            request.setAttribute("value",word);
-            request.setAttribute("goodsCount",w.size());
-            request.setAttribute("totalPage",totalPage);
-            request.getRequestDispatcher("/foreground/shop.jsp").forward(request,response);
+        if(b_id!=null){
+            request.setAttribute("b_id",b_id);
         }
-
-        if(c_id!=null &&minPrice==null&&maxPrice==null){
-            List<Category> categories = categoryService.getAllCategory();
-
-            //   通过类别编号获取商品
-            int start = (Integer.parseInt(request.getParameter("jspCurrentPage"))-1)*9;
-            int rows = 9;
-            List<Goods> goodsList = goodsService.getGoodsByCIdAndPage(Integer.parseInt(c_id),start,rows);
-            request.setAttribute("goodsList",goodsList);
-            int totalPage = goodsList.size()/9+1;
-
-            Category category = categoryService.getCategoryByCId(Integer.parseInt(c_id));
-//       通过类别编号获取标签
-            List<Tag> tagList = tagService.getTagByCId(Integer.parseInt(c_id));
-            request.setAttribute("tagList",tagList);
-            request.setAttribute("categories",categories);
-            request.setAttribute("curCategory",category);
-            request.setAttribute("totalPage",totalPage);
-            request.setAttribute("currentPage",(start/9)+1);
-            request.setAttribute("goodsCount",goodsList.size());
-
-            request.getRequestDispatcher("/foreground/shop.jsp").forward(request,response);
+        // 点击类别的链接
+        String a = request.getParameter("a");
+        // 当前要显示页数
+        String curPage = request.getParameter("curPage");
+        if(curPage==null){
+            curPage = (String) request.getAttribute("curPage");
+        }
+        // 当前类别
+        String c_id = request.getParameter("c_id");
+        if(c_id==null){
+            c_id = (String) request.getAttribute("c_id");
+        }
+        //  点击搜索框
+        String search = request.getParameter("search");
+        if(search==null){
+            search = (String) request.getAttribute("search");
+        }
+        // 当前选择的标签
+        String[ ] curTagList = request.getParameterValues("curTagList");
+        if(curTagList==null){
+            System.out.println("doShopServlet里t_idList为null.................");
+        }
+        // 价格
+        String maxPrice = request.getParameter("maxPrice");
+        if(maxPrice==null) {
+            maxPrice = (String) request.getAttribute("maxPrice");
+        }
+        if(maxPrice==null){
+            System.out.println("doShopServlet里maxPrice为null.................");
+        }
+        String minPrice = request.getParameter("minPrice");
+        if(minPrice==null){
+            minPrice = (String) request.getAttribute("minPrice");
+        }
+        if(minPrice==null){
+            System.out.println("doShopServlet里minPrice为null.................");
         }
 
-        if(CID!=null&&minPrice!=null&&maxPrice!=null){
-            //            通过类别筛选价格
-            int vp1 = Integer.parseInt(minPrice);
-            int vp2 = Integer.parseInt(maxPrice);
-            int start = (Integer.parseInt(request.getParameter("curName"))-1)*9;
-            int rows = 9;
-            String[] t_id = request.getParameterValues("tags");
-            List<Integer> tagList = new ArrayList<>();
-            for (String string : t_id) {
-                tagList.add(Integer.parseInt(string));
+        //  商品加入购物车
+        String addCart = request.getParameter("addCart");
+        if(addCart!=null){
+            int g_id= Integer.parseInt(request.getParameter("g_id"));
+            Goods goods = goodsService.getGoodsByGId(g_id);
+            List<Cart> cartList = cartService.getCartByBId(Integer.parseInt(b_id));
+            boolean judge = true;
+            for(Cart cart : cartList){
+                if(cart.getB_id()==Integer.parseInt(b_id) && cart.getG_id()==g_id){
+                    Cart updateCart = new Cart(g_id,Integer.parseInt(b_id),cart.getCount()+1,goods.getPrice(),goods.getStatus());
+                    cartService.update(updateCart);
+                    judge = false;
+                    break;
+                }
             }
-            System.out.println(vp1);
-            System.out.println(vp2);
-            System.out.println(start);
-            System.out.println(tagList);
-            List<Goods> goodsList = goodsService.getGoodsByCIdAndTidsAndPrice(Integer.parseInt(CID),tagList, (double) vp1, (double) vp2,start,rows);
-            System.out.println(goodsList);
-            int totalPage = goodsList.size()/9+1;
-            request.setAttribute("goodsCount",goodsList.size());
-            request.setAttribute("totalPage",totalPage);
-            request.setAttribute("goodsList",goodsList);
-            request.setAttribute("value1",vp1);
-            request.setAttribute("value2",vp2);
-
-//            List<Category> allCategory = categoryService.getAllCategory();
-//            List<Tag> tagByCId = tagService.getTagByCId(Integer.parseInt(CID));
-//            List<Tag> checkedByTid = tagService.getTagByTId();
-//
-//            request.setAttribute("",tagList);
-
-            request.getRequestDispatcher("/foreground/shop.jsp").forward(request,response);
-
-
+            if(judge){
+                Cart cart = new Cart(g_id,Integer.parseInt(b_id),1,goods.getPrice(),goods.getStatus());
+                cartService.add(cart);
+            }
+            request.getRequestDispatcher("toCartServlet").forward(request,response);
         }
 
-
-
-
+        //  点击类别
+        if(a!=null && curTagList==null && maxPrice==null &&minPrice==null){
+            removeSession(request);
+            session.setAttribute("shop","a");
+            session.setAttribute("c_id",Integer.parseInt(c_id));
+            request.setAttribute("curPage","1");
+            request.getRequestDispatcher("toShopServlet").forward(request,response);
+        }
+        //  搜索框搜索
+        if(search!=null && curTagList==null && maxPrice==null &&minPrice==null){
+            removeSession(request);
+            session.setAttribute("shop","search");
+            String words = request.getParameter("words");
+            if(words==null) {
+                words = (String) request.getAttribute("words");
+            }
+            session.setAttribute("words",words);
+            request.getRequestDispatcher("toShopServlet").forward(request,response);
+        }
+        //  类别和价格
+        if((c_id!=null&& !"".equals(c_id)) && curTagList==null && maxPrice!=null &&minPrice!=null){
+            System.out.println("进入设置CPrice会话这里");
+            System.out.println("doShopServlet里CPrice里的minPrice:"+minPrice);
+            System.out.println("doShopServlet里CPrice里的maxPrice:"+maxPrice);
+            removeSession(request);
+            session.setAttribute("shop","CPrice");
+            session.setAttribute("c_id",c_id);
+            session.setAttribute("minPrice",minPrice);
+            session.setAttribute("maxPrice",maxPrice);
+            request.getRequestDispatcher("toShopServlet").forward(request,response);
+        }
+        //  类别和标签
+        if((c_id!=null&& !"".equals(c_id)) && curTagList!=null && (maxPrice==null||"".equals(maxPrice)) && (minPrice==null||"".equals(minPrice))){
+            System.out.println("进入设置CT会话这里");
+            System.out.println("doShopServlet这里的curTagList:");
+            for (String curTag : curTagList){
+                System.out.println(curTag);
+            }
+            removeSession(request);
+            session.setAttribute("shop","CT");
+            session.setAttribute("c_id",c_id);
+            session.setAttribute("curTagList",curTagList);
+            request.getRequestDispatcher("toShopServlet").forward(request,response);
+        }
+        //  类别和标签和价格
+        if((c_id!=null&& !"".equals(c_id)) && curTagList!=null && maxPrice!=null && minPrice!=null){
+            System.out.println("进入设置CTPrice会话这里");
+            System.out.println("doShopServlet这里的curTagList:");
+            for (String curTag : curTagList){
+                System.out.println(curTag);
+            }
+            removeSession(request);
+            session.setAttribute("shop","CTPrice");
+            session.setAttribute("c_id",c_id);
+            session.setAttribute("curTagList",curTagList);
+            session.setAttribute("minPrice",minPrice);
+            session.setAttribute("maxPrice",maxPrice);
+            request.getRequestDispatcher("toShopServlet").forward(request,response);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doGet(request,response);
+    }
+
+    private void removeSession(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.removeAttribute("shop");
+            session.removeAttribute("c_id");
+            session.removeAttribute("curTagList");
+            session.removeAttribute("maxPrice");
+            session.removeAttribute("minPrice");
+            session.removeAttribute("words");
+        }
     }
 }
