@@ -41,6 +41,7 @@ public class ToAdminGoodsServlet extends HttpServlet {
             goods1.setPhoto(imageArray[0]);
             goodsList.add(goods1);
         }
+        request.setAttribute("page",start);
         request.setAttribute("pageSumNumber",pageSumNumber);
         request.setAttribute("goodsList",goodsList);
 

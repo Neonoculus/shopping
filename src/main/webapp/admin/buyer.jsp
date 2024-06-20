@@ -64,9 +64,9 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="toAdminBuyerServlet?start=0" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>用户管理</a>
-                    <a href="toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
-                    <a href="toAdminGoodsServlet?start=0" class="nav-item nav-link"><i class="fa fa-table me-2"></i>商品管理</a>
+                    <a href="${pageContext.request.contextPath}/toAdminBuyerServlet?start=0" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>用户管理</a>
+                    <a href="${pageContext.request.contextPath}/toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
+                    <a href="${pageContext.request.contextPath}/toAdminGoodsServlet?start=0" class="nav-item nav-link"><i class="fa fa-table me-2"></i>商品管理</a>
                     <a href="${pageContext.request.contextPath}/admin/setting.jsp" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
                 </div>
             </nav>
@@ -90,6 +90,7 @@
             <!-- Goods Table Start -->
             <div class="container-fluid pt-4 px-4">
                 <form action="doAdminBuyerHeadServlet" id="checkboxForm">
+                    <input type="hidden" name="j" value="1">
                     <div class="row">
                         <div class="d-flex align-items-center justify-content-start col">
                             <input class="form-control border-0" type="search" placeholder="Search" name="search" >
@@ -152,10 +153,10 @@
                             </td>
                             <td class="p-3 align-middle border-light">
                                 <c:if test="${logins[i.index].type==1}">
-                                    <a class="btn btn-sm btn-danger" href="doBannedServlet?id=${buyer.b_id}&type=0">封禁</a>
+                                    <a class="btn btn-sm btn-danger" href="doBannedServlet?id=${buyer.b_id}&type=0&j=1">封禁</a>
                                 </c:if>
                                 <c:if test="${logins[i.index].type==0}">
-                                    <a class="btn btn-sm btn-success" href="doBannedServlet?id=${buyer.b_id}&type=1">解封</a>
+                                    <a class="btn btn-sm btn-success" href="doBannedServlet?id=${buyer.b_id}&type=1&j=1">解封</a>
                                 </c:if>
 
 
@@ -167,6 +168,7 @@
                     </tbody>
 
                 </table>
+
                 </form>
                 <ul class="pagination">
                     <c:if test="${page!=0}">

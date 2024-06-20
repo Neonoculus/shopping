@@ -1,8 +1,11 @@
 package web.servlet.backstage;
 
 import domain.Goods;
+import domain.Merchant;
 import service.GoodsService;
+import service.MerchantService;
 import service.impl.GoodsServiceImpl;
+import service.impl.MerchantServiceImpl;
 
 import java.io.*;
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/doSoldServlet")
 public class DoSoldOutServlet extends HttpServlet {
@@ -23,8 +27,16 @@ public class DoSoldOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GoodsService goodsService = new GoodsServiceImpl();
+		MerchantService merchantService = new MerchantServiceImpl();
 
 		int id,s;
+
+		String m_idParam = request.getParameter("merchant");
+		if (m_idParam == null){
+			m_idParam = (String) request.getAttribute("merchant");
+		}
+		int m_id = Integer.parseInt(m_idParam);
+		Merchant merchant = merchantService.getMerchantByMId(m_id);
 
 		String id1 = request.getParameter("g_id");
 		if (id1 ==null)
@@ -46,6 +58,14 @@ public class DoSoldOutServlet extends HttpServlet {
 		goods.setStatus(s);
 		int i = goodsService.update(goods);
 		request.setAttribute("status",i);
+
+		List<Goods> goodsList = goodsService.findByPageByMId(m_id,0,10);
+		int pageSumNumber = goodsService.goodsPageSum(goodsService.getGoodsByMId(m_id))/10+1;
+
+		request.setAttribute("goodsList",goodsList);
+		request.setAttribute("merchant", merchant);
+		request.setAttribute("page",0);
+		request.setAttribute("pageSumNumber",pageSumNumber);
 		request.getRequestDispatcher("backstage/goods.jsp").forward(request,response);
     }
 }

@@ -64,9 +64,9 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="toAdminBuyerServlet?start=0" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
-                <a href="toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
-                <a href="toAdminGoodsServlet?start=0" class="nav-item nav-link"><i class="fa fa-table me-2"></i>商品管理</a>
+                <a href="${pageContext.request.contextPath}/toAdminBuyerServlet?start=0" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
+                <a href="${pageContext.request.contextPath}/toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
+                <a href="${pageContext.request.contextPath}/toAdminGoodsServlet?start=0" class="nav-item nav-link"><i class="fa fa-table me-2"></i>商品管理</a>
                 <a href="${pageContext.request.contextPath}/admin/setting.jsp" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>设置</a>
             </div>
         </nav>

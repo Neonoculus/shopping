@@ -6,7 +6,7 @@
 <jsp:useBean id="now" class="java.util.Date" scope="page"/>goods.html
 <head>
     <meta charset="utf-8">
-    <title>设置</title>
+    <title>账号信息修改</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -97,7 +97,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="dropdown-item">商家信息</a>
                             <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="dropdown-item">设置</a>
-                            <a href="/backstage/signin.jsp" class="dropdown-item">退出登录</a>
+                            <a href="${pageContext.request.contextPath}/backstage/signin.jsp" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>
@@ -109,14 +109,14 @@
                     <div class="bg-light rounded h-100 p-4 col col-xl-6">
                         <h6 class="mb-4">账号信息修改</h6>
                         <form action="doMerchantInfoUpdateServlet">
-                            <input type="hidden" id="merchant" name="merchant" value="${merchant.m_id}">
+                            <input type="hidden" id="merchant" name="merchant" value="${pageContext.request.contextPath}/img/avatar/${merchant.photo}">
                             <div class="mb-3 row" id="imgDiv">
                                 <label for="photoInput" class="form-label">头像</label>
                                 <div class="col-1" style="height: 70px; width: 70px;">
-                                    <img src="/img/avatar/${merchant.photo}" style="  width: 70px; height: 70px;">
+                                    <img src="${pageContext.request.contextPath}/img/avatar/${merchant.photo}" style="  width: 70px; height: 70px;">
                                 </div>
                                 <div class="col-1" style="height: 70px; width: 70px;">
-                                    <input type="hidden" id="photo1Input" name="photo1Input" value="/img/avatar/${merchant.photo}">
+                                    <input type="hidden" id="photo1Input" name="photo1Input" value="${pageContext.request.contextPath}/img/avatar/${merchant.photo}">
                                     <input type="file" id="photoInput"
                                            style=" position: absolute; opacity: 0; width: 70px; height: 70px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"

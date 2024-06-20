@@ -65,9 +65,9 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="toAdminBuyerServlet?start=0" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
-                <a href="toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
-                <a href="toAdminGoodsServlet?start=0" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>商品管理</a>
+                <a href="${pageContext.request.contextPath}/toAdminBuyerServlet?start=0" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
+                <a href="${pageContext.request.contextPath}/toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
+                <a href="${pageContext.request.contextPath}/toAdminGoodsServlet?start=0" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>商品管理</a>
                 <a href="${pageContext.request.contextPath}/admin/setting.jsp" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
             </div>
         </nav>
@@ -109,7 +109,7 @@
                         <div class="col"></div>
                         <div class="col"></div>
                         <div class="d-flex align-items-center justify-content-end mb-4 col">
-                            <button type="button" class="btn btn-danger m-2" name="SoldOut" value="SoldOut">批量下架</button>
+                            <button type="submit" class="btn btn-danger m-2" name="SoldOut" value="SoldOut">批量下架</button>
                         </div>
                     </div>
                     <table class="table text-nowrap">
@@ -131,7 +131,7 @@
                         <tbody class="border-0">
                         <c:forEach var="goods" items="${goodsList}">
                             <tr>
-                                <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox" name="checkbox" nonce="${goods.g_id}">
+                                <th class="p-3 align-middle border-light"><input class="form-check-input" type="checkbox" name="checkbox" value="${goods.g_id}">
                                 </th>
                                 <td class="ps-0 py-3 border-light" scope="row">
                                     <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link"

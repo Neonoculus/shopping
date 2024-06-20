@@ -112,7 +112,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="dropdown-item">商家信息</a>
                             <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="dropdown-item">设置</a>
-                            <a href="/backstage/signin.jsp" class="dropdown-item">退出登录</a>
+                            <a href="${pageContext.request.contextPath}/backstage/signin.jsp" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>

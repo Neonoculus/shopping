@@ -97,7 +97,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="dropdown-item">商家信息</a>
                             <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="dropdown-item">设置</a>
-                            <a href="/backstage/signin.jsp" class="dropdown-item">退出登录</a>
+                            <a href="${pageContext.request.contextPath}/backstage/signin.jsp" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>
@@ -171,8 +171,8 @@
                                 <p class="mb-0 small"><c:if test="${goods.status==1}">正在售卖</c:if><c:if test="${goods.status==0}">暂停售卖</c:if></p>
                             </td>
                             <td class="p-3 align-middle border-light">
-                                <c:if test="${goods.status==1}"><a class="btn btn-sm btn-danger" href="doSoldOutServlet?g_id=${goods.g_id}&status=1">下架</a></c:if>
-                                <c:if test="${goods.status==0}"><a class="btn btn-sm btn-success" href="doSoldUpServlet?g_id=${goods.g_id}&status=0">上架</a></c:if>
+                                <c:if test="${goods.status==1}"><a class="btn btn-sm btn-danger" href="doSoldServlet?g_id=${goods.g_id}&status=0&merchant=${merchant.m_id}">下架</a></c:if>
+                                <c:if test="${goods.status==0}"><a class="btn btn-sm btn-success" href="doSoldServlet?g_id=${goods.g_id}&status=1&merchant=${merchant.m_id}">上架</a></c:if>
 
                                 <a class="btn btn-sm btn-secondary" href="toGoodsDetailServlet?g_id=${goods.g_id}&m_id=${merchant.m_id}&start=${page}" target="_blank">详细信息</a>
                             </td>

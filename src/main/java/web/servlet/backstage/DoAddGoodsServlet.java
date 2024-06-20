@@ -48,7 +48,7 @@ public class DoAddGoodsServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		int status = Integer.parseInt(request.getParameter("status"));
 		String tags = request.getParameter("tags");
-		int g_id = 1000000000+goodsService.getAllGoods().size();
+		int g_id = 1000000000+goodsService.getAllGoods().size()+1;
 		int c_id = Integer.parseInt(request.getParameter("c_id"));
 		int m_id = Integer.parseInt(request.getParameter("m_id"));
 

@@ -97,7 +97,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="toMerchantInfoServlet?merchant=${merchant.m_id}" class="dropdown-item">商家信息</a>
                             <a href="toMerchantSettingServlet?merchant=${merchant.m_id}" class="dropdown-item">设置</a>
-                            <a href="/backstage/signin.jsp" class="dropdown-item">退出登录</a>
+                            <a href="${pageContext.request.contextPath}/backstage/signin.jsp" class="dropdown-item">退出登录</a>
                         </div>
                     </div>
                 </div>
@@ -158,8 +158,12 @@
 
                                 </td>
                                 <td class="p-3 align-middle border-light">
-                                    <a class="btn btn-sm btn-danger" href="doUpdateOrderServlet?order=${order.o_id}&status=0&m_id=${merchant.m_id}&start=${page}">取消</a>
-                                    <a class="btn btn-sm btn-success" href="doUpdateOrderServlet?order=${order.o_id}&status=2&m_id=${merchant.m_id}&start=${page}">发货</a>
+                                    <c:if test="${order.status==1}">
+                                        <a class="btn btn-sm btn-danger" href="doUpdateOrderServlet?order=${order.o_id}&status=0&m_id=${merchant.m_id}&start=${page}">取消</a>
+                                    </c:if>
+                                    <c:if test="${order.status==1}">
+                                        <a class="btn btn-sm btn-success" href="doUpdateOrderServlet?order=${order.o_id}&status=2&m_id=${merchant.m_id}&start=${page}">发货</a>
+                                    </c:if>
                                     <a class="btn btn-sm btn-secondary" href="toMerchantOrderDetailServlet?b_id=${order.b_id} &m_id=${merchant.m_id}&o_id=${order.o_id}" target=_blank">详细信息</a>
                                 </td>
                             </tr>
@@ -172,14 +176,14 @@
 
                 <ul class="pagination">
                     <c:if test="${page!=0}">
-                        <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page-1}&merchant=${merchant.m_id}">上一页</a></li>
+                        <li class="page-item"><a class="page-link" href="toOrderServlet?start=${page-1}&merchant=${merchant.m_id}">上一页</a></li>
                     </c:if>
                     <c:forEach begin="1" end="${pageSumNumber}" step="1" var="i">
-                        <c:if test="${i==page+1}"><li class="page-item active"><a class="page-link" href="toGoodsServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
-                        <c:if test="${i!=page+1}"><li class="page-item"><a class="page-link" href="toGoodsServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
+                        <c:if test="${i==page+1}"><li class="page-item active"><a class="page-link" href="toOrderServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
+                        <c:if test="${i!=page+1}"><li class="page-item"><a class="page-link" href="toOrderServlet?start=${i-1}&merchant=${merchant.m_id}">${i}</a></li></c:if>
                     </c:forEach>
                     <c:if test="${page<pageSumNumber-1}">
-                        <li class="page-item"><a class="page-link" href="toGoodsServlet?start=${page+1}&merchant=${merchant.m_id}">下一页</a></li>
+                        <li class="page-item"><a class="page-link" href="toOrderServlet?start=${page+1}&merchant=${merchant.m_id}">下一页</a></li>
                     </c:if>
                 </ul>
             </div>
