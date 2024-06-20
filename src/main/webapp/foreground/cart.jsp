@@ -26,6 +26,13 @@ int listLength = cartDtoList.size();
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet">
+  <style>
+    /* 可选的自定义样式 */
+    .custom-modal-dialog {
+      max-width: 20%;
+    }
+  </style>
+
   <!-- script
     ================================================== -->
   <script src="js/modernizr.js"></script>
@@ -151,7 +158,7 @@ int listLength = cartDtoList.size();
             <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
               <c:if test="${buyer.b_id!=NULL}">
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                  <a class="nav-link me-4 " href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
@@ -160,7 +167,7 @@ int listLength = cartDtoList.size();
                   <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}//toContactServlet?b_id=${buyer.b_id}">联系</a>
                 </li>
               </c:if>
               <c:if test="${buyer.b_id==NULL}">
@@ -174,7 +181,7 @@ int listLength = cartDtoList.size();
                   <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">联系</a>
                 </li>
               </c:if>
               <li class="nav-item">
@@ -257,10 +264,28 @@ int listLength = cartDtoList.size();
       </div>
     </div>
   </section>
+
+  <!-- 提示框模态框 -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">支付确认</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="paymentMessage"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <section class="shopify-cart padding-large">
     <div class="container">
       <div class="row">
-        <form action="${pageContext.request.contextPath}/doCartServlet?b_id=${buyer.b_id}&button=1" method="post">
+        <form id="payForm" action="${pageContext.request.contextPath}/doCartServlet?b_id=${buyer.b_id}&button=1" method="post">
         <div class="cart-table">
           <div class="cart-header">
             <div class="row d-flex text-uppercase">
@@ -355,7 +380,8 @@ int listLength = cartDtoList.size();
           <div class="button-wrap">
             <button type="submit" name="update" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" value="update">更新购物车</button>
             <button type="submit" name="continue" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" value="continue">继续购物</button>
-            <button type="submit" name="pay" class="btn btn-black btn-medium text-uppercase mb-3 btn-rounded-none" value="pay">去支付</button>
+            <button type="submit"  class="btn btn-black btn-medium text-uppercase mb-3 btn-rounded-none"  id="payButton">去支付</button>
+            <input type="hidden" id="paymentFlagInput" name="pay" value="">
           </div>
         </div>
         </form>
@@ -578,6 +604,35 @@ int listLength = cartDtoList.size();
       hou.textContent = ".00元"
     }
   }
+
+  // 获取表单和提交按钮
+  const paymentForm = document.getElementById('payForm');
+  const submitButton = document.getElementById('pay');
+  const paymentFlagInput = document.getElementById('paymentFlagInput');
+  // 给表单添加提交事件
+  paymentForm.addEventListener('submit', function(event) {
+    // 阻止默认的表单提交行为
+    event.preventDefault();
+
+    // 获取总金额元素
+    const totalElement = document.getElementById('total');
+    const totalValue = totalElement.textContent.trim();
+
+    // 判断总金额是否为0或为空
+    if (totalValue === '' || parseInt(totalValue) === 0) {
+      // 显示支付不成功的提示框
+      const paymentMessage = document.getElementById('paymentMessage');
+      paymentMessage.textContent = '无需提交，因为总金额为0';
+
+      // 打开模态框
+      const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+      paymentModal.show();
+    } else {
+      paymentFlagInput.value = "pay";
+      // 执行表单提交操作
+      paymentForm.submit();
+    }
+  });
 </script>
 </body>
 

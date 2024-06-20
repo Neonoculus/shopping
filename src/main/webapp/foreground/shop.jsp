@@ -140,7 +140,7 @@
                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}//toContactServlet?b_id=${buyer.b_id}">联系</a>
               </li>
             </c:if>
             <c:if test="${buyer.b_id==NULL}">
@@ -154,7 +154,7 @@
                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">联系</a>
               </li>
             </c:if>
             <li class="nav-item">
@@ -403,13 +403,14 @@
                       <c:if test="${minPrice==NULL}">
                         <input name="minPrice" class="col col-3 " placeholder="最低价格" style="height: 35px;"/>
                         <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
-                        <input name="maxPrice" class="col col-3 ms-1 me-1" placeholder="最高价格" style="height: 35px;"/>
+                        <input name="maxPrice" class="col col-3 ms-1" placeholder="最高价格" style="height: 35px;"/>
                       </c:if>
                       <c:if test="${minPrice!=NULL}">
                         <input name="minPrice" class="col col-3 "  value="${minPrice}" style="height: 35px;"/>
                         <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
-                        <input name="maxPrice" class="col col-3 ms-1 me-1"  value="${maxPrice}" style="height: 35px;"/>
+                        <input name="maxPrice" class="col col-3 ms-1"  value="${maxPrice}" style="height: 35px;"/>
                       </c:if>
+                      <p class="col col-1 me-3">元</p>
                       <button type="submit" class="col col-3 btn btn-primary" style="height: 35px;">查询</button>
                     </div>
                   </div>
@@ -587,13 +588,14 @@
                       <c:if test="${minPrice==NULL}">
                         <input name="minPrice" class="col col-3 " placeholder="最低价格" style="height: 35px;"/>
                         <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
-                        <input name="maxPrice" class="col col-3 ms-1 me-1" placeholder="最高价格" style="height: 35px;"/>
+                        <input name="maxPrice" class="col col-3 ms-1" placeholder="最高价格" style="height: 35px;"/>
                       </c:if>
                       <c:if test="${minPrice!=NULL}">
                         <input name="minPrice" class="col col-3 "  value="${minPrice}" style="height: 35px;"/>
                         <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
-                        <input name="maxPrice" class="col col-3 ms-1 me-1"  value="${maxPrice}" style="height: 35px;"/>
+                        <input name="maxPrice" class="col col-3 ms-1"  value="${maxPrice}" style="height: 35px;"/>
                       </c:if>
+                      <p class="col col-1 me-3">元</p>
                       <button type="submit" class="col col-3 btn btn-primary" style="height: 35px;">查询</button>
                     </div>
                   </div>
