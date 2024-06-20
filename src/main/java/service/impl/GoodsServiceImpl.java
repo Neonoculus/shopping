@@ -54,8 +54,18 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice,int start,int rows) {
-        return goodsDao.getGoodsByCIdAndTidsAndPrice(cid,tid,minPrice,maxPrice,start, rows);
+    public List<Goods> getGoodsByCIdAndTidsPage(int cid, List<Integer> tid, int start, int rows) {
+        return goodsDao.getGoodsByCIdAndTidsPage(cid,tid,start,rows);
+    }
+
+    @Override
+    public List<Goods> getGoodsByCIdAndTidsAndPrice(int cid, List<Integer> tid, Double minPrice, Double maxPrice) {
+        return goodsDao.getGoodsByCIdAndTidsAndPrice(cid,tid,minPrice,maxPrice);
+    }
+
+    @Override
+    public List<Goods> getGoodsByCIdAndTidsAndPricePage(int cid, List<Integer> tid, Double minPrice, Double maxPrice,int start,int rows) {
+        return goodsDao.getGoodsByCIdAndTidsAndPricePage(cid,tid,minPrice,maxPrice,start, rows);
     }
 
     @Override
@@ -90,6 +100,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public List<Goods> getGoodByAllQueryPage(String word, int start, int rows) {
+        return goodsDao.getGoodByAllQueryPage(word,start,rows);
+    }
+
+    @Override
     public List<Goods> getAllGoods() {
         return goodsDao.getAllGoods();
     }
@@ -102,5 +117,10 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> getGoodsPriceByCId(int cid,int v1,int v2) {
         return goodsDao.getGoodsPriceByCId(cid,v1,v2) ;
+    }
+
+    @Override
+    public List<Goods> getGoodsPriceByCIdPage(int cid, int minPrice, int maxPrice, int start, int rows) {
+        return goodsDao.getGoodsPriceByCIdPage(cid,minPrice,maxPrice,start,rows);
     }
 }

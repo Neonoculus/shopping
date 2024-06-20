@@ -135,21 +135,38 @@
             </div>
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
-                </li>
+                <c:if test="${buyer.b_id!=NULL}">
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                  </li>
+                </c:if>
+                <c:if test="${buyer.b_id==NULL}">
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toShopServlet?shop=first">产品</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                  </li>
+                </c:if>
                 <li class="nav-item">
                   <div class="user-items ps-5">
                     <c:if test="${buyer==NULL}">
+
                       <ul class="d-flex justify-content-end list-unstyled">
                         <li class="search-item pe-3">
                           <a href="#" class="search-button">
@@ -158,16 +175,16 @@
                             </svg>
                           </a>
                         </li>
-                        <li class="pe-3">
-                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
-                            登录/注册
-                          </a>
-                        </li>
                         <li>
                           <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>
+                          </a>
+                        </li>
+                        <li class="pe-3" style="margin-left: 15px">
+                          <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                            登录/注册
                           </a>
                         </li>
                       </ul>
@@ -181,17 +198,29 @@
                             </svg>
                           </a>
                         </li>
-                        <li class="pe-3">
-                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
-                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
-                          </a>
-                        </li>
                         <li>
                           <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
                             <svg class="cart">
                               <use xlink:href="#cart"></use>
                             </svg>
                           </a>
+                        </li>
+                        <li class="pe-3" style="margin-left: 15px">
+                          <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                            <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                          </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          </a>
+                          <ul style="width: 120px;min-width:120px;left: -350%;top:30px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toUpdateInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">个人信息</a></li>
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">订单信息</a></li>
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toPasswordUpdate?b_id=${buyer.b_id}" style="font-size:14px; color:black;">修改密码</a></li>
+                            <li style="width: 100%;text-align: center;"><hr class="dropdown-divider"></li>
+                            <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/buyerExitServlet" style="font-size:14px; color:black;">退出</a></li>
+                          </ul>
                         </li>
                       </ul>
                     </c:if>
@@ -275,26 +304,50 @@
                 <div class="product-quantity">
                   <div class="stock-number text-dark">${goods.count}存货</div>
                   <div class="stock-button-wrap pt-3">
-                    <form action="${pageContext.request.contextPath}/doSingleProductServlet?b_id=${buyer.b_id}&g_id=${goods.g_id}" method="post">
-                    <div class="input-group product-qty">
+                    <c:if test="${buyer!=NULL}">
+                      <form action="${pageContext.request.contextPath}/doSingleProductServlet?b_id=${buyer.b_id}&g_id=${goods.g_id}" method="post">
+                        <div class="input-group product-qty">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-number"  data-type="minus" data-field="" id="minus">
                               -
                             </button>
                         </span>
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number"  pattern="\b([1-9]|[1-9][0-9]|100)\b" title="请输入1到100的数字" value="1" min="1" max="100" onblur="validateInput()">
-                        <span class="input-group-btn">
+                          <input type="text" id="quantity" name="quantity" class="form-control input-number"  pattern="\b([1-9]|[1-9][0-9]|100)\b" title="请输入1到100的数字" value="1" min="1" max="100" onblur="validateInput()">
+                          <span class="input-group-btn">
                             <button type="button" class="btn btn-number" data-type="plus" data-field="" id="plus">
                                 +
                             </button>
                         </span>
-                    </div>
-                      <div id="error-message" style="display:none; color:red;">请输入1到100的数字</div>
-                    <div class="qty-button d-flex flex-wrap pt-3">
-                      <button type="submit" name="add-to-order" class="btn btn-primary btn-medium text-uppercase me-3 mt-3" value="order">立即购买</button>
-                      <button type="submit" name="add-to-cart"  class="btn btn-black btn-medium text-uppercase mt-3" value="cart">加入购物车</button>
-                    </div>
-                    </form>
+                        </div>
+                        <div id="error-message" style="display:none; color:red;">请输入1到100的数字</div>
+                        <div class="qty-button d-flex flex-wrap pt-3">
+                          <button type="submit" name="add-to-order" class="btn btn-primary btn-medium text-uppercase me-3 mt-3" value="order">立即购买</button>
+                          <button type="submit" name="add-to-cart"  class="btn btn-black btn-medium text-uppercase mt-3" value="cart">加入购物车</button>
+                        </div>
+                      </form>
+                    </c:if>
+                    <c:if test="${buyer==NULL}">
+                      <form action="${pageContext.request.contextPath}/backstage/signin.jsp" method="post">
+                        <div class="input-group product-qty">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-number"  data-type="minus" data-field="" id="minus">
+                              -
+                            </button>
+                        </span>
+                          <input type="text" id="quantity" name="quantity" class="form-control input-number"  pattern="\b([1-9]|[1-9][0-9]|100)\b" title="请输入1到100的数字" value="1" min="1" max="100" onblur="validateInput()">
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-number" data-type="plus" data-field="" id="plus">
+                                +
+                            </button>
+                        </span>
+                        </div>
+                        <div id="error-message" style="display:none; color:red;">请输入1到100的数字</div>
+                        <div class="qty-button d-flex flex-wrap pt-3">
+                          <button type="submit" name="add-to-order" class="btn btn-primary btn-medium text-uppercase me-3 mt-3" value="order">立即购买</button>
+                          <button type="submit" name="add-to-cart"  class="btn btn-black btn-medium text-uppercase mt-3" value="cart">加入购物车</button>
+                        </div>
+                      </form>
+                    </c:if>
                   </div>
                 </div>
               </div>

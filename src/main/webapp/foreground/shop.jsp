@@ -122,50 +122,102 @@
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
         <div class="offcanvas-header px-4 pb-0">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/foreground/index.jsp">
             <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" class="logo">
           </a>
           <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
         </div>
         <div class="offcanvas-body">
           <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link me-4 " href="/foreground/index.jsp">首页</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-4 active"  href="${pageContext.request.contextPath}/foreground/shop.jsp">产品</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/cart.jsp">购物车</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp">联系</a>
-            </li>
+            <c:if test="${buyer.b_id!=NULL}">
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+              </li>
+            </c:if>
+            <c:if test="${buyer.b_id==NULL}">
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-4 active" href="${pageContext.request.contextPath}/toShopServlet?shop=first">产品</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+              </li>
+            </c:if>
             <li class="nav-item">
               <div class="user-items ps-5">
-                <ul class="d-flex justify-content-end list-unstyled">
-                  <li class="search-item pe-3">
-                    <a href="#" class="search-button">
-                      <svg class="search">
-                        <use xlink:href="#search"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="pe-3">
-                    <a href="${pageContext.request.contextPath}/foreground/buyer.jsp">
-                      <svg class="user">
-                        <use xlink:href="#user"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="${pageContext.request.contextPath}/foreground/cart.jsp">
-                      <svg class="cart">
-                        <use xlink:href="#cart"></use>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
+                <c:if test="${buyer==NULL}">
+
+                  <ul class="d-flex justify-content-end list-unstyled">
+                    <li class="search-item pe-3">
+                      <a href="#" class="search-button">
+                        <svg class="search">
+                          <use xlink:href="#search"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                        <svg class="cart">
+                          <use xlink:href="#cart"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="pe-3" style="margin-left: 15px">
+                      <a href="${pageContext.request.contextPath}/backstage/signin.jsp">
+                        登录/注册
+                      </a>
+                    </li>
+                  </ul>
+                </c:if>
+                <c:if test="${buyer!=NULL}">
+                  <ul class="d-flex justify-content-end list-unstyled">
+                    <li class="search-item pe-3">
+                      <a href="#" class="search-button">
+                        <svg class="search">
+                          <use xlink:href="#search"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">
+                        <svg class="cart">
+                          <use xlink:href="#cart"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="pe-3" style="margin-left: 15px">
+                      <a href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}">
+                        <img src="${pageContext.request.contextPath}/img/avatar/${buyer.photo}" style="border-radius: 50%" width="24px">
+                      </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      </a>
+                      <ul style="width: 120px;min-width:120px;left: -350%;top:30px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toUpdateInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">个人信息</a></li>
+                        <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toBuyerInfoServlet?b_id=${buyer.b_id}" style="font-size:14px; color:black;">订单信息</a></li>
+                        <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/toPasswordUpdate?b_id=${buyer.b_id}" style="font-size:14px; color:black;">修改密码</a></li>
+                        <li style="width: 100%;text-align: center;"><hr class="dropdown-divider"></li>
+                        <li style="width: 100%;text-align: center;"><a class="dropdown-item" href="${pageContext.request.contextPath}/buyerExitServlet" style="font-size:14px; color:black;">退出</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </c:if>
               </div>
             </li>
           </ul>
@@ -186,152 +238,376 @@
     </div>
   </div>
 </section>
-<div class="shopify-grid padding-large">
-  <div class="container">
-    <div class="row">
-      <main class="col-md-9">
-        <div class="filter-shop d-flex justify-content-between">
-          <div class="showing-product">
-            <p>总共${goodsCount}条记录，共${totalPage}页</p>
-          </div>
-
-        </div>
-        <div class="product-content product-store d-flex flex-wrap">
-          <c:forEach var = "goods" items="${goodsList}">
-        <div class="col-lg-4 col-md-6">
-
-          <div class="product-card position-relative pe-3 pb-3">
-            <div class="image-holder">
-              <img src="${pageContext.request.contextPath}/img/picture/${goods.photo}" alt="product-item" class="img-fluid">
+<c:if test="${buyer!=NULL}">
+  <div class="shopify-grid padding-large">
+    <div class="container">
+      <div class="row">
+        <main class="col-md-9">
+          <div class="filter-shop d-flex justify-content-between">
+            <div class="showing-product">
+              <p>总共${goodsCount}条记录，共${totalPage}页</p>
             </div>
-            <div class="cart-concern position-absolute">
-              <div class="cart-button d-flex">
-                <div class="btn-left">
-                  <a href="${pageContext.request.contextPath}/foreground/cart.jsp" class="btn btn-medium btn-black">加入购物车</a>
-                  <svg class="cart-outline position-absolute">
-                    <use xlink:href="#cart-outline"></use>
-                  </svg>
+          </div>
+          <div class="product-content product-store d-flex flex-wrap">
+            <c:forEach var = "goods" items="${goodsList}">
+              <div class="col-lg-4 col-md-6">
+                <div class="product-card position-relative pe-3 pb-3">
+                  <div class="image-holder">
+                    <a href="${pageContext.request.contextPath}/toSingleProductServlet?b_id=${buyer.b_id}&g_id=${goods.g_id}">
+                      <img src="${pageContext.request.contextPath}/img/picture/${goods.photo}" alt="product-item" class="img-fluid" style="width: 100%; height: 326px;">
+                    </a>
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="${pageContext.request.contextPath}/doShopServlet?addCart=1&g_id=${goods.g_id}&b_id=${buyer.b_id}" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between pt-3 pb-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="${pageContext.request.contextPath}/toSingleProductServlet?b_id=${buyer.b_id}&g_id=${goods.g_id}">${goods.name}</a>
+                    </h3>
+                    <span class="item-price text-primary">${goods.price}0元</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card-detail d-flex justify-content-between pt-3 pb-3">
-              <h3 class="card-title text-uppercase">
-                <a href="${pageContext.request.contextPath}/foreground/single-product.jsp">${goods.name}</a>
-              </h3>
-              <span class="item-price text-primary">${goods.price}</span>
-            </div>
+            </c:forEach>
           </div>
-
-        </div>
-          </c:forEach>
-        </div>
-        <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
-              <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+          <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+            <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+              <c:if test="${curPage==1}">
                 <a href="#">
-                  <svg class="chevron-left pe-3">
+                  <svg class="chevron-left">
                     <use xlink:href="#chevron-left"></use>
                   </svg>
                 </a>
-                <c:forEach var="i" begin="1" end="${totalPage}">
-<%--                  --%>
-                  <c:if test="${currentPage==i}">
-                <span  aria-current="page" class="page-numbers current pe-3">${i}</span>
-                  </c:if>
-                  <c:if test="${currentPage!=i}">
-                    <a class="page-numbers pe-3" href="/doShopServlet?jspCurrentPage=${i}">${i}</a>
-                  </c:if>
-
-                </c:forEach>
+              </c:if>
+              <c:if test="${curPage!=1}">
+                <a href="toShopServlet?curPage=${curPage-1}&b_id=${buyer.b_id}">
+                  <svg class="chevron-left">
+                    <use xlink:href="#chevron-left"></use>
+                  </svg>
+                </a>
+              </c:if>
+              <c:forEach var="i" begin="1" end="${totalPage}" >
+                <c:if test="${curPage==i}">
+                  <span  aria-current="page" class="page-numbers current ps-3 pe-3 text-center" style="color: #0dcaf0">${i}</span>
+                </c:if>
+                <c:if test="${curPage!=i}">
+                  <a class="page-numbers ps-3 pe-3 text-center" href="toShopServlet?curPage=${i}&b_id=${buyer.b_id}">${i}</a>
+                </c:if>
+              </c:forEach>
+              <c:if test="${curPage==totalPage}">
                 <a href="#">
-                  <svg class="chevron-right ps-3">
+                  <svg class="chevron-right">
                     <use xlink:href="#chevron-right"></use>
                   </svg>
                 </a>
-
-              </div>
-            </nav>
-      </main>
-
-      <aside class="col-md-3">
-        <div class="sidebar">
-          <div class="widget-menu">
-            <div class="widget-search-bar">
-
-                  <form role="search" method="get" action="${pageContext.request.contextPath}/doShopServlet">
-                    <div class="d-flex">
-                      <input class="search-field"  name="query" placeholder="Search" type="search" value="${value}">
-                      <button type="submit" class="btn btn-dark d-inline-block bg-dark">
-                        <svg class="search">
-                          <use xlink:href="#search"></use>
-                        </svg>
-                      </button>
-                    </div>
-
-                  </form>
+              </c:if>
+              <c:if test="${curPage!=totalPage}">
+                <a href="toShopServlet?curPage=${curPage+1}&b_id=${buyer.b_id}">
+                  <svg class="chevron-right">
+                    <use xlink:href="#chevron-right"></use>
+                  </svg>
+                </a>
+              </c:if>
             </div>
-          </div>
-          <form id="asideForm" action="${pageContext.request.contextPath}/doShopServlet" method="get">
-            <div class="widget-product-categories pt-5">
-              <h5 class="widget-title text-decoration-underline text-uppercase">类别</h5>
-              <ul class="product-categories sidebar-list list-unstyled">
-                <li class="cat-item">
-                  <a href="${pageContext.request.contextPath}/toShopServlet">所有</a>
-                </li>
+          </nav>
+        </main>
+        <aside class="col-md-3">
+          <div class="sidebar">
+            <div class="widget-menu">
+              <div class="widget-search-bar">
+                <form method="get" action="${pageContext.request.contextPath}/doShopServlet">
+                  <div class="d-flex">
+                    <c:if test="${words==null}">
+                      <input class="search-field"  name="words" placeholder="Search" type="search">
+                    </c:if>
+                    <c:if test="${words!=null}">
+                      <input class="search-field"  name="words" type="search" value="${words}">
+                    </c:if>
+                    <input type="hidden" name="b_id" value="${buyer.b_id}">
+                    <button type="submit" class="btn btn-dark d-inline-block bg-dark" name="search" value="search">
+                      <svg class="search">
+                        <use xlink:href="#search"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <form action="${pageContext.request.contextPath}/doShopServlet" method="get">
+              <input type="hidden" name="b_id" value="${buyer.b_id}">
+              <div class="widget-product-categories pt-5">
+                <h5 class="widget-title text-decoration-underline text-uppercase">类别</h5>
+                <ul class="product-categories sidebar-list list-unstyled">
+                  <li class="cat-item">
+                    <c:if test="${all!=NULL}">
+                      <a href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first" style="color: #0dcaf0">所有</a>
+                    </c:if>
+                    <c:if test="${all==NULL&&buyer!=NULL}">
+                      <a href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">所有</a>
+                    </c:if>
+                  </li>
                   <c:forEach var="category" items="${categories}">
                     <c:if test="${category.c_id==curCategory.c_id}">
                       <li class="cat-item">
-                        <a href="${pageContext.request.contextPath}/doShopServlet?cid=${category.c_id}&jspCurrentPage=1" style="color: #0dcaf0">
-                          ${curCategory.name}
+                        <a href="${pageContext.request.contextPath}/doShopServlet?c_id=${category.c_id}&a=1&b_id=${buyer.b_id}" style="color: #0dcaf0">
+                            ${curCategory.name}
                         </a>
                       </li>
                     </c:if>
                     <c:if test="${category.c_id!=curCategory.c_id}">
                       <li class="cat-item">
-                        <a href="${pageContext.request.contextPath}/doShopServlet?cid=${category.c_id}&jspCurrentPage=1">${category.name}</a>
+                        <a href="${pageContext.request.contextPath}/doShopServlet?c_id=${category.c_id}&a=1&b_id=${buyer.b_id}">${category.name}</a>
                       </li>
                     </c:if>
                   </c:forEach>
-              </ul>
-            </div>
-            <div class="widget-product-tags pt-3">
-              <h5 class="widget-title text-decoration-underline text-uppercase">标签</h5>
-              <c:if test="${tagList!=NULL}">
-                <c:forEach var="tag" items="${tagList}">
-                    <input type="checkbox" id="${tag.t_id}" name="tags" value="${tag.t_id}">
-                    <label class="cat-item" for="${tag.t_id}">${tag.name}</label>
-
-                </c:forEach>
-              </c:if>
-              <c:if test="${tagList==NULL}">
-                <p>选择类别后展示标签！</p>
-              </c:if>
-            </div>
-
-            <div class="widget-price-filter pt-3">
-              <h5 class="widget-titlewidget-title text-decoration-underline text-uppercase">按价格筛选</h5>
-              <c:if test="${curCategory==NULL}">
-                <p>选择类别后展示筛选框！</p>
-              </c:if>
-            <c:if test="${curCategory!=NULL}">
-              <div class="d-flex align-items-center">
-                <input type="hidden" name="curId" value="${curCategory.c_id}">
-                <input type="hidden" name="curName" value="1">
-                <input name="v1" class="form-control mr-2" placeholder="最低价格" value="${value1}" min="0" step="0.01"/>—
-                <input name="v2" class="form-control mr-2" placeholder="最高价格" value="${value2}" min="0" step="0.01"/>
-                <button type="submit" class="btn btn-primary">查询</button>
-
+                </ul>
               </div>
-            </c:if>
+              <div class="widget-product-tags pt-3">
+                <h5 class="widget-title text-decoration-underline text-uppercase">标签</h5>
+                <c:if test="${tagList!=NULL}">
+                  <c:forEach var="tag" items="${tagList}">
+                    <c:set var="flag" value="true"/>
+                    <c:forEach var="curTag" items="${curTagList}">
+                      <c:if test="${curTag==tag.t_id}">
+                        <input type="checkbox" id="${tag.t_id}" name="curTagList" checked="checked" value="${tag.t_id}">
+                        <label class="cat-item" for="${tag.t_id}">${tag.name}</label>
+                        <c:set var="flag" value="false"/>
+                      </c:if>
+                    </c:forEach>
+                    <c:if test="${flag}">
+                      <input type="checkbox" id="${tag.t_id}" name="curTagList" value="${tag.t_id}">
+                      <label class="cat-item" for="${tag.t_id}">${tag.name}</label>
+                    </c:if>
+                  </c:forEach>
+                </c:if>
+                <c:if test="${tagList==NULL}">
+                  <p>选择类别后展示标签！</p>
+                </c:if>
+              </div>
+              <div class="widget-price-filter pt-3">
+                <h5 class="widget-titlewidget-title text-decoration-underline text-uppercase">按价格筛选</h5>
+                <c:if test="${curCategory==NULL}">
+                  <p>选择类别后展示筛选框！</p>
+                </c:if>
+                <c:if test="${curCategory!=NULL}">
+                  <div class="d-flex align-items-center">
+                    <div class="row">
+                      <input type="hidden" name="c_id" value="${curCategory.c_id}">
+                      <c:if test="${minPrice==NULL}">
+                        <input name="minPrice" class="col col-3 " placeholder="最低价格" style="height: 35px;"/>
+                        <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
+                        <input name="maxPrice" class="col col-3 ms-1 me-1" placeholder="最高价格" style="height: 35px;"/>
+                      </c:if>
+                      <c:if test="${minPrice!=NULL}">
+                        <input name="minPrice" class="col col-3 "  value="${minPrice}" style="height: 35px;"/>
+                        <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
+                        <input name="maxPrice" class="col col-3 ms-1 me-1"  value="${maxPrice}" style="height: 35px;"/>
+                      </c:if>
+                      <button type="submit" class="col col-3 btn btn-primary" style="height: 35px;">查询</button>
+                    </div>
+                  </div>
+                </c:if>
+              </div>
+            </form>
+            <div>
             </div>
-          </form>
-          <div id="message"></div>
-          <div>
           </div>
-        </div>
-      </aside>
+        </aside>
+      </div>
     </div>
   </div>
-</div>
+</c:if>
+<c:if test="${buyer==NULL}">
+  <div class="shopify-grid padding-large">
+    <div class="container">
+      <div class="row">
+        <main class="col-md-9">
+          <div class="filter-shop d-flex justify-content-between">
+            <div class="showing-product">
+              <p>总共${goodsCount}条记录，共${totalPage}页</p>
+            </div>
+          </div>
+          <div class="product-content product-store d-flex flex-wrap">
+            <c:forEach var = "goods" items="${goodsList}">
+              <div class="col-lg-4 col-md-6">
+                <div class="product-card position-relative pe-3 pb-3">
+                  <div class="image-holder">
+                    <a href="${pageContext.request.contextPath}/toSingleProductServlet?g_id=${goods.g_id}">
+                      <img src="${pageContext.request.contextPath}/img/picture/${goods.photo}" alt="product-item" class="img-fluid" style="width: 100%; height: 326px;">
+                    </a>
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <div class="btn-left">
+                        <a href="${pageContext.request.contextPath}/backstage/signin.jsp" class="btn btn-medium btn-black">加入购物车</a>
+                        <svg class="cart-outline position-absolute">
+                          <use xlink:href="#cart-outline"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between pt-3 pb-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="${pageContext.request.contextPath}/toSingleProductServlet?b_id=${buyer.b_id}&g_id=${goods.g_id}">${goods.name}</a>
+                    </h3>
+                    <span class="item-price text-primary">${goods.price}0元</span>
+                  </div>
+                </div>
+              </div>
+            </c:forEach>
+          </div>
+          <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+            <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+              <c:if test="${curPage==1}">
+                <a href="#">
+                  <svg class="chevron-left">
+                    <use xlink:href="#chevron-left"></use>
+                  </svg>
+                </a>
+              </c:if>
+              <c:if test="${curPage!=1}">
+                <a href="toShopServlet?curPage=${curPage-1}">
+                  <svg class="chevron-left">
+                    <use xlink:href="#chevron-left"></use>
+                  </svg>
+                </a>
+              </c:if>
+              <c:forEach var="i" begin="1" end="${totalPage}" >
+                <c:if test="${curPage==i}">
+                  <span  aria-current="page" class="page-numbers current ps-3 pe-3 text-center" style="color: #0dcaf0">${i}</span>
+                </c:if>
+                <c:if test="${curPage!=i}">
+                  <a class="page-numbers ps-3 pe-3 text-center" href="toShopServlet?curPage=${i}">${i}</a>
+                </c:if>
+              </c:forEach>
+              <c:if test="${curPage==totalPage}">
+                <a href="#">
+                  <svg class="chevron-right">
+                    <use xlink:href="#chevron-right"></use>
+                  </svg>
+                </a>
+              </c:if>
+              <c:if test="${curPage!=totalPage}">
+                <a href="toShopServlet?curPage=${curPage+1}">
+                  <svg class="chevron-right">
+                    <use xlink:href="#chevron-right"></use>
+                  </svg>
+                </a>
+              </c:if>
+            </div>
+          </nav>
+        </main>
+        <aside class="col-md-3">
+          <div class="sidebar">
+            <div class="widget-menu">
+              <div class="widget-search-bar">
+                <form method="get" action="${pageContext.request.contextPath}/doShopServlet">
+                  <div class="d-flex">
+                    <c:if test="${words==null}">
+                      <input class="search-field"  name="words" placeholder="Search" type="search">
+                    </c:if>
+                    <c:if test="${words!=null}">
+                      <input class="search-field"  name="words" type="search" value="${words}">
+                    </c:if>
+                    <button type="submit" class="btn btn-dark d-inline-block bg-dark" name="search" value="search">
+                      <svg class="search">
+                        <use xlink:href="#search"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <form action="${pageContext.request.contextPath}/doShopServlet" method="get">
+              <div class="widget-product-categories pt-5">
+                <h5 class="widget-title text-decoration-underline text-uppercase">类别</h5>
+                <ul class="product-categories sidebar-list list-unstyled">
+                  <li class="cat-item">
+                    <c:if test="${all!=NULL}">
+                      <a href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first" style="color: #0dcaf0">所有</a>
+                    </c:if>
+                    <c:if test="${all==NULL}">
+                      <a href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">所有</a>
+                    </c:if>
+                  </li>
+                  <c:forEach var="category" items="${categories}">
+                    <c:if test="${category.c_id==curCategory.c_id}">
+                      <li class="cat-item">
+                        <a href="${pageContext.request.contextPath}/doShopServlet?c_id=${category.c_id}&a=1&b_id=${buyer.b_id}" style="color: #0dcaf0">
+                            ${curCategory.name}
+                        </a>
+                      </li>
+                    </c:if>
+                    <c:if test="${category.c_id!=curCategory.c_id}">
+                      <li class="cat-item">
+                        <a href="${pageContext.request.contextPath}/doShopServlet?c_id=${category.c_id}&a=1&b_id=${buyer.b_id}">${category.name}</a>
+                      </li>
+                    </c:if>
+                  </c:forEach>
+                </ul>
+              </div>
+              <div class="widget-product-tags pt-3">
+                <h5 class="widget-title text-decoration-underline text-uppercase">标签</h5>
+                <c:if test="${tagList!=NULL}">
+                  <c:forEach var="tag" items="${tagList}">
+                    <c:set var="flag" value="true"/>
+                    <c:forEach var="curTag" items="${curTagList}">
+                      <c:if test="${curTag==tag.t_id}">
+                        <input type="checkbox" id="${tag.t_id}" name="curTagList" checked="checked" value="${tag.t_id}">
+                        <label class="cat-item" for="${tag.t_id}">${tag.name}</label>
+                        <c:set var="flag" value="false"/>
+                      </c:if>
+                    </c:forEach>
+                    <c:if test="${flag}">
+                      <input type="checkbox" id="${tag.t_id}" name="curTagList" value="${tag.t_id}">
+                      <label class="cat-item" for="${tag.t_id}">${tag.name}</label>
+                    </c:if>
+                  </c:forEach>
+                </c:if>
+                <c:if test="${tagList==NULL}">
+                  <p>选择类别后展示标签！</p>
+                </c:if>
+              </div>
+              <div class="widget-price-filter pt-3">
+                <h5 class="widget-titlewidget-title text-decoration-underline text-uppercase">按价格筛选</h5>
+                <c:if test="${curCategory==NULL}">
+                  <p>选择类别后展示筛选框！</p>
+                </c:if>
+                <c:if test="${curCategory!=NULL}">
+                  <div class="d-flex align-items-center">
+                    <div class="row">
+                      <input type="hidden" name="c_id" value="${curCategory.c_id}">
+                      <c:if test="${minPrice==NULL}">
+                        <input name="minPrice" class="col col-3 " placeholder="最低价格" style="height: 35px;"/>
+                        <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
+                        <input name="maxPrice" class="col col-3 ms-1 me-1" placeholder="最高价格" style="height: 35px;"/>
+                      </c:if>
+                      <c:if test="${minPrice!=NULL}">
+                        <input name="minPrice" class="col col-3 "  value="${minPrice}" style="height: 35px;"/>
+                        <div class="col col-1" style="display: inline-block;font-size: 30px;font-weight: 700;line-height: 35px;" >-</div>
+                        <input name="maxPrice" class="col col-3 ms-1 me-1"  value="${maxPrice}" style="height: 35px;"/>
+                      </c:if>
+                      <button type="submit" class="col col-3 btn btn-primary" style="height: 35px;">查询</button>
+                    </div>
+                  </div>
+                </c:if>
+              </div>
+            </form>
+            <div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</c:if>
 <section id="subscribe" class="container-grid padding-large position-relative overflow-hidden">
   <div class="container">
     <div class="row">

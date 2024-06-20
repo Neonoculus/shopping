@@ -63,6 +63,7 @@ public class DoCartServlet extends HttpServlet {
             }
             if(goon!=null){
                 request.setAttribute("b_id",b_id);
+                request.setAttribute("shop","first");
                 request.getRequestDispatcher("toShopServlet").forward(request,response);
             }
             if(pay!=null){

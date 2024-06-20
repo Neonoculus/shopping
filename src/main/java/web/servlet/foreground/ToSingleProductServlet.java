@@ -31,11 +31,14 @@ public class ToSingleProductServlet extends HttpServlet {
 
         //  toOrderDetailServlet  需要的参数
         String b_idTemp =  request.getParameter("b_id");
-        int b_id = Integer.parseInt(b_idTemp);
+        int b_id = 0;
+        if(b_idTemp!=null){
+            b_id = Integer.parseInt(b_idTemp);
+            //  用户个人信息
+            Buyer buyer = buyerService.getBuyerByBid(b_id);
+            request.setAttribute("buyer",buyer);
+        }
         int g_id = Integer.parseInt(request.getParameter("g_id"));
-        //  用户个人信息
-        Buyer buyer = buyerService.getBuyerByBid(b_id);
-        request.setAttribute("buyer",buyer);
         //  商品信息
         Goods goods = goodsService.getGoodsByGId(g_id);
         request.setAttribute("goods",goods);
