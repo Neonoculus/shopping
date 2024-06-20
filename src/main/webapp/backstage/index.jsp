@@ -156,7 +156,6 @@
                         <div class="bg-light text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Worldwide Sales</h6>
-                                <a href="">Show All</a>
                             </div>
                             <canvas id="worldwide-sales"></canvas>
                         </div>
@@ -165,7 +164,6 @@
                         <div class="bg-light text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Salse & Revenue</h6>
-                                <a href="">Show All</a>
                             </div>
                             <canvas id="salse-revenue"></canvas>
                         </div>
@@ -213,62 +211,7 @@
     <script src="${pageContext.request.contextPath}/backstage/js/main.js"></script>
 
 <script>
-    const worldwideSalesData = {
-        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        datasets: [{
-            label: "Weekly Sales",
-            data: [30, 45, 35, 50, 55, 40, 60], // 订单数
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        }]
-    };
 
-    const salesRevenueData = {
-        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        datasets: [{
-            label: "Weekly Revenue",
-            data: [1500, 2000, 1800, 2200, 2400, 1900, 2500], // 销售额
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        }]
-    };
-
-    // 使用Chart.js绘制图表
-    var worldwideSalesChart = new Chart(document.getElementById('worldwide-sales'), {
-        type: 'bar',
-        data: worldwideSalesData,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Worldwide Weekly Sales'
-                }
-            }
-        }
-    });
-
-    var salesRevenueChart = new Chart(document.getElementById('sales-revenue'), {
-        type: 'line',
-        data: salesRevenueData,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Weekly Sales Revenue'
-                }
-            }
-        }
-    });
 </script>
 
 </body>
