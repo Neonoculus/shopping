@@ -41,11 +41,20 @@ public class DoSignUpServlet extends HttpServlet {
         String submit = request.getParameter("send");
         String email = request.getParameter("email");
         String code = String.valueOf(a);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String user = request.getParameter("user");
+
         if (!(submit == null)){
             new SendEmail(email,code);
             session.setAttribute("code",code);
+            request.setAttribute("username",username);
+            request.setAttribute("password",password);
+            request.setAttribute("user",user);
+            request.setAttribute("email",email);
+
         }else {
-            String user = request.getParameter("user");
+
             String inputCode = request.getParameter("inputCode");
             code = (String) session.getAttribute("code");
             if (!code.equals(inputCode)){
@@ -65,8 +74,7 @@ public class DoSignUpServlet extends HttpServlet {
                 request.setAttribute("warning","请选择账户类型");
                 request.getRequestDispatcher("backstage/signup.jsp").forward(request,response);
             }
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
+
 
             Login login = new Login(0,username,password,type,id);
             loginService.add(login);

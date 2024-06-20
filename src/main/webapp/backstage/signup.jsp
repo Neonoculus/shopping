@@ -59,15 +59,15 @@
                                 <h3>注册</h3>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" placeholder="username" name="username">
+                                <input type="text" class="form-control" id="floatingText" placeholder="username" name="username" value="${username}">
                                 <label for="floatingText">账号</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="password" name="password">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="password" name="password" value="${password}">
                                 <label for="floatingPassword">密码</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="${email}">
                                 <label for="floatingInput">邮箱</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -81,9 +81,23 @@
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="user" id="user" style="margin: 0; margin-bottom: 0;">
-                                        <option selected disabled>选择账号类型</option>
-                                        <option value="buyer">用户</option>
-                                        <option value="merchant">商家</option>
+                                        <c:if test="${user==null}">
+                                            <option selected disabled>选择账号类型</option>
+                                            <option value="buyer">用户</option>
+                                            <option value="merchant">商家</option>
+                                        </c:if>
+                                        <c:if test="${user=='buyer'}">
+                                            <option disabled>选择账号类型</option>
+                                            <option value="buyer" selected>用户</option>
+                                            <option value="merchant">商家</option>
+                                        </c:if>
+                                        <c:if test="${user=='merchant'}">
+                                            <option disabled>选择账号类型</option>
+                                            <option value="buyer">用户</option>
+                                            <option value="merchant" selected>商家</option>
+                                        </c:if>
+
+
                                     </select>
                                 </div>
                                 <div><label class="text-danger" id="warning"></label></div>
