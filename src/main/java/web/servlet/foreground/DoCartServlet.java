@@ -44,7 +44,7 @@ public class DoCartServlet extends HttpServlet {
             String goon = request.getParameter("continue");
             String pay = request.getParameter("pay");
             int b_id = Integer.parseInt(request.getParameter("b_id"));
-            if(update!=null){
+            if(update!=null && !"".equals(update)){
                 int length = Integer.parseInt(request.getParameter("length"));
                 for (int i=0;i<length;i++){
                     int g_id = Integer.parseInt(request.getParameter("goodsList"+i));
@@ -61,12 +61,12 @@ public class DoCartServlet extends HttpServlet {
                 request.setAttribute("b_id",b_id);
                 request.getRequestDispatcher("toCartServlet").forward(request,response);
             }
-            if(goon!=null){
+            if(goon!=null && !"".equals(goon)){
                 request.setAttribute("b_id",b_id);
                 request.setAttribute("shop","first");
                 request.getRequestDispatcher("toShopServlet").forward(request,response);
             }
-            if(pay!=null){
+            if(pay!=null && !"".equals(pay)){
                 request.setAttribute("b_id",b_id);
                 request.setAttribute("cart","cart");
                 request.getRequestDispatcher("toCheckoutServlet").forward(request,response);

@@ -106,7 +106,7 @@
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                         <c:if test="${buyer.b_id!=NULL}">
                             <li class="nav-item">
-                                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                                <a class="nav-link me-4 " href="${pageContext.request.contextPath}/toBuyerIndexServlet?b_id=${buyer.b_id}">首页</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
@@ -115,7 +115,7 @@
                                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                                <a class="nav-link me-4" href="${pageContext.request.contextPath}/toContactServlet?b_id=${buyer.b_id}">联系</a>
                             </li>
                         </c:if>
                         <c:if test="${buyer.b_id==NULL}">
@@ -129,7 +129,7 @@
                                 <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                                <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">联系</a>
                             </li>
                         </c:if>
                         <li class="nav-item">
@@ -474,6 +474,7 @@
 <script src="${pageContext.request.contextPath}/foreground/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/foreground/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
 <script src="${pageContext.request.contextPath}/foreground/js/front.js"></script>
+
 
 </body>
 

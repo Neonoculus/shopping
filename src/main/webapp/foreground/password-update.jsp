@@ -146,7 +146,7 @@
             <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
               <c:if test="${buyer.b_id!=NULL}">
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/index.jsp">首页</a>
+                  <a class="nav-link me-4 " href="${pageContext.request.contextPath}/toBuyerIndexServlet?b_id=${buyer.b_id}">首页</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/toShopServlet?b_id=${buyer.b_id}&shop=first">产品</a>
@@ -155,7 +155,7 @@
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/toCartServlet?b_id=${buyer.b_id}">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/toContactServlet?b_id=${buyer.b_id}">联系</a>
                 </li>
               </c:if>
               <c:if test="${buyer.b_id==NULL}">
@@ -169,7 +169,7 @@
                   <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">购物车</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/foreground/contact.jsp?b_id=${buyer.b_id}">联系</a>
+                  <a class="nav-link me-4" href="${pageContext.request.contextPath}/backstage/signin.jsp">联系</a>
                 </li>
               </c:if>
               <li class="nav-item">
@@ -278,92 +278,6 @@
       </form>
     </div>
   </section>
-  <section id="subscribe" class="container-grid position-relative overflow-hidden">
-    <div class="container">
-      <div class="row">
-        <div
-          class="subscribe-content bg-dark d-flex flex-wrap justify-content-center align-items-center padding-medium">
-          <div class="col-md-6 col-sm-12">
-            <div class="display-header pe-3">
-              <h2 class="display-7 text-uppercase text-light">订阅我们</h2>
-              <p>获得最新的新闻，更新和交易直接邮寄到您的收件箱。</p>
-            </div>
-          </div>
-          <div class="col-md-5 col-sm-12">
-            <form class="subscription-form validate">
-              <div class="input-group flex-wrap">
-                <input class="form-control btn-rounded-none" type="email" name="EMAIL"
-                  placeholder="Your email address here" required="">
-                <button class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit"
-                  name="subscribe">订阅</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="instagram" class="padding-large overflow-hidden">
-    <div class="container">
-      <div class="row">
-        <div class="display-header text-uppercase text-dark text-center pb-3">
-          <h2 class="display-7">购买我们 Insta</h2>
-        </div>
-        <div class="d-flex flex-wrap">
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item3.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item4.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-          <figure class="instagram-item pe-2">
-            <a href="#" class="image-link position-relative">
-              <img src="images/insta-item5.jpg" alt="instagram" class="insta-image">
-              <div class="icon-overlay position-absolute d-flex justify-content-center">
-                <svg class="instagram">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </div>
-            </a>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
   <footer id="footer" class="overflow-hidden">
     <div class="container">
       <div class="row">
@@ -371,9 +285,8 @@
           <div class="row d-flex flex-wrap justify-content-between">
             <div class="col-lg-3 col-sm-6 pb-3">
               <div class="footer-menu">
-                <img src="images/main-logo.png" alt="logo">
-                <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
-                  erat nullam fringilla.</p>
+                <img src="${pageContext.request.contextPath}/foreground/images/main-logo.png" alt="logo">
+                <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
                 <div class="social-links">
                   <ul class="d-flex list-unstyled">
                     <li>
@@ -420,19 +333,19 @@
                 <h5 class="widget-title pb-2">快速连接</h5>
                 <ul class="menu-list list-unstyled text-uppercase">
                   <li class="menu-item pb-2">
-                    <a href="#">首页</a>
+                    <a href="#">Home</a>
                   </li>
                   <li class="menu-item pb-2">
-                    <a href="#">关于</a>
+                    <a href="#">About</a>
                   </li>
                   <li class="menu-item pb-2">
-                    <a href="#">购物</a>
+                    <a href="#">Shop</a>
                   </li>
                   <li class="menu-item pb-2">
-                    <a href="#">博客</a>
+                    <a href="#">Blogs</a>
                   </li>
                   <li class="menu-item pb-2">
-                    <a href="#">联系</a>
+                    <a href="#">Contact</a>
                   </li>
                 </ul>
               </div>
@@ -481,8 +394,8 @@
           <div class="Shipping d-flex">
             <p>We ship with:</p>
             <div class="card-wrap ps-2">
-              <img src="images/dhl.png" alt="visa">
-              <img src="images/shippingcard.png" alt="mastercard">
+              <img src="${pageContext.request.contextPath}/foreground/images/dhl.png" alt="visa">
+              <img src="${pageContext.request.contextPath}/foreground/images/shippingcard.png" alt="mastercard">
             </div>
           </div>
         </div>
@@ -490,17 +403,16 @@
           <div class="payment-method d-flex">
             <p>Payment options:</p>
             <div class="card-wrap ps-2">
-              <img src="images/visa.jpg" alt="visa">
-              <img src="images/mastercard.jpg" alt="mastercard">
-              <img src="images/paypal.jpg" alt="paypal">
+              <img src="${pageContext.request.contextPath}/foreground/images/visa.jpg" alt="visa">
+              <img src="${pageContext.request.contextPath}/foreground/images/mastercard.jpg" alt="mastercard">
+              <img src="${pageContext.request.contextPath}/foreground/images/paypal.jpg" alt="paypal">
             </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="copyright">
-            <%-- <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/"
-                title="网页模板">网页模板</a>--%>
-              </p>
+            <%--          <p>© Copyright 2023 MiniStore. <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>--%>
+            </p>
           </div>
         </div>
       </div>

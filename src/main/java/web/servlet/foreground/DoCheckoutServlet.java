@@ -78,7 +78,7 @@ public class DoCheckoutServlet extends HttpServlet {
             orderDetailsService.add(orderDetails);
         }
         request.setAttribute("b_id",b_id);
-        request.getRequestDispatcher("toShopServlet").forward(request,response);
+        request.getRequestDispatcher("toBuyerInfoServlet").forward(request,response);
     }
 
     @Override
