@@ -128,8 +128,8 @@
 
 
                         <div class="d-flex align-items-center justify-content-end mb-4 col">
-                            <button type="submit" class="btn btn-danger m-2" id="selectedItems1" name="SoldOut">批量下架</button>
-                            <button type="submit" class="btn btn-success m-2" id="selectedItems2" name="SoldIn">商品上架</button>
+                            <button type="submit" class="btn btn-danger m-2" value="SoldOut" id="selectedItems1" name="SoldOut">批量下架</button>
+                            <button type="submit" class="btn btn-success m-2" value="SoldIn" id="selectedItems2" name="SoldIn">商品上架</button>
                             <input type="hidden" name="merchant" id="merchant" value="${merchant.m_id}">
                         </div>
                     </div>

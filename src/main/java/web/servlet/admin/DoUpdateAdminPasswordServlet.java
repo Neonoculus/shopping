@@ -32,10 +32,10 @@ public class DoUpdateAdminPasswordServlet extends HttpServlet {
         String newPassword2 = request.getParameter("password2");
 
         Login login = loginService.getLoginById(0);
-        if (login.getPassword().equals(lostPassword)){
+        if (!login.getPassword().equals(lostPassword)){
             request.setAttribute("warning","输入的旧密码错误");
             request.getRequestDispatcher("admin/setting.jsp").forward(request,response);
-        }else if (newPassword1.equals(newPassword2)){
+        }else if (!newPassword1.equals(newPassword2)){
             request.setAttribute("warning","两次输入的密码不相同");
             request.getRequestDispatcher("admin/setting.jsp").forward(request,response);
         }else {

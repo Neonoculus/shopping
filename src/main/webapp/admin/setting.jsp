@@ -54,7 +54,7 @@
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
-                    <img class="rounded-circle" src="img/管理员.png" alt="" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="${pageContext.request.contextPath}/img/avatar/垃圾.jpg" alt="" style="width: 40px; height: 40px;">
                     <div
                             class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                     </div>
@@ -64,10 +64,10 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="toAdminBuyerServlet" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
-                <a href="toAdminMerchantServlet" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
-                <a href="toAdminGoodsServlet.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>商品管理</a>
-                <a href="${pageContext.request.contextPath}/admin/setting.jsp" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>设置</a>
+                <a href="toAdminBuyerServlet?start=0" class="nav-item nav-link"><i class="fa fa-th me-2"></i>用户管理</a>
+                <a href="toAdminMerchantServlet?start=0" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>商家管理</a>
+                <a href="toAdminGoodsServlet?start=0" class="nav-item nav-link"><i class="fa fa-table me-2"></i>商品管理</a>
+                <a href="${pageContext.request.contextPath}/admin/setting.jsp" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>设置</a>
             </div>
         </nav>
     </div>
@@ -91,7 +91,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="bg-light rounded h-100 p-4 col col-xl-6">
                         <h6 class="mb-4">账号安全</h6>
-                        <form action="doUpdateAdminPasswordServlet">
+                        <form action="${pageContext.request.contextPath}/doUpdateAdminPasswordServlet">
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">新密码</label>
                                 <input type="password" class="form-control" id="lostPassword" name="password">
@@ -103,6 +103,9 @@
                             <div class="mb-3">
                                 <label for="exampleInputPassword2" class="form-label">确认密码</label>
                                 <input type="password" class="form-control" id="exampleInputPassword2" name="password2">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword2" class="form-label text-danger" id="warning">${warning}</label>
                             </div>
                             <button type="submit" class="btn btn-primary">确认修改</button>
                         </form>

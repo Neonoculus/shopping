@@ -29,6 +29,6 @@ public class DoBannedServlet extends HttpServlet {
         login.setType(type);
         int i = loginService.update(login);
 
-        request.getRequestDispatcher("admin/buyer.jsp");
+        request.getRequestDispatcher("admin/buyer.jsp").forward(request,response);
     }
 }

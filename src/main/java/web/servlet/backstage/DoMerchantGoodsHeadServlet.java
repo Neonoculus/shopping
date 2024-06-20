@@ -35,6 +35,7 @@ public class DoMerchantGoodsHeadServlet extends HttpServlet {
 		}
 		int m_id = Integer.parseInt(m_idParam);
 		Merchant merchant = merchantService.getMerchantByMId(m_id);
+		request.setAttribute("merchant", merchant);
 
 		String select = request.getParameter("select");
 		String soldOut = request.getParameter("SoldOut");
@@ -59,24 +60,19 @@ public class DoMerchantGoodsHeadServlet extends HttpServlet {
 			}
 			List<Goods> goodsList = goodsService.findByPage(0,10);
 			request.setAttribute("goodsList",goodsList);
-		}else if (soldIn!=null) {
-			Goods goods;
-			selectedItems = request.getParameterValues("checkbox");
-			for (String item : selectedItems){
-				int id = Integer.parseInt(item);
-				goods = goodsService.getGoodsByGId(id);
-				goods.setStatus(1);
-				int i = goodsService.update(goods);
-			}
-			List<Goods> goodsList = goodsService.findByPage(0,10);
-			request.setAttribute("goodsList",goodsList);
+		}
+		if (soldIn!=null) {
+
+
+			request.getRequestDispatcher("toAddGoodsServlet").forward(request,response);
+		}else {
+			int pageSumNumber = goodsService.goodsPageSum(goodsService.getAllGoods());
+
+			request.setAttribute("page",0);
+			request.setAttribute("pageSumNumber",pageSumNumber);
+			request.getRequestDispatcher("backstage/goods.jsp").forward(request,response);
 		}
 
-		int pageSumNumber = goodsService.goodsPageSum(goodsService.getAllGoods());
 
-		request.setAttribute("merchant", merchant);
-		request.setAttribute("page",0);
-		request.setAttribute("pageSumNumber",pageSumNumber);
-		request.getRequestDispatcher("backstage/goods.jsp").forward(request,response);
 	}
 }

@@ -72,10 +72,7 @@
                                 <label class="text-danger" id="waning-text">${warning}</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check">
-                                    <label class="form-check-label" for="exampleCheck1">记住我</label>
-                                </div>
+
                                 <a href="">忘记密码</a>
                             </div>
                             <button type="submit" class="btn btn-dark py-3 w-100 mb-4">登录</button>

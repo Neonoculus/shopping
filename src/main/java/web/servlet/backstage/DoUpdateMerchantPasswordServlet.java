@@ -36,14 +36,20 @@ public class DoUpdateMerchantPasswordServlet extends HttpServlet {
 		String newPassword1 = request.getParameter("password1");
 		String newPassword2 = request.getParameter("password2");
 
+		Merchant merchant = merchantService.getMerchantByMId(m_id);
+		request.setAttribute("merchant", merchant);
 		Login login = loginService.getLoginById(m_id);
+
 		if (login.getId()!=m_id){
 			request.setAttribute("warning","系统错误");
 			request.getRequestDispatcher("backstage/signin.jsp").forward(request,response);
-		}else if (login.getPassword().equals(lostPassword)){
+		}else if (!login.getPassword().equals(lostPassword)){
 			request.setAttribute("warning","输入的旧密码错误");
 			request.getRequestDispatcher("backstage/setting.jsp").forward(request,response);
-		}else if (newPassword1.equals(newPassword2)){
+		}else if (newPassword1.equals(lostPassword)){
+			request.setAttribute("warning","新的密码不能和旧密码相同");
+			request.getRequestDispatcher("backstage/setting.jsp").forward(request,response);
+		}else if (!newPassword1.equals(newPassword2)){
 			request.setAttribute("warning","两次输入的密码不相同");
 			request.getRequestDispatcher("backstage/setting.jsp").forward(request,response);
 		}else {
@@ -51,8 +57,7 @@ public class DoUpdateMerchantPasswordServlet extends HttpServlet {
 			loginService.update(login);
 		}
 
-		Merchant merchant = merchantService.getMerchantByMId(m_id);
-		request.setAttribute("merchant", merchant);
+
 
 		request.getRequestDispatcher("backstage/setting.jsp").forward(request,response);
     }
