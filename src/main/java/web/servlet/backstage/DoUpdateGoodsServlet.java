@@ -75,8 +75,8 @@ public class DoUpdateGoodsServlet extends HttpServlet {
 		Merchant merchant = merchantService.getMerchantByMId(m_id);
 		request.setAttribute("merchant",merchant);
 
-		int start = Integer.parseInt(request.getParameter("start"))*10;
-		List<Goods> goodsList = goodsService.findByPageByMId(m_id,start,10);
+		int start = Integer.parseInt(request.getParameter("start"));
+		List<Goods> goodsList = goodsService.findByPageByMId(m_id,start*10,10);
 		int pageSumNumber = goodsService.goodsPageSum(goodsService.getGoodsByMId(m_id))/10+1;
 
 		start = start/10;

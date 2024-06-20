@@ -40,7 +40,7 @@ public class ToAdminBuyerServlet extends HttpServlet {
 		int pageSumNumber = buyerService.buyerPageSum(buyerService.getAllBuyer());
 
 
-		List<Buyer> buyers = buyerService.findByPage(start,10);
+		List<Buyer> buyers = buyerService.findByPage(start*10,10);
 		List<Login> logins = new ArrayList<>();
 		for (Buyer buyer : buyers)
 		{

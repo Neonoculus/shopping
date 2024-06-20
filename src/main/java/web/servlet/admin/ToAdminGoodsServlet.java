@@ -30,10 +30,10 @@ public class ToAdminGoodsServlet extends HttpServlet {
         if (startString == null){
             startString = (String) request.getAttribute("start");
         }
-        int start = Integer.parseInt(startString)*10;
+        int start = Integer.parseInt(startString);
         int pageSumNumber = goodsService.goodsPageSum(goodsService.getAllGoods())/10+1;
 
-        List<Goods> goods = goodsService.findByPage(start,10);
+        List<Goods> goods = goodsService.findByPage(start*10,10);
 
         List<Goods> goodsList = new ArrayList<>();
         for (Goods goods1:goods){

@@ -40,7 +40,7 @@ public class ToAdminMerchantServlet extends HttpServlet {
         }else {
             start = Integer.parseInt(start1);
         }
-        List<Merchant> merchants = merchantService.findByPage(start,10);
+        List<Merchant> merchants = merchantService.findByPage(start*10,10);
         int pageSumNumber = merchantService.merchantPageSum(merchantService.getAllMerchant())/10+1;
 
         List<Login> logins = new ArrayList<>();

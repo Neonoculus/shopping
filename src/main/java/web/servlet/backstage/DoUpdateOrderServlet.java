@@ -39,7 +39,7 @@ public class DoUpdateOrderServlet extends HttpServlet {
         if (startString == null){
             startString = (String) request.getAttribute("start");
         }
-        int start = Integer.parseInt(startString)*10;
+        int start = Integer.parseInt(startString);
         String m_idParam = request.getParameter("m_id");
         if (m_idParam == null){
             m_idParam = (String) request.getAttribute("m_id");
@@ -47,7 +47,7 @@ public class DoUpdateOrderServlet extends HttpServlet {
         int m_id = Integer.parseInt(m_idParam);
         Merchant merchant = merchantService.getMerchantByMId(m_id);
 
-        List<Order> orderList = orderService.findByPageAndMId(m_id,start,10);
+        List<Order> orderList = orderService.findByPageAndMId(m_id,start*10,10);
         int pageSumNumber = orderService.OrderAmountNumber(orderService.getOrderByMId(m_id))[0]/10+1;
         start = start/10;
 

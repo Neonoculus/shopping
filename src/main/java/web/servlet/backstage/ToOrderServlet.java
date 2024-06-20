@@ -36,7 +36,7 @@ public class ToOrderServlet extends HttpServlet {
         if (startString == null){
             startString = (String) request.getAttribute("start");
         }
-        int start = Integer.parseInt(startString)*10;
+        int start = Integer.parseInt(startString);
         String m_idParam = request.getParameter("merchant");
         if (m_idParam == null){
             m_idParam = (String) request.getAttribute("merchant");
@@ -44,7 +44,7 @@ public class ToOrderServlet extends HttpServlet {
         int m_id = Integer.parseInt(m_idParam);
         Merchant merchant = merchantService.getMerchantByMId(m_id);
 
-        List<Order> orderList1 = orderService.findByPageAndMId(m_id,start,10),orderList = new ArrayList<>();
+        List<Order> orderList1 = orderService.findByPageAndMId(m_id,start*10,10),orderList = new ArrayList<>();
 
         // 使用 TreeMap 按 o_id 降序排序
         TreeMap<Long, Order> orderMap = new TreeMap<>((o_id1, o_id2) -> Long.compare(o_id2, o_id1));
@@ -56,7 +56,6 @@ public class ToOrderServlet extends HttpServlet {
         orderList.addAll(orderMap.values());
 
         int pageSumNumber = orderService.OrderAmountNumber(orderService.getOrderByMId(m_id))[0]/10+1;
-        start = start/10;
 
         request.setAttribute("orderList",orderList);
         request.setAttribute("merchant", merchant);
